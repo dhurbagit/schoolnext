@@ -26,7 +26,7 @@ Route::get('/admin', function(){
 
 
 
-// Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin'], function(){
 
 // // sidebar route
 Route::get('/manage-slider', [SliderController::class, 'index'])->name('manage-slider');
@@ -46,7 +46,7 @@ Route::delete('albumdelete/{id}', [AlbumController::class, 'delete'])->name('alb
 Route::get('albumedit/{id}', [AlbumController::class, 'edit'])->name('album.edit');
 
 // // Testimonial
-// Route::ge('/manage-testimonial',[])->name('manage-testimonial');
-// });
+Route::get('/manage-testimonial',[])->name('manage-testimonial');
+});
 
 
