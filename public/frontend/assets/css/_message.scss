@@ -1,0 +1,111 @@
+#message-section {
+  .top__msg-container {
+    background-color: $secondary-color;
+    padding-top: 2rem;
+    width: 100%;
+    height: 21rem;
+    .customRow {
+      transform: translateY(55px);
+      .message__desc {
+        .msg_from {
+          h2 {
+            color: $color-white;
+            margin: 0;
+          }
+        }
+        .line {
+          filter: brightness(0) invert(1);
+        }
+        .msg_name {
+          h5 {
+            color: $color-white;
+          }
+        }
+      }
+      .message__image {
+        width: 19rem;
+        height: 19rem;
+        box-shadow: 0 0 0 5px $color-white;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      height: auto;
+      .customRow {
+        flex-direction: column-reverse;
+        transform: translateY(0);
+        .message__desc {
+          .line {
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .message__image {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  .message_wrapper {
+    .msg {
+      padding: 5rem;
+      p {
+        color: $text-color-one;
+      }
+      @media screen and (max-width: 992px) {
+        padding: 5rem 0;
+      }
+    }
+  }
+  .management-team {
+    .top--title {
+      a {
+        h3 {
+          transition: 0.3s all ease-in-out;
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      border: 1px solid #8080802d;
+      transition: 0.3s all ease-in-out;
+      .slide_img {
+        width: 100%;
+        height: 15rem;
+        margin-bottom: 10px;
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        @media screen and (max-width: 650px) {
+          height: 15rem;
+          img {
+            object-fit: contain;
+          }
+        }
+      }
+      .slider_name {
+        h4 {
+          color: $secondary-color;
+          margin: 0;
+        }
+      }
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: #f1f1f1;
+      }
+    }
+  }
+}

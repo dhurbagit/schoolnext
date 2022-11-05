@@ -1,0 +1,129 @@
+#Team-section {
+  .team--title {
+    text-align: center;
+    margin: 25px 0;
+    h3 {
+      font-weight: 600;
+      color: $secondary-color;
+    }
+  }
+  .team_card {
+    position: relative;
+    border: 1px solid rgba(202, 202, 202, 0.384);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: 0.3s all ease-in-out;
+    .team__img {
+      width: 100%;
+      height: 15rem;
+      overflow: hidden;
+      img {
+        object-fit: cover;
+        transition: 0.3s all ease-in-out;
+      }
+    }
+    .team_detail {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 15px;
+      overflow: hidden;
+      .name {
+        z-index: 1;
+        h4 {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 5px;
+          transition: 0.3s all ease-in-out;
+        }
+        p {
+          color: $text-color-one;
+          font-weight: 500;
+          font-size: 16px;
+          margin: 0;
+          transition: 0.3s all ease-in-out;
+        }
+        span {
+          font-size: 12px;
+          transition: 0.3s all ease-in-out;
+          color: $text-color;
+        }
+      }
+      .icon {
+        position: absolute;
+        right: 10px;
+        bottom: 3px;
+        transition: 0.3s all ease-in-out;
+        i {
+          color: $color-white;
+        }
+      }
+      .extra__space {
+        padding: 15px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: -20px;
+        bottom: 0;
+        background: $secondary-color;
+        width: 30rem;
+        height: 15rem;
+        z-index: -1;
+        transform: rotate(-40deg) translateY(320px);
+        transition: 0.3s all ease-in-out;
+      }
+    }
+    &::after {
+      content: "View \f06e";
+      font-family: "Font Awesome 6 free";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      color: $color-white;
+      background-color: #ffa60081;
+      padding: 8px;
+      border-radius: 12px;
+      opacity: 0;
+      transition: 0.3s all ease-in-out;
+    }
+    &:hover {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+      border-color: $secondary-color;
+      &::after {
+        transform: translate(-50%, -180%);
+        opacity: 1;
+      }
+      .team__img {
+        img {
+          transform: scale(1.05);
+        }
+      }
+      .team_detail {
+        .name {
+          h4,
+          p,
+          span {
+            color: $color-white;
+          }
+        }
+        .icon {
+          transform: translateX(40px);
+        }
+        &::after {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  .modal-team__detail {
+    .message {
+      width: 100%;
+      height: 100%;
+      p {
+        color: $text-color-one;
+      }
+    }
+  }
+}

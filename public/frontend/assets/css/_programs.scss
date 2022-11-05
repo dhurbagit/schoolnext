@@ -1,0 +1,43 @@
+#academic_section {
+  .white-box {
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 5rem;
+    transition: .3s all ease-in-out;
+    .content__title {
+      color: $secondary-color;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .content__desc {
+      li,
+      p {
+        color: $text-color-one;
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+    .credit__wrapper {
+      .card-custom {
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+        .table {
+          border-color: $primary-color;
+          th,
+          td {
+            padding: 3px 5px;
+          }
+          .credit {
+            border-left: 1px solid $primary-color;
+          }
+        }
+      }
+    }
+    &:hover{
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+  }
+}
