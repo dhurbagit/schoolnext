@@ -40,6 +40,11 @@
 		<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 
+    <link
+      rel="stylesheet"
+      href="{{asset('draganddropmenu/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"
+    />
+
 </head>
 <body>
 
@@ -114,6 +119,9 @@
       <script src="{{asset('backend/assets/js/app.js')}}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
       <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+      <script src="{{asset('draganddropmenu/jquery-menu-editor.js')}}"></script>
+      <script type="text/javascript" src="{{asset('draganddropmenu/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js')}}"
+    ></script>
       <script>
             CKEDITOR.replace( 'editor1' );
             CKEDITOR.replace( 'editor2' );

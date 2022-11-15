@@ -15,6 +15,17 @@
                 </li>
                 <li class="submenu">
                     <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                        <span> Slider</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{route('manage-slider')}}"><span>Manage Slider</span></a></li>
+                        <li><a href="{{ route('create-slider')}}"><span>Create Slider</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{route('menu.view')}}"><img src="{{asset('backend/assets/img/sidebar/icon-6.png')}}" alt="icon"> <span>Menu</span></a>
+                </li>
+                <li class="submenu">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
                         <span> Gallery</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage-gallery') }}"><span>Manage Album</span></a></li>
@@ -74,10 +85,10 @@
                 <li>
                     <a href="{{route('setting')}}"><img src="{{asset('backend/assets/img/sidebar/icon-6.png')}}" alt="icon"> <span>Setting</span></a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="calendar.html"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
                             alt="icon"> <span>Calendar</span></a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
