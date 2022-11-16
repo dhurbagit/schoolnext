@@ -31,6 +31,12 @@ class MenuController extends Controller
         $parent_menus = Menu::where('parent_id', null)->get();
         return view('admin.menu.create', compact('menu_categories', 'parent_menus'));
     }
+    public function edit($id){
+            $edit_menu = Menu::findOrFail($id);
+            $menu_categories = Menu::contentType;
+            $parent_menus = Menu::where('parent_id', null)->get();
+            return view('admin.menu.edit', compact('edit_menu', 'menu_categories','parent_menus'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -76,7 +82,7 @@ class MenuController extends Controller
             'title_slug'=>Str::slug($request->page_title.rand(0,10)),
             'publish_status'=>isset($request->publish_status[0]) ? 1 : 0,
             'page_title' => $request['page_title'],
-            'content' => $request['content'],
+            'content' => $request['editor1'],
         ]);
         if($new_menu)
         return redirect()->back()->with('message', 'Menu information is saved successfully.');
@@ -89,7 +95,7 @@ class MenuController extends Controller
 
         parse_str($request->sort, $arr);
         $order = 1;
-        dd($arr);
+      
         if (isset($arr['menuItem'])) {
             foreach ($arr['menuItem'] as $key => $value) {  //id //parent_id
                 $this->menu->where('id', $key)
@@ -102,6 +108,81 @@ class MenuController extends Controller
             }
         }
         return true;
+    }
+
+    public function delete($id)
+    {
+        $delete_menu = Menu::findOrFail($id);
+        $meg =  $delete_menu->delete();
+        if($meg){
+            return redirect()->back()->with('message', 'Menu deleted successfully!');
+        }
+        else{
+            return redirect()->back()->with('message', 'Something went wrong !');
+        }
+    }
+    public function update(Request $request , $id){
+         // dd($request->image);
+         $menu = Menu::findorFail($id);
+         $this->validate($request, [
+             'name'    => 'required',
+             'menu_category' => 'required',
+             'main_child' => 'required',
+             'parent_id' => '',
+             'show_in' => '',
+         ]);
+
+         $parent_id = NULL;
+         $show_in = 1;
+         if($request['main_child'] == 1)
+         {
+             $parent_id = $request['parent_id'];
+         }
+         else if($request['main_child'] == 0)
+         {
+             $show_in = $request['show_in'];
+         }
+
+         $fimage = null;
+         if($request->hasfile('image'))
+         {
+            unlink("uploads/" . $menu->image);
+             $image = $request->file('image');
+             $fimage = $image->store('main_images', 'uploads');
+         }else{
+             $fimage = $menu->image;
+         }
+
+         $banner_image = null;
+         if($request->hasfile('banner_image'))
+         {
+            unlink("uploads/" . $menu->banner_image);
+             $image = $request->file('banner_image');
+             $banner_image = $image->store('menu_images', 'uploads');
+         }else{
+             $banner_image = $menu->banner_image;
+         }
+
+
+
+         $menu->update([
+             'name' => $request['name'],
+             'category_slug' => $request['menu_category'],
+             'main_child' => $request['main_child'],
+             'parent_id' => $parent_id,
+             'external_link' => $request['external_link'],
+             'header_footer' => $show_in,
+             'banner_image' => $banner_image,
+             'image' => $fimage,
+             'title_slug'=>str::slug($request->page_title.rand(0,10)),
+             'page_title' => $request['page_title'],
+             'content' => $request['editor1'],
+             'meta_title' => $request['meta_title'],
+             'publish_status'=>isset($request->publish_status[0]) ? 1 : 0,
+
+         ]);
+
+         return redirect()->back()->with('message', 'Menu information is updated successfully.');
     }
 
 }

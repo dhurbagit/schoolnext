@@ -144,18 +144,5 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
-    <script>
-        $(function() {
-            $('.main_child').change(function() {
-                var main_child = $(this).children("option:selected").val();
-                if (main_child == 1) {
-                    document.getElementById("parent").style.display = "block";
-                    document.getElementById("header_footer").style.display = "none";
-                } else if (main_child == 0) {
-                    document.getElementById("parent").style.display = "none";
-                    document.getElementById("header_footer").style.display = "block";
-                }
-            })
-        });
-    </script>
+    
 @endpush

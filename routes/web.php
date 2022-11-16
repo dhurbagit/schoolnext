@@ -116,4 +116,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('menu-create', [MenuController::class, 'view'])->name('menu.create');
     Route::post('menu-store', [MenuController::class, 'store'])->name('menu.store');
     Route::post('updateMenu', [MenuController::class, 'updateMenuOrder'])->name('updateMenuOrder');
+    Route::delete('menu-parent_delte/{id}', [MenuController::class, 'delete'])->name('menu.delete');
+    Route::get('menu-edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('menu-update/{id}', [MenuController::class, 'update'])->name('menu.update');
+    
 });
