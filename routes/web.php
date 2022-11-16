@@ -1,17 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MvoController;
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CounterController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\MvoController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\NoticeboardController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\TestimonialController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/',[HomeController::class, 'index']);
 
 Route::get('/admin', function () {
     return view('admin.layout.master');
@@ -119,5 +118,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('menu-parent_delte/{id}', [MenuController::class, 'delete'])->name('menu.delete');
     Route::get('menu-edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('menu-update/{id}', [MenuController::class, 'update'])->name('menu.update');
-    
+
 });

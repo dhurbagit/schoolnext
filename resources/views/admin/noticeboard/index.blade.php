@@ -9,13 +9,13 @@
             </div>
             <div class="card-body">
 
-                <div class="table-responsive">
+                <div class="table-responsive_one">
                     <table class="table m-b-0">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
                                 <th>Date</th>
-                                <th>Description</th>
+                                <th style="width:50%">Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

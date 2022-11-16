@@ -22,10 +22,7 @@ class SliderController extends Controller
         // dd($request->all());
         $request->validate([
             'title'=> 'required|max:50',
-            'slider_image'=>'required|mimes:svg,webp,png,jpg,jpeg',
-            'slider_caption' => 'required|max:50',
-            'url_link' => 'nullable',
-            'hide_show' => 'nullable'
+            'slider_image'=>'required',
         ]);
 
         $slider = new Slider();

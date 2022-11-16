@@ -5,8 +5,8 @@
 .display_images {
     margin-bottom: 15px;
     border: 1px solid #d1d1d1;
-    width: 200px;
-    height: 200px;
+    width: 131px;
+    height: 125px;
     position: relative;
     overflow: hidden;
 }
@@ -14,7 +14,7 @@
     position: relative;
 }
 .display_images:before {
-    content: 'Image placeholder';
+    content: 'Placeholder';
     text-transform: capitalize;
     position: absolute;
     width: 100%;
@@ -22,11 +22,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 13px;
     color: #a7a6a5;
 }
 .table_images {
-    width: 50px;
+    width: 100px;
     height: 50px;
 }
 .thumbnail-image_container {
@@ -235,4 +235,8 @@
 }
 .action_button>*{
     margin-left: 10px;
+}
+
+.table td, .table th {
+    padding: 5px ;
 }

@@ -13,7 +13,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Images</th>
+                                <th>Images/Video</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -24,6 +24,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $slider->title }}</td>
                                     <td>
+                                        {{-- @dd($slider->getClientOriginalExtension()) --}}
                                         <img class="table_images" src="{{ asset('slider/' . $slider->image) }}"
                                             alt="">
                                     </td>

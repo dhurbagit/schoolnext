@@ -1,0 +1,56 @@
+#form-section {
+  .form-card {
+    padding: 0 7rem;
+    .card {
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+        rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+    .school__details {
+      h2 {
+        color: $secondary-color;
+        font-weight: 600;
+      }
+    }
+    .label__holder {
+      h6 {
+        font-weight: 700;
+      }
+    }
+    form {
+      .form-header {
+        background-color: $secondary-color;
+        padding: 3px 10px;
+        span {
+          color: $color-white;
+        }
+      }
+      .form-label {
+        color: $text-color-one;
+      }
+      .form-control,
+      .form-select {
+        border-radius: 0;
+        &:focus {
+          box-shadow: none;
+          border-color: $secondary-color;
+        }
+      }
+      .btn-form {
+        background-color: $secondary-color;
+        color: $color-white;
+        width: 8rem;
+        padding: 8px 0 !important;
+      }
+      .btn-reset{
+        background-color: red;
+        color: $color-white;
+        width: 8rem;
+        padding: 8px 0 !important;
+      }
+    }
+    @media screen and (max-width: 992px) {
+      padding: 0;
+    }
+  }
+}
