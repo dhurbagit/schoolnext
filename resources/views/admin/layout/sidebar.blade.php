@@ -2,7 +2,7 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <div class="header-left">
-                <a href="index.html" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <img src="{{ asset('backend/assets/img/logo1.png') }}" width="40" height="40" alt="">
                     <span class="text-uppercase">Preschool</span>
                 </a>
@@ -17,12 +17,14 @@
                     <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
                         <span> Slider</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
-                        <li><a href="{{route('manage-slider')}}"><span>Manage Slider</span></a></li>
-                        <li><a href="{{ route('create-slider')}}"><span>Create Slider</span></a></li>
+                        <li><a href="{{ route('manage-slider') }}"><span>Manage Slider</span></a></li>
+                        <li><a href="{{ route('create-slider') }}"><span>Create Slider</span></a></li>
+                        <li><a href="{{ route('create-banner_video') }}"><span>Create Video</span></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('menu.view')}}"><img src="{{asset('backend/assets/img/sidebar/icon-6.png')}}" alt="icon"> <span>Menu</span></a>
+                    <a href="{{ route('menu.view') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
+                            alt="icon"> <span>Menu</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
@@ -78,12 +80,13 @@
                     <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
                         <span>Happy Counter</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
-                        <li><a href="{{route('manage.counter')}}"><span>Manage Counter</span></a></li>
-                        <li><a href="{{route('create.counter')}}"><span>Create Counter</span></a></li>
+                        <li><a href="{{ route('manage.counter') }}"><span>Manage Counter</span></a></li>
+                        <li><a href="{{ route('create.counter') }}"><span>Create Counter</span></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('setting')}}"><img src="{{asset('backend/assets/img/sidebar/icon-6.png')}}" alt="icon"> <span>Setting</span></a>
+                    <a href="{{ route('setting') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
+                            alt="icon"> <span>Setting</span></a>
                 </li>
                 {{-- <li>
                     <a href="calendar.html"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"

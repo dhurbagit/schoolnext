@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('video');
+            $table->string('title')->nullable();
+            $table->string('video')->nullable();
+            $table->string('url')->nullable();
+            $table->string('hide')->nullable();
+            $table->unsignedTinyInteger('type')->default(1);
+            $table->unsignedInteger('order')->default(50);
             $table->timestamps();
         });
     }

@@ -182,29 +182,38 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="school-life.html" class="menu-item first-item">School Life</a>
-                    </li>
+                    </li> --}}
+
+                    {{-- @foreach ($menus as $mainMenu)
+                        <li class="drop-list">
+                            <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                                 @else
+                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}"
+                                   @endif
+                                class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
+                            <div class="drop__menu">
+                                @if (count($mainMenu->children))
+                                    <ul>
+                                        @foreach ($mainMenu->children as $child)
+                                            <li><a
+                                                    @if ($child->category_slug == 'page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                 @else
+                                                  href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
+                                                        class="fa-solid fa-arrow-right-long"></i>
+                                                    {{ $child->name }}</a>
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+                                @endif
+                            </div>
+                        </li>
+                    @endforeach --}}
                     <li>
-                        <a href="facility.html" class="menu-item first-item">Facility</a>
-                    </li>
-                    <li>
-                        <a href="beyond_academic.html" class="menu-item first-item">Beyond Academic</a>
-                    </li>
-                    <li class="drop-list">
-                        <a href="#" class="menu-item first-item droplink">Gallery</a>
-                        <div class="drop__menu">
-                            <ul>
-                                <li><a href="photo-album.html"><i class="fa-solid fa-arrow-right-long"></i>
-                                        Photos</a></li>
-                                <li><a href="video-album.html"><i class="fa-solid fa-arrow-right-long"></i>
-                                        Videos</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="contact-us.html" class="menu-item first-item">Contact Us</a></li>
-                    <li>
-                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Make an
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Make
+                            an
                             Inquiry</a>
                     </li>
                 </ul>
@@ -213,3 +222,4 @@
         <div class="overlay"></div>
     </div>
 </header>
+

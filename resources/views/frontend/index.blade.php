@@ -56,34 +56,37 @@
         <section id="main__index-section">
             {{-- slider section  --}}
             <div class="slider-wrapper">
+                @if (isset($banner_video->type) ? 10 : 0)
 
-                <div class="video__holder">
-                    <video autoplay="" muted="" loop="" width="100%">
-                        <source src="https://raischool.edu.np/uploads/slidervideo/RAI +2 Outdoors Insta Final.mp4"
-                            type="video/mp4">
-                    </video>
-                </div>
-                <div class="main__slider">
-                    <div class="swiper swiper-container" data-slider-wrap="data-slider-wrap">
-                        <div class="wrap" data-slider-wrap="data-slider-wrap">
-                            <div class="slider" data-slider="data-slider">
-                                @foreach ($slider as $slideshow)
-                                    <div class="slide">
-                                        <div class="slide__inner"
-                                            style="background-image: url({{ asset('slider/' . $slideshow->image) }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                                            <div class="slide__text-wrap">
-                                                <div class="slide__text"
-                                                    data-typed="{{ $slideshow->slider_caption }}
+                    <div class="video__holder">
+                        <video autoplay="" muted="" loop="" width="100%">
+                            <source src="https://raischool.edu.np/uploads/slidervideo/RAI +2 Outdoors Insta Final.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div>
+                @else
+                    <div class="main__slider">
+                        <div class="swiper swiper-container" data-slider-wrap="data-slider-wrap">
+                            <div class="wrap" data-slider-wrap="data-slider-wrap">
+                                <div class="slider" data-slider="data-slider">
+                                    @foreach ($slider as $slideshow)
+                                        <div class="slide">
+                                            <div class="slide__inner"
+                                                style="background-image: url({{ asset('slider/' . $slideshow->image) }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                                <div class="slide__text-wrap">
+                                                    <div class="slide__text"
+                                                        data-typed="{{ $slideshow->slider_caption }}
                                             ">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
             {{-- end slider section  --}}
             <div class="partner-wrapper">
@@ -106,7 +109,9 @@
                     <div class="college__message d-flex justify-content-center">
                         <div class="moto__top wow fadeInUp" data-wow-delay="0.3s"
                             style="visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                            <p>{{ $setting_happy->after_banner_title }}</p>
+                            @if (!empty($setting_happy->after_banner_title))
+                                <p>{{ $setting_happy->after_banner_title }}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="members__section wow fadeInUp" data-wow-delay="0.3s"
@@ -134,8 +139,10 @@
                             <div class="aboutus__image wow fadeInUp" data-wow-delay="0.3s"
                                 style="visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
                                 <div class="about__image-two">
-                                    <img src="{{ asset('aboutus/' . $about_us->image) }}" alt="" width="100%"
-                                        height="100%">
+                                    @if (!empty($about_us->image))
+                                        <img src="{{ asset('aboutus/' . $about_us->image) }}" alt=""
+                                            width="100%" height="100%">
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -143,7 +150,9 @@
                             <div class="aboutus__description wow fadeInUp" data-wow-delay="0.6s"
                                 style="visibility: visible; -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
                                 <div class="top__small">
-                                    <span>{{ $about_us->small_title }} </span>
+                                    @if (!empty($about_us->small_title))
+                                        <span>{{ $about_us->small_title }} </span>
+                                    @endif
                                 </div>
                                 <div class="top__big-text">
                                     <h3>
@@ -151,10 +160,14 @@
                                     </h3>
                                 </div>
                                 <div class="moto mb-3">
-                                    {{ $about_us->slogan }}
+                                    @if (!empty($about_us->slogan))
+                                        {{ $about_us->slogan }}
+                                    @endif
                                 </div>
                                 <div class="main__decription mb-5">
-                                    {!! $about_us->description !!}
+                                    @if (!empty($about_us->description))
+                                        {!! $about_us->description !!}
+                                    @endif
                                 </div>
                                 <a href="about-us.html" class="btn btn-hoverable">
                                     <span>Read More</span>
@@ -169,7 +182,9 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-12 col-sm-12">
                             <div class="top__header d-flex justify-content-between flex-wrap mb-4">
-                                <h3>{{ $setting_happy->news_and_event_title }}</h3>
+                                @if (!empty($setting_happy->news_and_event_title))
+                                    <h3>{{ $setting_happy->news_and_event_title }}</h3>
+                                @endif
                                 <a href="News-event.html">All Events <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div class="event__wrapper">
@@ -201,7 +216,9 @@
                                 style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5>{{ $setting_happy->notice_board_title }}</h5>
+                                        @if (!empty($setting_happy->notice_board_title))
+                                            <h5>{{ $setting_happy->notice_board_title }}</h5>
+                                        @endif
                                         <hr>
                                         <ul id="style-7">
                                             @foreach ($noticeboard as $data)
@@ -236,30 +253,39 @@
                             <div class="image__wrapper">
                                 <div class="image__one wow fadeInUp" data-wow-delay="0.1s"
                                     style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
-                                    <img src="{{ asset('setting/' . $setting_happy->testimonial_first_image) }}"
-                                        alt="No Image" width="100%" height="100%">
+                                    @if (!empty($setting_happy->testimonial_first_image))
+                                        <img src="{{ asset('setting/' . $setting_happy->testimonial_first_image) }}"
+                                            alt="No Image" width="100%" height="100%">
+                                    @endif
+
                                 </div>
                                 <div class="image__two wow fadeInUp" data-wow-delay="0.3s"
                                     style="visibility: visible; -webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                                    <img src="{{ asset('setting/' . $setting_happy->testimonial_second_image) }}"
-                                        alt="No Image" width="100%" height="100%">
+                                    @if (!empty($setting_happy->testimonial_second_image))
+                                        <img src="{{ asset('setting/' . $setting_happy->testimonial_second_image) }}"
+                                            alt="No Image" width="100%" height="100%">
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-12">
                             <div class="title__holder ps-5 wow fadeInLeft" data-wow-delay="0.1s"
                                 style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
-                                <h1>{{ Str::words($setting_happy->Testimonial_title, 3, '') }} <span
-                                        class="typing2"></span></h1>
-                                <h1 id="slice_text">
-                                    <?php
-                                    $str = $setting_happy->Testimonial_title;
-                                    $cutof = Str::words($setting_happy->Testimonial_title, 3, '');
-                                    // Or we can write ltrim($str, $str[0]);
-                                    $str = ltrim($str, $cutof);
-                                    echo $str;
-                                    ?>
-                                </h1>
+                                @if (!empty($setting_happy->Testimonial_title))
+                                    <h1>{{ Str::words($setting_happy->Testimonial_title, 3, '') }} <span
+                                            class="typing2"></span></h1>
+                                @endif
+                                @if (!empty($setting_happy->Testimonial_title))
+                                    <h1 id="slice_text">
+                                        <?php
+                                        $str = $setting_happy->Testimonial_title;
+                                        $cutof = Str::words($setting_happy->Testimonial_title, 3, '');
+                                        // Or we can write ltrim($str, $str[0]);
+                                        $str = ltrim($str, $cutof);
+                                        echo $str;
+                                        ?>
+                                    </h1>
+                                @endif
                             </div>
                             <div class="testi__slider px-5 wow fadeInDown" data-wow-delay="0.1s"
                                 style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
@@ -313,15 +339,17 @@
                     </div>
                     <div class="gg-box wow fadeInUp" data-wow-delay="0.2s"
                         style="visibility: visible; -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; animation-delay: 0.2s;">
-                        @foreach ($galleries as $gallery)
-                            <div class="gg-element">
-                                <a class="example-image-link"
-                                    href="https://saim.edu.np/storage/public/Gallery/5-1660024109.jpg"
-                                    data-lightbox="example-set">
-                                    <img src="{{asset('uploads/'. $gallery->image)}}">
-                                </a>
-                            </div>
-                        @endforeach
+                        @if (!empty($galleries))
+                            @foreach ($galleries as $gallery)
+                                <div class="gg-element">
+                                    <a class="example-image-link"
+                                        href="https://saim.edu.np/storage/public/Gallery/5-1660024109.jpg"
+                                        data-lightbox="example-set">
+                                        <img src="{{ asset('uploads/' . $gallery->image) }}">
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

@@ -3,7 +3,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title"> Basic Inputs</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Our client</h4>
+                    <a href="{{ route('create.client') }}" class="btn btn-primary">Create New</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -26,7 +29,8 @@
                                     <td><img src="{{ asset('client/' . $value->image) }}" class="avatar text-white"
                                             alt=""></td>
                                     <td>
-                                        <a href="{{route('client.edit', $value->id)}}" class="btn btn-danger"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('client.edit', $value->id) }}" class="btn btn-danger"><i
+                                                class="fas fa-edit"></i></a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#exampleModal_{{ $value->id }}">
@@ -48,7 +52,8 @@
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <form action="{{route('client.delete', $value->id)}}" method="POST">
+                                                        <form action="{{ route('client.delete', $value->id) }}"
+                                                            method="POST">
                                                             @method('delete')
                                                             @csrf
                                                             <button type="button" class="btn btn-secondary"

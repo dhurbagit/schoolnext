@@ -4,13 +4,17 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title"> Basic Inputs</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Album</h4>
+                    <a href="{{ route('manage-gallery') }}" class="btn btn-primary">List view</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-12">
                         @if (isset($album_edit))
-                            <form action="{{ route('update.album', $album_edit->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('update.album', $album_edit->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @method('PUT')
                             @else
                                 <form action="{{ route('album.create') }}" method="POST" enctype="multipart/form-data">
@@ -99,7 +103,7 @@
                                                 <div class="upload__img-box_of_gallery">
                                                     {{ $item->id }}
 
-                                                    <a href="{{route('gallery.delete', $item->id )}}"><i
+                                                    <a href="{{ route('gallery.delete', $item->id) }}"><i
                                                             class="fa fa-trash "></i></a>
 
                                                     <img src="{{ asset('uploads/' . $item->image) }}" alt="">
@@ -116,7 +120,6 @@
                             </div>
                             <div class="col-lg-12">
                                 @if (isset($album_edit))
-
                                     <button type="submit" class="btn btn-info">Update</button>
                                 @else
                                     <button type="submit" class="btn btn-info">Save</button>

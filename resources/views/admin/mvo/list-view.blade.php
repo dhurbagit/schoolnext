@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Basic Table</h4>
+                    <h4 class="card-title">Vision Mission objective Table</h4>
                     <a href="{{route('mvo.view')}}" class="btn btn-primary">Ceate Mvo</a>
                 </div>
             </div>

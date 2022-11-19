@@ -4,7 +4,11 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title"> Basic Inputs</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Slider Table</h4>
+                    <a href="{{ route('create-slider') }}" class="btn btn-primary">Create New</a>
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">

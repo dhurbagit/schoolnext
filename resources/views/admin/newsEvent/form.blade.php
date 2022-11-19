@@ -5,7 +5,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title"> Basic Inputs</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">News and Event</h4>
+                    <a href="{{route('newsEvent.manage')}}" class="btn btn-primary">List view</a>
+                </div>
             </div>
             <div class="card-body">
 

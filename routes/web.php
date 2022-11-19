@@ -5,14 +5,15 @@ use App\Http\Controllers\Admin\MvoController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AlbumController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\NoticeboardController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,13 @@ use App\Http\Controllers\Admin\TestimonialController;
 |
  */
 
-Route::get('/',[HomeController::class, 'index']);
+
 
 Route::get('/admin', function () {
     return view('admin.layout.master');
 });
 
+//Admin route
 Route::group(['prefix' => 'admin'], function () {
 
     // sidebar route
@@ -50,12 +52,17 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('manage-counter', [CounterController::class, 'view'])->name('manage.counter');
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
     Route::get('menu-view', [MenuController::class, 'index'])->name('menu.view');
+    Route::get('create-banner_video', [VideoController::class, 'view_form'])->name('create-banner_video');
 
     // Slider
     Route::post('/createSlider', [SliderController::class, 'store'])->name('createSlider.index');
     Route::delete('/manage-slider/{id}', [SliderController::class, 'delete'])->name('delete.slider');
     Route::get('/createSlider/{id}', [SliderController::class, 'edit'])->name('slider.edit');
     Route::post('editSlider/{id}', [SliderController::class, 'update'])->name('editSlider.index');
+
+    //video
+    Route::post('video-save', [VideoController::class, 'save_video'])->name('video.save');
+    Route::put('video-update/{id}', [VideoController::class, 'update_video'])->name('video.update');
 
     // Gallery
     Route::post('createAblum', [AlbumController::class, 'store'])->name('album.create');
@@ -120,3 +127,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::put('menu-update/{id}', [MenuController::class, 'update'])->name('menu.update');
 
 });
+
+    Route::get('/',[FrontendController::class, 'index']);
+    Route::get('/about', [FrontendController::class, 'about_view']);
+

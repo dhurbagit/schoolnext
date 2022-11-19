@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Mvo form</h4>
+                    <h4 class="card-title">Vision Mission objective</h4>
                     <a href="{{ route('Manage.mvo') }}" class="btn btn-primary">View list</a>
                 </div>
             </div>

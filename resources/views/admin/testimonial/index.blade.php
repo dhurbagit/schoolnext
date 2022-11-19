@@ -5,7 +5,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Basic Table</h4>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Testimonial</h4>
+                    <a href="{{ route('create-testimonial') }}" class="btn btn-primary">Create view</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive_under">
@@ -40,22 +43,23 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{route('testimonial.edit', $value->id)}}" class="btn btn-danger">
+                                        <a href="{{ route('testimonial.edit', $value->id) }}" class="btn btn-danger">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal_{{$value->id}}">
+                                            data-target="#exampleModal_{{ $value->id }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal_{{$value->id}}" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal_{{ $value->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete it.</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want
+                                                            to delete it.</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -63,13 +67,14 @@
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                        <form action="{{route('testimonial.delete', $value->id)}}" method="POST">
+                                                        <form action="{{ route('testimonial.delete', $value->id) }}"
+                                                            method="POST">
                                                             @method('delete')
                                                             @csrf
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">yes</button>
-                                                    </form>
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">yes</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

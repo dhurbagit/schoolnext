@@ -51,6 +51,8 @@
 .thumbnail-image_container img {
     width: 100%;
     position: relative;
+    height: 100%;
+    object-fit: contain;
 }
 
   .upload__inputfile {
@@ -239,4 +241,11 @@
 
 .table td, .table th {
     padding: 5px ;
+}
+.avatar{
+    border-radius: 5% !important;
+    -webkit-border-radius: 5% !important;
+    -moz-border-radius: 5% !important;
+    -ms-border-radius: 5% !important;
+    -o-border-radius: 5% !important;
 }

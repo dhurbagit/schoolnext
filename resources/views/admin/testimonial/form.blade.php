@@ -4,7 +4,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Testimonial</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Testimonial Table</h4>
+                    <a href="{{route('manage-testimonial')}}" class="btn btn-primary">List view</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="row">

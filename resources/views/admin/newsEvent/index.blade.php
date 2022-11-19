@@ -4,7 +4,11 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Basic Table</h4>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">News and event Table</h4>
+                    <a href="{{ route('newsEvent.create') }}" class="btn btn-primary">Create view</a>
+                </div>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -29,7 +33,7 @@
                                     <td><img src="{{ asset('NewsEvent/' . $value->images) }}" class="avatar text-white"
                                             alt=""></td>
                                     <td>
-                                        <a href="{{ route('newsevent.edit', $value->id ) }}" class="btn btn-danger"><i
+                                        <a href="{{ route('newsevent.edit', $value->id) }}" class="btn btn-danger"><i
                                                 class="fas fa-edit"></i></a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -38,8 +42,8 @@
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal_neDelete{{ $value->id }}" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal_neDelete{{ $value->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

@@ -16,6 +16,7 @@ class SliderController extends Controller
     {
         return view('admin.slider.form');
     }
+   
 
     public function store(Request $request)
     {

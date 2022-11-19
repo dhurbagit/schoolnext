@@ -3,7 +3,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Basic Table</h4>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Counter</h4>
+                    <a href="{{route('create.counter')}}" class="btn btn-primary">Create New</a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
