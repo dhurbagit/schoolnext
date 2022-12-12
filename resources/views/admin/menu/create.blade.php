@@ -7,7 +7,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h4 class="card-title">Menu</h4>
-                    <a href="" class="btn btn-primary">List view</a>
+                    <a href="{{route('menu.view')}}" class="btn btn-primary">List view</a>
                 </div>
             </div>
             <div class="card-body">
@@ -87,6 +87,7 @@
                                     <option value="1" selected>Header</option>
                                     <option value="2">Footer</option>
                                     <option value="3">Header and Footer</option>
+                                    <option value="4">Mega Menu</option>
                                 </select>
                             </div>
                         </div>
@@ -94,8 +95,17 @@
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch3"
+                                        name="active_mega">
+                                    <label class="custom-control-label" for="customSwitch3">Active as Mega menu</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch4"
                                         name="publish_status">
-                                    <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
+                                    <label class="custom-control-label" for="customSwitch4">Hide/Show</label>
                                 </div>
                             </div>
                         </div>

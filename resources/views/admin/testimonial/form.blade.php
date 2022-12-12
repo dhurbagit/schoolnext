@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea name="editor1">{{isset($testimonial_edit)?$testimonial_edit->description:old('editor1')}}</textarea>
+                                        <textarea class="editor" name="editor1">{{isset($testimonial_edit)?$testimonial_edit->description:old('editor1')}}</textarea>
                                     </div>
                                     <span class="text-danger">
                                         @error('editor1')

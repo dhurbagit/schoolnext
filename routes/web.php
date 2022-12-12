@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MvoController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\NoticeboardController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Admin\BeyondAcademicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
     Route::get('menu-view', [MenuController::class, 'index'])->name('menu.view');
     Route::get('create-banner_video', [VideoController::class, 'view_form'])->name('create-banner_video');
+    Route::get('create-academic', [BeyondAcademicController::class, 'index'])->name('create.academic');
+    Route::get('manage-academic', [BeyondAcademicController::class, 'view'])->name('manage.academic');
+    Route::get('create-faq', [FaqController::class, 'index'])->name('create.faq');
+    Route::get('manage-faq', [FaqController::class, 'view'])->name('manage.faq');
 
     // Slider
     Route::post('/createSlider', [SliderController::class, 'store'])->name('createSlider.index');
@@ -81,7 +87,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('about-create', [AboutController::class, 'store'])->name('about.create');
     Route::put('about-update/{id}', [AboutController::class, 'update'])->name('about.update');
 
-    //
+    //Mvo
     Route::get('Manage-mvo', [MvoController::class, 'view_list'])->name('Manage.mvo');
     Route::post('mvo-create', [MvoController::class, 'store'])->name('mvo.create');
     Route::delete('mvo-delete/{id}', [MvoController::class, 'delete'])->name('mvo.delete');
@@ -126,8 +132,22 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('menu-edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('menu-update/{id}', [MenuController::class, 'update'])->name('menu.update');
 
+    //academic
+    Route::post('academic-save', [BeyondAcademicController::class, 'store'])->name('academic.save');
+    Route::delete('academic-delete/{id}', [BeyondAcademicController::class, 'delete'])->name('academic.delete');
+    Route::get('academic-update/{id}', [BeyondAcademicController::class, 'update_list'])->name('academic.update');
+    Route::put('academic-update/{id}', [BeyondAcademicController::class, 'update'])->name('academic.update');
+    Route::any('beyondGallery-delete/{id}', [BeyondAcademicController::class, 'beyondGallery_delete'])->name('beyondGallery.delete');
+
+    //faq
+    Route::post('whyschool-save', [FaqController::class, 'store'])->name('whyschool.save');
+    Route::post('faq-save', [FaqController::class, 'save'])->name('faq.save');
+    Route::delete('faq-delete/{id}', [FaqController::class, 'faq_delete'])->name('faq.delete');
+    Route::get('faq-edit/{id}', [FaqController::class, 'faq_edit'])->name('faq.edit');
+
 });
 
-    Route::get('/',[FrontendController::class, 'index']);
-    Route::get('/about', [FrontendController::class, 'about_view']);
+
+
+
 

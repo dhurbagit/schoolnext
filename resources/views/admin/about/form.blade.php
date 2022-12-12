@@ -60,7 +60,7 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <textarea name="editor1">{{ isset($aboutContent)?$aboutContent->description:old('editor1') }}</textarea>
+                                    <textarea class="editor" name="editor1">{{ isset($aboutContent)?$aboutContent->description:old('editor1') }}</textarea>
                                 </div>
                             </div>
 

@@ -8,7 +8,8 @@
                     </div>
                     <div class="brochure mb-3">
                         <a href="https://lunahrsolutions.com/assets/frontend/images/Profile.pdf" target="_blank">
-                            <img src="/frontend/assets/Images/book.png" width="100%" height="100%" alt="QR Code">
+                            <img src="{{ asset('setting/' . $setting->footer_image) }}" width="100%" height="100%"
+                                alt="QR Code">
                         </a>
                     </div>
                     <div align='left' class="ms-4"><a href='https://www.free-website-hit-counter.com'><img
@@ -21,13 +22,13 @@
                     </div>
                     <div class="footer__links">
                         <ul>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="scholarship.html">Academic</a></li>
-                            <li><a href="school-life.html">School Life</a></li>
-                            <li><a href="facility.html">Facility</a></li>
-                            <li><a href="beyond_academic.html">Beyond Academic</a></li>
-                            <li><a href="photo-album.html">Gallery</a></li>
-                            <li><a href="News-event.html">News & Events</a></li>
+                            @foreach ($fmenus as $footer_menu)
+                                <li>
+                                    <a
+                                        @if ($footer_menu->category_slug == 'page') href="{{ $footer_menu->external_link ?? route('page', $footer_menu->title_slug) }}" @else
+                                    href="{{ $footer_menu->external_link ?? route('category', $footer_menu->category_slug) }}" @endif>{{ ucfirst($footer_menu->name) }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -56,15 +57,19 @@
                     </div>
                     <div class="school-address">
                         <ul class="fa-ul ms-4">
-                            <li><span class="fa-li"><i class="fa-solid fa-location-dot"></i></span><span>Maitidevi,
-                                    Seto Pul , Kathmandu</span></a>
+                            <li><span class="fa-li"><i class="fa-solid fa-location-dot"></i></span><span>
+                                    {{ $setting->address }}
+                                </span></a>
                             </li>
-                            <li><span class="fa-li"><i class="fa-solid fa-phone"></i></span><span>+977-9801234567
+                            <li><span class="fa-li"><i class="fa-solid fa-phone"></i></span><span>
+                                    {{ $setting->Phone_one }}
                                 </span></li>
                             <li><span class="fa-li"><i class="fa-solid fa-phone"></i></span><span>
-                                    01-4312345 / 4537537</span></li>
-                            <li><span class="fa-li"><i
-                                        class="fa-solid fa-envelope"></i></span><span>info@mail.com</span></li>
+                                    {{ $setting->Phone_two }}
+                                </span></li>
+                            <li><span class="fa-li"><i class="fa-solid fa-envelope"></i></span><span>
+                                    {{ $setting->email }}
+                                </span></li>
                         </ul>
                     </div>
                 </div>
@@ -79,16 +84,16 @@
             <div class="content">
                 <div class="social-icons">
                     <div class="d-flex justify-content-center">
-                        <a href="#">
+                        <a href="{{$setting->facebook}}">
                             <i class="fa-brands fa-square-facebook"></i>
                         </a>
-                        <a href="#">
+                        <a href="{{$setting->instagram}}">
                             <i class="fa-brands fa-square-instagram"></i>
                         </a>
-                        <a href="#">
+                        <a href="{{$setting->linkin}}">
                             <i class="fa-brands fa-linkedin"></i>
                         </a>
-                        <a href="#">
+                        <a href="{{$setting->youtube}}">
                             <i class="fa-brands fa-square-youtube"></i>
                         </a>
                     </div>

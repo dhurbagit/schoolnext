@@ -6,7 +6,6 @@ use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,22 +26,36 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        // View::share('setting', Setting::first());
+        // Paginator::useBootstrap();
 
-        // $menus = Menu::where(['parent_id'=>null,'publish_status'=>1])->whereNotIn('header_footer',['2'])
-        // ->select('id', 'name','parent_id', 'external_link','category_slug','position','title_slug')
-        // ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
-        // ->orderBy('position', 'ASC')
-        // ->get();
-        // View::share('menus',$menus);
+        View::share('setting', Setting::first());
+        $mega_menus = Menu::query()
+        ->where(['parent_id' => null, 'publish_status' => 1])
+        ->whereNotIn('header_footer', ['1','3','2'])
+        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
+        ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
+        ->orderBy('position', 'ASC')
+        ->get();
+        View::share('b_menus', $mega_menus);
 
-        // $fmenus = Menu::where(['parent_id'=>null,'publish_status'=>1])->whereNotIn('header_footer',['1'])
-        // ->select('id', 'name','parent_id', 'external_link','category_slug','position','title_slug')
-        // ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
-        // ->orderBy('position', 'ASC')
-        // ->take(4)
-        // ->get();
-        // View::share('fmenus',$fmenus);
+
+        $menus = Menu::query()
+            ->where(['parent_id' => null, 'publish_status' => 1])
+            ->whereNotIn('header_footer', ['2','4'])
+            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'title_slug')
+            ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
+            ->orderBy('position', 'ASC')
+            ->get();
+        View::share('menus', $menus);
+
+
+
+        $fmenus = Menu::where(['parent_id' => null, 'publish_status' => 1])->whereNotIn('header_footer', ['1','4'])
+            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'title_slug')
+            ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
+            ->orderBy('position', 'ASC')
+            ->take(4)
+            ->get();
+        View::share('fmenus', $fmenus);
     }
 }

@@ -101,9 +101,7 @@
                                         <div class="update_gallery_image">
                                             @foreach ($album_edit->images as $item)
                                                 <div class="upload__img-box_of_gallery">
-                                                    {{ $item->id }}
-
-                                                    <a href="{{ route('gallery.delete', $item->id) }}"><i
+                                                   <a href="{{ route('gallery.delete', $item->id) }}"><i
                                                             class="fa fa-trash "></i></a>
 
                                                     <img src="{{ asset('uploads/' . $item->image) }}" alt="">

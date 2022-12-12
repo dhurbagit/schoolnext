@@ -166,6 +166,11 @@
                                     value="{{ isset($setting_record) ? $setting_record->Phone_two : old('Phone_two') }}">
                             </div>
                             <div class="form-group">
+                                <label>Phone 3</label>
+                                <input type="text" class="form-control" name="Phone_three"
+                                    value="{{ isset($setting_record) ? $setting_record->Phone_three : old('Phone_three') }}">
+                            </div>
+                            <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" class="form-control" name="email"
                                     value="{{ isset($setting_record) ? $setting_record->email : old('email') }}">

@@ -19,10 +19,13 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menu_items = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['2'])->get();
-        $menu_footer = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1'])->get();
-        $menus = Menu::get();
-        return view('admin.menu.index', compact('menu_items', 'menu_footer', 'menus'));
+        $menu_items = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['2', '4'])->get();
+        $menu_footer = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '4'])->get();
+
+        $mega_menus = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '2', '3'])->get();
+
+        $menu_s = Menu::get();
+        return view('admin.menu.index', compact('menu_items', 'menu_footer', 'menu_s','mega_menus'));
     }
     public function view()
     {
@@ -81,9 +84,11 @@ class MenuController extends Controller
             'image' => $fimage,
             'title_slug'=>Str::slug($request->page_title.rand(0,10)),
             'publish_status'=>isset($request->publish_status[0]) ? 1 : 0,
+            'mega_menu' =>isset($request->active_mega[0]) ? 1 : 0,
             'page_title' => $request['page_title'],
             'content' => $request['editor1'],
         ]);
+
         if($new_menu)
         return redirect()->back()->with('message', 'Menu information is saved successfully.');
         else
@@ -95,7 +100,7 @@ class MenuController extends Controller
 
         parse_str($request->sort, $arr);
         $order = 1;
-      
+
         if (isset($arr['menuItem'])) {
             foreach ($arr['menuItem'] as $key => $value) {  //id //parent_id
                 $this->menu->where('id', $key)
@@ -122,7 +127,7 @@ class MenuController extends Controller
         }
     }
     public function update(Request $request , $id){
-         // dd($request->image);
+        //  dd($request->all());
          $menu = Menu::findorFail($id);
          $this->validate($request, [
              'name'    => 'required',
@@ -163,7 +168,7 @@ class MenuController extends Controller
              $banner_image = $menu->banner_image;
          }
 
-
+        //  dd('this');
 
          $menu->update([
              'name' => $request['name'],
@@ -179,6 +184,7 @@ class MenuController extends Controller
              'content' => $request['editor1'],
              'meta_title' => $request['meta_title'],
              'publish_status'=>isset($request->publish_status[0]) ? 1 : 0,
+             'mega_menu' =>isset($request->active_mega[0]) ? 1 : 0,
 
          ]);
 

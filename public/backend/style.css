@@ -249,3 +249,24 @@
     -ms-border-radius: 5% !important;
     -o-border-radius: 5% !important;
 }
+/* ********************************** */
+.beyound_image {
+    width: 100px;
+    height: 48px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+.flex_dir{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.cs_modal-dialog{
+  max-width: 719px;
+}
+.flex-collection{
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -17,12 +17,20 @@
                                 </div>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item pt-0 text-dark" href="tel: 01234567"><i
-                                            class="fa-solid fa-phone text-success"></i> 01-0123456</a></li>
-                                <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
-                                            class="fa-brands fa-viber"></i> 01-1234567</a></li>
-                                <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
-                                            class="fa-brands fa-whatsapp"></i> 01-1234567</a></li>
+                                @if (!empty($setting->Phone_one))
+                                    <li><a class="dropdown-item pt-0 text-dark" href="tel: 01234567"><i
+                                                class="fa-solid fa-phone text-success"></i>
+                                            {{ $setting->Phone_one }}</a>
+                                    </li>
+                                @endif
+                                @if (!empty($setting->Phone_two))
+                                    <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
+                                                class="fa-brands fa-viber"></i> {{ $setting->Phone_two }}</a></li>
+                                @endif
+                                @if (!empty($setting->Phone_three))
+                                    <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
+                                                class="fa-brands fa-whatsapp"></i> {{ $setting->Phone_three }}</a></li>
+                                @endif
                             </ul>
                             <a href="mailto: info@saim.edu.np">
                                 <div class="phone__class d-flex align-items-center">
@@ -30,7 +38,7 @@
                                         <i class="fa-solid fa-envelope"></i>
                                     </div>
                                     <div class="inquiry">
-                                        <p class="mb-0">info@saim.edu.np</p>
+                                        <p class="mb-0">{{ $setting->email }}</p>
                                     </div>
                                 </div>
                             </a>
@@ -57,7 +65,7 @@
         <div class="navbar">
             <div class="container">
                 <div class="logo-wrapper">
-                    <a href="Index.html">
+                    <a href="{{ url('/') }}">
                         <div class="logo">
                             <img src="/frontend/assets/Images/logo2.png" alt="" width="100%" height="100%">
                         </div>
@@ -67,134 +75,69 @@
                     <div class="menu-btn__lines"></div>
                 </div>
                 <ul class="menu-items">
-                    <li>
-                        <a href="#" class="menu-item first-item expand-btn">About Us</a>
-                        <div class="container mega-menu sample">
-                            <div class="content py-0"
-                                style="background-image: url(/frontend/assets/Images/image\ 36.png); background-repeat: no-repeat; background-size: contain; background-position: right;">
-                                <div class="overlay__nav py-3"
-                                    style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-12">
-                                            <h5 class="menu-title">About Us</h5>
-                                            <section>
-                                                <ul class="fa-ul">
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="why-us.html" class="sub__links"> Why
-                                                            School
-                                                            Name?</a></li>
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="chairman-message.html" class="sub__links">
-                                                            Chairman
-                                                            Message</a></li>
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="principal-msg.html" class="sub__links"> Principal
-                                                            Message</a></li>
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="management.html" class="sub__links">
-                                                            Management
-                                                            Team</a>
-                                                    </li>
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="teacher.html" class="sub__links"> Teacher
-                                                            and Staff</a>
-                                                    </li>
-                                                </ul>
-                                            </section>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12">
-                                            <section>
-                                                <h5 class="menu-title">Introduction</h5>
-                                                <div class="nav__text">
-                                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur
-                                                        adipisicing
-                                                        elit. Blanditiis veritatis animi in totam illum doloremque
-                                                        ad
-                                                        aspernatur modi cumque. Quas, distinctio. Minima modi
-                                                        assumenda
-                                                        dignissimos facere ipsum eum numquam suscipit officia
-                                                        repudiandae! Assumenda, eaque? Voluptates eos tempora
-                                                        reprehenderit ex officiis exercitationem maiores corrupti
-                                                        facere
-                                                        provident, iure fugit beatae labore quidem. Lorem ipsum
-                                                        dolor, sit amet consectetur adipisicing elit. Deserunt, vel?
-                                                    </p>
-                                                </div>
-                                                <a href="about-us.html" class="btn nav__outline">Learn More</a>
-                                            </section>
-                                        </div>
-                                        <div class="col-lg-4 col-md-0"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="menu-item first-item expand-btn">Academic</a>
-                        <div class="container mega-menu blog sample">
-                            <div class="content py-0"
-                                style="background-image: url(/frontend/assets/Images/image\ 36.png); background-repeat: no-repeat; background-position: right; background-size: contain;">
-                                <div class="overlay__nav py-3"
-                                    style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-12">
-                                            <h5 class="menu-title">Academic</h5>
-                                            <section>
-                                                <ul class="fa-ul">
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="admission-process.html" class="sub__links">
-                                                            Admission Process</a>
-                                                    </li>
-                                                    <li><span class="fa-li"><i
-                                                                class="fa-solid fa-arrow-right-long"></i></span><a
-                                                            href="fee-structure.html" class="sub__links"> Fee
-                                                            Structure</a>
-                                                    </li>
-                                                </ul>
-                                            </section>
-                                        </div>
-                                        <div class="col-lg-4 col-md-12">
-                                            <a href="scholarship.html">
-                                                <h5>Scholarship and Aid</h5>
-                                            </a>
-                                            <div class="nav__text">
-                                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Blanditiis veritatis animi in totam illum doloremque ad
-                                                    aspernatur modi cumque. Quas, distinctio. Minima modi assumenda
-                                                    dignissimos facere ipsum eum numquam suscipit officia
-                                                    repudiandae! Assumenda, eaque? Voluptates eos tempora
-                                                    reprehenderit ex officiis exercitationem maiores corrupti facere
-                                                    provident, iure fugit beatae labore quidem.
-                                                </p>
-                                            </div>
-                                            <a href="scholarship.html" class="btn nav__outline">Learn
-                                                More</a>
-                                        </div>
-                                        <div class="col-lg-4 col-md-0"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    {{-- <li>
-                        <a href="school-life.html" class="menu-item first-item">School Life</a>
-                    </li> --}}
+                    @foreach ($b_menus as $mainMenu)
+                        <li>
+                            <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                                @else
+                                 href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
+                                class="menu-item first-item expand-btn"> {{ $mainMenu->name }}</a>
+                            <div class="container mega-menu sample">
+                                <div class="content py-0"
+                                    style="background-image: url(/frontend/assets/Images/image\ 36.png); background-repeat: no-repeat; background-size: contain; background-position: right;">
+                                    <div class="overlay__nav py-3"
+                                        style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-12">
+                                                <h5 class="menu-title"> {{ $mainMenu->name }}</h5>
+                                                <section>
+                                                    <ul class="fa-ul">
+                                                        @if (count($mainMenu->children))
+                                                            @foreach ($mainMenu->children as $child)
+                                                                <li><span class="fa-li"><i
+                                                                            class="fa-solid fa-arrow-right-long"></i></span>
+                                                                    <a
+                                                                        @if ($child->category_slug == 'page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                                         @else
+                                                                          href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
+                                                                            class="sub__links"></i>
+                                                                        {{ $child->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
 
-                    {{-- @foreach ($menus as $mainMenu)
+
+                                                    </ul>
+                                                </section>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <section>
+                                                    <h5 class="menu-title">Introduction</h5>
+                                                    <div class="nav__text">
+                                                        <p class="mb-0">
+                                                            {!! $mainMenu->content !!}
+                                                        </p>
+                                                    </div>
+                                                    <a href="about-us.html" class="btn nav__outline">Learn More</a>
+                                                </section>
+                                            </div>
+                                            <div class="col-lg-4 col-md-0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+
+                 
+                    @foreach ($menus as $mainMenu)
                         <li class="drop-list">
                             <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
-                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}"
-                                   @endif
+                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                 class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
-                            <div class="drop__menu">
-                                @if (count($mainMenu->children))
+
+                            @if (count($mainMenu->children))
+                                <div class="drop__menu">
                                     <ul>
                                         @foreach ($mainMenu->children as $child)
                                             <li><a
@@ -207,10 +150,11 @@
                                         @endforeach
 
                                     </ul>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
+
                         </li>
-                    @endforeach --}}
+                    @endforeach
                     <li>
                         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Make
                             an
@@ -222,4 +166,3 @@
         <div class="overlay"></div>
     </div>
 </header>
-

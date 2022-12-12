@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('main_child');
             $table->integer('parent_id')->nullable();
             $table->integer('header_footer');
+            $table->boolean('mega_menu')->default(0);
             $table->boolean('publish_status')->default(0);
             $table->string('banner_image')->nullable();
             $table->string('image')->nullable();

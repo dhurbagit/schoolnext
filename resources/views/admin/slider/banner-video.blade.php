@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label>Upload Video</label>
-                    <input type="file" name="video" accept="image/*" class="form-control" onchange="loadFile(event)">
+                    <input type="file" name="video"  class="form-control" onchange="loadFile(event)">
                     <span class="text-danger">
                         @error('video')
                             {{ $message }}

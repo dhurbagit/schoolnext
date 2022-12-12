@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="/frontend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css">
     <!-- lightbox end -->
     <link rel="stylesheet" href="/frontend/assets/css/index.css">
+    <link rel="stylesheet" href="{{asset('backend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/frontendstyle.css')}}">
     <title>School Website</title>
 </head>
 
@@ -54,6 +56,7 @@
     <script src="/frontend/assets/js/main.js"></script>
     <script src="/frontend/assets/js/topBtn.js"></script>
     <script src="/frontend/assets/js/animation.js"></script>
+    <script src="{{asset('backend/assets/lightbox2-2.11.3/dist/js/lightbox.min.js')}}"></script>
 
     <script>
         (function() {

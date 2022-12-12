@@ -21,7 +21,7 @@ class VideoController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'video' => 'required',
+            'video' => 'required|mimes:mp4',
         ]);
 
         $banner_video = new Video();

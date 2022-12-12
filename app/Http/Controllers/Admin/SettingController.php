@@ -59,6 +59,7 @@ class SettingController extends Controller
         $store->address = $request->address;
         $store->Phone_one = $request->Phone_one;
         $store->Phone_two = $request->Phone_two;
+        $store->Phone_three = $request->Phone_three;
         $store->email = $request->email;
         if($request->file('logo')){
             $file = $request->file('logo');
@@ -120,6 +121,7 @@ class SettingController extends Controller
         $store_update->address = $request->address;
         $store_update->Phone_one = $request->Phone_one;
         $store_update->Phone_two = $request->Phone_two;
+        $store_update->Phone_three = $request->Phone_three;
         $store_update->email = $request->email;
         if($request->file('logo')){
             unlink("setting/". $store_update->logo );

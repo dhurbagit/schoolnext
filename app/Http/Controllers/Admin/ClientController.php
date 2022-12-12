@@ -27,7 +27,7 @@ class ClientController extends Controller
         ]);
 
         $store = new Client();
-        $store->title =$request->title;
+        $store->title = $request->title;
         $store->link = $request->link;
         if($request->file('image')){
             $file = $request->file('image');

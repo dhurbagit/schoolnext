@@ -3,7 +3,10 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title"> Basic Inputs</div>
+                <div class="d-flex justify_and_align">
+                    <h4 class="card-title">Menu</h4>
+                    <a href="{{route('menu.view')}}" class="btn btn-primary">List view</a>
+                </div>
             </div>
             <div class="card-body">
                 <form id="frmEdit" action="{{ route('menu.update', $edit_menu->id) }}" method="POST"
@@ -94,11 +97,21 @@
                                     </option>
                                     <option value="3" {{ $edit_menu->header_footer == 3 ? 'selected' : '' }}>Header
                                         and Footer</option>
+                                    <option value="4" {{ $edit_menu->header_footer == 4 ? 'selected' : '' }}>Mega Menu</option>
+
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="form-group">
+
+                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                    <input type="checkbox" @if ($edit_menu->mega_menu == 1) checked @endif
+                                        class="custom-control-input" id="customSwitch4" name="active_mega">
+                                    <label class="custom-control-label" for="customSwitch4">Active as Mega menu</label>
+                                </div>
+
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                     <input type="checkbox" @if ($edit_menu->publish_status == 1) checked @endif
                                         class="custom-control-input" id="customSwitch3" name="publish_status">
@@ -109,7 +122,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="editor1">{{ $edit_menu->content }}</textarea>
+                                <textarea class="editor" name="editor1">{{ $edit_menu->content }}</textarea>
                             </div>
                         </div>
 
@@ -139,18 +152,18 @@
         });
     </script>
     <script>
-       $(window).ready(function(){
+        $(window).ready(function() {
 
-        var main_child = $('.main_child').children("option:selected").val();
+            var main_child = $('.main_child').children("option:selected").val();
 
-        if (main_child == 1) {
-            document.getElementById("parent").style.display = "block";
-            document.getElementById("header_footer").style.display = "none";
-        } else if (main_child == 0) {
-            document.getElementById("parent").style.display = "none";
-            document.getElementById("header_footer").style.display = "block";
-        }
-       })
+            if (main_child == 1) {
+                document.getElementById("parent").style.display = "block";
+                document.getElementById("header_footer").style.display = "none";
+            } else if (main_child == 0) {
+                document.getElementById("parent").style.display = "none";
+                document.getElementById("header_footer").style.display = "block";
+            }
+        })
     </script>
     <script>
         var loadFile = function(event) {
@@ -164,4 +177,5 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
+
 @endpush

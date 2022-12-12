@@ -57,7 +57,7 @@
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="editor2" id="editor2" placeholder="Write some words" rows="4">
+                    <textarea class="form-control editor" name="editor2" id="editor2" placeholder="Write some words" rows="4">
                         @isset($edit_mvo)
                         {{ $edit_mvo->description }}
                         @endisset

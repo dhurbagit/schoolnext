@@ -24,7 +24,7 @@ class AlbumController extends Controller
             'album_images' => 'nullable|mimes:png,jpg,svg,webp,jpeg',
         ]);
 
-        $input = $request->all();
+
         $input['publish_status'] = isset($request->hide_show[0]) ? 1 : 0;
         $input['slug'] = Str::slug($request->album_title);
         $input['title'] = $request->album_title;
@@ -32,6 +32,7 @@ class AlbumController extends Controller
             $input['image'] = $request->file('album_images')->store('album', 'uploads');
         }
         $album = Album::create($input);
+        
         if (!empty($request->gallery_images)) {
             foreach ($request->gallery_images as $img) {
                 $imgName = $img->store('gallery', 'uploads');

@@ -28,7 +28,7 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <textarea name="editor2">{{ isset($mvo_edit) ? $mvo_edit->description : old('editor2') }}</textarea>
+                    <textarea class="editor" name="editor2">{{ isset($mvo_edit) ? $mvo_edit->description : old('editor2') }}</textarea>
                     <span class="text-danger">
                         @error('editor2')
                             {{ $message }}

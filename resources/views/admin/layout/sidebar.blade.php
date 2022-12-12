@@ -84,10 +84,41 @@
                         <li><a href="{{ route('create.counter') }}"><span>Create Counter</span></a></li>
                     </ul>
                 </li>
+                <li class="submenu">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                        <span>Beyond Academic</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{route('manage.academic')}}"><span>Manage Academic</span></a></li>
+                        <li><a href="{{route('create.academic')}}"><span>Create Academic</span></a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                        <span>FAQ</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href="{{route('manage.faq')}}"><span>Manage FAQ</span></a></li>
+                        <li><a href="{{route('create.faq')}}"><span> Create why school</span></a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                        <span>Message From</span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li><a href=""><span>Manage Message</span></a></li>
+                        <li><a href=""><span>Create Message</span></a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="{{ route('setting') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
                             alt="icon"> <span>Setting</span></a>
                 </li>
+                {{-- <li>
+                    <a href="{{route('create.faq')}}">
+                        <img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
+                            alt="icon">
+                             <span>FAQ</span>
+                    </a>
+                </li> --}}
                 {{-- <li>
                     <a href="calendar.html"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
                             alt="icon"> <span>Calendar</span></a>

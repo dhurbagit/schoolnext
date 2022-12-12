@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea name="editor2">{{ isset($edit_noticeboard) ? $edit_noticeboard->description : old('editor2') }}</textarea>
+                    <textarea class="editor" name="editor2">{{ isset($edit_noticeboard) ? $edit_noticeboard->description : old('editor2') }}</textarea>
                     <span class="text-danger">
                         @error('editor2')
                             {{ $message }}

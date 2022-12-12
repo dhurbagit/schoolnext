@@ -60,7 +60,7 @@
 
                     <div class="video__holder">
                         <video autoplay="" muted="" loop="" width="100%">
-                            <source src="https://raischool.edu.np/uploads/slidervideo/RAI +2 Outdoors Insta Final.mp4"
+                            <source src="{{asset('uploads/video/'. $banner_video->video)}}"
                                 type="video/mp4">
                         </video>
                     </div>
@@ -150,9 +150,7 @@
                             <div class="aboutus__description wow fadeInUp" data-wow-delay="0.6s"
                                 style="visibility: visible; -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
                                 <div class="top__small">
-                                    @if (!empty($about_us->small_title))
-                                        <span>{{ $about_us->small_title }} </span>
-                                    @endif
+                                        <span>{{ $about_us->small_title ?? '' }} </span>
                                 </div>
                                 <div class="top__big-text">
                                     <h3>
@@ -160,16 +158,14 @@
                                     </h3>
                                 </div>
                                 <div class="moto mb-3">
-                                    @if (!empty($about_us->slogan))
-                                        {{ $about_us->slogan }}
-                                    @endif
+                                        {{ $about_us->slogan ?? '' }}
                                 </div>
                                 <div class="main__decription mb-5">
                                     @if (!empty($about_us->description))
-                                        {!! $about_us->description !!}
+                                        {!! Str::limit($about_us->description, 600, '') !!}
                                     @endif
                                 </div>
-                                <a href="about-us.html" class="btn btn-hoverable">
+                                <a href="{{url('about')}}" class="btn btn-hoverable">
                                     <span>Read More</span>
                                 </a>
                             </div>
@@ -185,13 +181,13 @@
                                 @if (!empty($setting_happy->news_and_event_title))
                                     <h3>{{ $setting_happy->news_and_event_title }}</h3>
                                 @endif
-                                <a href="News-event.html">All Events <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{url('news events')}}">All Events <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div class="event__wrapper">
                                 <div class="row">
                                     @foreach ($newsevent as $event)
                                         <div class="col-md-4 mb-3">
-                                            <a href="New-details.html">
+                                            <a href="{{route('newsevent.link', $event->id)}}">
                                                 <div class="event-item  wow fadeInLeft" data-wow-delay="0.1s"
                                                     style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
                                                     <div class="event-image mb-2">

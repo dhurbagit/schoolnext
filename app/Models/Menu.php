@@ -12,9 +12,10 @@ class Menu extends Model
         'header' => '1',
         'footer' => '2',
         'header_footer' => '3',
+        'mega_menu' => '4',
     ];
 
-    const contentType  = ['home','page','about','contact','blog','gallery'];
+    const contentType  = ['home','page', 'beyond academic' ,'about','contact','blog','gallery','news events'];
 
     protected $fillable = [
         'name',
@@ -30,6 +31,7 @@ class Menu extends Model
         'content',
         'external_link',
         'publish_status',
+        'mega_menu',
 
     ];
 
