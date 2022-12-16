@@ -10,6 +10,10 @@
                 </div>
             </div>
             <div class="card-body">
+                 
+
+
+
                 @if (isset($slider_edit))
                     <form action="{{ route('editSlider.index', $slider_edit->id) }}" method="POST"
                         enctype="multipart/form-data">
@@ -20,9 +24,7 @@
                 <div class="display_images">
                     <img id="output"
                         @isset($slider_edit)
-
                         src="{{ asset('slider/' . $slider_edit->image) }}"
-
                         @endisset
                         width="200" />
                 </div>

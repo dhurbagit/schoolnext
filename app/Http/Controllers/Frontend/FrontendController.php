@@ -10,11 +10,13 @@ use App\Models\Client;
 use App\Models\Counter;
 use App\Models\Gallery;
 use App\Models\Menu;
+use App\Models\MessageFrom;
 use App\Models\Mvo;
 use App\Models\NewsEvent;
 use App\Models\Noticeboard;
 use App\Models\Setting;
 use App\Models\Slider;
+use App\Models\Teammember;
 use App\Models\Testimonial;
 use App\Models\Video;
 
@@ -44,8 +46,10 @@ class FrontendController extends Controller
 
     public function page($title)
     {
+
         $menu_content = Menu::where('title_slug', $title)->first();
         return view('frontend.general', compact('menu_content'));
+
     }
     public function category($slug)
     {
@@ -69,10 +73,35 @@ class FrontendController extends Controller
                 $menu_content1 = $menu;
                 $news_template = NewsEvent::get();
                 return view('frontend.newsevent.archive', compact('news_template', 'menu_content1'));
+                break;
             case 'gallery':
                 $gallery = Album::where('publish_status', 1)->get();
                 return view('frontend.album.gallery', compact('gallery', 'menu'));
-
+                break;
+            case 'chairman message':
+                $chairman_msg = MessageFrom::where('type', 0)->get()->first();
+                $management_staff = Teammember::where('type', 1)->get();
+                return view('frontend.messagefromstaff.chairman', compact('chairman_msg', 'management_staff'));
+                break;
+            case 'principal message':
+                $chairman_msg = MessageFrom::where('type', 1)->get()->first();
+                $management_staff = Teammember::where('type', 1)->get();
+                return view('frontend.messagefromstaff.chairman', compact('chairman_msg', 'management_staff'));
+                break;
+            case 'management team':
+                $menu_content1 = $menu;
+                $management_staff = Teammember::where('type', 1)->get();
+                return view('frontend.team_member.management_staff', compact('management_staff', 'menu_content1'));
+                break;
+            case 'teacher and staff':
+                $menu_content1 = $menu;
+                $management_staff = Teammember::where('type', 0)->get();
+                return view('frontend.team_member.management_staff', compact('management_staff', 'menu_content1'));
+                break;
+            case 'Video':
+                $menu_content1 = $menu;
+                $video = Video::where(['type'=> 2, 'hide' => 1])->orderBy('id', 'DESC')->get();
+                return view('frontend.video', compact('video', 'menu_content1'));
             default:
                 return 'Not Found';
         }

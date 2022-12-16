@@ -1,17 +1,24 @@
 <?php
 
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MvoController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\AlmuniController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\CounterController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\NewsEventController;
+use App\Http\Controllers\Admin\TeammemberController;
 use App\Http\Controllers\Admin\NoticeboardController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -59,6 +66,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('manage-academic', [BeyondAcademicController::class, 'view'])->name('manage.academic');
     Route::get('create-faq', [FaqController::class, 'index'])->name('create.faq');
     Route::get('manage-faq', [FaqController::class, 'view'])->name('manage.faq');
+    Route::get('chairman-message',[MessageController::class, 'index_chairman'])->name('chairman.message');
+    Route::get('principal-message',[MessageController::class, 'index_principal'])->name('principal.message');
+
 
     // Slider
     Route::post('/createSlider', [SliderController::class, 'store'])->name('createSlider.index');
@@ -144,6 +154,85 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('faq-save', [FaqController::class, 'save'])->name('faq.save');
     Route::delete('faq-delete/{id}', [FaqController::class, 'faq_delete'])->name('faq.delete');
     Route::get('faq-edit/{id}', [FaqController::class, 'faq_edit'])->name('faq.edit');
+
+    //chairman
+    Route::post('chairman-save', [MessageController::class, 'store'])->name('chairman.save');
+    Route::put('chairman-update', [MessageController::class, 'update'])->name('chairman.update');
+    Route::post('principal-save', [MessageController::class, 'save'])->name('principal.save');
+    Route::put('principal-update', [MessageController::class, 'principal_update'])->name('principal.update');
+
+    // general staff
+    Route::get('general-staff', [TeammemberController::class, 'view'])->name('general.staff');
+    Route::get('create-staff', [TeammemberController::class, 'show'])->name('general.staff.create');
+    Route::post('save-staff', [TeammemberController::class, 'store'])->name('general.staff.save');
+    Route::delete('delete-staff/{id}', [TeammemberController::class, 'delete'])->name('generalstaff.delete');
+    Route::get('general-edit/{id}', [TeammemberController::class, 'edit_general'])->name('general.edit');
+    Route::put('general-update/{id}', [TeammemberController::class, 'update_general'])->name('general.staff.update');
+
+    // MANAGEMENT STAFF
+    Route::get('management-staff', [TeammemberController::class, 'view_management'])->name('management.staff');
+    Route::get('managementcreate-staff', [TeammemberController::class, 'management_show'])->name('management.staff.create');
+    Route::post('save-management', [TeammemberController::class, 'management_store'])->name('management.staff.save');
+    Route::get('management-edit/{id}', [TeammemberController::class, 'edit_management'])->name('management.edit');
+    Route::put('management-update/{id}', [TeammemberController::class, 'update_management'])->name('management.staff.update');
+
+    //youtube video
+    Route::get('youtube_video', [VideoController::class, 'view'])->name('youtube.video');
+    Route::get('create-youtube', [VideoController::class, 'youtube_form'])->name('youtube.create');
+    Route::post('save-youtube', [VideoController::class, 'save_youtube'])->name('youtube.save');
+    Route::delete('youtube-delete/{id}', [VideoController::class, 'delete_youtube'])->name('youtube.delete');
+    Route::get('youtube-edit/{id}', [VideoController::class,'edit_youtubeForm'])->name('youtube.edit');
+    Route::put('youtube-update/{id}', [VideoController::class, 'update_youtube'])->name('youtube.update');
+
+    //school life
+    Route::get('school-life', [ContentController::class,'index'])->name('school.life');
+
+    Route::get('schoollife-view', [ContentController::class, 'view'])->name('schoollife.create');
+    Route::post('schoollife-save', [ContentController::class, 'store'])->name('schoollife.save');
+    Route::delete('schoollife-delete/{id}', [ContentController::class, 'delete'])->name('schoollife.delete');
+    Route::get('schoollife-edit/{id}', [ContentController::class, 'edit'])->name('schoollife.edit');
+    Route::put('schoollife-update/{id}', [ContentController::class, 'update'])->name('schoollife.update');
+    Route::get('contentImage-delete/{id}', [ContentController::class, 'delete_contentImage'])->name('delete.contentImage');
+
+    //blogs
+    Route::get('blog-view', [BlogController::class, 'view'])->name('blog.view');
+    Route::get('blog-create', [BlogController::class, 'view_form'])->name('blog.create');
+    Route::post('blog-save', [BlogController::class, 'store'])->name('blog.save');
+    Route::delete('blog-delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
+    Route::get('blog-edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::put('blog-update/{id}', [BlogController::class, 'update'])->name('blog.update');
+
+    Route::post('blog-title-save', [BlogController::class, 'save'])->name('blog.title.save');
+    Route::post('blog-title-update/{id}', [BlogController::class, 'blog_title_update'])->name('blog.title.update');
+
+   //almuni
+
+    Route::get('Almuni-view', [AlmuniController::class, 'view'])->name('Almuni.view');
+    Route::get('Almuni-create', [AlmuniController::class, 'view_form'])->name('almuni.create');
+    Route::post('Almuni-save', [AlmuniController::class, 'save'])->name('almuni.save');
+    Route::delete('Almuni-delete/{id}', [AlmuniController::class, 'delete'])->name('almuni.delete');
+    Route::get('Almuni-edit/{id}', [AlmuniController::class, 'edit'])->name('almuni.edit');
+    Route::put('Almuni-update/{id}', [AlmuniController::class, 'update'])->name('almuni.update');
+    //
+    Route::post('Almuni-gallery-save', [AlmuniController::class, 'gallery_save'])->name('almuni.gallery.save');
+    Route::delete('Almuni-gallery-delete/{id}', [AlmuniController::class, 'almuni_gallery_delete'])->name('almuniGallery.remove');
+    Route::get('Almuni-gallery-edit/{id}', [AlmuniController::class, 'almuni_gallery_edit'])->name('almuniGallery.edit');
+    Route::put('Almuni-gallery-update/{id}', [AlmuniController::class, 'gallery_update'])->name('almuni.gallery.update');
+
+    //downloads
+    Route::get('download-view', [DownloadController::class, 'index'])->name('download.view');
+    Route::post('download-save', [DownloadController::class, 'store'])->name('download.save');
+    Route::delete('download-delete/{id}', [DownloadController::class, 'destroy'])->name('download.delete');
+    Route::get('download-edit/{id}', [DownloadController::class, 'edit'])->name('download.edit');
+    Route::put('download-update/{id}', [DownloadController::class, 'update'])->name('download.update');
+
+    Route::post('downloadGallery-save', [DownloadController::class, 'g_downloads_store'])->name('g_downloads.save');
+    Route::delete('downloadGallery-delete/{id}', [DownloadController::class, 'g_downloads_delete'])->name('g_downloads.delete');
+
+    Route::get('g_downloads/{id}', [DownloadController::class, 'g_downloads_edit'])->name('g_downloads.edit');
+    Route::put('g_downloads_edit/{id}', [DownloadController::class, 'g_downloads_update'])->name('g_downloads.update');
+    // Route::get()->name();
+
 
 });
 

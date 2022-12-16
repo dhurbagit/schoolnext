@@ -34,6 +34,8 @@
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
 
 
     <!--[if lt IE 9]>
@@ -126,6 +128,15 @@
     <script type="text/javascript"
         src="{{ asset('draganddropmenu/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') }}"></script>
     <script src="{{ asset('backend/ckeditor/build/ckeditor.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
+    <script src=""></script>
+    <script src=""></script>
     {{-- <script>
         CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor2');
@@ -185,21 +196,59 @@
             });
     </script>
     <script>
-        ClassicEditor
-            .create(document.querySelector('.editor100'), {
-                licenseKey: '',
-            })
-            .then(editor => {
-                window.editor = editor;
-            })
-            .catch(error => {
-                console.error('Oops, something went wrong!');
-                console.error(
-                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-                );
-                console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
-                console.error(error);
+        // ClassicEditor
+        //     .create(document.querySelector('.editor100'), {
+        //         licenseKey: '',
+        //     })
+        //     .then(editor => {
+        //         window.editor = editor;
+        //     })
+        //     .catch(error => {
+        //         console.error('Oops, something went wrong!');
+        //         console.error(
+        //             'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+        //         );
+        //         console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
+        //         console.error(error);
+        //     });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'B<"clear">lfrtip',
+                paging: true,
+                pageLength: 5,
+                lengthChange: true,
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "Tous"]
+                ],
+                order: [
+                    [0, 'asc'],
+                    [1, 'asc']
+                ],
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+
             });
+        });
+        $(document).ready(function() {
+            $('#example1').DataTable({
+                dom: 'B<"clear">lfrtip',
+                paging: true,
+                pageLength: 5,
+                lengthChange: true,
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "Tous"]
+                ],
+                order: [
+                    [0, 'asc'],
+                    [1, 'asc']
+                ],
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+
+            });
+        });
     </script>
 
 </body>

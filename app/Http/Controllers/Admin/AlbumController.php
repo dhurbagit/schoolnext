@@ -28,11 +28,11 @@ class AlbumController extends Controller
         $input['publish_status'] = isset($request->hide_show[0]) ? 1 : 0;
         $input['slug'] = Str::slug($request->album_title);
         $input['title'] = $request->album_title;
-        if ($request->hasFile('album_images')) {
+        if($request->hasFile('album_images')) {
             $input['image'] = $request->file('album_images')->store('album', 'uploads');
         }
         $album = Album::create($input);
-        
+
         if (!empty($request->gallery_images)) {
             foreach ($request->gallery_images as $img) {
                 $imgName = $img->store('gallery', 'uploads');
@@ -46,7 +46,6 @@ class AlbumController extends Controller
     public function view()
     {
         $albums = Album::withCount('images')->get();
-
         return view('admin.albums.index', compact('albums'));
     }
 

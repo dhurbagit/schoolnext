@@ -17,11 +17,11 @@ Route::get('test',function(){
     return view('test');
 });
 
-Route::get('ckeditor',function(){
-    $view = view('test-ajax')->render();
+// Route::get('ckeditor',function(){
+//     $view = view('test-ajax')->render();
 
-    return response()->json(['view'=>$view]);
-})->name('ckeditor');
+//     return response()->json(['view'=>$view]);
+// })->name('ckeditor');
 Route::get('category/{category}', [FrontendController::class, 'category'])->name('category');
 
 

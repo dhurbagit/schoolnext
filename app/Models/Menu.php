@@ -15,7 +15,13 @@ class Menu extends Model
         'mega_menu' => '4',
     ];
 
-    const contentType  = ['home','page', 'beyond academic' ,'about','contact','blog','gallery','news events'];
+    const contentType  = ['home','page', 'beyond academic' ,'about','contact','blog','gallery','news events',
+                            'chairman message',
+                            'principal message',
+                            'management team',
+                            'teacher and staff',
+                            'Video'
+                            ];
 
     protected $fillable = [
         'name',

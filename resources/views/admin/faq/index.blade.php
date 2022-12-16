@@ -80,7 +80,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+
                             @foreach ($faq_list as $key => $data)
                                 <tr>
                                     <td> {{ $loop->iteration }}</td>
@@ -126,7 +126,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for=""><b>Answer</b></label>
-                                                                <textarea name="faq_detail" class="editor" id="" cols="30" rows="10"></textarea>
+                                                                <textarea name="faq_detail" class="editor form-control" id="" cols="30" rows="10"></textarea>
                                                                 <span class="text-danger">
                                                                     @error('faq_detail')
                                                                         {{ $message }}

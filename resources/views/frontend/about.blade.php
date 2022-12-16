@@ -8,7 +8,7 @@
             </div>
             <section id="subheader-title">
                 <div class="container">
-                    <h1>{{$menu_content->name}}</h1>
+                    <h1>{{$menu_content->page_title}}</h1>
                     {{-- @dd($mvo) --}}
                 </div>
             </section>
