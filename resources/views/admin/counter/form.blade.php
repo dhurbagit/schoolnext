@@ -4,7 +4,8 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Counter</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Counter</h5>
+                    <h4 class="card-title"></h4>
                     <a href="{{route('manage.counter')}}" class="btn btn-primary">List view</a>
                 </div>
             </div>
@@ -17,26 +18,34 @@
                 @endif
 
                 @csrf
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" name="title"
-                        value="{{ isset($edit_counter) ? $edit_counter->title : old('title') }}">
-                    <span class="text-danger">
-                        @error('title')
-                            {{ $message }}
-                        @enderror
-                    </span>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label><b>Title</b></label>
+                            <input type="text" class="form-control" name="title"
+                                value="{{ isset($edit_counter) ? $edit_counter->title : old('title') }}">
+                            <span class="text-danger">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label><b>Counter Number</b></label>
+                            <input type="number" class="form-control" name="counter_number"
+                                value="{{ isset($edit_counter) ? $edit_counter->counter_number : old('counter_number') }}">
+                            <span class="text-danger">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Counter Number</label>
-                    <input type="number" class="form-control" name="counter_number"
-                        value="{{ isset($edit_counter) ? $edit_counter->counter_number : old('counter_number') }}">
-                    <span class="text-danger">
-                        @error('title')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+
+
                 @if(isset($edit_counter))
                 <button type="submit" class="btn btn-success">Update</button>
                 @else

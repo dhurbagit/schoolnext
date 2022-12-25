@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Faq</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Faq</h5>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_">
                         Create FAQ
                     </button>
@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for=""><b>Answer</b></label>
-                                            <textarea name="faq_detail" class="editor" id="" cols="30" rows="10"></textarea>
+                                            <textarea name="faq_detail" class="editor100" id="" cols="30" rows="10"></textarea>
                                             <span class="text-danger">
                                                 @error('faq_detail')
                                                     {{ $message }}
@@ -69,7 +69,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive_off">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>SN</th>
@@ -93,7 +93,7 @@
                                             <span class="badge badge-danger">Deactive</span>
                                         @endif
                                     </td>
-                                    <td> <a href="{{ route('faq.edit', $data->id) }}" data-toggle="modal"
+                                    <td> <a href="#" data-toggle="modal"
                                             data-target="#exampleModal_{{ $data->id }}" class="btn btn-danger">
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -104,7 +104,7 @@
                                             <div class="modal-dialog cs_modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Create FAQs</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Edit FAQs</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -112,12 +112,14 @@
                                                     </div>
 
                                                     <div class="modal-footer" style="display: block">
-                                                        <form action=" " method="POST">
+                                                        <form action="{{route('faq.update', $data->id)}}" method="POST">
+                                                            @method('put')
                                                             @csrf
                                                             <div class="form-group">
                                                                 <label for=""><b>Question</b></label>
                                                                 <input type="text" class="form-control mb-2"
-                                                                    name="faq_head" value="{{isset($f_edit)?$f_edit->faq_head:old('faq_head')}}">
+                                                                    name="faq_head"
+                                                                    value="{{ isset($data) ? $data->faq_head : old('faq_head') }}">
                                                                 <span class="text-danger">
                                                                     @error('faq_head')
                                                                         {{ $message }}
@@ -126,7 +128,9 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for=""><b>Answer</b></label>
-                                                                <textarea name="faq_detail" class="editor form-control" id="" cols="30" rows="10"></textarea>
+                                                                <textarea name="faq_detail" class="editor form-control" id="" cols="30" rows="10">
+                                                                    {{ isset($data) ? $data->faq_detail : old('faq_detail') }}
+                                                                </textarea>
                                                                 <span class="text-danger">
                                                                     @error('faq_detail')
                                                                         {{ $message }}
@@ -136,20 +140,24 @@
                                                             </div>
                                                             <div class="d-flex flex-collection">
 
-                                                                <div class="form-group mt-3">
+                                                                <div class="form-group">
                                                                     <div
                                                                         class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                                                         <input type="checkbox"
+                                                                            @isset($data)
+                                                                            @if ($data->hide == 1)
+                                                                            checked
+                                                                            @endif
+                                                                        @endisset
                                                                             class="custom-control-input"
-                                                                            id="customSwitch3" name="hide_show"
-                                                                            value="0">
+                                                                            id="customSwitch{{ $data->id }}"
+                                                                            name="hide_show" value="0">
                                                                         <label class="custom-control-label"
-                                                                            for="customSwitch3">Hide/Show</label>
+                                                                            for="customSwitch{{ $data->id }}">Hide/Show</label>
                                                                     </div>
                                                                 </div>
-                                                                <button type="submit"
-                                                                    class="btn btn-success mt-3">Save</button>
-
+                                                                <button type="submit" class="btn btn-success mt-3"
+                                                                    id="">Update</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -168,7 +176,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
 
-                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>

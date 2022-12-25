@@ -6,13 +6,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Beyond Academic Table</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Beyond Academic</h5>
                     <a href="{{ route('create.academic') }}" class="btn btn-primary">Create New</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive_off">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>

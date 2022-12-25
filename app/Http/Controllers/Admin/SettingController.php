@@ -18,6 +18,7 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'after_banner_title' => 'required',
             'news_and_event_title' => 'required',
@@ -33,6 +34,12 @@ class SettingController extends Controller
             'footer_image' => 'required|mimes:png,jpg,svg,webp,jpeg',
         ]);
         $store = New Setting();
+        $store->school_name = $request->school_name;
+        $store->google_map = $request->google_map;
+        $store->powered_by = $request->powered_by;
+        $store->powered_by_link = $request->powered_by_link;
+        $store->message = $request->message;
+        // $store->view_counter = $request->view_counter;
         $store->after_banner_title = $request->after_banner_title;
         $store->news_and_event_title = $request->news_and_event_title;
         $store->notice_board_title = $request->notice_board_title;
@@ -53,9 +60,12 @@ class SettingController extends Controller
         }
         $store->gallery_title = $request->gallery_title;
         $store->facebook = $request->facebook;
+        $store->Twitter = $request->Twitter;
         $store->instagram = $request->instagram;
         $store->linkin = $request->linkin;
         $store->youtube = $request->youtube;
+        $store->pinterest = $request->pinterest;
+        $store->tumblr = $request->tumblr;
         $store->address = $request->address;
         $store->Phone_one = $request->Phone_one;
         $store->Phone_two = $request->Phone_two;
@@ -82,6 +92,9 @@ class SettingController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        // dd($request->all());
+
         $request->validate([
             'after_banner_title' => 'required',
             'news_and_event_title' => 'required',
@@ -93,6 +106,12 @@ class SettingController extends Controller
             'email' => 'required',
         ]);
         $store_update = Setting::findOrFail($id);
+        $store_update->school_name = $request->school_name;
+        $store_update->google_map = $request->google_map;
+        $store_update->powered_by = $request->powered_by;
+        $store_update->powered_by_link = $request->powered_by_link;
+        $store_update->message = $request->message;
+
         $store_update->after_banner_title = $request->after_banner_title;
         $store_update->news_and_event_title = $request->news_and_event_title;
         $store_update->notice_board_title = $request->notice_board_title;
@@ -115,9 +134,12 @@ class SettingController extends Controller
         }
         $store_update->gallery_title = $request->gallery_title;
         $store_update->facebook = $request->facebook;
+        $store_update->Twitter = $request->Twitter;
         $store_update->instagram = $request->instagram;
         $store_update->linkin = $request->linkin;
         $store_update->youtube = $request->youtube;
+        $store_update->pinterest = $request->pinterest;
+        $store_update->tumblr = $request->tumblr;
         $store_update->address = $request->address;
         $store_update->Phone_one = $request->Phone_one;
         $store_update->Phone_two = $request->Phone_two;

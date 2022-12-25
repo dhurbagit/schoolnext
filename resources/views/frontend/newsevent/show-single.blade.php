@@ -20,7 +20,6 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-12 col-sm-12 mb-3">
 
-
                             <div class="new__event-details">
                                 <div class="news__event-image">
                                     <img src="{{ asset('NewsEvent/' . $single_news->images) }}" width="100%"
@@ -57,7 +56,7 @@
                                                     <div class="col-8">
                                                         <div class="list__name">
                                                             <h6 class="mb-0">
-                                                                {!!  Str::limit($value->description, 25, '...') !!}
+                                                                {{ strip_tags(Str::limit($value->description, 150, '...'))}}
                                                             </h6>
                                                             <span>{{ $value->date}}</span>
                                                         </div>

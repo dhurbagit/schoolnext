@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Mvo;
+use App\Models\Menu;
 use App\Models\About;
 use App\Models\Album;
-use App\Models\BeyondAcademic;
+use App\Models\Video;
+use App\Models\Almuni;
 use App\Models\Client;
+use App\Models\Slider;
 use App\Models\Counter;
 use App\Models\Gallery;
-use App\Models\Menu;
-use App\Models\MessageFrom;
-use App\Models\Mvo;
-use App\Models\NewsEvent;
-use App\Models\Noticeboard;
 use App\Models\Setting;
-use App\Models\Slider;
+use App\Models\Download;
+use App\Models\NewsEvent;
 use App\Models\Teammember;
+use App\Models\MessageFrom;
+use App\Models\Noticeboard;
 use App\Models\Testimonial;
-use App\Models\Video;
+use Illuminate\Http\Request;
+use App\Models\AlmuniGallery;
+use App\Models\BeyondAcademic;
+use App\Models\Faq_collection;
+use App\Models\Download_gallery;
+use App\Http\Controllers\Controller;
 
 class FrontendController extends Controller
 {
@@ -32,7 +39,7 @@ class FrontendController extends Controller
         $newsevent = NewsEvent::latest()->take(3)->get();
         $noticeboard = Noticeboard::latest()->get();
         $testimonial = Testimonial::where('hide', 1)->latest()->get();
-        $galleries = Gallery::latest()->get()->shuffle(15)->all();
+        $galleries = Gallery::latest()->get()->shuffle(15);
         $banner_video = Video::where('type', 0)->get()->first();
 
         // dd($banner_video);
@@ -71,10 +78,11 @@ class FrontendController extends Controller
                 break;
             case 'news events':
                 $menu_content1 = $menu;
-                $news_template = NewsEvent::get();
+                $news_template = NewsEvent::orderBy('id', 'DESC')->paginate(8);
                 return view('frontend.newsevent.archive', compact('news_template', 'menu_content1'));
                 break;
             case 'gallery':
+                $menu = $menu;
                 $gallery = Album::where('publish_status', 1)->get();
                 return view('frontend.album.gallery', compact('gallery', 'menu'));
                 break;
@@ -100,8 +108,30 @@ class FrontendController extends Controller
                 break;
             case 'Video':
                 $menu_content1 = $menu;
-                $video = Video::where(['type'=> 2, 'hide' => 1])->orderBy('id', 'DESC')->get();
+                $video = Video::where(['type' => 2, 'hide' => 1])->orderBy('id', 'DESC')->get();
                 return view('frontend.video', compact('video', 'menu_content1'));
+                break;
+            case 'Pass Out Student':
+                $menu_content = $menu;
+                $almuniCollection = Almuni::orderBy('id', 'DESC')->get();
+                $almuni_g = AlmuniGallery::get();
+                return view('frontend.almuni.archive', compact('almuniCollection','almuni_g', 'menu_content'));
+                break;
+            case 'Download files':
+                $menu_content = $menu;
+                $downloads = Download::get();
+                $downloads_g = Download_gallery::paginate(6);
+                return view('frontend.download', compact('downloads', 'menu_content', 'downloads_g'));
+                break;
+            case 'FAQs (& why school)':
+                $whyschool = Faq::get()->first();
+                $faqs = Faq_collection::get();
+                $menu_content = $menu;
+                $setting = Setting::get()->first();
+                return view('frontend.faqs_andwhyschool', compact('whyschool', 'faqs', 'menu_content', 'setting'));
+                break;
+            case 'Contact Us':
+                return view('frontend.contact_us');
             default:
                 return 'Not Found';
         }
@@ -109,8 +139,11 @@ class FrontendController extends Controller
 
     public function gallery_images($slug)
     {
+        $using_function = $this->category('gallery');
+        $menu = $using_function['menu'];
+
         $album_gallery = Album::where(['slug' => $slug, 'publish_status' => 1])->first();
-        return view('frontend.album.show', compact('album_gallery'));
+        return view('frontend.album.show', compact('album_gallery', 'menu'));
     }
 
     public function newsevent_single($id)
@@ -121,5 +154,25 @@ class FrontendController extends Controller
         $latest_events = NewsEvent::latest('date')->get();
         return view('frontend.newsevent.show-single', compact('menu_content', 'single_news', 'latest_events'));
     }
+
+    public function almuni_single($id)
+    {
+        $using_function = $this->category('Pass Out Student');
+        $menu_content = $using_function['menu_content'];
+        $almuni_g = AlmuniGallery::where('almuni_id', $id)->get();
+        $almuniCollection = Almuni::orderBy('id', 'DESC')->get();
+        return view('frontend.almuni.archive', compact('almuniCollection', 'almuni_g', 'menu_content'));
+    }
+
+    public function download_childdata($id)
+    {
+        // dd('this');
+        $using_function = $this->category('Download files');
+        $menu_content = $using_function['menu_content'];
+        $downloads_g = Download_gallery::where('download_id', $id)->paginate();
+        $downloads = Download::orderBy('id', 'DESC')->get();
+        return view('frontend.download', compact('downloads', 'downloads_g', 'menu_content'));
+    }
+
 
 }

@@ -54,6 +54,8 @@
     </div>
     <main>
         <section id="main__index-section">
+
+
             {{-- slider section  --}}
             <div class="slider-wrapper">
                 @if (isset($banner_video->type) ? 10 : 0)
@@ -165,7 +167,7 @@
                                         {!! Str::limit($about_us->description, 600, '') !!}
                                     @endif
                                 </div>
-                                <a href="{{url('about')}}" class="btn btn-hoverable">
+                                <a href="{{url('category/about')}}" class="btn btn-hoverable">
                                     <span>Read More</span>
                                 </a>
                             </div>
@@ -181,7 +183,7 @@
                                 @if (!empty($setting_happy->news_and_event_title))
                                     <h3>{{ $setting_happy->news_and_event_title }}</h3>
                                 @endif
-                                <a href="{{url('news events')}}">All Events <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{url('category/news events')}}">All Events <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div class="event__wrapper">
                                 <div class="row">
@@ -339,7 +341,7 @@
                             @foreach ($galleries as $gallery)
                                 <div class="gg-element">
                                     <a class="example-image-link"
-                                        href="https://saim.edu.np/storage/public/Gallery/5-1660024109.jpg"
+                                        href="{{ asset('uploads/' . $gallery->image) }}"
                                         data-lightbox="example-set">
                                         <img src="{{ asset('uploads/' . $gallery->image) }}">
                                     </a>

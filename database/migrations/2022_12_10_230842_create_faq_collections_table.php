@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('faq_detail');
             $table->string('slug');
             $table->boolean('hide')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

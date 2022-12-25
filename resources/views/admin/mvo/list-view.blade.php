@@ -6,18 +6,18 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Vision Mission objective Table</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Vision Mission objective</h5>
                     <a href="{{route('mvo.view')}}" class="btn btn-primary">Ceate Mvo</a>
                 </div>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table m-b-0">
+                <div class="table-responsive1">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Description</th>
+                                <th width= "700">Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

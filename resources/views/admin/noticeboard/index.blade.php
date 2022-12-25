@@ -6,14 +6,14 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Notice Board</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Notice board</h5>
                     <a href="{{route('create.notice')}}" class="btn btn-primary">Create New</a>
                 </div>
             </div>
             <div class="card-body">
 
                 <div class="table-responsive_one">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>

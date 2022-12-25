@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('designation');
             $table->longText('description');
             $table->string('type');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

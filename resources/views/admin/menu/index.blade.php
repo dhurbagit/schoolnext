@@ -5,47 +5,173 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Menu</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Menu</h5>
                     <a href="{{ route('menu.create') }}"class="btn btn-primary">Ceate Menu</a>
                 </div>
             </div>
             <div class="card-body">
-                <h3>Header Menu</h3>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Header Menu</h3>
+                        <div class="menu-box">
+                            {{-- @dd($mega_menus->count()) --}}
+                            @if ($menu_items->count() > 0)
+                                <ol class="menu-list sortable">
+                                    @foreach ($menus as $menu)
+                                        @if ($menu->parent_id == null)
+                                            <li id="menuItem_{{ $menu->id }}">
+                                                <div class="flex_box">
+                                                    <a href="javascript:void(0)">{{ $menu->name }}</a>
+                                                    <div class="action_button">
+                                                        <a class="btn btn-danger"
+                                                            href="{{ route('menu.edit', $menu->id) }}"><i
+                                                                class="fas fa-edit"></i></a>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#exampleModal_{{ $menu->id }}">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal_{{ $menu->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Are you sure you want to delete it!
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <form action="{{ route('menu.delete', $menu->id) }}"
+                                                                            method="POST">
+                                                                            @method('delete')
+                                                                            @csrf
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">No</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary">Yes</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {{-- model End  --}}
+
+                                                    </div>
+                                                </div>
+                                                <ol class="submenu-list">
+                                                    @foreach ($menu->childrens as $submenu)
+                                                        <li>
+                                                            <div class="flex_box">
+                                                                <a href="javascript:void(0)">{{ $submenu->name }}</a>
+                                                                <div class="action_button">
+                                                                    <a class="btn btn-danger btn-sm"
+                                                                        href="{{ route('menu.edit', $submenu->id) }}"><i
+                                                                            class="fas fa-edit"></i></a>
+                                                                    <!-- Button trigger modal -->
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        data-toggle="modal"
+                                                                        data-target="#exampleModal_o{{ $submenu->id }}">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </button>
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="exampleModal_o{{ $submenu->id }}"
+                                                                        tabindex="-1" role="dialog"
+                                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                                        {{ $submenu->id }}Are you sure you want to
+                                                                                        delete it!
+                                                                                    </h5>
+                                                                                    <button type="button" class="close"
+                                                                                        data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <form
+                                                                                        action="{{ route('menu.delete', $submenu->id) }}"
+                                                                                        method="POST">
+                                                                                        @method('delete')
+                                                                                        @csrf
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">No</button>
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-primary">Yes</button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- model End  --}}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ol>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                    <div class="form-group mt-4">
+                                        <button type="button" class="btn btn-success btn-sm btn-flat" id="serialize"><i
+                                                class="fa fa-save"></i>
+                                            Update Menu
+                                        </button>
+                                    </div>
+                                </ol>
+                            @else
+                                <p class="text-center">Menu not found in database</p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Footer Menu</h3>
                 <div class="menu-box">
-                    {{-- @dd($mega_menus->count()) --}}
-                    @if ($menu_items->count() > 0)
+                    @if ($menu_footer->count() > 0)
+
                         <ol class="menu-list sortable">
-                            @foreach ($menus as $menu)
-                                @if ($menu->parent_id == null)
-                                    <li id="menuItem_{{ $menu->id }}">
+                            @foreach ($menu_footer as $item)
+                                @if ($item->parent_id == null)
+                                    <li>
                                         <div class="flex_box">
-                                            <a href="javascript:void(0)">{{ $menu->name }}</a>
+                                            <a href="javascript:void(0)">{{ $item->name }}</a>
                                             <div class="action_button">
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="{{ route('menu.edit', $menu->id) }}"><i
+                                                    href="{{ route('menu.edit', $item->id) }}"><i
                                                         class="fas fa-edit"></i></a>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal_{{ $menu->id }}">
+                                                    data-target="#exampleModal_l{{ $item->id }}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal_{{ $menu->id }}" tabindex="-1"
-                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal_l{{ $item->id }}"
+                                                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Are you sure you want to delete it!
+                                                                    Are you sure you want to
+                                                                    delete it!
                                                                 </h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
 
                                                             <div class="modal-footer">
-                                                                <form action="{{ route('menu.delete', $menu->id) }}"
+                                                                <form action="{{ route('menu.delete', $item->id) }}"
                                                                     method="POST">
                                                                     @method('delete')
                                                                     @csrf
@@ -59,58 +185,18 @@
                                                     </div>
                                                 </div>
                                                 {{-- model End  --}}
-
                                             </div>
                                         </div>
                                         <ol class="submenu-list">
-                                            @foreach ($menu->childrens as $submenu)
+                                            @foreach ($item->childrens as $submenu)
                                                 <li>
                                                     <div class="flex_box">
                                                         <a href="javascript:void(0)">{{ $submenu->name }}</a>
                                                         <div class="action_button">
-                                                            <a class="btn btn-danger btn-sm"
-                                                                href="{{ route('menu.edit', $submenu->id) }}"><i
+                                                            <a class="btn btn-danger btn-sm" href=""><i
                                                                     class="fas fa-edit"></i></a>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary"
-                                                                data-toggle="modal"
-                                                                data-target="#exampleModal_o{{ $submenu->id }}">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal_o{{ $submenu->id }}"
-                                                                tabindex="-1" role="dialog"
-                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                                                {{ $submenu->id }}Are you sure you want to
-                                                                                delete it!
-                                                                            </h5>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-
-                                                                        <div class="modal-footer">
-                                                                            <form
-                                                                                action="{{ route('menu.delete', $submenu->id) }}"
-                                                                                method="POST">
-                                                                                @method('delete')
-                                                                                @csrf
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-dismiss="modal">No</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-primary">Yes</button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            {{-- model End  --}}
+                                                            <a class="btn btn-success btn-sm" href=""><i
+                                                                    class="fas fa-trash"></i></a>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -119,19 +205,18 @@
                                     </li>
                                 @endif
                             @endforeach
-                            <div class="form-group mt-4">
-                                <button type="button" class="btn btn-success btn-sm btn-flat" id="serialize"><i
-                                        class="fa fa-save"></i>
-                                    Update Menu
-                                </button>
-                            </div>
                         </ol>
                     @else
                         <p class="text-center">Menu not found in database</p>
                     @endif
                 </div>
+                    </div>
+                    <div class="col-lg-6"></div>
+                </div>
+
                 <h3>Mega Menu</h3>
                 <div class="menu-box">
+
                     @if ($mega_menus->count() > 0)
                         <ol class="menu-list sortable">
                             @foreach ($b_menus as $menu)
@@ -249,48 +334,45 @@
                         <p class="text-center">Menu not found in database</p>
                     @endif
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h3>Footer Menu</h3>
-                <div class="menu-box">
-                    @if ($menu_footer->count() > 0)
 
+                <br>
+                <br>
+                <h3>Top Ribbon Menu</h3>
+                <div class="menu-box">
+
+                    @if ($top_header_ribbon->count() > 0)
                         <ol class="menu-list sortable">
-                            @foreach ($menu_footer as $item)
-                                @if ($item->parent_id == null)
-                                    <li>
+                            @foreach ($top_ribbon as $menu)
+                                @if ($menu->parent_id == null)
+                                    <li id="menuItem_{{ $menu->id }}">
                                         <div class="flex_box">
-                                            <a href="javascript:void(0)">{{ $item->name }}</a>
+                                            <a href="javascript:void(0)">{{ $menu->name }}</a>
                                             <div class="action_button">
                                                 <a class="btn btn-danger btn-sm"
-                                                    href="{{ route('menu.edit', $item->id) }}"><i
+                                                    href="{{ route('menu.edit', $menu->id) }}"><i
                                                         class="fas fa-edit"></i></a>
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal_l{{ $item->id }}">
+                                                    data-target="#exampleModal_{{ $menu->id }}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal_l{{ $item->id }}"
-                                                    tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                    aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal_{{ $menu->id }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Are you sure you want to
-                                                                    delete it!
+                                                                    Are you sure you want to delete it!
                                                                 </h5>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
 
                                                             <div class="modal-footer">
-                                                                <form action="{{ route('menu.delete', $item->id) }}"
+                                                                <form action="{{ route('menu.delete', $menu->id) }}"
                                                                     method="POST">
                                                                     @method('delete')
                                                                     @csrf
@@ -304,31 +386,86 @@
                                                     </div>
                                                 </div>
                                                 {{-- model End  --}}
+
                                             </div>
                                         </div>
-                                        <ol class="submenu-list">
-                                            @foreach ($item->childrens as $submenu)
-                                                <li>
-                                                    <div class="flex_box">
-                                                        <a href="javascript:void(0)">{{ $submenu->name }}</a>
-                                                        <div class="action_button">
-                                                            <a class="btn btn-danger btn-sm" href=""><i
-                                                                    class="fas fa-edit"></i></a>
-                                                            <a class="btn btn-success btn-sm" href=""><i
-                                                                    class="fas fa-trash"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            @endforeach
-                                        </ol>
                                     </li>
                                 @endif
                             @endforeach
+
                         </ol>
                     @else
                         <p class="text-center">Menu not found in database</p>
                     @endif
                 </div>
+
+                <br>
+                <br>
+                <h3>Feature Menu</h3>
+                <div class="menu-box">
+
+                    @if ($feature_link->count() > 0)
+                        <ol class="menu-list sortable">
+                            @foreach ($feature_link as $menu)
+                                @if ($menu->parent_id == null)
+                                    <li id="menuItem_{{ $menu->id }}">
+                                        <div class="flex_box">
+                                            <a href="javascript:void(0)">{{ $menu->name }}</a>
+                                            <div class="action_button">
+                                                <a class="btn btn-danger btn-sm"
+                                                    href="{{ route('menu.edit', $menu->id) }}"><i
+                                                        class="fas fa-edit"></i></a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#exampleModal_{{ $menu->id }}">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal_{{ $menu->id }}" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                                    Are you sure you want to delete it!
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <form action="{{ route('menu.delete', $menu->id) }}"
+                                                                    method="POST">
+                                                                    @method('delete')
+                                                                    @csrf
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">No</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Yes</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- model End  --}}
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                        </ol>
+                    @else
+                        <p class="text-center">Menu not found in database</p>
+                    @endif
+                </div>
+
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>

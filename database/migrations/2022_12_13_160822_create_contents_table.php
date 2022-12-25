@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('content_type')->nullable();
             $table->string('slug')->nullable();
-            $table->mediumText('description')->nullable();
-            $table->mediumText('description_one')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('description_one')->nullable();
             $table->boolean('publish_status')->default(0)->nullable();
             $table->string('featured_image')->nullable();
             $table->string('external_link')->nullable();

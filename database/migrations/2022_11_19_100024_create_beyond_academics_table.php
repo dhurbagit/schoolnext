@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('hide')->nullable();
             $table->string('feature_image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

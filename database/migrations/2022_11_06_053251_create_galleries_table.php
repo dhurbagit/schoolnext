@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('album_id')->constrained('albums')->onDelete('CASCADE');
             $table->string('title')->nullable();
             $table->string('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

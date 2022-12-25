@@ -6,19 +6,19 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify_and_align">
-                <h4 class="card-title">Album Table</h4>
+                <h5 class="text-uppercase mb-0 mt-0 page-title">Album</h5>
                 <a href="{{route('create-gallery')}}" class="btn btn-primary">Create New</a>
             </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table m-b-0">
+                <table class="table m-b-0" id="example">
                     <thead class="thead-light">
                         <tr>
                             <th>#</th>
                             <th>Title</th>
                             <th>Images</th>
-                            <th>counter</th>
+                            <th>Counter</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>

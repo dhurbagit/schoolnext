@@ -4,13 +4,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Our client</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Our Client</h5>
                     <a href="{{ route('create.client') }}" class="btn btn-primary">Create New</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
@@ -24,7 +24,7 @@
                             @foreach ($list_view as $value)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $value->title }}</td>
+                                    <td>{{ Str::ucfirst($value->title) }}</td>
                                     <td>{{ $value->link }}</td>
                                     <td><img src="{{ asset('client/' . $value->image) }}" class="avatar text-white"
                                             alt=""></td>

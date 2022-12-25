@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="/frontend/assets/css/index.css">
     <link rel="stylesheet" href="{{asset('backend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/frontendstyle.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/style.css')}}">
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>School Website</title>
 </head>
 
@@ -57,8 +60,43 @@
     <script src="/frontend/assets/js/topBtn.js"></script>
     <script src="/frontend/assets/js/animation.js"></script>
     <script src="{{asset('backend/assets/lightbox2-2.11.3/dist/js/lightbox.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <script>
+        @if (Session::has('message'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.success("{{ session('message') }}");
+        @endif
+
+        @if (Session::has('error'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if (Session::has('info'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if (Session::has('warning'))
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
+    <script>
+
         (function() {
             $("[data-slider-wrap]").each(function() {
                 var _this = $(this),
@@ -175,6 +213,7 @@
             },
         });
     </script>
+
     @stack('scripts')
 </body>
 

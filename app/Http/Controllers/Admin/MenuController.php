@@ -19,13 +19,15 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menu_items = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['2', '4'])->get();
-        $menu_footer = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '4'])->get();
+        $menu_items = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['2', '4', '5', '6', '8', '9'])->get();
+        $menu_footer = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '4', '5', '6','7', '9'])->get();
 
-        $mega_menus = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '2', '3'])->get();
+        $mega_menus = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','5','6','7','8', '9'])->get();
+        $top_header_ribbon = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','4', '6', '7'])->get();
+        $feature_link = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','4','5','8'])->get();
 
         $menu_s = Menu::get();
-        return view('admin.menu.index', compact('menu_items', 'menu_footer', 'menu_s','mega_menus'));
+        return view('admin.menu.index', compact('menu_items', 'menu_footer', 'menu_s','mega_menus', 'top_header_ribbon', 'feature_link'));
     }
     public function view()
     {
@@ -151,7 +153,9 @@ class MenuController extends Controller
          $fimage = null;
          if($request->hasfile('image'))
          {
-            unlink("uploads/" . $menu->image);
+            if(!empty($menu->image)){
+                unlink("uploads/" . $menu->image);
+            }
              $image = $request->file('image');
              $fimage = $image->store('main_images', 'uploads');
          }else{
@@ -161,7 +165,9 @@ class MenuController extends Controller
          $banner_image = null;
          if($request->hasfile('banner_image'))
          {
-            unlink("uploads/" . $menu->banner_image);
+            if(!empty($menu->image)){
+                unlink("uploads/" . $menu->banner_image);
+            }
              $image = $request->file('banner_image');
              $banner_image = $image->store('menu_images', 'uploads');
          }else{

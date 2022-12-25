@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Management and staff</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Management and staff</h5>
                     <a href="{{ route('management.staff.create') }}" class="btn btn-success">Create New</a>
                 </div>
             </div>
@@ -12,11 +12,11 @@
 
 
                 <div class="table-responsive">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
-                                <th>title</th>
+                                <th>Title</th>
                                 <th>Heading</th>
                                 <th>Description</th>
                                 <th>Images</th>
@@ -31,7 +31,7 @@
                                     <td>{{ $data->heading_one }}</td>
                                     <td>{!! Str::limit($data->description, '100', '..') !!}</td>
                                     <td>
-                                        <img src="{{ asset('uploads/' . $data->image) }}" alt="" width="50"
+                                        <img class="table_images" src="{{ asset('uploads/' . $data->image) }}" alt="" width="50"
                                             height="50">
                                     </td>
                                     <td>

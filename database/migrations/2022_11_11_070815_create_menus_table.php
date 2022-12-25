@@ -29,6 +29,7 @@ return new class extends Migration
             $table->text('title_slug')->nullable();
             $table->longText('content')->nullable();
             $table->string('external_link')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -33,35 +33,18 @@
                                                 <span>{{$value->date}}</span>
                                             </div>
                                             <div class="event-details">
-                                                <h6>{!! Str::limit($value->description, 50, '') !!}</h6>
+                                                <h6>{{ strip_tags(Str::limit($value->description, 150)) }}</h6>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                             @endforeach
-
-
                         </div>
 
                         <!-- pagination start  -->
                         <div class="d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link funBtn" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link funBtn" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            {{$news_template->links()}}
+
                         </div>
                         <!-- pagination end -->
                     </div>

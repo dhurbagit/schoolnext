@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->foreignId('academic_id')->constrained('beyond_academics')->onDelete('CASCADE');
             $table->string('images')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

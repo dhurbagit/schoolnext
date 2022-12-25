@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('school_name')->nullable();
+            $table->longText('google_map')->nullable();
+            $table->string('powered_by')->nullable();
+            $table->string('powered_by_link')->nullable();
+            $table->string('view_counter')->nullable();
             $table->string('after_banner_title')->nullable();
             $table->string('news_and_event_title')->nullable();
             $table->string('notice_board_title')->nullable();
@@ -30,9 +35,14 @@ return new class extends Migration
             $table->string('Phone_three')->nullable();
             $table->string('email')->nullable();
             $table->string('facebook')->nullable();
+            $table->string('Twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkin')->nullable();
             $table->string('youtube')->nullable();
+            $table->string('pinterest')->nullable();
+            $table->string('tumblr')->nullable();
+            $table->longText('message')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('hide')->nullable();
             $table->unsignedTinyInteger('type')->default(1);
             $table->unsignedInteger('order')->default(50);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

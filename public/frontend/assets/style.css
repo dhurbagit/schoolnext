@@ -1,0 +1,15 @@
+.download_img img {
+    width: 100%;
+}
+.download_item label {
+    text-align: center;
+    display: block;
+    color: black;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.download_item > a {
+    display: block;
+}

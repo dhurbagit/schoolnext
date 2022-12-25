@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('page_title')->nullable();
-            $table->string('page_description')->nullable();
+            $table->longText('page_description')->nullable();
             $table->string('title')->nullable();
             $table->string('image')->nullable();
             $table->string('date')->nullable();
-            $table->string('inner_description')->nullable();
+            $table->longText('inner_description')->nullable();
             $table->string('designation')->nullable();
             $table->boolean('type')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -4,17 +4,17 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Counter</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Counter</h5>
                     <a href="{{route('create.counter')}}" class="btn btn-primary">Create New</a>
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table m-b-0">
-                        <thead class="thead-light">
+                    <table class="table m-b-0" id="example">
+                        <thead class="thead-light" >
                             <tr>
                                 <th>#</th>
-                                <th>title</th>
+                                <th>Title</th>
                                 <th>Counter Number</th>
                                 <th>Action</th>
                             </tr>
@@ -23,7 +23,7 @@
                             @foreach ($list as $value)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $value->title }}</td>
+                                    <td>{{ Str::ucfirst($value->title) }}</td>
                                     <td>{{ $value->counter_number }}</td>
                                     <td>
                                         <a href="{{route('counter.edit', $value->id)}}" class="btn btn-danger"><i class="fas fa-edit"></i></a>

@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('message_title');
             $table->string('image');
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('type');
             $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

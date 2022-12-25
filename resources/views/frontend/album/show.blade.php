@@ -2,12 +2,14 @@
 @section('content')
     <main>
         <section id="photo__gallery-section">
-            <div class="top__header-wrappper">
+            <div class="top__header-wrappper"
+                style="background-image: url({{ asset('uploads/' . $menu->image) }}) !important;">
                 <div class="overlay">
                 </div>
                 <section id="subheader-title">
                     <div class="container">
-                        <h1>School Gallery</h1>
+                        <h1>{{ $menu->page_title }}</h1>
+                        {{-- @dd($mvo) --}}
                     </div>
                 </section>
             </div>

@@ -59,9 +59,38 @@ class FaqController extends Controller
         $faq_delete->delete();
         return redirect()->back()->with('message', 'Record deleted successfully!');
     }
-    public function faq_edit($id)
+    public function faq_update(Request $request, $id)
     {
-        $edit_faq = Faq_collection::findOrFail($id);
-        return view('admin.faq.index', compact('edit_faq'));
+        $request->validate([
+            'faq_head' => 'required',
+            'faq_detail' => 'required',
+
+        ]);
+        $update  = Faq_collection::find($id);
+        $input['faq_head'] = $request->faq_head;
+        $input['faq_detail'] = $request->faq_detail;
+        $input['hide'] = isset($request->hide_show[0]) ? 1 : 0;
+        $input['slug'] = Str::slug($request->faq_head);
+        $update->update($input);
+
+        return redirect()->back()->with('message', 'Record updated successfully!');
+
+    }
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'long_title' => 'required',
+
+        ]);
+        $update  = Faq::find($id);
+        $input['title'] = $request->title;
+        $input['description'] = $request->description;
+        $input['long_title'] = $request->long_title;
+        $input['slug'] = Str::slug($request->title);
+        $update->update($input);
+        return redirect()->back()->with('message', 'Record added successfully!');
     }
 }

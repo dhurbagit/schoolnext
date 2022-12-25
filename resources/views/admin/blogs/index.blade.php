@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Blog</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Blog</h5>
                     <a href="{{ route('blog.create') }}" class="btn btn-success">Create New</a>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                     @endif
                         @csrf
                         <div class="form-group">
-                            <label>Page Title</label>
+                            <label><b>Page Title</b></label>
                             <input class="form-control" type="text" name="page_title"
                                 value="{{ isset($update) ? $update->page_title : old('page_title') }}">
                             <span class="text-danger">
@@ -27,7 +27,7 @@
                             </span>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label><b>Description</b></label>
                             <textarea name="page_description" class="editor" id="" cols="30" rows="10">
                                     {{ isset($update) ? $update->page_description : old('page_description') }}
                                 </textarea>
@@ -46,11 +46,11 @@
                     </form>
                 </div>
                 <div class="table-responsive">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
-                                <th>title</th>
+                                <th>Title</th>
                                 <th>Description</th>
                                 <th>Feature Images</th>
                                 <th>Date</th>

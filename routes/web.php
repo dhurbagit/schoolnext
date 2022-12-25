@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AlbumController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\AlmuniController;
 use App\Http\Controllers\Admin\ClientController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DownloadController;
+use App\Http\Controllers\Admin\InquieryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\TeammemberController;
 use App\Http\Controllers\Admin\NoticeboardController;
@@ -37,12 +40,26 @@ use App\Http\Controllers\Admin\BeyondAcademicController;
 
 
 
-Route::get('/admin', function () {
-    return view('admin.layout.master');
-});
+Route::get('/admin', [UsersController::class, 'index'])->middleware('alreadyLoggedIn');
+Route::post('admin-login', [UsersController::class, 'LoginUser'])->name('admin-login');
+Route::get('admin-logout', [UsersController::class, 'LogoutUser'])->name('admin.logout');
+
+
+
 
 //Admin route
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () {
+
+    //dashboard
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.view');
+    //inquiry and online form
+    Route::get('inquiry-lists', [DashboardController::class, 'view'])->name('inquiry.lists');
+    Route::get('inquiry_next-lists', [DashboardController::class, 'view_inquiry_next'])->name('inquiry_next.lists');
+    Route::delete('inquiry_next-delete/{id}', [InquieryController::class, 'delete_inquiry_next'])->name('inquiry_next.delete');
+    Route::get('contactus_next-lists', [InquieryController::class, 'contactUs_view'])->name('contactus_next.lists');
+    Route::delete('contactUs-delete/{id}', [InquieryController::class, 'delete_contactUs'])->name('contactUs.delete');
+    Route::post('contactUs-reply/{id}', [InquieryController::class, 'email_reply'])->name('contactUs.reply');
+
 
     // sidebar route
     Route::get('/manage-slider', [SliderController::class, 'index'])->name('manage-slider');
@@ -151,9 +168,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     //faq
     Route::post('whyschool-save', [FaqController::class, 'store'])->name('whyschool.save');
+    Route::post('whyschool-update/{id}', [FaqController::class, 'update'])->name('whyschool.update');
     Route::post('faq-save', [FaqController::class, 'save'])->name('faq.save');
     Route::delete('faq-delete/{id}', [FaqController::class, 'faq_delete'])->name('faq.delete');
-    Route::get('faq-edit/{id}', [FaqController::class, 'faq_edit'])->name('faq.edit');
+    Route::put('faq-update/{id}', [FaqController::class, 'faq_update'])->name('faq.update');
 
     //chairman
     Route::post('chairman-save', [MessageController::class, 'store'])->name('chairman.save');
@@ -231,7 +249,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('g_downloads/{id}', [DownloadController::class, 'g_downloads_edit'])->name('g_downloads.edit');
     Route::put('g_downloads_edit/{id}', [DownloadController::class, 'g_downloads_update'])->name('g_downloads.update');
-    // Route::get()->name();
+
 
 
 });

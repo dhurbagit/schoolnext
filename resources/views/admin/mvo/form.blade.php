@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Vision Mission objective</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Vision Mission objective</h5>
                     <a href="{{ route('Manage.mvo') }}" class="btn btn-primary">View list</a>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 @endif
                 @csrf
                 <div class="form-group">
-                    <label>Title</label>
+                    <label><b>Title</b></label>
                     <input type="text" class="form-control" name="mvo_title"
                         value="{{ isset($mvo_edit) ? $mvo_edit->title : old('mvo_title') }}">
                     <span class="text-danger">
@@ -28,6 +28,7 @@
                     </span>
                 </div>
                 <div class="form-group">
+                    <label for=""><b>Description</b></label>
                     <textarea class="editor" name="editor2">{{ isset($mvo_edit) ? $mvo_edit->description : old('editor2') }}</textarea>
                     <span class="text-danger">
                         @error('editor2')
@@ -38,7 +39,7 @@
                 @if(isset($mvo_edit))
                 <button type="submit" class="btn btn-primary">Update</button>
                 @else
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save</button>
                 @endif
                 </form>
             </div>

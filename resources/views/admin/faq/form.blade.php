@@ -4,48 +4,67 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Faq</h4>
-                    <a href=" " class="btn btn-primary">List view</a>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Why school</h5>
+                    {{-- <a href=" " class="btn btn-primary">List view</a> --}}
                 </div>
             </div>
             <div class="card-body">
+                @if (isset($lists))
+                    <form action="{{ route('whyschool.update', $lists->id) }}" method="POST" enctype="multipart/form-data">
+                    @else
+                        <form action="{{ route('whyschool.save') }}" method="POST" enctype="multipart/form-data">
+                @endif
 
-                <form action="{{ route('whyschool.save') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" name="title"
-                            value="{{ isset($lists) ? $lists->title : old('title') }}">
-                        <span class="text-danger">
-                            @error('title')
-                                {{ $message }}
-                            @enderror
-                        </span>
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label><b>Title</b></label>
+                            <input type="text" class="form-control" name="title"
+                                value="{{ isset($lists) ? $lists->title : old('title') }}">
+                            <span class="text-danger">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="editor100" name="description" id="" cols="30" rows="10">
-                        {{ isset($lists) ? $lists->description : old('description') }}
-                    </textarea>
-                        <span class="text-danger">
-                            @error('description')
-                                {{ $message }}
-                            @enderror
-                        </span>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label><b>FAQ's Heading</b></label>
+                            <input type="text" class="form-control" name="long_title"
+                                value="{{ isset($lists) ? $lists->long_title : old('long_title') }}">
+                            <span class="text-danger">
+                                @error('long_title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>FAQ's Heading</label>
-                        <input type="text" class="form-control" name="long_title"
-                            value="{{ isset($lists) ? $lists->long_title : old('long_title') }}">
-                        <span class="text-danger">
-                            @error('long_title')
-                                {{ $message }}
-                            @enderror
-                        </span>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label><b>Description</b></label>
+                            <textarea class="editor100" name="description" id="" cols="30" rows="10">
+                                {{ isset($lists) ? $lists->description : old('description') }}
+                            </textarea>
+                            <span class="text-danger">
+                                @error('description')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
                     </div>
+                </div>
 
 
-                    <button type="submit" class="btn btn-success">Save</button>
+                @if (isset($lists))
+                <button type="submit" class="btn btn-success">Update</button>
+                @else
+                <button type="submit" class="btn btn-success">Save</button>
+            @endif
+
+
+
                 </form>
             </div>
         </div>

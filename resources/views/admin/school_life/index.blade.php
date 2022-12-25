@@ -12,7 +12,7 @@
 
 
                 <div class="table-responsive">
-                    <table class="table m-b-0">
+                    <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>

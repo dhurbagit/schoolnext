@@ -135,8 +135,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
-    <script src=""></script>
-    <script src=""></script>
+
     {{-- <script>
         CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor2');
@@ -196,21 +195,21 @@
             });
     </script>
     <script>
-        // ClassicEditor
-        //     .create(document.querySelector('.editor100'), {
-        //         licenseKey: '',
-        //     })
-        //     .then(editor => {
-        //         window.editor = editor;
-        //     })
-        //     .catch(error => {
-        //         console.error('Oops, something went wrong!');
-        //         console.error(
-        //             'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-        //         );
-        //         console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
-        //         console.error(error);
-        //     });
+        ClassicEditor
+            .create(document.querySelector('.editor100'), {
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
+                console.error(error);
+            });
     </script>
     <script>
         $(document).ready(function() {
@@ -250,6 +249,8 @@
             });
         });
     </script>
+
+   
 
 </body>
 

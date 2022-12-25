@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slogan')->nullable();
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

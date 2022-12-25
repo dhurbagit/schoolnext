@@ -13,6 +13,11 @@ class Menu extends Model
         'footer' => '2',
         'header_footer' => '3',
         'mega_menu' => '4',
+        'top_ribbon' => '5',
+        'feature_links' => '6',
+        'header_feature' => '7',
+        'footer_ribbon' => '8',
+        'feature_ribbon' => '9',
     ];
 
     const contentType  = ['home','page', 'beyond academic' ,'about','contact','blog','gallery','news events',
@@ -20,7 +25,11 @@ class Menu extends Model
                             'principal message',
                             'management team',
                             'teacher and staff',
-                            'Video'
+                            'Video',
+                            'Pass Out Student',
+                            'Download files',
+                            'FAQs (& why school)',
+                            'Contact Us'
                             ];
 
     protected $fillable = [

@@ -17,7 +17,7 @@ class NoticeboardController extends Controller
 
     public function view()
     {
-        $list_noticeboard = Noticeboard::get();
+        $list_noticeboard = Noticeboard::latest()->get();
         return view('admin.noticeboard.index', compact('list_noticeboard'));
 
     }

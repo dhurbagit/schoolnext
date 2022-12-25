@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('content_id')->constrained('contents')->onDelete('CASCADE');
             $table->string('title')->nullable();
             $table->string('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

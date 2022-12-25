@@ -5,15 +5,11 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Slider</h4>
-                    <a href="{{route('manage-slider')}}" class="btn btn-primary">List view</a>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Slider</h5>
+                    <a href="{{ route('manage-slider') }}" class="btn btn-primary">List view</a>
                 </div>
             </div>
             <div class="card-body">
-                 
-
-
-
                 @if (isset($slider_edit))
                     <form action="{{ route('editSlider.index', $slider_edit->id) }}" method="POST"
                         enctype="multipart/form-data">
@@ -21,60 +17,73 @@
                         <form action="{{ route('createSlider.index') }}" method="POST" enctype="multipart/form-data">
                 @endif
                 @csrf
-                <div class="display_images">
-                    <img id="output"
-                        @isset($slider_edit)
-                        src="{{ asset('slider/' . $slider_edit->image) }}"
-                        @endisset
-                        width="200" />
-                </div>
-                <div class="form-group">
-                    <label>Upload</label>
-                    <input type="file" name="slider_image" accept="image/*" class="form-control"
-                        onchange="loadFile(event)">
-                    <span class="text-danger">
-                        @error('slider_image')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" name="title"
-                        value="{{ isset($slider_edit) ? $slider_edit->title : old('title') }}">
-                    <span class="text-danger">
-                        @error('title')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
-                <div class="form-group">
-                    <label>Slider Caption</label>
-                    <input type="text" class="form-control" name="slider_caption"
-                        value="{{ isset($slider_edit) ? $slider_edit->slider_caption : old('slider_caption') }}">
-                    <span class="text-danger">
-                        @error('slider_caption')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
-                <div class="form-group">
-                    <label>Url</label>
-                    <input type="text" class="form-control" name="url_link"
-                        value="{{ isset($slider_edit) ? $slider_edit->url : old('url_link') }}">
-                </div>
-                <div class="form-group">
-                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch3" name="hide_show"
-                            value="0"
-                            @isset($slider_edit) @if ($slider_edit->hide == 1) checked @endif @endisset>
-                        <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label><b>Title</b></label>
+                            <input type="text" class="form-control" name="title"
+                                value="{{ isset($slider_edit) ? $slider_edit->title : old('title') }}" placeholder="Slider Title">
+                            <span class="text-danger">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Slider Caption</b></label>
+                            <input type="text" class="form-control" name="slider_caption"
+                                value="{{ isset($slider_edit) ? $slider_edit->slider_caption : old('slider_caption') }}" placeholder="Slider Caption">
+                            <span class="text-danger">
+                                @error('slider_caption')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            <label><b>Upload</b></label>
+                            <input type="file" name="slider_image" accept="image/*" class="form-control"
+                                onchange="loadFile(event)">
+                            <span class="text-danger">
+                                @error('slider_image')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label><b>External Link</b></label>
+                            <input type="text" class="form-control" name="url_link" placeholder="External Url Link"
+                                value="{{ isset($slider_edit) ? $slider_edit->url : old('url_link') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <label for=""><b>Image Placeholder</b></label>
+                        <div class="display_images">
+                            <img id="output"
+                                @isset($slider_edit)
+                                src="{{ asset('slider/' . $slider_edit->image) }}"
+                                @endisset
+                                width="200" />
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch3" name="hide_show"
+                                    value="0"
+                                    @isset($slider_edit) @if ($slider_edit->hide == 1) checked @endif @endisset>
+                                <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 @if (isset($slider_edit))
                     <button type="submit" class="btn btn-info">Update</button>
                 @else
-                    <button type="submit" class="btn btn-info">Save</button>
+                    <button type="submit" class="btn btn-info" id="btn_disabe_on_save">Save</button>
                 @endif
                 </form>
             </div>

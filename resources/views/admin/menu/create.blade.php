@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Menu</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Menu</h5>
                     <a href="{{route('menu.view')}}" class="btn btn-primary">List view</a>
                 </div>
             </div>
@@ -15,42 +15,51 @@
                     @csrf
                     @method('post')
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Menu Name</label>
+                                <label><b>Menu Name</b></label>
                                 <input type="text" class="form-control" name="name">
                             </div>
-                        </div>
-                        <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Page Title</label>
+                                <label><b>Page Title</b></label>
                                 <input type="text" class="form-control" name="page_title">
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="about_image_wrapper">
-                                <img src="" alt="" id="placeholder_image">
-                            </div>
+                        <div class="col-lg-4">
+
                             <div class="form-group">
-                                <label>Main Image:</label>
+                                <label><b>Main Image</b></label>
                                 <input type="file" name="image" accept="image/*" class="form-control"
                                     onchange="loadFile(event)">
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="about_image_wrapper">
-                                <img src="" alt="" id="placeholder_image1">
-                            </div>
+
                             <div class="form-group">
-                                <label>Banner Image:</label>
+                                <label><b>Banner Image</b></label>
                                 <input type="file" name="banner_image" accept="image/*" class="form-control"
                                     onchange="loadFile1(event)">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
+                            <div class="flex-box">
+                                <div class="content_box_wrapper">
+                                    <label><b>Main Image</b></label>
+                                    <div class="display_images">
+                                        <img src="" alt="" id="placeholder_image">
+                                    </div>
+                                </div>
+                                <div class="content_box_wrapper">
+                                    <label><b>Banner Image</b></label>
+                                    <div class="display_images">
+                                        <img src="" alt="" id="placeholder_image1">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Menu Category</label>
-                                <select class="form-control select" name="menu_category">
+                                <label><b>Menu Category (Page Template)</b></label>
+                                <select class="form-control js-example-basic-single select2" name="menu_category">
                                     <option value="">--Select a category--</option>
                                     @foreach ($menu_categories as $category)
                                         <option value="{{ $category }}">{{ ucwords($category) }}</option>
@@ -58,69 +67,64 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Main or Child Menu</label>
-                                <select class="form-control select main_child" name="main_child">
+                                <label><b>Main or Child Menu</b></label>
+                                <select class="form-control js-example-basic-single select2 main_child" name="main_child">
                                     <option>-- Select --</option>
                                     <option value="0">Main Menu</option>
                                     <option value="1">Chlid Menu</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6" id="parent" style="display: none;">
-                            <div class="form-group">
-                                <label>Under Main Menu:</label>
-                                <select class="form-control select" name="parent_id">
+                        <div class="col-lg-4">
+                            <div class="form-group" id="parent" style="display: none">
+                                <label><b>Under Main Menu</b></label>
+                                <select class="form-control js-example-basic-single select2" name="parent_id">
                                     <option value="">--Select a Parent Menu--</option>
                                     @foreach ($parent_menus as $menu)
                                         <option value="{{ $menu->id }}">{{ $menu->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-lg-6" id="header_footer" style="display: none;">
-                            <div class="form-group">
-                                <label>Show In</label>
-                                <select class="form-control select" name="show_in">
+                            <div class="form-group" id="header_footer">
+                                <label><b>Show In</b></label>
+                                <select class="form-control js-example-basic-single select2" name="show_in">
                                     <option value="">--Select where to show--</option>
                                     <option value="1" selected>Header</option>
                                     <option value="2">Footer</option>
                                     <option value="3">Header and Footer</option>
                                     <option value="4">Mega Menu</option>
+                                    <option value="5">Top Ribbon</option>
+                                    <option value="6">Feature Link</option>
+                                    <option value="7">Header and Feature</option>
+                                    <option value="8">Footer and Ribbon</option>
+                                    <option value="9">Feature and Ribbon</option>
+
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch3"
-                                        name="active_mega">
-                                    <label class="custom-control-label" for="customSwitch3">Active as Mega menu</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch4"
                                         name="publish_status">
-                                    <label class="custom-control-label" for="customSwitch4">Hide/Show</label>
+                                    <label class="custom-control-label" for="customSwitch4"><b>Hide/Show</b></label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea name="editor1"></textarea>
+                                <label><b>Description</b></label>
+                                <textarea class="editor" name="editor1"></textarea>
                             </div>
                         </div>
-
                         <div class="col-lg-12">
                             <button class="btn btn-success">Save</button>
                         </div>
 
                     </div>
+
                 </form>
             </div>
         </div>

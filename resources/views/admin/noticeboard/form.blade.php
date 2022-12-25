@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
-                    <h4 class="card-title">Notice board</h4>
+                    <h5 class="text-uppercase mb-0 mt-0 page-title">Notice board</h5>
                     <a href="{{route('manage.notice')}}" class="btn btn-primary">List view</a>
                 </div>
             </div>
@@ -20,7 +20,7 @@
 
                 @csrf
                 <div class="form-group">
-                    <label>Date</label>
+                    <label><b>Date</b></label>
                     <input type="date" class="form-control" name="date"
                         value="{{ isset($edit_noticeboard) ? $edit_noticeboard->date : old('date') }}">
                     <span class="text-danger">
@@ -30,7 +30,7 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
+                    <label><b>Description</b></label>
                     <textarea class="editor" name="editor2">{{ isset($edit_noticeboard) ? $edit_noticeboard->description : old('editor2') }}</textarea>
                     <span class="text-danger">
                         @error('editor2')
