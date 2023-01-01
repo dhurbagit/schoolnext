@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h5 class="text-uppercase mb-0 mt-0 page-title">Contact Us</h5>
-                    <a href="{{ route('Almuni.view') }}" class="btn btn-success">List New</a>
+                     
                 </div>
             </div>
             <div class="card-body">

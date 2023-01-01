@@ -1,9 +1,23 @@
+<style>
+    .footer-section .footer__links ul li a::after,
+    .footer-section .footer__title::after {
+
+    background-color: {{ $themeOption->primary_color ?? '' }};
+
+}
+.footer-section .school-address li span:hover,
+.footer-section .school-address li span:hover,
+.footer-section .school-address li i,
+.copyright .content .social-icons a{
+    color: {{ $themeOption->primary_color ?? '' }};
+}
+</style>
 <footer id="footer">
     <div class="footer-section py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <div class="footer__title">
+                    <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
                         <span>Brochure</span>
                     </div>
                     <div class="brochure mb-3">
@@ -19,15 +33,16 @@
                                 alt='Website Hit Counter'></a><br /></div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <div class="footer__title">
+                    <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
                         <span>Quick Links</span>
                     </div>
                     <div class="footer__links">
                         <ul>
+
                             @foreach ($fmenus as $footer_menu)
                                 <li>
                                     <a
-                                        @if ($footer_menu->category_slug == 'page') href="{{ $footer_menu->external_link ?? route('page', $footer_menu->title_slug) }}" @else
+                                        @if ($footer_menu->category_slug == 'page' || $footer_menu->category_slug == 'layout page') href="{{ $footer_menu->external_link ?? route('page', $footer_menu->title_slug) }}" @else
                                     href="{{ $footer_menu->external_link ?? route('category', $footer_menu->category_slug) }}" @endif>{{ ucfirst($footer_menu->name) }}</a>
                                 </li>
                             @endforeach
@@ -35,14 +50,14 @@
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <div class="footer__title">
+                    <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
                         <span>Feature Links</span>
                     </div>
                     <div class="footer__links">
                         <ul>
                             @foreach ($feature_link as $mainMenu)
                                 <li class="drop-list">
-                                    <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                                    <a @if ($mainMenu->category_slug == 'page' ||$mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
                                   href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                         class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
@@ -55,7 +70,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <div class="footer__title">
+                    <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
                         <span>Contact US</span>
                     </div>
                     <div class="slogan mb-2">

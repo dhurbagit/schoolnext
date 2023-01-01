@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('faq_collections', function (Blueprint $table) {
             $table->id();
             $table->string('faq_head');
-            $table->string('faq_detail');
+            $table->longText('faq_detail');
             $table->string('slug');
             $table->boolean('hide')->default(0);
             $table->softDeletes();

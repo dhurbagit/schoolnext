@@ -6,6 +6,7 @@ use Session;
 use App\Models\Menu;
 use App\Models\User;
 use App\Models\Setting;
+use App\Models\ThemeOption;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
 
         View::share('setting', Setting::first());
+        View::share('themeOption', ThemeOption::first());
 
         //sharing session id
         view()->composer('*', function ($view)
@@ -51,13 +53,12 @@ class AppServiceProvider extends ServiceProvider
         View::share('menus', $menus);
 
         // footer menu
-        $fmenus = Menu::where(['parent_id' => null, 'publish_status' => 1])->whereNotIn('header_footer', ['1','4'])
+        $fmenus = Menu::where(['parent_id' => null, 'publish_status' => 1])->whereNotIn('header_footer', ['1', '4', '5', '6','7', '9'])
             ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'title_slug')
-            ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
             ->orderBy('position', 'ASC')
-            ->take(4)
             ->get();
         View::share('fmenus', $fmenus);
+        // dd($fmenus);
 
         // mega menu
         $mega_menus = Menu::query()

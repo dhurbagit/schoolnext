@@ -198,11 +198,22 @@ h6 {
 .pagination .page-item .page-link {
   -webkit-transition: 0.3s all ease-in-out;
   transition: 0.3s all ease-in-out;
+  color: #000;
 }
 
 .pagination .page-item .page-link:hover {
-  background-color: orange;
-  color: #fff !important;
+    background-color: orange;
+    color: #fff !important;
+    border: 1px solid orange;
+    border-left :1px solid white;
+    border-right :1px solid white;
+}
+.pagination .page-item.active .page-link {
+    background-color: orange !important;
+    color: #fff !important;
+    border: 1px solid orange;
+    border-left :1px solid white;
+    border-right :1px solid white;
 }
 
 #buttonTop {

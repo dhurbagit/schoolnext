@@ -1,6 +1,6 @@
 <header>
     <div id="main-header">
-        <div class="top_header">
+        <div class="top_header" style="background-color: {{ $themeOption->primary_color ?? '' }}">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
@@ -70,11 +70,10 @@
                 <div class="logo-wrapper">
                     <a href="{{ url('/') }}">
                         <div class="logo">
-                            <img
-                            @isset($setting)
-                                src="{{asset('setting/'. $setting->logo)}}"
+                            <img @isset($setting)
+                                src="{{ asset('setting/' . $setting->logo) }}"
                             @endisset
-                            alt="" width="100%" height="100%">
+                                alt="" width="100%" height="100%">
                         </div>
                     </a>
                 </div>
@@ -84,7 +83,7 @@
                 <ul class="menu-items">
                     @foreach ($b_menus as $mainMenu)
                         <li>
-                            <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                 @else
                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                 class="menu-item first-item expand-btn"> {{ $mainMenu->name }}</a>
@@ -103,7 +102,7 @@
                                                                 <li><span class="fa-li"><i
                                                                             class="fa-solid fa-arrow-right-long"></i></span>
                                                                     <a
-                                                                        @if ($child->category_slug == 'page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                                        @if ($child->category_slug == 'page' || $child->category_slug == 'layout page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                                          @else
                                                                           href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
                                                                             class="sub__links"></i>
@@ -124,7 +123,16 @@
                                                             {!! $mainMenu->content !!}
                                                         </p>
                                                     </div>
-                                                    <a href="about-us.html" class="btn nav__outline">Learn More</a>
+                                                    @isset($mainMenu)
+                                                        @if ($mainMenu->category_slug == 'layout page' || $mainMenu->category_slug == 'page')
+                                                            <a href="{{ route('page', $mainMenu->title_slug) }}"
+                                                                class="btn nav__outline">Learn More</a>
+                                                        @else
+                                                            <a href="{{ route('category', $mainMenu->category_slug) }}"
+                                                                class="btn nav__outline">Learn More</a>
+                                                        @endif
+                                                    @endisset
+
                                                 </section>
                                             </div>
                                             <div class="col-lg-4 col-md-0"></div>
@@ -138,7 +146,7 @@
 
                     @foreach ($menus as $mainMenu)
                         <li class="drop-list">
-                            <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
                                   href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                 class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
@@ -148,7 +156,7 @@
                                     <ul>
                                         @foreach ($mainMenu->children as $child)
                                             <li><a
-                                                    @if ($child->category_slug == 'page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                    @if ($child->category_slug == 'page' || $child->category_slug == 'layout page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                  @else
                                                   href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
                                                         class="fa-solid fa-arrow-right-long"></i>
@@ -184,7 +192,8 @@
                 <div class="text-center mb-4">
                     <h2 class="mb-0">Inquiry Form</h2>
                     <div class="d-flex justify-content-center">
-                        <img src="assets/Images/line2.png" width="240" height="100%" alt="">
+                        <img src="{{ asset('frontend/assets/Images/line2.png') }}" width="240" height="100%"
+                            alt="">
                     </div>
                 </div>
                 <form action="{{ route('inquiry_next.save') }}" method="POST">

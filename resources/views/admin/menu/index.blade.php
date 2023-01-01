@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h3>Footer Menu</h3>
+                        <h3>Quick Link Menu</h3>
                 <div class="menu-box">
                     @if ($menu_footer->count() > 0)
 

@@ -53,7 +53,9 @@
             </div>
 
             <!-- pagination start  -->
-            {{$beyond_content->render()}}
+            <div class="d-flex justify-content-center">
+                {{$beyond_content->render()}}
+            </div>
             <!-- pagination end -->
             <button id="buttonTop" class="btn btn-top" title="Back to Top"><i class="fa-solid fa-caret-up"></i></button>
         </section>

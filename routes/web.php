@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\TeammemberController;
 use App\Http\Controllers\Admin\NoticeboardController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\ThemeOptionController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\BeyondAcademicController;
 
@@ -50,6 +51,7 @@ Route::get('admin-logout', [UsersController::class, 'LogoutUser'])->name('admin.
 //Admin route
 Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () {
 
+
     //dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.view');
     //inquiry and online form
@@ -59,6 +61,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('contactus_next-lists', [InquieryController::class, 'contactUs_view'])->name('contactus_next.lists');
     Route::delete('contactUs-delete/{id}', [InquieryController::class, 'delete_contactUs'])->name('contactUs.delete');
     Route::post('contactUs-reply/{id}', [InquieryController::class, 'email_reply'])->name('contactUs.reply');
+    Route::post('inquiry-reply/{id}', [InquieryController::class, 'inquiry_email_reply'])->name('inquiry.reply');
+    Route::get('student-Info/{id}', [InquieryController::class, 'studentDetail'])->name('studentInfo');
+    Route::delete('onlineform/{id}',[InquieryController::class, 'delete_record'] )->name('onlineform.delete');
 
 
     // sidebar route
@@ -85,6 +90,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('manage-faq', [FaqController::class, 'view'])->name('manage.faq');
     Route::get('chairman-message',[MessageController::class, 'index_chairman'])->name('chairman.message');
     Route::get('principal-message',[MessageController::class, 'index_principal'])->name('principal.message');
+    Route::get('theme-option', [ThemeOptionController::class, 'index'])->name('theme.option');
 
 
     // Slider
@@ -250,6 +256,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('g_downloads/{id}', [DownloadController::class, 'g_downloads_edit'])->name('g_downloads.edit');
     Route::put('g_downloads_edit/{id}', [DownloadController::class, 'g_downloads_update'])->name('g_downloads.update');
 
+    Route::post('themeOption-save', [ThemeOptionController::class, 'store'])->name('themeOption.save');
+    Route::put('themeOption-update/{id}', [ThemeOptionController::class, 'update'])->name('themeOption.update');
 
 
 });

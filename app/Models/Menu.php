@@ -20,7 +20,7 @@ class Menu extends Model
         'feature_ribbon' => '9',
     ];
 
-    const contentType  = ['home','page', 'beyond academic' ,'about','contact','blog','gallery','news events',
+    const contentType  = ['home','page', 'layout page', 'beyond academic' ,'about','contact','blog','gallery','news events',
                             'chairman message',
                             'principal message',
                             'management team',
@@ -29,7 +29,8 @@ class Menu extends Model
                             'Pass Out Student',
                             'Download files',
                             'FAQs (& why school)',
-                            'Contact Us'
+                            'Contact Us',
+                            'School Life'
                             ];
 
     protected $fillable = [

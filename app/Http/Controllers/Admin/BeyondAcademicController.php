@@ -26,13 +26,13 @@ class BeyondAcademicController extends Controller
     }
     public function store(Request $request)
     {
+        dd($request->all());
 
         $request->validate([
             'title' => 'required',
             'editor1' => 'required',
             'feature_image' => 'required|mimes:png,jpg,svg,webp,jpeg',
-            'small_image' => 'required',
-            'small_title' => 'required',
+
         ]);
 
         // dd($request->all());
@@ -47,9 +47,12 @@ class BeyondAcademicController extends Controller
 
         if (!empty($request->small_title && $request->small_image)) {
 
-            foreach (array_combine($request->small_title, $request->small_image) as $t_text => $image) {
-                $imgName = $image->store('beyoundgallery', 'uploads');
-                $beyound->text_title()->create(['title' => $t_text, 'images' => $imgName]);
+            foreach($request->small_title as $index => $title){
+                $imgName = $request->small_image[$index]->store('beyoundgallery', 'uploads');
+                $beyound->text_title()->create(
+                    ['title' => $title,
+                    'images' => $imgName
+                ]);
             }
         }
         return redirect()->back()->with('message', 'Record added successfully!');
@@ -57,10 +60,10 @@ class BeyondAcademicController extends Controller
     }
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'title' => 'required',
             'editor1' => 'required',
-            'small_title' => 'required',
         ]);
         $input['hide'] = isset($request->hide_show[0]) ? 1 : 0;
         $input['title_category_slug'] = Str::slug($request->title);
@@ -79,9 +82,17 @@ class BeyondAcademicController extends Controller
         if ($request->hasFile('small_image') && $request->small_title) {
             // dd($request->small_title, $request->small_image);
 
-            foreach (array_combine($request->small_title, $request->small_image) as $t_text => $image) {
-                $imgName = $image->store('beyoundgallery', 'uploads');
-                $album->text_title()->create(['title' => $t_text, 'images' => $imgName]);
+            // foreach (array_combine($request->small_title, $request->small_image) as $t_text => $image) {
+            //     $imgName = $image->store('beyoundgallery', 'uploads');
+            //     $album->text_title()->create(['title' => $t_text, 'images' => $imgName]);
+            // }
+
+            foreach($request->small_title as $index => $title){
+                $imgName = $request->small_image[$index]->store('beyoundgallery', 'uploads');
+                $album->text_title()->create(
+                    ['title' => $title,
+                    'images' => $imgName
+                ]);
             }
         }
 

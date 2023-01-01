@@ -8,9 +8,9 @@
                     <div class="card">
                         <div class="card-body p-5">
                             <div class="school__details text-center mb-4">
-                                <h2 class="mb-0">GUINNESS PUBLIC SECONDARY SCHOOL</h2>
-                                <p class="mb-0">Gokarneshwor-8, Kathmandu | Phone: +977 01-5168046 / +977 9841501347</p>
-                                <p class="mb-0">Email: info@genniess.edu.np</p>
+                                <h2 class="mb-0">{{$setting->school_name}}</h2>
+                                <p class="mb-0">{{$setting->address}} | {{$setting->Phone_one}}</p>
+                                <p class="mb-0">{{$setting->email}}</p>
                             </div>
                             <hr>
                             <p class="text-danger">Fields with (*) are compulsory.</p>

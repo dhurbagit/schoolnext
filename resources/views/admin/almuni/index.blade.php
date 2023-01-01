@@ -51,7 +51,7 @@
                         </div>
                         <div class="card_child">
                             @if (isset($edit_gallery))
-                                <form action="{{ route('almuni.gallery.update', $edit_gallery->id ) }}" method="POST"
+                                <form action="{{ route('almuni.gallery.update', $edit_gallery->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @method('put')
                                 @else
@@ -61,19 +61,19 @@
 
                             @csrf
                             <div class="form-group">
-                                <select class="js-example-basic-single select2 form-control" name="almuni_id">
+                                <select class="js-example-basic-single select2 form-control" name="almuni_id" id="almuni_id">
                                     <option selected>--select--</option>
                                     @foreach ($t_list as $type)
-                                        <option value="{{ $type->id }}"{{@$edit_gallery->almuni_id === $type->id ? 'selected':''}} >{{ $type->title }}</option>
+                                        <option
+                                            value="{{ $type->id }}"{{ @$edit_gallery->almuni_id === $type->id ? 'selected' : '' }}>
+                                            {{ $type->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="flex_wrapper">
                                     <div class="image-frame">
-                                        <img
-                                            @if(@isset($edit_gallery))
-                                                src="{{asset('uploads/'. $edit_gallery->image)}}"
+                                        <img @if (@isset($edit_gallery)) src="{{ asset('uploads/' . $edit_gallery->image) }}"
                                             @endisset
                                         alt="">
                                     </div>
@@ -82,35 +82,33 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" name="name" value="{{isset($edit_gallery)? $edit_gallery->name : old('name')}}" class="form-control">
+                                <input type="text" name="name" value="{{ isset($edit_gallery) ? $edit_gallery->name : old('name') }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Batch</label>
 
                                 <select class="js-example-basic-single select2 form-control" name="batch">
-                                    <option selected>--select--</option>
+                                    <option>--select--</option>
                                     @foreach ($t_list as $type)
-                                        <option value="{{ $type->date }}" {{$type->date === @$edit_gallery->batch ? 'selected' : '' }} >{{ $type->date }}</option>
+                                        <option value="{{ $type->date }}" {{ $type->date === @$edit_gallery->batch ? 'selected' : '' }}>{{ $type->date }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Percentage</label>
-                                <input type="text" name="percentage" value="{{isset($edit_gallery)? $edit_gallery->percentage : old('percentage')}}" class="form-control">
+                                <input type="text" name="percentage" value="{{ isset($edit_gallery) ? $edit_gallery->percentage : old('percentage') }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="">Class</label>
-                                <input type="text" name="class" value="{{isset($edit_gallery)? $edit_gallery->class : old('class')}}" class="form-control">
+                                <input type="text" name="class" value="{{ isset($edit_gallery) ? $edit_gallery->class : old('class') }}" class="form-control">
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch3" name="hide_show"
                                      @isset($edit_gallery)
                                      @if ($edit_gallery->hide == 1)
-                                     checked
-                                     @endif
-                                     @endisset
-                                        >
+                                     checked @endif
+                                        @endisset>
                                     <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
                                 </div>
                             </div>
@@ -143,7 +141,8 @@
                                             <td>{{ $data->date }}</td>
                                             <td>{{ $data->A_images->count('image') }} /Student's</td>
                                             <td>
-                                                <a href="{{ route('almuni.edit', $data->id) }}" class="btn btn-success">
+                                                <a href="{{ route('almuni.edit', $data->id) }}"
+                                                    class="btn btn-success">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <button type="button" class="btn btn-danger" data-toggle="modal"
@@ -219,10 +218,10 @@
                                             <td>{{ $data->class }}</td>
                                             <td>
 
-                                                @if($data->hide == 1)
-                                                <span class="badge badge-success">Active</span>
+                                                @if ($data->hide == 1)
+                                                    <span class="badge badge-success">Active</span>
                                                 @else
-                                                <span class="badge badge-danger">Deactive</span>
+                                                    <span class="badge badge-danger">Deactive</span>
                                                 @endif
 
                                             </td>
@@ -300,4 +299,5 @@
             }
         }
     </script>
+
 @endpush

@@ -74,11 +74,10 @@
                                     @foreach ($slider as $slideshow)
                                         <div class="slide">
                                             <div class="slide__inner"
-                                                style="background-image: url({{ asset('slider/' . $slideshow->image) }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                                style="background-image: url('{{ asset('slider/' . $slideshow->image) }}') !important; background-position: center; background-size: cover; background-repeat: no-repeat;">
                                                 <div class="slide__text-wrap">
                                                     <div class="slide__text"
-                                                        data-typed="{{ $slideshow->slider_caption }}
-                                            ">
+                                                        data-typed="{{ $slideshow->slider_caption }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,10 +121,10 @@
                             @foreach ($happy_counter as $counter)
                                 <div class="number__wrapper numbers">
                                     <div class="top__header-holder {{ $loop->iteration == 3 ? '' : 'border__right' }} ">
-                                        <h4>{{ $counter->title }}</h4>
+                                        <h4 style="color: {{ $themeOption->primary_color ?? '' }}">{{ $counter->title }}</h4>
                                     </div>
                                     <div class="bottom__number-holder">
-                                        <h1><span>{{ $counter->counter_number }}</span>+</h1>
+                                        <h1 style="color: {{ $themeOption->primary_color ?? '' }}"><span>{{ $counter->counter_number }}</span>+</h1>
                                     </div>
                                 </div>
                             @endforeach
@@ -293,7 +292,7 @@
                                             @foreach ($testimonial as $test)
                                                 <div class="swiper-slide">
                                                     <div class="mb-4">
-                                                        {!! Str::limit($test->description, 300, '...') !!}
+                                                        {!! Str::limit($test->description, 220, '...') !!}
                                                     </div>
                                                     <div class="user__wrapper">
                                                         <div class="d-flex align-items-center">

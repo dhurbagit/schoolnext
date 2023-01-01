@@ -151,6 +151,10 @@
                     <a href="{{ route('setting') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
                             alt="icon"> <span>Setting</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('theme.option') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
+                            alt="icon"> <span>Theme Option</span></a>
+                </li>
                 {{-- <li>
                     <a href="{{route('create.faq')}}">
                         <img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"

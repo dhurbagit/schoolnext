@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/style.css')}}">
     <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <title>School Website</title>
 </head>
 

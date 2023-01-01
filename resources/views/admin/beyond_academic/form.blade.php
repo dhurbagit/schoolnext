@@ -71,8 +71,7 @@
                                                     checked
                                                     @endif
                                                 @endisset
-                                                    class="custom-control-input" id="customSwitch3" name="hide_show"
-                                                    value="0">
+                                                    class="custom-control-input" id="customSwitch3" name="hide_show">
                                                 <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
                                             </div>
                                         </div>

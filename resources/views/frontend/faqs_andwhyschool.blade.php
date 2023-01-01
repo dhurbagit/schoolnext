@@ -17,11 +17,11 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-lg-9 col-md-12">
                         <div class="why__us-details mb-5">
-                            <h5>{{ $whyschool->title }}</h5>
-                            {{ strip_tags($whyschool->description) }}
+                            <h5>{{ $whyschool->title ?? '' }}</h5>
+                            {{ strip_tags($whyschool->description ?? '') }}
                         </div>
                         <div class="faq__title">
-                            <h4>{{ $whyschool->long_title }}</h4>
+                            <h4>{{ $whyschool->long_title ?? '' }}</h4>
                         </div>
                         <div class="accordion mb-5" id="accordionExample">
                             <div class="accordion__wrapper">
@@ -54,18 +54,18 @@
                             <div class="slide__menu-bar mb-3">
                                 <ul>
                                     <li>
-                                        <a href="#" class="d-flex justify-content-between">
+                                        <a href="{{ route('inquiryForm.open') }}" class="d-flex justify-content-between">
                                             <span>Apply Online Now</span>
                                             <span><i class="fa-solid fa-chevron-right"></i></span>
                                         </a>
                                     </li>
-                                    <hr>
-                                    <li>
+                                    {{-- <hr> --}}
+                                    {{-- <li>
                                         <a href="facility.html" class="d-flex justify-content-between">
                                             <span>Facility</span>
                                             <span><i class="fa-solid fa-chevron-right"></i></span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                             <div class="slide__menu-bar">

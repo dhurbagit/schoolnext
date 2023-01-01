@@ -101,15 +101,15 @@
                                     <option value="">--Select where to show--</option>
                                     <option value="1" {{ $edit_menu->header_footer == 1 ? 'selected' : '' }}>Header
                                     </option>
-                                    <option value="2" {{ $edit_menu->header_footer == 2 ? 'selected' : '' }}>Footer
+                                    <option value="2" {{ $edit_menu->header_footer == 2 ? 'selected' : '' }}>Quick LInk
                                     </option>
                                     <option value="3" {{ $edit_menu->header_footer == 3 ? 'selected' : '' }}>Header
-                                        and Footer</option>
+                                        and Quick LInk</option>
                                     <option value="4" {{ $edit_menu->header_footer == 4 ? 'selected' : '' }}>Mega Menu</option>
                                     <option value="5" {{ $edit_menu->header_footer == 5 ? 'selected' : '' }}>Top Ribbon</option>
                                     <option value="6" {{ $edit_menu->header_footer == 6 ? 'selected' : '' }}>Feature Link</option>
                                     <option value="7" {{ $edit_menu->header_footer == 7 ? 'selected' : '' }}>Header and Feature</option>
-                                    <option value="8" {{ $edit_menu->header_footer == 8 ? 'selected' : '' }}>Footer and Ribbon</option>
+                                    <option value="8" {{ $edit_menu->header_footer == 8 ? 'selected' : '' }}>Quick LInk and Ribbon</option>
                                     <option value="9" {{ $edit_menu->header_footer == 9 ? 'selected' : '' }}>Feature and Ribbon</option>
 
                                 </select>

@@ -92,13 +92,13 @@
                                 <select class="form-control js-example-basic-single select2" name="show_in">
                                     <option value="">--Select where to show--</option>
                                     <option value="1" selected>Header</option>
-                                    <option value="2">Footer</option>
-                                    <option value="3">Header and Footer</option>
+                                    <option value="2">Quick LInk</option>
+                                    <option value="3">Header and Quick LInk</option>
                                     <option value="4">Mega Menu</option>
                                     <option value="5">Top Ribbon</option>
                                     <option value="6">Feature Link</option>
                                     <option value="7">Header and Feature</option>
-                                    <option value="8">Footer and Ribbon</option>
+                                    <option value="8">Quick LInk and Ribbon</option>
                                     <option value="9">Feature and Ribbon</option>
 
                                 </select>

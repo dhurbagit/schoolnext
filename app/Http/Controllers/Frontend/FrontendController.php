@@ -11,6 +11,7 @@ use App\Models\Video;
 use App\Models\Almuni;
 use App\Models\Client;
 use App\Models\Slider;
+use App\Models\Content;
 use App\Models\Counter;
 use App\Models\Gallery;
 use App\Models\Setting;
@@ -20,7 +21,6 @@ use App\Models\Teammember;
 use App\Models\MessageFrom;
 use App\Models\Noticeboard;
 use App\Models\Testimonial;
-use Illuminate\Http\Request;
 use App\Models\AlmuniGallery;
 use App\Models\BeyondAcademic;
 use App\Models\Faq_collection;
@@ -53,9 +53,16 @@ class FrontendController extends Controller
 
     public function page($title)
     {
+        //    if();
 
-        $menu_content = Menu::where('title_slug', $title)->first();
-        return view('frontend.general', compact('menu_content'));
+        $menu_content = Menu::where(['category_slug' => 'layout page', 'title_slug' => $title])->first();
+
+        if ($menu_content) {
+            return view('frontend.layout_page', compact('menu_content'));
+        } else {
+            $menu_content = Menu::where('title_slug', $title)->first();
+            return view('frontend.general', compact('menu_content'));
+        }
 
     }
     public function category($slug)
@@ -73,7 +80,7 @@ class FrontendController extends Controller
                 $mvo_contents = Mvo::get();
                 return view('frontend.about', compact('abouts', 'mvo_contents', 'menu_content'));
             case 'beyond academic':
-                $beyond_content = BeyondAcademic::latest()->simplePaginate(3);
+                $beyond_content = BeyondAcademic::where('hide', '1')->latest()->paginate(3);
                 return view('frontend.beyond_academic', compact('beyond_content'));
                 break;
             case 'news events':
@@ -115,7 +122,7 @@ class FrontendController extends Controller
                 $menu_content = $menu;
                 $almuniCollection = Almuni::orderBy('id', 'DESC')->get();
                 $almuni_g = AlmuniGallery::get();
-                return view('frontend.almuni.archive', compact('almuniCollection','almuni_g', 'menu_content'));
+                return view('frontend.almuni.archive', compact('almuniCollection', 'almuni_g', 'menu_content'));
                 break;
             case 'Download files':
                 $menu_content = $menu;
@@ -125,10 +132,15 @@ class FrontendController extends Controller
                 break;
             case 'FAQs (& why school)':
                 $whyschool = Faq::get()->first();
-                $faqs = Faq_collection::get();
+                $faqs = Faq_collection::where('hide', '=', '1')->get();
                 $menu_content = $menu;
                 $setting = Setting::get()->first();
                 return view('frontend.faqs_andwhyschool', compact('whyschool', 'faqs', 'menu_content', 'setting'));
+                break;
+            case 'School Life':
+                $menu_content = $menu;
+                $Content = Content::orderBy('id', 'DESC')->take(1)->get();
+                return view('frontend.school_life', compact('menu_content', 'Content'));
                 break;
             case 'Contact Us':
                 return view('frontend.contact_us');
@@ -173,6 +185,5 @@ class FrontendController extends Controller
         $downloads = Download::orderBy('id', 'DESC')->get();
         return view('frontend.download', compact('downloads', 'downloads_g', 'menu_content'));
     }
-
 
 }

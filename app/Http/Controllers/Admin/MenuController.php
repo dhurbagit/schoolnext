@@ -21,7 +21,7 @@ class MenuController extends Controller
     {
         $menu_items = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['2', '4', '5', '6', '8', '9'])->get();
         $menu_footer = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1', '4', '5', '6','7', '9'])->get();
-
+        
         $mega_menus = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','5','6','7','8', '9'])->get();
         $top_header_ribbon = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','4', '6', '7'])->get();
         $feature_link = Menu::orderBy('position', 'asc')->whereNotIn('header_footer', ['1','2','3','4','5','8'])->get();
