@@ -1,5 +1,15 @@
 @extends('frontend.layout.master')
 @section('content')
+<style>
+    #main__index-section .news-and-events__section .right-notice .card ul li::after,
+    #main__index-section .news-and-events__section .right-notice .card #style-7::-webkit-scrollbar-thumb,
+    #main__index-section .news-and-events__section .event__wrapper .event-item::after,
+    #main__index-section .informartion .aboutus__description .top__small::after,
+    #main__index-section .informartion .aboutus__description .top__small::before{
+        background-color: {{ $themeOption->primary_color ?? '' }}
+    }
+
+</style>
 
     <div class="modal fade custom__modal" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -120,7 +130,7 @@
                         <div class="flex__wrapper d-flex justify-content-center">
                             @foreach ($happy_counter as $counter)
                                 <div class="number__wrapper numbers">
-                                    <div class="top__header-holder {{ $loop->iteration == 3 ? '' : 'border__right' }} ">
+                                    <div class="top__header-holder {{ $loop->iteration == 3 ? '' : 'border__right' }} " style="border-color: {{ $themeOption->primary_color ?? '' }}">
                                         <h4 style="color: {{ $themeOption->primary_color ?? '' }}">{{ $counter->title }}</h4>
                                     </div>
                                     <div class="bottom__number-holder">
@@ -151,7 +161,7 @@
                             <div class="aboutus__description wow fadeInUp" data-wow-delay="0.6s"
                                 style="visibility: visible; -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
                                 <div class="top__small">
-                                        <span>{{ $about_us->small_title ?? '' }} </span>
+                                        <span style="color:{{ $themeOption->primary_color ?? '' }}">{{ $about_us->small_title ?? '' }} </span>
                                 </div>
                                 <div class="top__big-text">
                                     <h3>
@@ -182,7 +192,7 @@
                                 @if (!empty($setting_happy->news_and_event_title))
                                     <h3>{{ $setting_happy->news_and_event_title }}</h3>
                                 @endif
-                                <a href="{{url('category/news events')}}">All Events <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{url('category/news events')}}" style="border-color:{{ $themeOption->primary_color ?? '' }}">All Events <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div class="event__wrapper">
                                 <div class="row">
@@ -328,7 +338,7 @@
                 <div class="container-fluid">
                     <div class="top__header text-center mb-5 wow fadeInUp" data-wow-delay="0.1s"
                         style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
-                        <h3><a href="photo-album.html">School Gallery</a></h3>
+                        <h3><a href="photo-album.html" style="color:{{ $themeOption->primary_color ?? '' }}">{{$setting_happy->gallery_title}}</a></h3>
                         <!-- <a href="News-event.html">All Blogs <i class="fa-solid fa-arrow-right"></i></a> -->
                         <div class="bg__line">
                             <img src="/frontend/assets/Images/line.png" alt="">

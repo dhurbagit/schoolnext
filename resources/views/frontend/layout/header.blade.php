@@ -1,3 +1,68 @@
+<style>
+    #form-section .form-card form .btn-reset,
+    .btn-hoverable::after,
+    #main-header .mega-menu .content h5::after {
+        background-color: {{ $themeOption->secondary_color ?? '' }};
+    }
+    #main__index-section .news-and-events__section .top__header h3,
+    #main__index-section .testimonial .title__holder h1 span,
+    .btn-hoverable span,
+    #main-header .navbar .menu-items .drop-list .drop__menu ul li a:hover,
+    #main-header .navbar .menu-item:hover,
+    #main-header .mega-menu .content section ul li:hover a,
+    #main-header .mega-menu .content section ul li span {
+        color: {{ $themeOption->secondary_color ?? '' }};
+    }
+
+    .btn-hoverable {
+        color: {{ $themeOption->secondary_color ?? '' }};
+        box-shadow: {{ $themeOption->secondary_color ?? '' }} 0px 0px 0px 2px
+    }
+
+    #main-header .mega-menu .content .nav__outline {
+        color: {{ $themeOption->secondary_color ?? '' }};
+        border-color: {{ $themeOption->secondary_color ?? '' }};
+    }
+    .pagination .page-item .page-link:hover,
+    .pagination .page-item.active .page-link,
+    .btn-top,
+    .btn-primary:hover {
+        background-color: {{ $themeOption->primary_color ?? '' }} !important;
+        border-color: {{ $themeOption->primary_color ?? '' }} !important;
+    }
+    #form-section .form-card form .btn-form,
+    #form-section .form-card form .form-header,
+    #download-section .download-wrapper .download__category ul a .category__links.active,
+    #download-section .download-wrapper .download__category .title_holder,
+    #alumni-section .alumni-wrapper .alumni__category ul a .category__links.active,
+    #alumni-section .alumni-wrapper .alumni__category .title_holder,
+    #new__event-section .news__items-container .event__wrapper .event-item::after,
+    #aboutUS_section .informartion .aboutus__description .top__small::after,
+    #aboutUS_section .informartion .aboutus__description .top__small::before,
+    #Team-section .team_card::after,
+    #Team-section .team_card .team_detail::after,
+    #message-section .top__msg-container,
+    .top__header-wrappper #subheader-title h1::before,
+    .top__header-wrappper #subheader-title h1,
+    #main__index-section .testimonial .testi__slider .swiper-button-next:hover,
+    #main__index-section .testimonial .testi__slider .swiper-button-prev:hover{
+        background-color: {{ $themeOption->primary_color ?? '' }} !important;
+    }
+    #blog-section .top__blog-section .left__heading h1 span,
+    #form-section .form-card .school__details h2,
+    #aboutUS_section .informartion .vision__section .aboutus__title-holder h3,
+    #aboutUS_section .informartion .aboutus__description .top__small span,
+    #Team-section .team--title h3,
+    #message-section .management-team .swiper-slide .slider_name h4,
+    #about__sub-section .faq__title h4,
+    #school__life-section .school__life-container .school__desc h1{
+        color: {{ $themeOption->primary_color ?? '' }};
+    }
+    #Team-section .team_card:hover{
+        border-color: {{ $themeOption->primary_color ?? '' }};
+    }
+</style>
+
 <header>
     <div id="main-header">
         <div class="top_header" style="background-color: {{ $themeOption->primary_color ?? '' }}">
@@ -94,7 +159,9 @@
                                         style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
                                         <div class="row">
                                             <div class="col-lg-4 col-md-12">
-                                                <h5 class="menu-title"> {{ $mainMenu->name }}</h5>
+                                                <h5 class="menu-title"
+                                                    style="color:{{ $themeOption->secondary_color ?? '' }} !important">
+                                                    {{ $mainMenu->name }}</h5>
                                                 <section>
                                                     <ul class="fa-ul">
                                                         @if (count($mainMenu->children))
@@ -117,7 +184,9 @@
                                             </div>
                                             <div class="col-lg-4 col-md-12">
                                                 <section>
-                                                    <h5 class="menu-title">Introduction</h5>
+                                                    <h5 class="menu-title"
+                                                        style="color:{{ $themeOption->secondary_color ?? '' }} !important;">
+                                                        Introduction</h5>
                                                     <div class="nav__text">
                                                         <p class="mb-0">
                                                             {!! $mainMenu->content !!}
@@ -171,7 +240,9 @@
                         </li>
                     @endforeach
                     <li>
-                        <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Make
+                        <a href=""
+                            style="background-color: {{ $themeOption->secondary_color ?? '' }}; border-color:{{ $themeOption->secondary_color ?? '' }}"
+                            class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Make
                             an
                             Inquiry</a>
                     </li>

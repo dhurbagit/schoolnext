@@ -5,6 +5,8 @@
     background-color: {{ $themeOption->primary_color ?? '' }};
 
 }
+.copyright .content a:hover,
+.footer-section .footer__links ul li a:hover,
 .footer-section .school-address li span:hover,
 .footer-section .school-address li span:hover,
 .footer-section .school-address li i,

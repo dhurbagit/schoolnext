@@ -1,0 +1,273 @@
+.btn-primary {
+  background-color: #7e2b24;
+  border-color: #7e2b24;
+}
+
+.btn-primary:hover,
+.btn-primary :focus {
+  background-color: #192F59;
+  border-color: #192F59;
+}
+
+@media print {
+  #form_view {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  #form_view .container {
+    padding: 0 !important;
+    margin: 0 2rem !important;
+    width: 100% !important;
+  }
+  #form_view .container .form_header {
+    position: relative;
+    width: 45.5rem !important;
+    height: 9.5rem !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  #form_view .container .form_header .logo {
+    position: absolute;
+    left: 10px;
+    top: 40px;
+  }
+  #form_view .container .form_header .logo .img_logo {
+    width: 5rem !important;
+  }
+  #form_view .container .form_header .college_description {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 33rem !important;
+  }
+  #form_view .container .form_header .college_description p,
+  #form_view .container .form_header .college_description h3 {
+    margin: 0;
+  }
+  #form_view .container .form_header .college_description .top_1 {
+    font-family: "Mukta", sans-serif;
+    font-size: 14px !important;
+    font-weight: 500;
+    line-height: 20px !important;
+  }
+  #form_view .container .form_header .college_description .top_2 {
+    font-family: "Poppins", sans-serif;
+    line-height: 13px;
+  }
+  #form_view .container .form_header .college_description .top_2 h3 {
+    font-weight: 600;
+    font-size: 16px !important;
+  }
+  #form_view .container .form_header .college_description .top_3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px !important;
+  }
+  #form_view .container .form_header .photo-upload {
+    position: absolute;
+    right: 0;
+    top: 40px;
+  }
+  #form_view .container .form_header .photo-upload .img-holder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  #form_view .container .form_header .photo-upload .img-holder .input__image-holder {
+    width: 5.6rem !important;
+    height: 6rem !important;
+    border-radius: 5px;
+    -o-object-fit: contain;
+       object-fit: contain;
+    border: 1px solid black;
+    background-color: #e4e4e4;
+  }
+  #form_view .container .reg__no-holder {
+    font-size: 12px !important;
+    margin: 25px 0 25px 0;
+  }
+  #form_view .container .form__personal-details {
+    width: 45.5rem !important;
+  }
+  #form_view .container .form__personal-details h5 {
+    font-size: 14px !important;
+  }
+  #form_view .container .form__personal-details .msg_holder {
+    font-size: 12px !important;
+    line-height: 15px !important;
+  }
+  #form_view .container .form__personal-details .table {
+    width: 100%;
+  }
+  #form_view .container .form__personal-details .table td {
+    font-size: 12px !important;
+    border: 1px solid black;
+    padding: 3px !important;
+    vertical-align: middle;
+  }
+  #form_view .container .sign__date-holder {
+    width: 45.5rem !important;
+    font-size: 12px !important;
+  }
+  #form_view .container .sign__date-holder .signature {
+    margin-top: 60px;
+    width: 8rem !important;
+    text-align: center;
+  }
+  #form_view .container .sign__date-holder .signature .auth_text {
+    border-top: 1px dotted black;
+  }
+  #form_view .container .sign__date-holder .date_holder {
+    margin-top: 60px;
+    width: 8rem !important;
+    text-align: center;
+  }
+  #form_view .container .sign__date-holder .date_holder .auth_text {
+    border-top: 1px dotted black;
+  }
+  #form_view .container .verification__section {
+    width: 45.5rem !important;
+    height: 6rem !important;
+    position: relative;
+  }
+  #form_view .container .verification__section h5 {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+  #form_view .container .verification__section span {
+    font-size: 12px !important;
+  }
+  #form_view .container .verification__section .verify {
+    position: absolute;
+    top: 30px;
+    left: 0;
+  }
+  #form_view .container .verification__section .sign {
+    position: absolute;
+    top: 30px;
+    left: 20rem;
+  }
+  #form_view .container .verification__section .date2 {
+    position: absolute;
+    right: 0;
+    top: 30px;
+  }
+  #form_view .container .verification__section .verify2 {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+  }
+  #form_view .container .verification__section .sign2 {
+    position: absolute;
+    bottom: 0px;
+    left: 20rem;
+  }
+  #form_view .container .verification__section .date3 {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+  }
+  #form_view .view__print-cards {
+    display: none !important;
+  }
+  #form_view .print__button-holder {
+    display: none !important;
+  }
+}
+
+#form_view .form_header .logo .img_logo {
+  width: 9rem;
+}
+
+#form_view .form_header .college_description p,
+#form_view .form_header .college_description h3 {
+  margin: 0;
+}
+
+#form_view .form_header .college_description .top_1 {
+  font-family: "Mukta", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+}
+
+#form_view .form_header .college_description .top_2 {
+  font-family: "Poppins", sans-serif;
+  line-height: 13px;
+}
+
+#form_view .form_header .college_description .top_2 h3 {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+#form_view .form_header .college_description .top_3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+#form_view .form_header .photo-upload .img-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 8.5rem;
+  height: 9rem;
+}
+
+#form_view .form_header .photo-upload .img-holder .input__image-holder {
+  border-radius: 5px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border: 1px solid black;
+  background-color: #e4e4e4;
+}
+
+#form_view .reg__no-holder {
+  margin: 40px 0 50px 0;
+}
+
+#form_view .form__personal-details .table {
+  width: 100%;
+}
+
+#form_view .form__personal-details .table td {
+  border: 1px solid black;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  vertical-align: middle;
+}
+
+#form_view .sign__date-holder .signature {
+  margin-top: 80px;
+  width: 10rem;
+  text-align: center;
+}
+
+#form_view .sign__date-holder .signature .auth_text {
+  border-top: 2px dotted black;
+}
+
+#form_view .sign__date-holder .date_holder {
+  margin-top: 80px;
+  width: 10rem;
+  text-align: center;
+}
+
+#form_view .sign__date-holder .date_holder .auth_text {
+  border-top: 2px dotted black;
+}
+
+#form_view .verification__section {
+  margin-bottom: 6rem;
+}
+/*# sourceMappingURL=style.css.map */

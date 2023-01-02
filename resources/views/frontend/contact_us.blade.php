@@ -1,5 +1,21 @@
 @extends('frontend.layout.master')
 @section('content')
+<style>
+    #contact-section .bg__overlay .contact__form .top__header .large__header p{
+        color:{{ $themeOption->primary_color ?? '' }};
+    }
+    #contact-section .bg__overlay .contact__form .top__header .hoverEffect p::after{
+        background-color:{{ $themeOption->primary_color ?? '' }}
+    }
+
+    #contact-section .bg__overlay .contact__form .contact__college .college-details .item .icon-holder{
+        background-color: {{ $themeOption->secondary_color ?? '' }};
+    }
+    .btn-primary{
+        border-color: {{ $themeOption->secondary_color ?? '' }};
+        background-color: {{ $themeOption->secondary_color ?? '' }};
+    }
+</style>
     <main>
         <section id="contact-section">
             <div class="bg__overlay">

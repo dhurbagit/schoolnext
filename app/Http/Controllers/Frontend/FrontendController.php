@@ -26,6 +26,7 @@ use App\Models\BeyondAcademic;
 use App\Models\Faq_collection;
 use App\Models\Download_gallery;
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 
 class FrontendController extends Controller
 {
@@ -141,6 +142,11 @@ class FrontendController extends Controller
                 $menu_content = $menu;
                 $Content = Content::orderBy('id', 'DESC')->take(1)->get();
                 return view('frontend.school_life', compact('menu_content', 'Content'));
+                break;
+            case 'Blogs':
+                $blogs_page = Blog::where('type', '5')->first();
+                $blogs_collection = Blog::where('type', '10')->paginate(7);
+                return view('frontend.blogs.archive', compact('blogs_page', 'blogs_collection'));
                 break;
             case 'Contact Us':
                 return view('frontend.contact_us');

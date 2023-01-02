@@ -106,4 +106,10 @@ class BlogController extends Controller
         $update->update($input);
         return redirect()->back()->with('message', 'Record Updated successfully!');
     }
+
+    public function show_detail($id)
+    {
+        $single_detail = Blog::find($id);
+        return view('frontend.blogs.detail', compact('single_detail'));
+    }
 }

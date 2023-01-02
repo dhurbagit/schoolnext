@@ -3,6 +3,7 @@
 // frontend route
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\InquieryController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -14,6 +15,7 @@ Route::get('downloads-link/{id}', [FrontendController::class, 'download_childdat
 Route::post('online-save', [InquieryController::class, 'save_inquiry'])->name('inquiry.save');
 Route::post('inquiry-save', [InquieryController::class, 'save_inquiry_next'])->name('inquiry_next.save');
 Route::post('contactus-save', [InquieryController::class, 'save_contactus'])->name('contactus.save');
+Route::get('blog-single/{id}', [BlogController::class, 'show_detail'])->name('blog.single');
 
 
 Route::get('inquiryForm-save', [InquieryController::class,'inquiry_formShow'])->name('inquiryForm.open');
