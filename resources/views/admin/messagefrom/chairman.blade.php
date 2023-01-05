@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Chairman Message')
 @section('content')
     <div class="col-lg-12">
         <div class="card">

@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Preschool - Bootstrap Admin Template</title>
+    <title>@yield('pageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-
+    @isset($setting)
+    <link rel="shortcut icon" type="image/jpg" href="{{asset('setting/'. $setting->favIcon_image)}}">
+    @endisset
     <!-- Favicons -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
@@ -36,12 +38,6 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
-
-
-    <!--[if lt IE 9]>
-  <script src="assets/js/html5shiv.min.js"></script>
-  <script src="assets/js/respond.min.js"></script>
- <![endif]-->
 
     <link rel="stylesheet"
         href="{{ asset('draganddropmenu/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') }}" />
@@ -178,6 +174,29 @@
     </script>
 
     <script>
+
+        function editor(){
+            ClassicEditor
+            .create(document.querySelector('.editor200'), {
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
+                console.error(error);
+            });
+        }
+
+        editor();
+    </script>
+
+    <script>
         ClassicEditor
             .create(document.querySelector('.editor'), {
                 licenseKey: '',
@@ -250,7 +269,7 @@
         });
     </script>
 
-   
+
 
 </body>
 

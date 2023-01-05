@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'News and Events')
 
 @section('content')
 

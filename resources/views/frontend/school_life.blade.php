@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'School Life')
 @section('content')
 
     <main>

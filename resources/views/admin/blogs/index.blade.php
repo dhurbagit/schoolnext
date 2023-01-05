@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Blogs')
 @section('content')
     <div class="col-lg-12">
         <div class="card">
@@ -45,16 +46,16 @@
 
                     </form>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive1">
                     <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Description</th>
+                                <th width="200px">Title</th>
+                                <th width="187px">Description</th>
                                 <th>Feature Images</th>
                                 <th>Date</th>
-                                <th>Designation</th>
+                                <th width="200px">Designation</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

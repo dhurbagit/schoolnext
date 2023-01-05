@@ -9,5 +9,5 @@ class ThemeOption extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['primary_color', 'secondary_color', 'font_color'];
+    protected $fillable = ['primary_color', 'secondary_color', 'footer_color', 'copyright_color', 'footer_bg_image'];
 }

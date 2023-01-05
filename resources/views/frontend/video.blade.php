@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Video')
 @section('content')
     <main>
         <section id="video__album-section">

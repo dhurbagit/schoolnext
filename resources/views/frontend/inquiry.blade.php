@@ -1,21 +1,75 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Online Form')
 @section('content')
+    <style>
+        .photo-upload .custom-file-label {
+            background-color: {{ $themeOption->primary_color ?? '' }};
+            color: #ffffff;
+            padding: 7px;
+            width: 9rem;
+            border-radius: 5px;
+        }
 
+        .photo-upload .custom-file-label::after {
+            display: none;
+        }
+
+        .photo-upload .img-holder {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .photo-upload .img-holder .input__image-holder {
+            width: 9rem;
+            height: 8rem;
+            border-radius: 5px;
+        }
+    </style>
     <main>
         <section id="form-section" class="section-margin">
             <div class="container">
                 <div class="form-card">
                     <div class="card">
                         <div class="card-body p-5">
-                            <div class="school__details text-center mb-4">
-                                <h2 class="mb-0">{{$setting->school_name}}</h2>
-                                <p class="mb-0">{{$setting->address}} | {{$setting->Phone_one}}</p>
-                                <p class="mb-0">{{$setting->email}}</p>
+                            <form action="{{ route('inquiry.save') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <div class="school__details text-center mb-4">
+                                        <h2 class="mb-0">{{ $setting->school_name }}</h2>
+                                        <p class="mb-0">{{ $setting->address }} | {{ $setting->Phone_one }}</p>
+                                        <p class="mb-0">{{ $setting->email }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 input-image">
+                                    <div class="photo-upload">
+                                        <div class="img-holder form-group d-flex justify-content-center mb-1">
+                                            <img src="assets/image/avatar-02.jpg" class="input__image-holder" alt=""
+                                                width="100%" height="100%">
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="btn-holder form-group mb-0">
+                                                <div class="custom-file d-flex justify-content-center">
+                                                    <input id="inputGroupFile02" type="file" name="s_image"
+                                                        class="custom-file-input inputGroupFile02 d-none" id="customFile">
+                                                    <label class="custom-file-label" for="inputGroupFile02">Choose
+                                                        File</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <hr>
                             <p class="text-danger">Fields with (*) are compulsory.</p>
-                            <form action="{{ route('inquiry.save') }}" method="POST">
-                                @csrf
+
                                 <div class="form-header mb-2">
                                     <span>STUDENT'S INFORMATION</span>
                                 </div>
@@ -65,11 +119,11 @@
                                                     class="text-danger">*</span>:</label>
                                             <input type="text" class="form-control" name="s_current_grade"
                                                 id="text-form1" aria-describedby="emailHelp">
-                                                <span class="text-danger">
-                                                    @error('s_current_grade')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                            <span class="text-danger">
+                                                @error('s_current_grade')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -147,11 +201,11 @@
                                                     class="text-danger">*</span>:</label>
                                             <input type="text" name="s_address" class="form-control" id="text-form6"
                                                 aria-describedby="emailHelp">
-                                                <span class="text-danger">
-                                                    @error('s_address')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                            <span class="text-danger">
+                                                @error('s_address')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -160,11 +214,11 @@
                                                     class="text-danger">*</span>:</label>
                                             <input type="text" name="s_phone" class="form-control" id="text-form7"
                                                 aria-describedby="emailHelp">
-                                                <span class="text-danger">
-                                                    @error('s_phone')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                            <span class="text-danger">
+                                                @error('s_phone')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -178,11 +232,11 @@
                                                     class="text-danger">*</span>:</label>
                                             <input type="text" name="f_name" class="form-control" id="text-form8"
                                                 aria-describedby="emailHelp">
-                                                <span class="text-danger">
-                                                    @error('f_name')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                            <span class="text-danger">
+                                                @error('f_name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -217,11 +271,11 @@
                                                     class="text-danger">*</span>:</label>
                                             <input name="m_name" type="text" class="form-control" id="text-form13"
                                                 aria-describedby="emailHelp">
-                                                <span class="text-danger">
-                                                    @error('m_name')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                            <span class="text-danger">
+                                                @error('m_name')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -407,5 +461,36 @@
         $('form').submit(function() {
             $(this).find('button[type=submit]').prop('disabled', true);
         });
+    </script>
+    <script>
+        var loadFile3 = function(event) {
+            var image = document.getElementById('placeholder_image3');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script>
+        $('.inputGroupFile02').on('change', function(e) {
+            if (e.target.files.length) {
+                // $(this).next('.custom-file-label').html(e.target.files[0].name);
+                $(this).closest('.text-center').find('.file__name').html(e.target.files[0].name);
+
+            }
+            readURL(this);
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // $('.blah').attr('src', e.target.result);
+                    var image = $(input).closest('.input-image').find('img');
+                    // image.removeClass('input__image-holder');
+
+                    image.attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endpush

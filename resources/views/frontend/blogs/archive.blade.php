@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Blogs')
 @section('content')
 
     <main>

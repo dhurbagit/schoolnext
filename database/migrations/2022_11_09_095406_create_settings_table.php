@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('gallery_title')->nullable();
             $table->string('logo')->nullable();
             $table->string('footer_image')->nullable();
+            $table->string('f_brochure_file')->nullable();
+            $table->string('loginBg_images')->nullable();
+            $table->string('favIcon_image')->nullable();
             $table->string('address')->nullable();
             $table->string('Phone_one')->nullable();
             $table->string('Phone_two')->nullable();
@@ -42,6 +45,7 @@ return new class extends Migration
             $table->string('pinterest')->nullable();
             $table->string('tumblr')->nullable();
             $table->longText('message')->nullable();
+            $table->longText('success_message')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

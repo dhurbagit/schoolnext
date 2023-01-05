@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-
+@section('pageTitle', 'Mission,vision,objectives')
 @section('content')
 
     <div class="col-lg-12">

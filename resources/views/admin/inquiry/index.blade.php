@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Online form Applications')
 @section('content')
     <div class="col-lg-12">
         <div class="card">
@@ -19,6 +20,7 @@
                             <th>Phone</th>
                             <th>Father Name</th>
                             <th>local mobile</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,6 +34,9 @@
                                 <td>{{ $data->s_phone }}</td>
                                 <td>{{ $data->f_name }}</td>
                                 <td>{{ $data->l_mobile_no }}</td>
+                                <td>
+                                    {{Carbon\Carbon::parse($data->created_at)->format('d-M-y')}}
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModal_online{{ $data->id }}">

@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Message From')
 @section('content')
     <main>
         <section id="message-section">

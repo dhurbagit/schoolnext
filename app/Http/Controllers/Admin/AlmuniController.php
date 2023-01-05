@@ -101,9 +101,9 @@ class AlmuniController extends Controller
 
     public function almuni_gallery_delete($id)
     {
-       $delete = AlmuniGallery::find($id);
-       unlink("uploads/". $delete->image);
-       $delete->delete();
+        $delete = AlmuniGallery::find($id);
+        unlink("uploads/" . $delete->image);
+        $delete->delete();
         return redirect()->route('Almuni.view')->with('message', 'Record deleted successfully');
     }
 
@@ -135,12 +135,19 @@ class AlmuniController extends Controller
         $input['hide'] = isset($request->hide_show[0]) ? 1 : 0;
 
         if ($request->hasFile('image')) {
-            unlink("uploads/". $update->image);
+            unlink("uploads/" . $update->image);
             $input['image'] = $request->file('image')->store('almuni', 'uploads');
         }
         $update->update($input);
         return redirect()->route('Almuni.view')->with('message', 'Record Update successfully');
 
     }
-}
 
+    public function select_data(Request $request)
+    {
+        $id = $request->value;
+        $data = Almuni::find($id);
+        return response()->json($data->date);
+    }
+
+}

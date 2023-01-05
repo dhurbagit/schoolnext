@@ -1,4 +1,7 @@
 <style>
+    .footer-section{
+        background-color: {{ $themeOption->footer_color ?? '' }}
+    }
     .footer-section .footer__links ul li a::after,
     .footer-section .footer__title::after {
 
@@ -13,6 +16,9 @@
 .copyright .content .social-icons a{
     color: {{ $themeOption->primary_color ?? '' }};
 }
+.copyright{
+    background-color: {{ $themeOption->copyright_color ?? '' }};
+}
 </style>
 <footer id="footer">
     <div class="footer-section py-5">
@@ -23,16 +29,14 @@
                         <span>Brochure</span>
                     </div>
                     <div class="brochure mb-3">
-                        <a href="https://lunahrsolutions.com/assets/frontend/images/Profile.pdf" target="_blank">
+                        <a href="{{asset('setting/' . $setting->f_brochure_file)}}" target="_blank">
                             @if (!@empty($setting->footer_image))
                                 <img src="{{ asset('setting/' . $setting->footer_image) }}" width="100%" height="100%"
                                     alt="QR Code">
                             @endif
                         </a>
                     </div>
-                    <div align='left' class="ms-4"><a href='https://www.free-website-hit-counter.com'><img
-                                src='https://www.free-website-hit-counter.com/c.php?d=7&id=139383&s=5' border='0'
-                                alt='Website Hit Counter'></a><br /></div>
+                    <div class="site_counter">{{ str_pad($setting->view_counter+1, 7, 0, STR_PAD_LEFT)}}</div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
@@ -67,7 +71,12 @@
                             @endforeach
                             <li><a href="https://allstarsms.com" target="_blank">Bulk SMS</a></li>
                             <li><a href="https://gmail.com" target="_blank">Web Mail</a></li>
-                            <li><a href="login.html">Login</a></li>
+                             @if (Session()->has('loginId'))
+                             <li><a href="{{url('/admin/dashboard')}}">Login</a></li>
+                                @else
+                                <li><a href="{{url('/admin')}}">Login</a></li>
+                             @endif
+
                         </ul>
                     </div>
                 </div>
@@ -99,7 +108,7 @@
             </div>
         </div>
         <div class="bg__image">
-            <img src="/frontend/assets/Images/footerbg.png" width="100%" height="100%" alt="">
+            <img src="{{asset('uploads/'. shareme()->footer_bg_image)}}" width="100%" height="100%" alt="">
         </div>
     </div>
     <div class="copyright text-center py-2">

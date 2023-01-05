@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Thank you')
 @section('content')
 <style type="text/css">
 
@@ -77,7 +78,7 @@
              </div>
              <div class="content1">
                 <h1>Online form  Success send !</h1>
-                <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. </p>
+                <p>{{strip_tags($setting->success_message)}}</p>
                 <a href="/">Go to Home</a>
              </div>
 

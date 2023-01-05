@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-
+@section('pageTitle', 'News and Events')
 @section('content')
     <div class="col-lg-12">
         <div class="card">

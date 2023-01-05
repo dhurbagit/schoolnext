@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('primary_color')->nullable();
             $table->string('secondary_color')->nullable();
             $table->string('footer_color')->nullable();
+            $table->string('copyright_color')->nullable();
+            $table->string('footer_bg_image')->nullable();
             $table->timestamps();
         });
     }

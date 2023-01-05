@@ -20,17 +20,17 @@ class Menu extends Model
         'feature_ribbon' => '9',
     ];
 
-    const contentType  = ['home','page', 'layout page', 'beyond academic' ,'about','contact','Blogs','gallery','news events',
-                            'chairman message',
-                            'principal message',
-                            'management team',
-                            'teacher and staff',
+    const contentType  = ['home','page', 'layout-page', 'beyond-academic' ,'about','Blogs','gallery','news-events',
+                            'chairman-message',
+                            'principal-message',
+                            'management-team',
+                            'teacher-and-staff',
                             'Video',
-                            'Pass Out Student',
-                            'Download files',
-                            'FAQs (& why school)',
-                            'Contact Us',
-                            'School Life',
+                            'Pass-Out-Student',
+                            'Download-files',
+                            'FAQs-(&-why-school)',
+                            'Contact-Us',
+                            'School-Life',
 
                             ];
 

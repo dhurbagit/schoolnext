@@ -30,6 +30,8 @@
         background-color: {{ $themeOption->primary_color ?? '' }} !important;
         border-color: {{ $themeOption->primary_color ?? '' }} !important;
     }
+    .content1 a,
+    .payment_header,
     #form-section .form-card form .btn-form,
     #form-section .form-card form .form-header,
     #download-section .download-wrapper .download__category ul a .category__links.active,
@@ -90,11 +92,11 @@
                                 @endif
                                 @if (!empty($setting->Phone_two))
                                     <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
-                                                class="fa-brands fa-viber"></i> {{ $setting->Phone_two }}</a></li>
+                                                class="fa-brands fa-whatsapp"></i> {{ $setting->Phone_two }}</a></li>
                                 @endif
                                 @if (!empty($setting->Phone_three))
-                                    <li><a class="dropdown-item text-dark" href="tel: 01234567"><i
-                                                class="fa-brands fa-whatsapp"></i> {{ $setting->Phone_three }}</a></li>
+                                    <li><a class="dropdown-item text-dark" href="viber://chat?number="><i
+                                                class="fa-brands fa-viber"></i> {{ $setting->Phone_three }}</a></li>
                                 @endif
                             </ul>
                             <a href="mailto: {{ $setting->email ?? '' }}">
@@ -148,13 +150,13 @@
                 <ul class="menu-items">
                     @foreach ($b_menus as $mainMenu)
                         <li>
-                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                 @else
                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                 class="menu-item first-item expand-btn"> {{ $mainMenu->name }}</a>
                             <div class="container mega-menu sample">
                                 <div class="content py-0"
-                                    style="background-image: url(/frontend/assets/Images/image\ 36.png); background-repeat: no-repeat; background-size: contain; background-position: right;">
+                                    style="background-image: url('{{asset('uploads/'. $mainMenu->banner_image)}}'); background-repeat: no-repeat; background-size: contain; background-position: right;">
                                     <div class="overlay__nav py-3"
                                         style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
                                         <div class="row">
@@ -169,7 +171,7 @@
                                                                 <li><span class="fa-li"><i
                                                                             class="fa-solid fa-arrow-right-long"></i></span>
                                                                     <a
-                                                                        @if ($child->category_slug == 'page' || $child->category_slug == 'layout page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                                        @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                                          @else
                                                                           href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
                                                                             class="sub__links"></i>
@@ -186,14 +188,14 @@
                                                 <section>
                                                     <h5 class="menu-title"
                                                         style="color:{{ $themeOption->secondary_color ?? '' }} !important;">
-                                                        Introduction</h5>
+                                                        {{$mainMenu->page_title}}</h5>
                                                     <div class="nav__text">
                                                         <p class="mb-0">
                                                             {!! $mainMenu->content !!}
                                                         </p>
                                                     </div>
                                                     @isset($mainMenu)
-                                                        @if ($mainMenu->category_slug == 'layout page' || $mainMenu->category_slug == 'page')
+                                                        @if ($mainMenu->category_slug == 'layout-page' || $mainMenu->category_slug == 'page')
                                                             <a href="{{ route('page', $mainMenu->title_slug) }}"
                                                                 class="btn nav__outline">Learn More</a>
                                                         @else
@@ -215,7 +217,7 @@
 
                     @foreach ($menus as $mainMenu)
                         <li class="drop-list">
-                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
                                   href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                 class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
@@ -225,7 +227,7 @@
                                     <ul>
                                         @foreach ($mainMenu->children as $child)
                                             <li><a
-                                                    @if ($child->category_slug == 'page' || $child->category_slug == 'layout page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                                    @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                  @else
                                                   href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
                                                         class="fa-solid fa-arrow-right-long"></i>

@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Home')
 @section('content')
 <style>
     #main__index-section .news-and-events__section .right-notice .card ul li::after,
@@ -192,7 +193,7 @@
                                 @if (!empty($setting_happy->news_and_event_title))
                                     <h3>{{ $setting_happy->news_and_event_title }}</h3>
                                 @endif
-                                <a href="{{url('category/news events')}}" style="border-color:{{ $themeOption->primary_color ?? '' }}">All Events <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{url('category/news-events')}}" style="border-color:{{ $themeOption->primary_color ?? '' }}">All Events <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div class="event__wrapper">
                                 <div class="row">

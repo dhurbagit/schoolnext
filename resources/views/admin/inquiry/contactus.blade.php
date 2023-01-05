@@ -1,11 +1,12 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Contact Us')
 @section('content')
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h5 class="text-uppercase mb-0 mt-0 page-title">Contact Us</h5>
-                     
+
                 </div>
             </div>
             <div class="card-body">
@@ -18,7 +19,9 @@
                             <th>Phone</th>
                             <th>address</th>
                             <th>Message</th>
+                            <th>Date</th>
                             <th>Action</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +33,11 @@
                                 <td>{{ $data->s_phone }}</td>
                                 <td>{{ $data->s_address }}</td>
                                 <td>{{ $data->p_description }}</td>
+
+                                <td>
+                                    {{Carbon\Carbon::parse($data->created_at)->format('d-M-y')}}
+
+                                </td>
                                 <td>
 
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -64,7 +72,8 @@
                                                     {{ $data->p_description }}
                                                     <br><br>
                                                     <label for=""><b>Leave Message</b></label>
-                                                    <form action="{{ route('contactUs.reply', $data->id) }}" method="POST">
+                                                    <form action="{{ route('contactUs.reply', $data->id) }}"
+                                                        method="POST">
                                                         @csrf
                                                         <textarea name="email_message" class="editor form-control" id="" cols="30" rows="10"></textarea>
                                                         <br>

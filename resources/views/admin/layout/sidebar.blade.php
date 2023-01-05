@@ -6,11 +6,11 @@
                     @isset($setting)
                         <img src="{{ asset('setting/' . $setting->logo) }}" width="40" height="40" alt="">
                     @endisset
-                    <span class="text-uppercase">Preschool</span>
+                    <span class="text-uppercase">{{$setting->school_name ?? ''}}</span>
                 </a>
             </div>
             <ul class="sidebar-ul">
-                <li class="menu-title">Menu</li>
+             
                 <li class="active">
                     <a href="{{ route('dashboard.view') }}"><img
                             src="{{ asset('backend/assets/img/sidebar/icon-1.png') }}"

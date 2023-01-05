@@ -1,6 +1,7 @@
 .download_img img {
     width: 100%;
 }
+
 .download_item label {
     text-align: center;
     display: block;
@@ -10,6 +11,21 @@
     margin-bottom: 15px;
 }
 
-.download_item > a {
+.download_item>a {
     display: block;
+}
+
+#main-header .navbar .nav__text {
+    height: 7.3rem;
+}
+.site_counter {
+    background-color: black;
+    display: inline-flex;
+    padding: 5px;
+    color: white;
+    letter-spacing: 12px;
+    text-align: center;
+    border-radius: 5px;
+    justify-content: center;
+    padding-left: 15px;
 }

@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Contact Us')
 @section('content')
 <style>
     #contact-section .bg__overlay .contact__form .top__header .large__header p{

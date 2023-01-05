@@ -259,7 +259,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::post('themeOption-save', [ThemeOptionController::class, 'store'])->name('themeOption.save');
     Route::put('themeOption-update/{id}', [ThemeOptionController::class, 'update'])->name('themeOption.update');
 
-
+    Route::post('select_data', [AlmuniController::class, 'select_data'])->name('select_data');
 });
 
 

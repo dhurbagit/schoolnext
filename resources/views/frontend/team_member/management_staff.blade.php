@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Manage Staff')
 @section('content')
     <main>
         <section id="Team-section">

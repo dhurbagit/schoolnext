@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Pass Out student')
 @section('content')
     <div class="col-lg-12">
         <div class="card">
@@ -61,7 +62,8 @@
 
                             @csrf
                             <div class="form-group">
-                                <select class="js-example-basic-single select2 form-control" name="almuni_id" id="almuni_id">
+                                <select class="js-example-basic-single select2 form-control" name="almuni_id"
+                                    id="almuni_id">
                                     <option selected>--select--</option>
                                     @foreach ($t_list as $type)
                                         <option
@@ -86,13 +88,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Batch</label>
+                                <input type="text" class="form-control" name="batch" value="{{ isset($edit_gallery) ? $edit_gallery->batch : old('batch') }}" id="response_batch" readonly="readonly">
 
-                                <select class="js-example-basic-single select2 form-control" name="batch">
-                                    <option>--select--</option>
-                                    @foreach ($t_list as $type)
-                                        <option value="{{ $type->date }}" {{ $type->date === @$edit_gallery->batch ? 'selected' : '' }}>{{ $type->date }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Percentage</label>
@@ -300,4 +297,21 @@
         }
     </script>
 
+    <script>
+        //selecting automatic data for child form.
+        $(document).on('change', '#almuni_id', function() {
+            var value = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: "{{route('select_data')}}",
+                data: {
+                    _token: "{{csrf_token()}}",
+                    value: value,
+                },
+                success: function(res){
+                    $('#response_batch').val(res);
+                }
+            })
+        })
+    </script>
 @endpush

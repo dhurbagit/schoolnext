@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Theme Options')
 @section('content')
 
     <div class="col-lg-12">
@@ -11,33 +12,55 @@
             </div>
             <div class="card-body">
                 @if (isset($update_thms))
-                    <form action="{{ route('themeOption.update', $update_thms->id) }}" method="POST">
+                    <form action="{{ route('themeOption.update', $update_thms->id) }}" method="POST" enctype="multipart/form-data">
                         @method('put')
                     @else
-                        <form action="{{ route('themeOption.save') }}" method="POST">
+                        <form action="{{ route('themeOption.save') }}" method="POST" enctype="multipart/form-data">
                 @endif
 
                 @csrf
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label><b>Primary Color</b></label>
                             <input type="color" name="primary_color" id="primary_color" class="form-control"
                                 value="{{ isset($update_thms) ? $update_thms->primary_color : old('primary_color') }}">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="form-group">
                             <label><b>Secondary Color</b></label>
                             <input type="color" name="secondary_color" id="secondary_color" class="form-control"
                                 value="{{ isset($update_thms) ? $update_thms->secondary_color : old('secondary_color') }}">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="form-group">
-                            <label><b>Fonts Color</b></label>
+                            <label><b>Footer Color</b></label>
                             <input type="color" name="footer_color" id="footer_color" class="form-control"
                                 value="{{ isset($update_thms) ? $update_thms->footer_color : old('footer_color') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label><b>Copyright color</b></label>
+                            <input type="color" name="copyright_color" id="copyright_color" class="form-control"
+                                value="{{ isset($update_thms) ? $update_thms->copyright_color : old('copyright_color') }}">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label><b>Footer Image</b></label>
+                            <div class="input_images_wrapper">
+                                <div class="image_place">
+                                    <img
+                                    @isset($update_thms)
+                                    src="{{asset('uploads/'. $update_thms->footer_bg_image)}}"
+                                    @endisset
+                                     alt="" id="output">
+                                </div>
+                                <input name="footer_bg_image" type="file" onchange="loadFile(event)" class="form-control">
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -54,3 +77,11 @@
         </div>
     </div>
 @stop
+@push('scripts')
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+@endpush

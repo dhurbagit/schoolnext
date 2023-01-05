@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Gallery')
 @section('content')
     <main>
         <section id="photo__gallery-section">

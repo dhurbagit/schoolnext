@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Beyond Academic')
 
 @section('content')
 

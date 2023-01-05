@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
         $mega_menus = Menu::query()
         ->where(['parent_id' => null, 'publish_status' => 1])
         ->whereNotIn('header_footer', ['1','2','3','5','6','7','8', '9'])
-        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
+        ->select('id', 'name', 'parent_id','banner_image', 'page_title', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
         ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
         ->orderBy('position', 'ASC')
         ->get();

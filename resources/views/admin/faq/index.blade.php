@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'FAQs')
 @section('content')
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
@@ -126,9 +127,10 @@
                                                                     @enderror
                                                                 </span>
                                                             </div>
+                                                            
                                                             <div class="form-group">
                                                                 <label for=""><b>Answer</b></label>
-                                                                <textarea name="faq_detail" class="editor form-control" id="" cols="30" rows="10">
+                                                                <textarea name="faq_detail" class="editor200 form-control" id="" cols="30" rows="10">
                                                                     {{ isset($data) ? $data->faq_detail : old('faq_detail') }}
                                                                 </textarea>
                                                                 <span class="text-danger">

@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Faqs')
 @section('content')
     <main>
         <section id="about__sub-section">

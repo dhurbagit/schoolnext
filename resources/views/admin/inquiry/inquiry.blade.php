@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('pageTitle', 'Inquiry')
 @section('content')
     <div class="col-lg-12">
         <div class="card">
@@ -17,6 +18,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -28,6 +30,9 @@
                                 <td>{{ $data->s_email }}</td>
                                 <td>{{ $data->s_phone }}</td>
                                 <td>{{ $data->s_address }}</td>
+                                <td>
+                                    {{Carbon\Carbon::parse($data->created_at)->format('d-M-y')}}
+                                </td>
                                 <td>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-toggle="modal"

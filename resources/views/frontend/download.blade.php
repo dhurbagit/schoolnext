@@ -1,4 +1,5 @@
 @extends('frontend.layout.master')
+@section('pageTitle', 'Downloads')
 @section('content')
     <main>
         <section id="download-section">
@@ -41,16 +42,7 @@
                                                 <a href="{{asset('uploads/'. $data->file)}}"
                                                     target="_blank">
                                                     <div class="download_img">
-                                                        @if (pathinfo($data->file, PATHINFO_EXTENSION) == 'docx')
-                                                            <img src="{{ asset('frontend/docs.jpg') }}">
-                                                        @elseif(pathinfo($data->file, PATHINFO_EXTENSION) == 'pdf')
-                                                            <img src="{{ asset('frontend/pdf.png') }}">
-                                                        @elseif(pathinfo($data->file, PATHINFO_EXTENSION) == 'xlsx')
-                                                            <img src="{{ asset('frontend/excel.png') }}">
-                                                        @else
-                                                            <img src="{{ asset('frontend/file.png') }}" width="100%" height="100%"
-                                                                alt="No Image">
-                                                        @endif
+                                                         <img src="{{asset('uploads/' .$data->image)}}" alt="">
                                                     </div>
                                                     <label for="">Download</label>
                                                 </a>

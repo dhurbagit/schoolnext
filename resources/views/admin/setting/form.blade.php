@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-
+@section('pageTitle', 'Setting')
 @section('content')
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
@@ -247,7 +247,7 @@
                                             </span>
                                         </div>
                                         <div class="form-group">
-                                            <label><b>Phone 1</b></label>
+                                            <label><b>Phone number</b></label>
                                             <input type="text" class="form-control" name="Phone_one"
                                                 value="{{ isset($setting_record) ? $setting_record->Phone_one : old('Phone_one') }}">
                                             <span class="text-danger">
@@ -269,11 +269,18 @@
                                                 @enderror
                                             </span>
                                         </div>
+
                                         <div class="form-group">
-                                            <label><b>Phone 3</b></label>
-                                            <input type="text" class="form-control" name="Phone_three"
-                                                value="{{ isset($setting_record) ? $setting_record->Phone_three : old('Phone_three') }}">
+                                            <label><b>Login Background Image</b></label>
+                                            <input type="file" name="loginBg_images" accept="image/*"
+                                                class="form-control" onchange="loadFile5(event)">
+                                            <span class="text-danger">
+                                                @error('loginBg_images')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
+
                                         <div class="form-group">
                                             <label><b>logo</b></label>
                                             <input type="file" name="logo" accept="image/*" class="form-control"
@@ -284,8 +291,36 @@
                                                 @enderror
                                             </span>
                                         </div>
+
                                         <div class="form-group">
-                                            <label><b>Footer Images</b></label>
+                                            <label><b>Fav Icon Images</b></label>
+                                            <input type="file" name="favIcon_image" accept="image/*"
+                                                class="form-control" onchange="loadFile4(event)">
+                                            <span class="text-danger">
+                                                @error('footer_image')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label><b>Whatsapp Number</b><img src="{{asset('backend/whatsapp.png')}}" alt="" width="20px"></label>
+                                            <input type="text" class="form-control" name="Phone_two"
+                                                value="{{ isset($setting_record) ? $setting_record->Phone_two : old('Phone_two') }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><b>Viber Number</b><img src="{{asset('backend/viber.png')}}" alt="" width="20px"></label>
+                                            <input type="text" class="form-control" name="Phone_three"
+                                                value="{{ isset($setting_record) ? $setting_record->Phone_three : old('Phone_three') }}">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label><b>Footer Brochure Images</b></label>
                                             <input type="file" name="footer_image" accept="image/*"
                                                 class="form-control" onchange="loadFile3(event)">
                                             <span class="text-danger">
@@ -294,22 +329,41 @@
                                                 @enderror
                                             </span>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label><b>Phone 2</b></label>
-                                            <input type="text" class="form-control" name="Phone_two"
-                                                value="{{ isset($setting_record) ? $setting_record->Phone_two : old('Phone_two') }}">
+                                            <label><b>Footer Brochure File</b></label>
+                                            <input type="file" name="f_brochure_file" accept="image/*"
+                                                class="form-control" onchange="loadFile3(event)">
+                                            <span class="text-danger">
+                                                @error('f_brochure_file')
+                                                    {{ $message }}
+                                                @enderror
+                                            </span>
                                         </div>
+
+                                    </div>
+                                    <div class="col-lg-10">
                                         <div class="form-group">
                                             <label><b>View site Count</b></label>
-                                            <input type="text" class="form-control" name="view_counter" disabled
+                                            <input type="text" id="view_counts" class="form-control" name="view_counter" readonly
                                                 value="{{ isset($setting_record) ? $setting_record->view_counter : old('view_counter') }}">
                                         </div>
+                                    </div>
+                                    <div class="col-lg-2"><br>
+                                        <button type="button" id="reset_btn" class="btn btn-success">Reset Value</button>
+                                    </div>
+
+                                    <div class="col-lg-12">
                                         <div class="form-group">
                                             <label><b>Message</b></label>
                                             <textarea name="message" id="" class="editor form-control" cols="30" rows="10">
                                                 {{ isset($setting_record) ? $setting_record->message : old('message') }}
+                                            </textarea>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label><b>Email Success Message</b></label>
+                                            <textarea name="success_message" id="" class="editor100 form-control" cols="30" rows="10">
+                                                {{ isset($setting_record) ? $setting_record->success_message : old('success_message') }}
                                             </textarea>
 
                                         </div>
@@ -328,7 +382,7 @@
                                         </div>
                                     </div>
                                     <div class="content_box_wrapper">
-                                        <label><b>Footer logo Image</b></label>
+                                        <label><b>Footer Image</b></label>
                                         <div class="display_images">
                                             <img @isset($setting_record)
                                 src="{{ asset('setting/' . $setting_record->footer_image) }}"
@@ -336,7 +390,42 @@
                                                 alt="" id="placeholder_image3">
                                         </div>
                                     </div>
+                                    <div class="content_box_wrapper">
+                                        <label><b>FavIcon Image</b></label>
+                                        <div class="display_images">
+                                            <img @isset($setting_record)
+                                src="{{ asset('setting/' . $setting_record->favIcon_image) }}"
+                                @endisset
+                                                alt="" id="placeholder_image4">
+                                        </div>
+                                    </div>
 
+                                </div>
+                                <div class="flex-box">
+                                    <div class="content_box_wrapper">
+                                        <label><b>Login Bakgound</b></label>
+                                        <div class="display_images">
+                                            <img @isset($setting_record)
+                                src="{{ asset('setting/' . $setting_record->loginBg_images) }}"
+                                @endisset
+                                                alt="" id="placeholder_image5">
+                                        </div>
+                                    </div>
+                                    <div class="content_box_wrapper">
+                                        <label><b>Brochure type</b></label>
+                                        <div class="display_images">
+                                            @if (pathinfo($setting_record->f_brochure_file, PATHINFO_EXTENSION) == 'docx')
+                                                <img src="{{ asset('frontend/docs.jpg') }}">
+                                            @elseif(pathinfo($setting_record->f_brochure_file, PATHINFO_EXTENSION) == 'pdf')
+                                                <img src="{{ asset('frontend/pdf.png') }}">
+                                            @elseif(pathinfo($setting_record->f_brochure_file, PATHINFO_EXTENSION) == 'xlsx')
+                                                <img src="{{ asset('frontend/excel.png') }}">
+                                            @else
+                                                <img src="{{ asset('frontend/file.png') }}" width="100%"
+                                                    height="100%" alt="No Image">
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -379,4 +468,28 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
+    <script>
+        var loadFile4 = function(event) {
+            var image = document.getElementById('placeholder_image4');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script>
+        var loadFile5 = function(event) {
+            var image = document.getElementById('placeholder_image5');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <script>
+        var loadFile6 = function(event) {
+            var image = document.getElementById('placeholder_image6');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+<script>
+    $('#reset_btn').click(function(){
+        $('#view_counts').val("0");
+    })
+</script>
 @endpush

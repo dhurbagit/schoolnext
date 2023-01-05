@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Student Application Form</title>
 </head>
 
 <body>
@@ -26,7 +26,8 @@
                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
                         <div class="logo d-flex justify-content-center">
                             <div class="img_logo">
-                                <img src="{{asset('setting/'. $setting->logo)}}" alt="No logo here" width="100%" height="100%">
+                                <img src="{{ asset('setting/' . $setting->logo) }}" alt="No logo here" width="100%"
+                                    height="100%">
                             </div>
                         </div>
                     </div>
@@ -34,9 +35,10 @@
                         <div class="college_description text-center pt-5">
 
                             <div class="top_2">
-                                <h3>Guinness Public Secondary School</h3>
-                                <span>Faculty of Management Studies</span>
-                                <h3>Application Form for Admission</h3>
+                                <h3>{{ $setting->school_name }}</h3>
+                                <span>{{ $setting->address }} | {{ $setting->Phone_one }}</span><br><br>
+                                <span>{{ $setting->email }}</span>
+
                             </div>
                             <!-- <div class="top_3">
                                 <span>Master of Business Administration(MBA) / MBA-Evening
@@ -48,7 +50,12 @@
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
-
+                        <div class="photo-upload">
+                            <div class="img-holder form-group d-flex justify-content-center mb-1">
+                                <img src="{{asset('uploads/'. $std_detail->s_image)}}"
+                                    class="input__image-holder" alt="" width="100%" height="100%">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,77 +68,86 @@
                 <table class="table table-bordered mb-5 w-100">
                     <tr>
                         <td>Name(CAPITAL LETTERS)</td>
-                        <td colspan="6">YAMUNA BASNET</td>
+                        <td colspan="6">{{ $std_detail->student_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Applied Grade</td>
+                        <td>{{ $std_detail->s_applied_grade }}</td>
+                        <td colspan="2">Current Grade</td>
+                        <td>{{ $std_detail->s_current_grade }}</td>
+                        <td>Age</td>
+                        <td>{{ $std_detail->s_age }}</td>
+
                     </tr>
                     <tr>
                         <td>Date of Birth (D/M/Y)</td>
                         <td style="width: 9%;">BS</td>
-                        <td>2054-07-07</td>
+                        <td>{{ $std_detail->s_date_of_birth_bs }}</td>
                         <td style="width: 9%;">AD</td>
-                        <td>1997-10-23</td>
+                        <td>{{ $std_detail->s_date_of_birth_ad }}</td>
                         <td>Gender</td>
-                        <td>Female</td>
+                        <td>{{ $std_detail->gender }}</td>
                     </tr>
                     <tr>
+
                         <td>Contact number</td>
-                        <td colspan="3">9866048782</td>
+                        <td>{{ $std_detail->s_phone }}</td>
                         <td>Email</td>
-                        <td colspan="2">Yamunabasnet56@gmail.com</td>
+                        <td colspan="2">{{ $std_detail->s_email }}</td>
+                        <td>Nationality</td>
+                        <td colspan="2">{{ $std_detail->s_nationality }}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">Father's name</td>
-                        <td colspan="3">Khadga Bahadur Basnet</td>
+                        <td rowspan="2">Father's Detail</td>
+                        <td colspan="3">{{ $std_detail->f_name }}</td>
                         <td>Occupation</td>
-                        <td colspan="2">Bussiness Man</td>
+                        <td colspan="2">{{ $std_detail->f_occupation }}</td>
                     </tr>
                     <tr>
                         <td>Mobile</td>
-                        <td colspan="2">9841659196</td>
+                        <td colspan="2">{{ $std_detail->f_mobile_no }}</td>
                         <td>Email</td>
-                        <td colspan="2">user@email.com</td>
+                        <td colspan="2">{{ $std_detail->f_email }}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">Mother's name</td>
-                        <td colspan="3">Kriti Basnet</td>
+                        <td rowspan="2">Mother's Details</td>
+                        <td colspan="3">{{ $std_detail->m_name }}</td>
                         <td>Occupation</td>
-                        <td colspan="2">House Wife</td>
+                        <td colspan="2">{{ $std_detail->m_occupation }}</td>
                     </tr>
                     <tr>
                         <td>Mobile</td>
-                        <td colspan="2">9841659196</td>
+                        <td colspan="2">{{ $std_detail->m_mobile_no }}</td>
                         <td>Email</td>
-                        <td colspan="2">user@email.com</td>
+                        <td colspan="2">{{ $std_detail->m_email }}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">Guardian's name</td>
-                        <td colspan="3">Khadga Bahadur Basnet</td>
+                        <td rowspan="2">Guardian's Detail</td>
+                        <td colspan="3">{{ $std_detail->l_local_guardian }}</td>
                         <td>Occupation</td>
-                        <td colspan="2">Business Man</td>
+                        <td colspan="2">{{ $std_detail->l_occupation }}</td>
                     </tr>
                     <tr>
                         <td>Mobile</td>
-                        <td colspan="2">9841659196</td>
+                        <td colspan="2">{{ $std_detail->l_mobile_no }}</td>
                         <td>Email</td>
-                        <td colspan="2">user@email.com</td>
+                        <td colspan="2">{{ $std_detail->l_email }}</td>
                     </tr>
-                    <tr>
-                        <td rowspan="2">Address</td>
-                        <td colspan="6">Kathmandu, Nepal</td>
-                    </tr>
+
                 </table>
                 <h5>Previous School's Information</h5>
                 <table class="table table-bordered mb-0 w-100">
                     <tr>
                         <td>School Name</td>
-                        <td>Rai School</td>
+                        <td>{{ $std_detail->p_school_name }}</td>
                         <td>Grade</td>
-                        <td>7</td>
+                        <td>{{ $std_detail->p_grade }}</td>
                         <td>Address</td>
-                        <td>Kathmandu, Nepal</td>
+                        <td>{{ $std_detail->p_address }}</td>
                     </tr>
                     <tr>
                         <td>Query</td>
-                        <td colspan="5">Message Here</td>
+                        <td colspan="5">{{ strip_tags($std_detail->p_description) }}</td>
                     </tr>
                 </table>
                 <div class="msg_holder">

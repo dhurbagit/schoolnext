@@ -62,6 +62,10 @@ class InquieryController extends Controller
         $input['p_grade'] = $request->p_grade;
         $input['p_description'] = $request->p_description;
 
+        if ($request->hasFile('s_image')) {
+            $input['s_image'] = $request->file('s_image')->store('onlineform', 'uploads');
+        }
+
         Inquiery::create($input);
         return view('frontend.messagetemplate');
     }
@@ -210,7 +214,9 @@ class InquieryController extends Controller
 
     public function studentDetail($id)
     {
-        return view('admin.inquiry.student_form_detail');
+        $std_detail = Inquiery::where('type', 'online form')->find($id);
+        // dd($std_detail);
+        return view('admin.inquiry.student_form_detail', compact('std_detail'));
     }
 
     public function delete_record($id)

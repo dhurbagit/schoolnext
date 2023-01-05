@@ -38,10 +38,10 @@ class Inquiery extends Model
         'p_school_name',
         'p_address',
         'p_grade',
-        'p_description'];
+        'p_description',
+        's_image'];
 
         public function EmailLink(){
             return $this->hasMany(EmailMessage::class, 'inquieries_id');
         }
 }
- 
