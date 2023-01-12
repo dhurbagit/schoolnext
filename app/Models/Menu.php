@@ -20,7 +20,7 @@ class Menu extends Model
         'feature_ribbon' => '9',
     ];
 
-    const contentType  = ['home','page', 'layout-page', 'beyond-academic' ,'about','Blogs','gallery','news-events',
+    const contentType  = ['External-link','home','page', 'layout-page', 'beyond-academic' ,'about','Blogs','gallery','news-events',
                             'chairman-message',
                             'principal-message',
                             'management-team',

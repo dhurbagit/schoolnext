@@ -70,7 +70,7 @@
                                 </li>
                             @endforeach
                             <li><a href="https://allstarsms.com" target="_blank">Bulk SMS</a></li>
-                            <li><a href="https://gmail.com" target="_blank">Web Mail</a></li>
+                            
                              @if (Session()->has('loginId'))
                              <li><a href="{{url('/admin/dashboard')}}">Login</a></li>
                                 @else

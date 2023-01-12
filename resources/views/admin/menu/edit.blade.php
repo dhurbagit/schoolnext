@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h5 class="text-uppercase mb-0 mt-0 page-title">Menu</h5>
-                    <a href="{{route('menu.view')}}" class="btn btn-primary">List view</a>
+                    <a href="{{ route('menu.view') }}" class="btn btn-primary">List view</a>
                 </div>
             </div>
             <div class="card-body">
@@ -45,14 +45,14 @@
                                     <label><b>Main Image</b></label>
                                     <div class="display_images">
                                         <img src="{{ asset('uploads/' . $edit_menu->image) }}" alt=""
-                                    id="placeholder_image">
+                                            id="placeholder_image">
                                     </div>
                                 </div>
                                 <div class="content_box_wrapper">
                                     <label><b>Banner Image</b></label>
                                     <div class="display_images">
                                         <img src="{{ asset('uploads/' . $edit_menu->banner_image) }}" alt=""
-                                    id="placeholder_image1">
+                                            id="placeholder_image1">
                                     </div>
                                 </div>
 
@@ -102,19 +102,31 @@
                                     <option value="">--Select where to show--</option>
                                     <option value="1" {{ $edit_menu->header_footer == 1 ? 'selected' : '' }}>Header
                                     </option>
-                                    <option value="2" {{ $edit_menu->header_footer == 2 ? 'selected' : '' }}>Quick LInk
+                                    <option value="2" {{ $edit_menu->header_footer == 2 ? 'selected' : '' }}>Quick
+                                        LInk
                                     </option>
                                     <option value="3" {{ $edit_menu->header_footer == 3 ? 'selected' : '' }}>Header
                                         and Quick LInk</option>
-                                    <option value="4" {{ $edit_menu->header_footer == 4 ? 'selected' : '' }}>Mega Menu</option>
-                                    <option value="5" {{ $edit_menu->header_footer == 5 ? 'selected' : '' }}>Top Ribbon</option>
-                                    <option value="6" {{ $edit_menu->header_footer == 6 ? 'selected' : '' }}>Feature Link</option>
-                                    <option value="7" {{ $edit_menu->header_footer == 7 ? 'selected' : '' }}>Header and Feature</option>
-                                    <option value="8" {{ $edit_menu->header_footer == 8 ? 'selected' : '' }}>Quick LInk and Ribbon</option>
-                                    <option value="9" {{ $edit_menu->header_footer == 9 ? 'selected' : '' }}>Feature and Ribbon</option>
+                                    <option value="4" {{ $edit_menu->header_footer == 4 ? 'selected' : '' }}>Mega Menu
+                                    </option>
+                                    <option value="5" {{ $edit_menu->header_footer == 5 ? 'selected' : '' }}>Top
+                                        Ribbon</option>
+                                    <option value="6" {{ $edit_menu->header_footer == 6 ? 'selected' : '' }}>Feature
+                                        Link</option>
+                                    <option value="7" {{ $edit_menu->header_footer == 7 ? 'selected' : '' }}>Header
+                                        and Feature</option>
+                                    <option value="8" {{ $edit_menu->header_footer == 8 ? 'selected' : '' }}>Quick
+                                        LInk and Ribbon</option>
+                                    <option value="9" {{ $edit_menu->header_footer == 9 ? 'selected' : '' }}>Feature
+                                        and Ribbon</option>
 
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label><b>External Link</b>(optional)</label>
+                            <input type="text" class="form-control" name="external_link" value="{{ $edit_menu->external_link }}">
+                            <br>
                         </div>
                         <div class="col-lg-12">
                             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
@@ -181,5 +193,4 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
-
 @endpush

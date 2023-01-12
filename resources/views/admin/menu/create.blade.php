@@ -8,7 +8,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h5 class="text-uppercase mb-0 mt-0 page-title">Menu</h5>
-                    <a href="{{route('menu.view')}}" class="btn btn-primary">List view</a>
+                    <a href="{{ route('menu.view') }}" class="btn btn-primary">List view</a>
                 </div>
             </div>
             <div class="card-body">
@@ -105,6 +105,11 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <label><b>External Link</b>(Optional)</label>
+                            <input type="text" class="form-control" name="external_link">
+                            <br>
+                        </div>
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
@@ -133,23 +138,20 @@
 
 @stop
 @push('scripts')
-<script>
-    $(function() {
-        $('.main_child').change(function() {
-            var main_child = $(this).children("option:selected").val();
-            if (main_child == 1)
-            {
-                document.getElementById("parent").style.display = "block";
-                document.getElementById("header_footer").style.display = "none";
-            }
-            else if(main_child == 0)
-            {
-                document.getElementById("parent").style.display = "none";
-                document.getElementById("header_footer").style.display = "block";
-            }
-        })
-    });
-</script>
+    <script>
+        $(function() {
+            $('.main_child').change(function() {
+                var main_child = $(this).children("option:selected").val();
+                if (main_child == 1) {
+                    document.getElementById("parent").style.display = "block";
+                    document.getElementById("header_footer").style.display = "none";
+                } else if (main_child == 0) {
+                    document.getElementById("parent").style.display = "none";
+                    document.getElementById("header_footer").style.display = "block";
+                }
+            })
+        });
+    </script>
     <script>
         var loadFile = function(event) {
             var image = document.getElementById('placeholder_image');
@@ -162,5 +164,4 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
-
 @endpush
