@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccbd816a07b206f971042295b899d1ba",
+    "content-hash": "102cf1e4421dafc1e70cae844d782370",
     "packages": [
         {
             "name": "brick/math",
@@ -2888,6 +2888,50 @@
                 }
             ],
             "time": "2022-12-31T22:20:34+00:00"
+        },
+        {
+            "name": "shankhadev/bsdate",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shankhadevpadam/laravelbsdate.git",
+                "reference": "89af634a75e7699c846d815f0134fbc4d93471d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shankhadevpadam/laravelbsdate/zipball/89af634a75e7699c846d815f0134fbc4d93471d5",
+                "reference": "89af634a75e7699c846d815f0134fbc4d93471d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shankhadev\\Bsdate\\": "src/Bsdate/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Padam Shankhadev",
+                    "email": "shankhadev123@gmail.com"
+                }
+            ],
+            "description": "A simple package that convert AD to BS and viceversa.",
+            "keywords": [
+                "Bikramsambat",
+                "Nepali Date"
+            ],
+            "support": {
+                "issues": "https://github.com/shankhadevpadam/laravelbsdate/issues",
+                "source": "https://github.com/shankhadevpadam/laravelbsdate/tree/1.0"
+            },
+            "time": "2017-01-01T04:41:17+00:00"
         },
         {
             "name": "symfony/console",

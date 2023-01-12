@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="{{asset('setting/'. $setting->favIcon_image)}}"/>
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('setting/' . $setting->favIcon_image) }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -22,11 +22,13 @@
     <link rel="stylesheet" href="/frontend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css">
     <!-- lightbox end -->
     <link rel="stylesheet" href="/frontend/assets/css/index.css">
-    <link rel="stylesheet" href="{{asset('backend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/frontendstyle.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/assets/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/lightbox2-2.11.3/dist/css/lightbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/frontendstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/style.css') }}">
     <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
+        rel="stylesheet" type="text/css" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <title>@yield('pageTitle')</title>
@@ -34,6 +36,8 @@
 
 
 <body>
+
+
     @include('frontend.layout.header')
 
     @yield('content')
@@ -62,9 +66,10 @@
     <script src="/frontend/assets/js/main.js"></script>
     <script src="/frontend/assets/js/topBtn.js"></script>
     <script src="/frontend/assets/js/animation.js"></script>
-    <script src="{{asset('backend/assets/lightbox2-2.11.3/dist/js/lightbox.min.js')}}"></script>
+    <script src="{{ asset('backend/assets/lightbox2-2.11.3/dist/js/lightbox.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+    <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
+        type="text/javascript"></script>
     <script>
         @if (Session::has('message'))
             toastr.options = {
@@ -99,7 +104,6 @@
         @endif
     </script>
     <script>
-
         (function() {
             $("[data-slider-wrap]").each(function() {
                 var _this = $(this),
@@ -216,6 +220,8 @@
             },
         });
     </script>
+
+  
 
     @stack('scripts')
 </body>

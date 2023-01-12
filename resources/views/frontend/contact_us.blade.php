@@ -82,46 +82,50 @@
                                                     <input type="text" class="form-control" placeholder="Full Name"
                                                         name="student_name" aria-label="Recipient's username"
                                                         aria-describedby="basic-addon2">
-                                                    <span class="text-danger">
-                                                        @error('student_name')
-                                                            {{ $message }}
-                                                        @enderror
-                                                    </span>
+
                                                 </div>
+                                                <span class="text-danger">
+                                                    @error('student_name')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" placeholder="Email Address"
                                                         name="s_email" aria-label="Email" aria-describedby="basic-addon2">
-                                                    <span class="text-danger">
-                                                        @error('s_email')
-                                                            {{ $message }}
-                                                        @enderror
-                                                    </span>
+
                                                 </div>
+                                                <span class="text-danger">
+                                                    @error('s_email')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" placeholder="Phone Number"
                                                         name="s_phone" aria-label="Recipient's username"
                                                         aria-describedby="basic-addon2">
-                                                    <span class="text-danger">
-                                                        @error('s_phone')
-                                                            {{ $message }}
-                                                        @enderror
-                                                    </span>
+
                                                 </div>
+                                                <span class="text-danger">
+                                                    @error('s_phone')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" placeholder="Address"
                                                         name="s_address" aria-label="Email" aria-describedby="basic-addon2">
-                                                    <span class="text-danger">
-                                                        @error('s_address')
-                                                            {{ $message }}
-                                                        @enderror
-                                                    </span>
+
                                                 </div>
+                                                <span class="text-danger">
+                                                    @error('s_address')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </span>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-3">
@@ -139,6 +143,7 @@
                                             <div class="g-recaptcha"
                                                 data-sitekey="6LeeboUiAAAAABJrh7FygrsAMP7pTOOTF6ANEe5k">
                                             </div>
+                                            <br>
                                             @if (Session::has('g-recaptcha-response'))
                                                 <span class="text-danger">{{ Session::get('g-recaptcha-response') }}</span>
                                             @endif
@@ -159,6 +164,9 @@
                         width: 100%;
                     }
                 </style>
+                <br>
+                <br>
+                <br>
                 <div class="contact-page wow fadeInUp">
                     {!! $setting->google_map ?? '' !!}
                 </div>

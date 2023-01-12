@@ -32,6 +32,16 @@ class InquieryController extends Controller
             's_phone' => 'required',
             'f_name' => 'required',
             'm_name' => 'required',
+        ],[
+            'student_name.required' => 'Student Name is required',
+            's_applied_grade.required' => 'Applied grade is required',
+            's_current_grade.required' => 'Current Grade is required',
+            's_address.required' => 'Student Address is required',
+            's_phone.required' => 'Student Phone is required',
+            'f_name.required' => 'Father Name is required',
+            'm_name.required' => 'Mother Name is required',
+
+
         ]);
         $online_form = 'online form';
         $input['type'] = $online_form;
@@ -57,6 +67,7 @@ class InquieryController extends Controller
         $input['l_local_guardian'] = $request->l_local_guardian;
         $input['l_mobile_no'] = $request->l_mobile_no;
         $input['l_email'] = $request->l_email;
+        $input['l_occupation'] = $request->l_occupation;
         $input['p_school_name'] = $request->p_school_name;
         $input['p_address'] = $request->p_address;
         $input['p_grade'] = $request->p_grade;
@@ -130,6 +141,12 @@ class InquieryController extends Controller
                     $fail($attribute, 'google reCaptcha failed');
                 }
             },
+        ], [
+            'student_name.required' => 'Student Name is required',
+            's_email.required' => 'Email is required',
+            's_phone.required' => 'Phone is required',
+            's_address.required' => 'Address is required',
+            'p_description.required' => 'Message is required',
         ]);
         $contact_us = 'contactus';
         $input['type'] = $contact_us;
@@ -144,7 +161,7 @@ class InquieryController extends Controller
 
     public function contactUs_view()
     {
-        $contactus = Inquiery::where('type', 'contactus')->get();
+        $contactus = Inquiery::where('type', 'contactus')->orderBy('id', 'DESC')->paginate(20);
         return view('admin.inquiry.contactus', compact('contactus'));
     }
 

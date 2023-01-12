@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Title</label>
+                                    <label><b>Title</b></label>
                                     <input type="text" class="form-control" name="title"
                                         value="{{ isset($banner_video) ? $banner_video->title : old('title') }}">
                                     <span class="text-danger">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Upload Video</label>
+                                    <label><b>Upload Video </b>(max upload file size : 15mb )</label>
                                     <input type="file" name="video" class="form-control" onchange="loadFile(event)">
                                     <span class="text-danger">
                                         @error('video')

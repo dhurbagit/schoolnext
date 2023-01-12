@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\InquieryController;
+use App\Http\Controllers\Admin\PopModalController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsEventController;
 use App\Http\Controllers\Admin\TeammemberController;
@@ -92,6 +93,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('principal-message',[MessageController::class, 'index_principal'])->name('principal.message');
     Route::get('theme-option', [ThemeOptionController::class, 'index'])->name('theme.option');
 
+
+    //pop Up Modal
+    Route::get('popUp-model', [PopModalController::class, 'index'])->name('popUpModal.view');
+    Route::post('popUp-save', [PopModalController::class, 'save'])->name('popupModal.save');
+    Route::get('popUp-create', [PopModalController::class, 'view'])->name('popup.create');
+    Route::delete('popUp-delete/{id}', [PopModalController::class, 'delete'])->name('PopUpModal.delete');
+    Route::get('popUpModal-edit/{id}', [PopModalController::class, 'edit'])->name('popUpmodal.edit');
+    Route::put('popUpModal-update/{id}', [PopModalController::class, 'update'])->name('popupModal.update');
 
     // Slider
     Route::post('/createSlider', [SliderController::class, 'store'])->name('createSlider.index');

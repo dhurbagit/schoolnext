@@ -19,13 +19,13 @@ class DashboardController extends Controller
 
     public function view()
     {
-        $lists = Inquiery::where('type', 'online form')->get();
+        $lists = Inquiery::where('type', 'online form')->orderBy('id', 'DESC')->paginate(20);
         return view('admin.inquiry.index', compact('lists'));
     }
 
     public function view_inquiry_next()
     {
-        $lists = Inquiery::where('type', 'inquiry')->get();
+        $lists = Inquiery::where('type', 'inquiry')->orderBy('id', 'DESC')->paginate(20);
         return view('admin.inquiry.inquiry', compact('lists'));
     }
 

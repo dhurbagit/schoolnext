@@ -20,7 +20,7 @@
                         <div class="col-md-3">
                             <div class="download__category">
                                 <div class="title_holder">
-                                    <h4>Download Category</h4>
+                                    <h4> <a href="{{url('category/Download-files')}}"> Download Category</a></h4>
                                 </div>
                                 <ul>
                                     @foreach ($downloads as $data)
@@ -36,15 +36,13 @@
                             <div class="download_container mb-3">
                                 <div class="row">
                                     @foreach ($downloads_g as $data)
-
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3">
                                             <div class="download_item">
-                                                <a href="{{asset('uploads/'. $data->file)}}"
-                                                    target="_blank">
+                                                <a href="{{ asset('uploads/' . $data->file) }}" target="_blank">
                                                     <div class="download_img">
-                                                         <img src="{{asset('uploads/' .$data->image)}}" alt="">
+                                                        <img src="{{ asset('uploads/' . $data->image) }}" alt="">
                                                     </div>
-                                                    <label for="">Download</label>
+                                                    
                                                 </a>
                                             </div>
                                         </div>
@@ -53,7 +51,7 @@
                             </div>
                             <!-- pagination start  -->
                             <div class="d-flex justify-content-center">
-                                {{$downloads_g->links()}}
+                                {{ $downloads_g->links() }}
                             </div>
                             <!-- pagination end -->
                         </div>

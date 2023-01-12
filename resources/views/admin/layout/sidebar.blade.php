@@ -1,23 +1,21 @@
 <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
-            <div class="header-left">
-                <a href="{{ url('/') }}" class="logo">
-                    @isset($setting)
-                        <img src="{{ asset('setting/' . $setting->logo) }}" width="40" height="40" alt="">
-                    @endisset
-                    <span class="text-uppercase">{{$setting->school_name ?? ''}}</span>
-                </a>
-            </div>
+
             <ul class="sidebar-ul">
-             
+
                 <li class="active">
                     <a href="{{ route('dashboard.view') }}"><img
                             src="{{ asset('backend/assets/img/sidebar/icon-1.png') }}"
                             alt="icon"><span>Dashboard</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('popUpModal.view') }}"><img
+                            src="{{ asset('backend/assets/img/sidebar/icon-5.png') }}" alt="icon">
+                        <span>PopUp Modal</span></a>
+                </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-8.png') }}" alt="icon">
                         <span> Slider</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage-slider') }}"><span>Manage Slider</span></a></li>
@@ -26,11 +24,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('menu.view') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
+                    <a href="{{ route('menu.view') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-12.png') }}"
                             alt="icon"> <span>Menu</span></a>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-7.png') }}" alt="icon">
                         <span> Gallery</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage-gallery') }}"><span>Manage Album</span></a></li>
@@ -38,7 +36,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-19.png') }}" alt="icon">
                         <span> Testimonial</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage-testimonial') }}"><span>Manage Testimonial</span></a></li>
@@ -54,7 +52,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-9.png') }}" alt="icon">
                         <span> New and Event</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('newsEvent.manage') }}"><span>Manage News & Event</span></a></li>
@@ -62,7 +60,7 @@
 
                     </ul>
                 </li>
-                <li class="submenu">
+                {{-- <li class="submenu">
                     <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
                         <span>Notice board</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
@@ -70,9 +68,9 @@
                         <li><a href="{{ route('create.notice') }}"><span>create Notice</span></a></li>
 
                     </ul>
-                </li>
+                </li> --}}
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-4.png') }}" alt="icon">
                         <span>Our Client</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage.client') }}"><span>Manage Client</span></a></li>
@@ -80,7 +78,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-11.png') }}" alt="icon">
                         <span>Happy Counter</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage.counter') }}"><span>Manage Counter</span></a></li>
@@ -88,7 +86,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}" alt="icon">
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-13.png') }}" alt="icon">
                         <span>Beyond Academic</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('manage.academic') }}"><span>Manage Academic</span></a></li>
@@ -96,7 +94,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}"
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-23.png') }}"
                             alt="icon">
                         <span>FAQ</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
@@ -105,7 +103,7 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-2.png') }}"
+                    <a href="#"><img src="{{ asset('backend/assets/img/sidebar/icon-22.png') }}"
                             alt="icon">
                         <span>Message From</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
@@ -124,17 +122,17 @@
                 </li>
                 <li>
                     <a href="{{ route('youtube.video') }}"><img
-                            src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}" alt="icon"> <span>Youtube
+                            src="{{ asset('backend/assets/img/sidebar/icon-8.png') }}" alt="icon"> <span>Youtube
                             Videos</span></a>
                 </li>
                 <li>
                     <a href="{{ route('school.life') }}"><img
-                            src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}" alt="icon"> <span>School
+                            src="{{ asset('backend/assets/img/sidebar/icon-20.png') }}" alt="icon"> <span>School
                             life</span></a>
                 </li>
                 <li>
                     <a href="{{ route('blog.view') }}"><img
-                            src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}" alt="icon">
+                            src="{{ asset('backend/assets/img/sidebar/icon-12.png') }}" alt="icon">
                         <span>Blogs</span></a>
                 </li>
                 <li>
@@ -144,28 +142,12 @@
                 </li>
                 <li>
                     <a href="{{ route('download.view') }}"><img
-                            src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}" alt="icon">
+                            src="{{ asset('backend/assets/img/sidebar/icon-15.png') }}" alt="icon">
                         <span>Downloads</span></a>
                 </li>
-                <li>
-                    <a href="{{ route('setting') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
-                            alt="icon"> <span>Setting</span></a>
-                </li>
-                <li>
-                    <a href="{{ route('theme.option') }}"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
-                            alt="icon"> <span>Theme Option</span></a>
-                </li>
-                {{-- <li>
-                    <a href="{{route('create.faq')}}">
-                        <img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
-                            alt="icon">
-                             <span>FAQ</span>
-                    </a>
-                </li> --}}
-                {{-- <li>
-                    <a href="calendar.html"><img src="{{ asset('backend/assets/img/sidebar/icon-6.png') }}"
-                            alt="icon"> <span>Calendar</span></a>
-                </li> --}}
+
+
+
             </ul>
         </div>
     </div>

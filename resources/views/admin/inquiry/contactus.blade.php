@@ -10,7 +10,8 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="example">
+              <div class="table-responsive_cs">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -20,7 +21,7 @@
                             <th>address</th>
                             <th>Message</th>
                             <th>Date</th>
-                            <th>Action</th>
+                            <th width="147px">Action</th>
 
                         </tr>
                     </thead>
@@ -158,7 +159,11 @@
                         @endforeach
                     </tbody>
                 </table>
+              </div>
             </div>
+        </div>
+        <div class="dashboard_pagination_table">
+            {{$contactus->links()}}
         </div>
     </div>
 @stop

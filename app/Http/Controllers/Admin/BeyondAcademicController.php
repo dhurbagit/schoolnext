@@ -16,7 +16,7 @@ class BeyondAcademicController extends Controller
         return view('admin.beyond_academic.form');
     }
     public function view()
-    {   $beyound_g = BeyondAcademic::get();
+    {   $beyound_g = BeyondAcademic::orderBy('id', 'DESC')->get();
         return view('admin.beyond_academic.index', compact('beyound_g'));
     }
     public function update_list($id)
@@ -26,7 +26,7 @@ class BeyondAcademicController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
 
         $request->validate([
             'title' => 'required',

@@ -4,6 +4,7 @@
     #main-header .mega-menu .content h5::after {
         background-color: {{ $themeOption->secondary_color ?? '' }};
     }
+    .cs_modal_cs a,
     #main__index-section .news-and-events__section .top__header h3,
     #main__index-section .testimonial .title__holder h1 span,
     .btn-hoverable span,

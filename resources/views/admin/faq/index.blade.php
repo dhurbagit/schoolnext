@@ -127,10 +127,10 @@
                                                                     @enderror
                                                                 </span>
                                                             </div>
-                                                            
+
                                                             <div class="form-group">
                                                                 <label for=""><b>Answer</b></label>
-                                                                <textarea name="faq_detail" class="editor200 form-control" id="" cols="30" rows="10">
+                                                                <textarea name="faq_detail" class="editor200 form-control" id="editor{{ $key }}" cols="30" rows="10">
                                                                     {{ isset($data) ? $data->faq_detail : old('faq_detail') }}
                                                                 </textarea>
                                                                 <span class="text-danger">
@@ -209,3 +209,21 @@
         </div>
     </div>
 @stop
+
+@push('scripts')
+<script>
+     for(let index = 0; index <= {{ $faq_list->count()}}; index++){
+        ClassicEditor
+            .create(document.getElementById('editor'+index), {
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+            });
+     }
+</script>
+
+@endpush

@@ -547,3 +547,43 @@ label.upload__btn p {
     display: flex;
     align-items: center;
 }
+.dashboard_pagination_table {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.table-responsive_cs table tr td, .table-responsive_cs table tr th {
+    border: 1px solid #e4dcdc;
+}
+.sidebar-menu ul.sidebar-ul{
+    top:0 !important;
+}
+
+.nav_barand {
+    height: 100%;
+    display: block;
+}
+
+.nav_barand a span {
+    color: black;
+}
+
+.nav_barand {
+    margin-top: 8px;
+    margin-left: 15px;
+}
+
+.nav_barand a img {
+    height: 51px;
+    width: auto;
+}
+.cs_hover a {
+    opacity: 0;
+}
+
+.cs_hover a:hover {
+    opacity: 1;
+}
+.user-menu.nav > li > a:hover, .user-menu.nav > li > a:focus {
+    background-color: rgb(0 0 0 / 0%) !important;
+}

@@ -51,7 +51,7 @@
                                 <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 input-image">
                                     <div class="photo-upload">
                                         <div class="img-holder form-group d-flex justify-content-center mb-1">
-                                            <img src="assets/image/avatar-02.jpg" class="input__image-holder" alt=""
+                                            <img src="{{asset('frontend/assets/Images/avatar-02.jpg')}}" class="input__image-holder" alt=""
                                                 width="100%" height="100%">
                                         </div>
                                         <div class="text-center">
@@ -92,19 +92,20 @@
                                             <select class="form-select" id="select-form1" name="s_applied_grade"
                                                 aria-label="">
                                                 <option selected hidden disabled>--select--</option>
-                                                <option value="10">10</option>
-                                                <option value="9">9</option>
-                                                <option value="8">8</option>
-                                                <option value="7">7</option>
-                                                <option value="6">6</option>
-                                                <option value="5">5</option>
-                                                <option value="4">4</option>
-                                                <option value="3">3</option>
-                                                <option value="2">2</option>
-                                                <option value="1">1</option>
-                                                <option value="UKG">UKG</option>
-                                                <option value="LKG">LKG</option>
+
                                                 <option value="Nursery">Nursery</option>
+                                                <option value="LKG">LKG</option>
+                                                <option value="UKG">UKG</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                             <span class="text-danger">
                                                 @error('s_applied_grade')
@@ -133,7 +134,7 @@
                                             <label for="#" class="pe-3">Gender:</label>
                                             <div class="form-check pe-3">
                                                 <input class="form-check-input" type="radio" name="gender"
-                                                    id="flexRadioDefault1" value="male">
+                                                    id="flexRadioDefault1" value="male" checked>
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     Male
                                                 </label>
@@ -328,84 +329,7 @@
                                     <div class="col-sm-6">
                                         <div class="mb-2">
                                             <label for="select-form3" class="form-label mb-0">Occupation:</label>
-                                            <select name="nationality" class="form-select" id="select-form3"
-                                                name="l_occupation">
-                                                <option value="" selected hidden disabled>--- Select ---</option>
-                                                <option value="39" class="bg-white">Banks related Jobs</option>
-                                                <option value="41" class="bg-white">Barber</option>
-                                                <option value="6" class="bg-white">Businessman</option>
-                                                <option value="37" class="bg-white">Carpenter </option>
-                                                <option value="2" class="bg-white">Doctor</option>
-                                                <option value="46" class="bg-white">Driller</option>
-                                                <option value="7" class="bg-white">Driver</option>
-                                                <option value="8" class="bg-white">Electrician</option>
-                                                <option value="3" class="bg-white">Engineer</option>
-                                                <option value="9" class="bg-white">Farmer</option>
-                                                <option value="14" class="bg-white">Foreign country Employee</option>
-                                                <option value="12" class="bg-white">Government Officer</option>
-                                                <option value="23" class="bg-white">Hotel (Small/ Medium)</option>
-                                                <option value="10" class="bg-white">House wife </option>
-                                                <option value="30" class="bg-white">IT professionals</option>
-                                                <option value="25" class="bg-white">Jobless </option>
-                                                <option value="36" class="bg-white">Journalist</option>
-                                                <option value="18" class="bg-white">Labour | Mason </option>
-                                                <option value="5" class="bg-white">Lawyer</option>
-                                                <option value="35" class="bg-white">Leaders</option>
-                                                <option value="38" class="bg-white">Manager</option>
-                                                <option value="40" class="bg-white">Mechanics</option>
-                                                <option value="47" class="bg-white">Medical &amp; Allied Science
-                                                </option>
-                                                <option value="28" class="bg-white">Medical Profession (Lab
-                                                    Technician,
-                                                    BPH, HA etc.)
-                                                </option>
-
-                                                <option value="17" class="bg-white">NGO / INGO </option>
-
-                                                <option value="24" class="bg-white">Not sure</option>
-
-                                                <option value="27" class="bg-white">Nurse</option>
-
-                                                <option value="44" class="bg-white">Officer</option>
-
-                                                <option value="19" class="bg-white">Others</option>
-
-                                                <option value="21" class="bg-white">Own small Business</option>
-
-                                                <option value="32" class="bg-white">Painters</option>
-
-                                                <option value="43" class="bg-white">Pharmacy</option>
-
-                                                <option value="29" class="bg-white">Photographers</option>
-
-                                                <option value="26" class="bg-white">Physically Challenged </option>
-
-                                                <option value="1" class="bg-white">Pilot</option>
-
-                                                <option value="33" class="bg-white">Police, Army &amp; National
-                                                    Security
-                                                    Jobs</option>
-
-                                                <option value="11" class="bg-white">Politician</option>
-
-                                                <option value="42" class="bg-white">Press Officer</option>
-
-                                                <option value="13" class="bg-white">Private Job Holder</option>
-
-                                                <option value="22" class="bg-white">Shopkeeper</option>
-
-                                                <option value="34" class="bg-white">Sister</option>
-
-                                                <option value="45" class="bg-white">Sub-Engineer</option>
-
-                                                <option value="31" class="bg-white">Tailors</option>
-
-                                                <option value="4" class="bg-white">Teacher</option>
-
-                                                <option value="20" class="bg-white">Travels, Tours &amp; Ticketing
-                                                    officer</option>
-                                            </select>
-
+                                             <input type="text" class="form-control" name="l_occupation">
                                         </div>
                                     </div>
                                 </div>
@@ -492,5 +416,11 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var mainInput = document.getElementById("nepali-datepicker");
+            mainInput.nepaliDatePicker();
+        };
     </script>
 @endpush

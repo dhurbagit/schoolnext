@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h5 class="text-uppercase mb-0 mt-0 page-title">Downloads</h5>
-                    <a href="{{ route('Almuni.view') }}" class="btn btn-success">List New</a>
+
                 </div>
             </div>
             <div class="card-body">
@@ -24,8 +24,8 @@
                             @csrf
 
                             <div class="form-group">
-                                <b>Category Name</b><br><br>
-                                <label for="">Title</label>
+                                <b>Create Category Name</b><br><br>
+
                                 <input class="form-control" type="text" name="title"
                                     value="{{ isset($edit_record) ? $edit_record->title : old('title') }}">
                                 <span class="text-danger">
@@ -34,12 +34,14 @@
                                     @enderror
                                 </span>
                             </div>
+                            <div class="submit_button_cover text-center">
+                                @if (isset($edit_record))
+                                    <button class="btn btn-sm btn-success" style="width: 90px;">Update</button>
+                                @else
+                                    <button class="btn btn-sm btn-success" style="width: 90px;">Save</button>
+                                @endif
+                            </div>
 
-                            @if (isset($edit_record))
-                                <button class="btn btn-sm btn-success">Update</button>
-                            @else
-                                <button class="btn btn-sm btn-success">Save</button>
-                            @endif
 
                             </form>
                         </div>
@@ -83,7 +85,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Cover Image</label>
+                                <label for="">Cover Image (735 x 992)</label>
                                 <div class="flex_wrapper">
                                     <div class="image-frame">
                                         <img @if (@isset($edit_downloadGallery)) src="{{ asset('uploads/' . $edit_downloadGallery->image) }}"
@@ -103,164 +105,184 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="">Date</label>
-                                <input type="date" name="date" value="{{ isset($edit_downloadGallery) ? $edit_downloadGallery->date : old('date') }}" class="form-control">
+
+                                <input id="show_date" type="date" name="date" value="{{ isset($edit_downloadGallery) ? $edit_downloadGallery->date : date('Y-m-d') }}" class="form-control" readonly>
                             </div>
 
-                            @if (isset($edit_downloadGallery))
-                                <button class="btn btn-sm btn-success">Update</button>
-                            @else
-                                <button class="btn btn-sm btn-success">Save</button> @endif
-                                            </form>
+                            <div class="submit_button_cover text-center">
+
+                                @if (isset($edit_downloadGallery))
+                                <button class="btn btn-sm btn-success" style="width:90px;">Update</button>
+                                @else
+                                <button class="btn btn-sm btn-success" style="width:90px;">Save</button> @endif
+                                            </div>
+
+
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
                                     <label for=""><b>Category</b></label>
-                                    <table id="example">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Title</th>
-                                                <th>Counts</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($lists as $data)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered border-primary">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $data->title }}</td>
-                                                    <td>{{ $data->d_gallery->count('image') }}</td>
-                                                    <td>
-                                                        <a href="{{ route('download.edit', $data->id) }}"
-                                                            class="btn btn-success">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                            data-target="#exampleModal_{{ $data->id }}">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
+                                                    <th>#</th>
+                                                    <th>Title</th>
+                                                    <th>Counts</th>
+                                                    <th width="100px">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($lists as $data)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $data->title }}</td>
+                                                        <td>{{ $data->d_gallery->count('image') }}/file</td>
+                                                        <td>
+                                                            <a href="{{ route('download.edit', $data->id) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-toggle="modal"
+                                                                data-target="#exampleModal_{{ $data->id }}">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
 
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModal_{{ $data->id }}"
-                                                            tabindex="-1" role="dialog"
-                                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Are
-                                                                            you
-                                                                            sure
-                                                                            you want
-                                                                            to delete!</h5>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="exampleModal_{{ $data->id }}"
+                                                                tabindex="-1" role="dialog"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                                Are
+                                                                                you
+                                                                                sure
+                                                                                you want
+                                                                                to delete!</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
 
-                                                                    <div class="modal-footer">
-                                                                        <form
-                                                                            action="{{ route('download.delete', $data->id) }}"
-                                                                            method="POST">
-                                                                            @method('delete')
-                                                                            @csrf
-                                                                            <button type="button" class="btn btn-secondary"
-                                                                                data-dismiss="modal">No</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Yes</button>
-                                                                        </form>
+                                                                        <div class="modal-footer">
+                                                                            <form
+                                                                                action="{{ route('download.delete', $data->id) }}"
+                                                                                method="POST">
+                                                                                @method('delete')
+                                                                                @csrf
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">No</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary">Yes</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
-                                        </tbody>
+                                            </tbody>
 
-                                    </table>
+                                        </table>
+                                    </div>
                                     <hr>
                                     <label for=""><b>File Items</b></label>
-                                    <table id="example1">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Image</th>
-                                                <th>Title</th>
-                                                <th>File</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($list_gallery as $data)
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered border-primary">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
+                                                    <th>#</th>
+                                                    <th width="65px">Image</th>
+                                                    <th>Title</th>
+                                                    <th>File</th>
+                                                    <th>Date</th>
+                                                    <th width="100px">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($list_gallery as $data)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
 
-                                                    <td><img src="{{ asset('uploads/' . $data->image) }}" width="50"
-                                                            height="50" alt=""></td>
-                                                    <td>{{ $data->title }}</td>
-                                                    <td></td>
-                                                    <td>{{ $data->date }}</td>
-                                                    <td>
-                                                        <a href="{{ route('g_downloads.edit', $data->id) }}"
-                                                            class="btn btn-success">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                            data-target="#exampleModal_children{{ $data->id }}">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
+                                                        <td><img src="{{ asset('uploads/' . $data->image) }}"
+                                                                width="50" height="50" alt=""></td>
+                                                        <td>{{ $data->title }}</td>
+                                                        <td>
+                                                            <a style="color:black;"
+                                                                href="{{ asset('uploads/' . $data->file) }}"><i
+                                                                    class="fa fa-eye" aria-hidden="true"></i>&nbsp;View
+                                                                file</a>
+                                                        </td>
+                                                        <td>{{ $data->date }}</td>
+                                                        <td>
+                                                            <a href="{{ route('g_downloads.edit', $data->id) }}"
+                                                                class="btn btn-success">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-toggle="modal"
+                                                                data-target="#exampleModal_children{{ $data->id }}">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
 
-                                                        <!-- Modal -->
-                                                        <div class="modal fade"
-                                                            id="exampleModal_children{{ $data->id }}" tabindex="-1"
-                                                            role="dialog" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Are
-                                                                            you
-                                                                            sure
-                                                                            you want
-                                                                            to delete!</h5>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade"
+                                                                id="exampleModal_children{{ $data->id }}"
+                                                                tabindex="-1" role="dialog"
+                                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">Are
+                                                                                you
+                                                                                sure
+                                                                                you want
+                                                                                to delete!</h5>
+                                                                            <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
 
-                                                                    <div class="modal-footer">
-                                                                        <form
-                                                                            action="{{ route('g_downloads.delete', $data->id) }}"
-                                                                            method="POST">
-                                                                            @method('delete')
-                                                                            @csrf
-                                                                            <button type="button"
-                                                                                class="btn btn-secondary"
-                                                                                data-dismiss="modal">No</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary">Yes</button>
-                                                                        </form>
+                                                                        <div class="modal-footer">
+                                                                            <form
+                                                                                action="{{ route('g_downloads.delete', $data->id) }}"
+                                                                                method="POST">
+                                                                                @method('delete')
+                                                                                @csrf
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">No</button>
+                                                                                <button type="submit"
+                                                                                    class="btn btn-primary">Yes</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
-                                        </tbody>
+                                            </tbody>
 
-                                    </table>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             @stop
             @push('scripts')
                 <script>

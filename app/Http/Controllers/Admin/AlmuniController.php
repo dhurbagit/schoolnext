@@ -12,8 +12,8 @@ class AlmuniController extends Controller
     //
     public function view()
     {
-        $t_list = Almuni::get();
-        $almuni_child = AlmuniGallery::get();
+        $t_list = Almuni::orderBy('id', 'DESC')->get();
+        $almuni_child = AlmuniGallery::orderBy('id', 'DESC')->paginate(50);
 
         return view('admin.almuni.index', compact('t_list', 'almuni_child'));
     }
@@ -37,7 +37,7 @@ class AlmuniController extends Controller
 
     public function delete($id)
     {
-        dd('this delter');
+        // dd('this delter');
         $delete_Almuni = Almuni::find($id);
 
         $galleries = $delete_Almuni->A_images()->get();
@@ -54,8 +54,8 @@ class AlmuniController extends Controller
     public function edit($id)
     {
         $edit_record = Almuni::find($id);
-        $t_list = Almuni::get();
-        $almuni_child = AlmuniGallery::get();
+        $t_list = Almuni::orderBy('id', 'DESC')->get();
+        $almuni_child = AlmuniGallery::orderBy('id', 'DESC')->paginate(50);
         return view('admin.almuni.index', compact('edit_record', 't_list', 'almuni_child'));
     }
 
@@ -110,8 +110,8 @@ class AlmuniController extends Controller
     public function almuni_gallery_edit($id)
     {
         $edit_gallery = AlmuniGallery::find($id);
-        $t_list = Almuni::get();
-        $almuni_child = AlmuniGallery::get();
+        $t_list = Almuni::orderBy('id', 'DESC')->get();
+        $almuni_child = AlmuniGallery::orderBy('id', 'DESC')->paginate(50);
         return view('admin.almuni.index', compact('edit_gallery', 't_list', 'almuni_child'));
     }
 

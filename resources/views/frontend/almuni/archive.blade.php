@@ -24,8 +24,9 @@
                                     <h4>Alumni Category</h4>
                                 </div>
                                 <ul>
-                                    @foreach ($almuniCollection as $lists)
-                                        <a href="{{ route('almuni.link', $lists->id) }}">
+                                    @foreach ($almuniCollection as $key => $lists)
+                                        <a href="{{ route('almuni.link', $lists->id) }}"
+                                            id="{{ $key === 0 ? 'list_autoClick' : '' }}">
                                             <li class="category__links active"><i class="fa-solid fa-arrow-right"></i>
                                                 {{ ucfirst($lists->title) }}
                                             </li>
@@ -39,34 +40,34 @@
                                 <div class="row">
 
                                     @foreach ($almuni_g as $collection)
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3">
-                                        <div class="alumni_item">
-                                            <div class="alumni_img">
-                                                <img src="{{asset('uploads/'. $collection->image)}}" width="100%" height="100%"
-                                                    alt="No Image">
-                                            </div>
-                                            <div class="alumni_details text-center mt-2">
-                                                <h6>{{ucfirst($collection->name)}}</h6>
-                                                <table class="table table-borderless text-start">
-                                                    <tr>
-                                                        <th>Batch</th>
-                                                        <th>:</th>
-                                                        <td>{{$collection->batch}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Percentage</th>
-                                                        <th>:</th>
-                                                        <td>{{$collection->percentage}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Class</th>
-                                                        <th>:</th>
-                                                        <td>{{$collection->class}}</td>
-                                                    </tr>
-                                                </table>
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-3">
+                                            <div class="alumni_item">
+                                                <div class="alumni_img">
+                                                    <img src="{{ asset('uploads/' . $collection->image) }}" width="100%"
+                                                        height="100%" alt="No Image">
+                                                </div>
+                                                <div class="alumni_details text-center mt-2">
+                                                    <h6>{{ ucfirst($collection->name) }}</h6>
+                                                    <table class="table table-borderless text-start">
+                                                        <tr>
+                                                            <th>Batch</th>
+                                                            <th>:</th>
+                                                            <td>{{ $collection->batch }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Percentage</th>
+                                                            <th>:</th>
+                                                            <td>{{ $collection->percentage }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Class</th>
+                                                            <th>:</th>
+                                                            <td>{{ $collection->class }}</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -79,3 +80,8 @@
     </main>
 @stop
 
+@push('scripts')
+    <script>
+        // document.getElementById("list_autoClick").click();
+    </script>
+@endpush

@@ -74,7 +74,7 @@
                              @if (Session()->has('loginId'))
                              <li><a href="{{url('/admin/dashboard')}}">Login</a></li>
                                 @else
-                                <li><a href="{{url('/admin')}}">Login</a></li>
+                                <li><a target="_blank" href="{{url('/admin')}}">Login</a></li>
                              @endif
 
                         </ul>
@@ -108,7 +108,9 @@
             </div>
         </div>
         <div class="bg__image">
-            <img src="{{asset('uploads/'. shareme()->footer_bg_image)}}" width="100%" height="100%" alt="">
+            @if(!empty(shareme()->footer_bg_image))
+            <img src="{{asset('uploads/'. shareme()->footer_bg_image )}}" width="100%" height="100%" alt="">
+            @endif
         </div>
     </div>
     <div class="copyright text-center py-2">

@@ -29,3 +29,23 @@
     justify-content: center;
     padding-left: 15px;
 }
+.title_holder h4 a {
+    color: white;
+}
+.cs_modal_cs {
+    display: flex;
+    justify-content: center;
+}
+
+.cs_modal_cs a {
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+}
+
+.custom__modal .modal-content .modal-body .btn-close {
+    background-size: 14px;
+    background-repeat: no-repeat;
+    right: -23px;
+    top: -19px;
+}

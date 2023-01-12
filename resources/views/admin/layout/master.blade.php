@@ -62,24 +62,6 @@
         <!-- content -->
         <div class="page-wrapper">
             <div class="content container-fluid">
-
-                <!-- page-header-->
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 class="page-title mb-0">Dashboard</h3>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="breadcrumb mb-0 p-0 float-right">
-                                <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><span>Dashboard</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--/ page-header-->
-
                 <div class="row">
                     @yield('content')
                 </div>
@@ -174,29 +156,7 @@
     </script>
 
     <script>
-
-        function editor(){
-            ClassicEditor
-            .create(document.querySelector('.editor200'), {
-                licenseKey: '',
-            })
-            .then(editor => {
-                window.editor = editor;
-            })
-            .catch(error => {
-                console.error('Oops, something went wrong!');
-                console.error(
-                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-                );
-                console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
-                console.error(error);
-            });
-        }
-
-        editor();
-    </script>
-
-    <script>
+        
         ClassicEditor
             .create(document.querySelector('.editor'), {
                 licenseKey: '',

@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="d-flex justify_and_align">
                     <h4 class="card-title">Almuni</h4>
-                    <a href="{{ route('almuni.create') }}" class="btn btn-success">Create New</a>
+                    {{-- <a href="{{ route('almuni.create') }}" class="btn btn-success">Create New</a> --}}
                 </div>
             </div>
             <div class="card-body">
@@ -42,11 +42,15 @@
                                     @enderror
                                 </span>
                             </div>
-                            @if (isset($edit_record))
-                                <button class="btn btn-sm btn-success">Update</button>
+
+                            <div class="submit_button_cover text-center">
+                                @if (isset($edit_record))
+                                <button class="btn btn-sm btn-success" style="width:90px;">Update</button>
                             @else
-                                <button class="btn btn-sm btn-success">Save</button>
+                                <button class="btn btn-sm btn-success" style="width:90px;">Save</button>
                             @endif
+                            </div>
+
 
                             </form>
                         </div>
@@ -109,24 +113,27 @@
                                     <label class="custom-control-label" for="customSwitch3">Hide/Show</label>
                                 </div>
                             </div>
-                            @if (isset($edit_gallery))
-                                <button class="btn btn-sm btn-success">Update</button>
+                            <div class="submit_button_cover text-center">
+                                @if (isset($edit_gallery))
+                                <button class="btn btn-sm btn-success" style="width:90px;">Update</button>
                             @else
-                                <button class="btn btn-sm btn-success">Save</button>
+                                <button class="btn btn-sm btn-success" style="width:90px;">Save</button>
                             @endif
+                            </div>
+
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="table-responsive">
-                            <table id="example" class="table m-b-0 display nowrap">
+                            <table class="table table-bordered border-primary">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>#</th>
+                                        <th style="width:36px">#</th>
                                         <th>Title</th>
                                         <th>Batch Date</th>
                                         <th>Count</th>
-                                        <th>Action</th>
+                                        <th width="99px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -187,17 +194,17 @@
                         </div>
                         <hr>
                         <div class="table-responsive">
-                            <table id="example1" class="table m-b-0 display nowrap">
+                            <table class="table table-bordered border-primary">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>#</th>
-                                        <th>Image</th>
+                                        <th style="width:36px">#</th>
+                                        <th width="52px">Image</th>
                                         <th>Name</th>
                                         <th>Batch</th>
                                         <th>Percentage</th>
                                         <th>Class</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th width="99px">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -271,6 +278,9 @@
 
                                 </tbody>
                             </table>
+                            <div class="dashboard_pagination_table">
+                                {{$almuni_child->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>

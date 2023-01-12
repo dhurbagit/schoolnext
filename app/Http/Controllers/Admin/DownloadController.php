@@ -18,8 +18,8 @@ class DownloadController extends Controller
      */
     public function index()
     {
-        $lists = Download::get();
-        $list_gallery = Download_gallery::get();
+        $lists = Download::orderBy('id', 'DESC')->get();
+        $list_gallery = Download_gallery::orderBy('id', 'DESC')->get();
         return view('admin.downloads.index', compact('lists', 'list_gallery'));
     }
 
@@ -42,12 +42,17 @@ class DownloadController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'title' => 'required',
-        ]);
-        $input['title'] = $request->title;
-        Download::create($input);
-        return redirect()->route('download.view')->with('message', 'Record added successfully');
+        try {
+            $request->validate([
+                'title' => 'required',
+            ]);
+            $input['title'] = $request->title;
+            Download::create($input);
+            return redirect()->route('download.view')->with('message', 'Record added successfully');
+        } catch (Exception $e) {
+            return redirect()->route('download.view')->with('error', 'Enter value for category');
+        }
+
     }
 
     /**
@@ -99,8 +104,8 @@ class DownloadController extends Controller
     public function edit($id)
     {
         //
-        $list_gallery = Download_gallery::get();
-        $lists = Download::get();
+        $list_gallery = Download_gallery::orderBy('id', 'DESC')->get();
+        $lists = Download::orderBy('id', 'DESC')->get();
         $edit_record = Download::find($id);
         return view('admin.downloads.index', compact('lists', 'edit_record', 'list_gallery'));
     }
@@ -153,8 +158,8 @@ class DownloadController extends Controller
     public function g_downloads_edit(Request $request, $id)
     {
 
-        $list_gallery = Download_gallery::get();
-        $lists = Download::get();
+        $list_gallery = Download_gallery::orderBy('id', 'DESC')->get();
+        $lists = Download::orderBy('id', 'DESC')->get();
         $edit_downloadGallery = Download_gallery::find($id);
         //  dd($edit_downloadGallery);
         return view('admin.downloads.index', compact('lists', 'edit_downloadGallery', 'list_gallery'));
@@ -172,7 +177,7 @@ class DownloadController extends Controller
         $input['date'] = $request->date;
         $input['download_id'] = $request->download_id;
         if ($request->hasFile('image')) {
-            unlink("uploads/". $update->image );
+            unlink("uploads/" . $update->image);
             $input['image'] = $request->file('image')->store('downloads', 'uploads');
         }
         if ($request->hasFile('file')) {
