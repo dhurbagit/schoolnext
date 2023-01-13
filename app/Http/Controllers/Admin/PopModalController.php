@@ -50,15 +50,20 @@ class PopModalController extends Controller
     public function delete($id)
     {
         $delete = PopModal::find($id);
-        unlink('uploads/' . $delete->image);
-        unlink('uploads/' . $delete->file);
+        if (!empty($delete->image)) {
+            unlink('uploads/' . $delete->image);
+        }
+        if (!empty($delete->file)) {
+            unlink('uploads/' . $delete->file);
+        }
+
         $delete->delete();
         return redirect()->back()->with('message', 'Record Deleted successfully !');
     }
 
     public function update(Request $request, $id)
     {
-      
+
         $update = PopModal::find($id);
         $input['modal_title'] = $request->modal_title;
         $input['hide'] = isset($request->hide[0]) ? 1 : 0;

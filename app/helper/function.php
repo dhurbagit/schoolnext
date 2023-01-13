@@ -2,16 +2,16 @@
 
 use App\Models\PopModal;
 use App\Models\ThemeOption;
+use App\Models\User;
 
 function shareme(){
     $themeOption = ThemeOption::first();
-    return $themeOption ;
+    return $themeOption;
 }
 
-
-// sharing popup modal data
-function popUpmodal(){
-    $popUp = PopModal::orderBy('id', 'DESC')->get();
-    return $popUp;
-
+// passing data of user model for table 
+function UserList()
+{
+    $UList = User::orderBy('id', 'DESC')->get();
+    return $UList;
 }

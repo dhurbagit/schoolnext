@@ -37,7 +37,7 @@ class NewsEventController extends Controller
         return redirect()->back()->with('message', 'record inserted successfuly !');
     }
     public function view_list(){
-        $newsevent_list = NewsEvent::get();
+        $newsevent_list = NewsEvent::orderBy('id', 'DESC')->get();
         return view('admin.newsEvent.index', compact('newsevent_list'));
     }
 

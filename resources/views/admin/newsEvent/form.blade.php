@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for=""><b>Date</b></label>
                                     <input type="date" class="form-control" name="date"
-                                        value="{{ isset($edit_mvo) ? $edit_mvo->date : old('date') }}">
+                                        value="{{ isset($edit_mvo) ? $edit_mvo->date : date('Y-m-d') }}">
                                     <span class="text-danger">
                                         @error('date')
                                             {{ $message }}

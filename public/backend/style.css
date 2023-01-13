@@ -587,3 +587,7 @@ label.upload__btn p {
 .user-menu.nav > li > a:hover, .user-menu.nav > li > a:focus {
     background-color: rgb(0 0 0 / 0%) !important;
 }
+.registration_wrapper {
+    background-color: white;
+    padding: 25px;
+}

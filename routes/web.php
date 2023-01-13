@@ -66,6 +66,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('student-Info/{id}', [InquieryController::class, 'studentDetail'])->name('studentInfo');
     Route::delete('onlineform/{id}',[InquieryController::class, 'delete_record'] )->name('onlineform.delete');
 
+    //registration new user
+    Route::get('admin-register', [UsersController::class, 'view'])->name('admin.register');
+    Route::post('user-register', [UsersController::class, 'registration'])->name('user.registration');
+    Route::delete('user-delete/{id}', [UsersController::class, 'delete_user'])->name('user.delete');
+  
 
     // sidebar route
     Route::get('/manage-slider', [SliderController::class, 'index'])->name('manage-slider');

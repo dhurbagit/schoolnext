@@ -12,8 +12,8 @@
     </style>
     @foreach ($popUp as $key => $data)
         <!--Admission Open Modal -->
-        <div class="modal fade custom__modal" id="windowModal{{$key+1}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade custom__modal" id="windowModal{{ $key + 1 }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-md">
 
                 <div class="modal-content">
@@ -25,8 +25,9 @@
                     <div class="modal-body p-1">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         @if (!empty($data->image))
-                            <a href="{{isset($data->link)? $data->link : 'javascript:void(0)'}}">
-                                <img src="{{ asset('uploads/' . $data->image) }}" width="100%" height="100%" alt="No Image">
+                            <a href="{{ isset($data->link) ? $data->link : 'javascript:void(0)' }}">
+                                <img src="{{ asset('uploads/' . $data->image) }}" width="100%" height="100%"
+                                    alt="No Image">
                             </a>
                         @endisset
                 </div>
@@ -137,7 +138,7 @@
                     @foreach ($client as $image)
                         <div class="image-holder wow fadeInLeft" data-wow-delay="0.1s"
                             style="visibility: visible; -webkit-animation-delay: 0.1s; -moz-animation-delay: 0.1s; animation-delay: 0.1s;">
-                            <a href="{{ $image->link }}">
+                            <a href="{{ $image->link }}" target="_blank">
                                 <img src="{{ asset('client/' . $image->image) }}" width="100%" height="100%"
                                     alt="">
                             </a>
@@ -270,8 +271,9 @@
                                         @foreach ($newsevent as $data)
                                             <li>
                                                 <a href="{{ route('newsevent.link', $data->id) }}">
-                                                    <!-- <i class="fa-solid fa-circle-dot"></i> -->
-                                                    <p>{{ strip_tags(Str::limit($data->description, 160, '...')) }}</p>
+
+                                                    <h6>{{ $event->title }}</h6>
+                                                    <p>{!! Str::limit($data->description, 100, '...') !!}</p>
                                                     <span><i
                                                             class="fa-solid fa-calendar-days"></i>&nbsp;{{ $data->date }}</span>
                                                 </a>
@@ -409,10 +411,9 @@
 @push('scripts')
 <script type="text/javascript">
     $(window).on('load', function() {
-        for(let increment = 1; increment <= "{{$popUp->count()}}"; increment++){
-            $('#windowModal'+ increment).modal('show');
+        for (let increment = 1; increment <= "{{ $popUp->count() }}"; increment++) {
+            $('#windowModal' + increment).modal('show');
         }
     });
-
 </script>
 @endpush

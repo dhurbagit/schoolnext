@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label><b>Image</b></label>
+                            <label><b>Bottom Image</b></label>
                             <div class="flex_wrapper">
                                 <div class="image-frame">
                                     <img @isset($records)

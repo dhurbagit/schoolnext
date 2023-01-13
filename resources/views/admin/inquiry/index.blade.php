@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="{{route('studentInfo', $data->id)}}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    <a href="{{route('studentInfo', $data->id)}}" class="btn btn-primary" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-toggle="modal"

@@ -32,7 +32,7 @@
                 <span class="float-left"><img src="{{ asset('backend/assets/img/dash/png-transparent-contact-us.png') }}" alt=""
                         width="80"></span>
                 <div class="dash-widget-info text-right">
-                    <span>Contact-Us form</span>
+                    <span>Contact Us form</span>
                     <h3>{{ $contact_us }}</h3>
                 </div>
             </div>

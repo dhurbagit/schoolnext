@@ -6,7 +6,7 @@
         <ul class="nav float-left">
             <li>
                 <div class="nav_barand">
-                    <a href="{{ url('/') }}" class="logo">
+                    <a href="{{ url('/') }}" class="logo" target="_blank">
                         @isset($setting)
                             <img src="{{ asset('setting/' . $setting->logo) }}" width="40" height="40" alt="">
                         @endisset
@@ -32,13 +32,14 @@
             <li class="nav-item dropdown has-arrow">
                 <a href="#" class=" nav-link user-link" data-toggle="dropdown">
                     <span class="user-img"><img class="rounded-circle"
-                            src="{{ asset('backend/assets/img/user-06.jpg') }}" width="30" alt="Admin">
+                            src="{{ asset('setting/' . $setting->logo) }}" width="30" alt="Admin">
                         <span class="status online"></span></span>
                     <span>{{ ucfirst($session_id->name ?? '') }}</span>
 
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
+                    <a class="dropdown-item" href="{{ route('admin.register') }}">Add User</a>
                 </div>
             </li>
         </ul>

@@ -49,3 +49,15 @@
     right: -23px;
     top: -19px;
 }
+#main__index-section .news-and-events__section .right-notice .card ul li a h6{
+    color: white;
+}
+#main__index-section .news-and-events__section .right-notice .card ul li a
+{
+    margin-bottom: 30px;
+    display: block;
+}
+#main__index-section .news-and-events__section .right-notice .card ul li a p
+{
+    line-height: 17px;
+}

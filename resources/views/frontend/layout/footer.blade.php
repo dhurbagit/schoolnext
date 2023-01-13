@@ -70,9 +70,9 @@
                                 </li>
                             @endforeach
                             <li><a href="https://allstarsms.com" target="_blank">Bulk SMS</a></li>
-                            
+
                              @if (Session()->has('loginId'))
-                             <li><a href="{{url('/admin/dashboard')}}">Login</a></li>
+                             <li><a target="_blank" href="{{url('/admin/dashboard')}}">Login</a></li>
                                 @else
                                 <li><a target="_blank" href="{{url('/admin')}}">Login</a></li>
                              @endif

@@ -151,7 +151,7 @@
                     </tr>
                 </table>
                 <div class="msg_holder">
-                    <span>I hereby declare that the details given above are correct and I bear the sole responsibility
+                    <span>Note: I hereby declare that the details given above are correct and I bear the sole responsibility
                         for
                         disqualifying my application due to incomplete or incorrect information. I unconditionally agree
                         to
