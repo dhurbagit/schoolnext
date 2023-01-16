@@ -591,3 +591,12 @@ label.upload__btn p {
     background-color: white;
     padding: 25px;
 }
+.input_wrap {
+    position: relative;
+}
+
+.input_wrap i {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+}

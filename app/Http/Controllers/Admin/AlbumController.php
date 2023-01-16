@@ -45,7 +45,7 @@ class AlbumController extends Controller
     }
     public function view()
     {
-        $albums = Album::withCount('images')->get();
+        $albums = Album::orderBy('id', 'DESC')->withCount('images')->get();
         return view('admin.albums.index', compact('albums'));
     }
 

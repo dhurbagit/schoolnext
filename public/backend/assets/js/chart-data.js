@@ -2,46 +2,6 @@
 
 $(document).ready(function() {
 
- var options = {
-          series: [{
-          name: 'New Students',
-          data: [31, 40, 28, 51, 42, 109, 100]
-        }, {
-          name: 'Old Students',
-          data: [11, 32, 45, 32, 34, 52, 41]
-        }],
-          chart: {
-          height: 350,
-          type: 'area'
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        colors: ["#8944D7", "#00B871"],
-        xaxis: {
-          type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
-        legend: {
-          position: 'top'
-        },
-        tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
-        },
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart1"), options);
-        chart.render();
-
-
-
-
-
   var options = {
           series: [{
           name: 'New Students',
@@ -116,7 +76,7 @@ $(document).ready(function() {
         stroke: {
           curve: 'straight'
         },
-            
+
         markers: {
           size: 6,
           colors: ["#00B871"],
@@ -149,9 +109,9 @@ $(document).ready(function() {
 				{label: "Total", value: 60000 , labelColor: '#8944D7'},
 				{label: "Teachers", value: 15000 , labelColor: '#2FDF84'},
 				{label: "Parents", value: 15000 , labelColor: '#00B871'},
-				{label: "Students", value: 30000 , labelColor: '#86B1F2'}			
+				{label: "Students", value: 30000 , labelColor: '#86B1F2'}
 			],
-			
+
 			colors: ['#8944D7', '#2FDF84', '#00B871', '#86B1F2'],
 			resize: true,
 			redraw: true,

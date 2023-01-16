@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Almuni;
 use App\Models\Inquiery;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\AlmuniGallery;
+use App\Models\NewsEvent;
 
 class DashboardController extends Controller
 {
@@ -14,7 +17,10 @@ class DashboardController extends Controller
         $online = Inquiery::where('type', 'online form')->count();
         $inquiry = Inquiery::where('type', 'inquiry')->count();
         $contact_us = Inquiery::where('type', 'contactus')->count();
-        return view('admin.dashboard.index', compact('online', 'inquiry', 'contact_us'));
+        $NewsEvent = NewsEvent::orderBy('id', 'DESC')->get();
+        $AlmuniGallery = AlmuniGallery::count();
+        $almuni = Almuni::get();
+        return view('admin.dashboard.index', compact('online', 'inquiry', 'contact_us', 'NewsEvent', 'AlmuniGallery','almuni'));
     }
 
     public function view()

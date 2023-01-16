@@ -12,14 +12,14 @@
             <div class="card-body">
 
 
-                <div class="table-responsive">
+                <div class="table-responsive1">
                     <table class="table m-b-0" id="example">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Heading</th>
-                                <th>Description</th>
+                                <th width="300">Description</th>
                                 <th>Images</th>
                                 <th>Action</th>
                             </tr>

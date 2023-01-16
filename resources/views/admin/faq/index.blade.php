@@ -153,9 +153,9 @@
                                                                         @endisset
                                                                             class="custom-control-input"
                                                                             id="customSwitch{{ $data->id }}"
-                                                                            name="hide_show" value="0">
+                                                                            name="hide_show">
                                                                         <label class="custom-control-label"
-                                                                            for="customSwitch{{ $data->id }}">Hide/Show</label>
+                                                                            for="customSwitch{{ $data->id }}">Hide/Show.</label>
                                                                     </div>
                                                                 </div>
                                                                 <button type="submit" class="btn btn-success mt-3"

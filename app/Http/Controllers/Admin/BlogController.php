@@ -11,7 +11,7 @@ class BlogController extends Controller
     //
     public function view()
     {
-        $list = Blog::where('type', 10)->get();
+        $list = Blog::orderBy('id', 'DESC')->where('type', 10)->get();
         $update = Blog::where('type', 5)->orderBy('id', 'DESC')->first();
         return view('admin.blogs.index', compact('list', 'update'));
     }

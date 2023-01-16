@@ -32,7 +32,7 @@
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#collapse{{$key}}"
                                                 aria-expanded="false" aria-controls="collapse{{$key}}">
-                                                {{$loop->iteration}}{{$records->faq_head}}
+                                                {{$loop->iteration}} . {{$records->faq_head}}
                                             </button>
                                         </h2>
                                         <div id="collapse{{$key}}" class="accordion-collapse collapse"

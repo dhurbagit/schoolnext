@@ -12,7 +12,7 @@ class ContentController extends Controller
     //
     public function index()
     {
-        $list = Content::get();
+        $list = Content::orderBy('id', 'DESC')->get();
         return view('admin.school_life.index', compact('list'));
     }
     public function view()

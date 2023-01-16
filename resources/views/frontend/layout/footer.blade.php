@@ -1,24 +1,29 @@
 <style>
-    .footer-section{
-        background-color: {{ $themeOption->footer_color ?? '' }}
+    @if (($themeOption->option ?? '') == 1)
+    .footer-section {
+        background-color: {{ $themeOption->footer_color }}
     }
-    .footer-section .footer__links ul li a::after,
+    @else
+    .footer-section {
+        background-color: none;
+    }
+    @endif.footer-section .footer__links ul li a::after,
     .footer-section .footer__title::after {
+        background-color: {{ $themeOption->primary_color ?? '' }};
+    }
 
-    background-color: {{ $themeOption->primary_color ?? '' }};
+    .copyright .content a:hover,
+    .footer-section .footer__links ul li a:hover,
+    .footer-section .school-address li span:hover,
+    .footer-section .school-address li span:hover,
+    .footer-section .school-address li i,
+    .copyright .content .social-icons a {
+        color: {{ $themeOption->primary_color ?? '' }};
+    }
 
-}
-.copyright .content a:hover,
-.footer-section .footer__links ul li a:hover,
-.footer-section .school-address li span:hover,
-.footer-section .school-address li span:hover,
-.footer-section .school-address li i,
-.copyright .content .social-icons a{
-    color: {{ $themeOption->primary_color ?? '' }};
-}
-.copyright{
-    background-color: {{ $themeOption->copyright_color ?? '' }};
-}
+    .copyright {
+        background-color: {{ $themeOption->copyright_color ?? '' }};
+    }
 </style>
 <footer id="footer">
     <div class="footer-section py-5">
@@ -29,14 +34,14 @@
                         <span>Brochure</span>
                     </div>
                     <div class="brochure mb-3">
-                        <a href="{{asset('setting/' . $setting->f_brochure_file)}}" target="_blank">
+                        <a href="{{ asset('setting/' . $setting->f_brochure_file) }}" target="_blank">
                             @if (!@empty($setting->footer_image))
-                                <img src="{{ asset('setting/' . $setting->footer_image) }}" width="100%" height="100%"
-                                    alt="QR Code">
+                                <img src="{{ asset('setting/' . $setting->footer_image) }}" width="100%"
+                                    height="100%" alt="QR Code">
                             @endif
                         </a>
                     </div>
-                    <div class="site_counter">{{ str_pad($setting->view_counter+1, 7, 0, STR_PAD_LEFT)}}</div>
+                    <div class="site_counter">{{ str_pad($setting->view_counter + 1, 7, 0, STR_PAD_LEFT) }}</div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="footer__title" style="color: {{ $themeOption->primary_color ?? '' }} ">
@@ -63,7 +68,7 @@
                         <ul>
                             @foreach ($feature_link as $mainMenu)
                                 <li class="drop-list">
-                                    <a @if ($mainMenu->category_slug == 'page' ||$mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                                    <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
                                   href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
                                         class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
@@ -71,11 +76,11 @@
                             @endforeach
                             <li><a href="https://allstarsms.com" target="_blank">Bulk SMS</a></li>
 
-                             @if (Session()->has('loginId'))
-                             <li><a target="_blank" href="{{url('/admin/dashboard')}}">Login</a></li>
-                                @else
-                                <li><a target="_blank" href="{{url('/admin')}}">Login</a></li>
-                             @endif
+                            @if (Session()->has('loginId'))
+                                <li><a target="_blank" href="{{ url('/admin/dashboard') }}">Login</a></li>
+                            @else
+                                <li><a target="_blank" href="{{ url('/admin') }}">Login</a></li>
+                            @endif
 
                         </ul>
                     </div>
@@ -108,8 +113,9 @@
             </div>
         </div>
         <div class="bg__image">
-            @if(!empty(shareme()->footer_bg_image))
-            <img src="{{asset('uploads/'. shareme()->footer_bg_image )}}" width="100%" height="100%" alt="">
+            @if (!empty(shareme()->footer_bg_image))
+                <img src="{{ asset('uploads/' . shareme()->footer_bg_image) }}" width="100%" height="100%"
+                    alt="">
             @endif
         </div>
     </div>
@@ -148,3 +154,11 @@
         </div>
     </div>
 </footer>
+
+<!-- Messenger Chat Plugin Code -->
+<div id="fb-root"></div>
+
+<!-- Your Chat Plugin code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+

@@ -61,7 +61,7 @@ class VideoController extends Controller
     }
     public function view()
     {
-        $youtube_list = Video::where('type', 2)->get();
+        $youtube_list = Video::orderBy('id', 'DESC')->where('type', 2)->get();
         return view('admin.youtube_video.index', compact('youtube_list'));
     }
 

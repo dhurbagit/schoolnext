@@ -12,7 +12,8 @@
             </div>
             <div class="card-body">
                 @if (isset($update_thms))
-                    <form action="{{ route('themeOption.update', $update_thms->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('themeOption.update', $update_thms->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('put')
                     @else
                         <form action="{{ route('themeOption.save') }}" method="POST" enctype="multipart/form-data">
@@ -53,15 +54,30 @@
                             <label><b>Footer Image</b></label>
                             <div class="input_images_wrapper">
                                 <div class="image_place">
-                                    <img
-                                    @isset($update_thms)
-                                    src="{{asset('uploads/'. $update_thms->footer_bg_image)}}"
+                                    <img @isset($update_thms)
+                                    src="{{ asset('uploads/' . $update_thms->footer_bg_image) }}"
                                     @endisset
-                                     alt="" id="output">
+                                        alt="" id="output">
                                 </div>
-                                <input name="footer_bg_image" type="file" onchange="loadFile(event)" class="form-control">
+                                <input name="footer_bg_image" type="file" onchange="loadFile(event)"
+                                    class="form-control">
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-4"><br><br>
+                        <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch3" name="option"
+                                @isset($update_thms) @if ($update_thms->option == 1) checked @endif @endisset>
+                            <label class="custom-control-label" for="customSwitch3"><b>Disable Footer background color</b></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for=""><b>Add Html Code For facebook Chat</b></label>
+                        <textarea name="code" class="editor" id="" cols="30" rows="10">
+                            {{$update_thms->code ?? ''}}
+                        </textarea>
+                        <br>
+                        <br>
                     </div>
                     <div class="col-lg-12">
                         @if (isset($update_thms))
@@ -78,10 +94,12 @@
     </div>
 @stop
 @push('scripts')
-<script>
-    var loadFile = function(event) {
-        var image = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+
 @endpush

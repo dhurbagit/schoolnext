@@ -273,7 +273,7 @@
                                                 <a href="{{ route('newsevent.link', $data->id) }}">
 
                                                     <h6>{{ $event->title }}</h6>
-                                                    <p>{!! Str::limit($data->description, 100, '...') !!}</p>
+                                                    <p>{!! Str::limit($data->description, 80, '...') !!}</p>
                                                     <span><i
                                                             class="fa-solid fa-calendar-days"></i>&nbsp;{{ $data->date }}</span>
                                                 </a>

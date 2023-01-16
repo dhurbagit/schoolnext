@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label><b>Date</b></label>
                             <input class="form-control" type="date" name="date"
-                                value="{{ isset($records) ? $records->date : old('date') }}">
+                                value="{{ isset($records) ? $records->date : date('Y-m-d') }}">
                             <span class="text-danger">
                                 @error('date')
                                     {{ $message }}

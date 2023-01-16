@@ -30,12 +30,12 @@
                                             <td>{{ $data->name }}</td>
                                             <td>{{ $data->email }}</td>
                                             <td>
-                                                @if($data->email != 'allstarsms45@gmail.com')
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#exampleModal_neDelete{{ $data->id }}">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
+                                                @if ($data->email != 'allstarsms45@gmail.com')
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#exampleModal_neDelete{{ $data->id }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 @endif
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal_neDelete{{ $data->id }}"
@@ -100,7 +100,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for=""><b>Password</b></label>
-                                    <input type="password" class="form-control" name="password">
+                                    <div class="input_wrap">
+                                        <input type="password" class="form-control" name="password" id="test-input">
+                                        <i class="fa fa-eye-slash" aria-hidden="true" id="check"></i>
+                                    </div>
                                     <span class="text-danger">
                                         @error('password')
                                             {{ $message }}
@@ -109,7 +112,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for=""><b>Confirm Password</b></label>
-                                    <input type="password" class="form-control" name="password_confirmation">
+                                    <div class="input_wrap">
+                                        <input type="password" class="form-control" name="password_confirmation" id="Ptest-input">
+                                        <i class="fa fa-eye-slash" aria-hidden="true" id="Pcheck"></i>
+                                    </div>
+
                                     <span class="text-danger">
                                         @error('confirmed-password')
                                             {{ $message }}
@@ -126,3 +133,27 @@
 
     </div>
 @stop
+@push('scripts')
+    <script type='text/javascript'>
+        $('#check').click(function() {
+            if ('password' == $('#test-input').attr('type')) {
+                $('#test-input').prop('type', 'text');
+                $('#check').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            } else {
+                $('#test-input').prop('type', 'password');
+                $('#check').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        });
+    </script>
+    <script type='text/javascript'>
+        $('#Pcheck').click(function() {
+            if ('password' == $('#Ptest-input').attr('type')) {
+                $('#Ptest-input').prop('type', 'text');
+                $('#Pcheck').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            } else {
+                $('#Ptest-input').prop('type', 'password');
+                $('#Pcheck').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            }
+        });
+    </script>
+@endpush

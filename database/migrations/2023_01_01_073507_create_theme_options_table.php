@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('footer_color')->nullable();
             $table->string('copyright_color')->nullable();
             $table->string('footer_bg_image')->nullable();
+            $table->string('option')->default(0);
+            $table->longText('code')->nullable();
             $table->timestamps();
         });
     }

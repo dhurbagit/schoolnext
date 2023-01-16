@@ -23,8 +23,8 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="">Add New SEE Batch Title</label>
-                                <input class="form-control" type="text" name="title"
+                                <label for="">Year</label>
+                                <input class="form-control" type="number" name="title"
                                     value="{{ isset($edit_record) ? $edit_record->title : old('title') }}">
                                 <span class="text-danger">
                                     @error('title')
@@ -33,7 +33,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="">Batch Date</label>
+                                <label for="">Batch Year</label>
                                 <input class="form-control" type="text" name="date"
                                     value="{{ isset($edit_record) ? $edit_record->date : old('date') }}">
                                 <span class="text-danger">
@@ -130,8 +130,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th style="width:36px">#</th>
-                                        <th>Title</th>
-                                        <th>Batch Date</th>
+                                        <th>Year</th>
+                                        <th>Batch</th>
                                         <th>Count</th>
                                         <th width="99px">Action</th>
                                     </tr>
