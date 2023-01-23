@@ -574,11 +574,11 @@ label.upload__btn p {
 }
 
 .nav_barand a img {
-    height: 51px;
+    height: 43px;
     width: auto;
 }
 .cs_hover a {
-    opacity: 0;
+    opacity: 1;
 }
 
 .cs_hover a:hover {
@@ -599,4 +599,19 @@ label.upload__btn p {
     position: absolute;
     top: 12px;
     right: 8px;
+}
+.rounded-circle {
+    border-radius: 20%!important;
+}
+.table_custom_wrapper {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+span.custom_badge {
+    background-color: green;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    font-size: 12px;
 }

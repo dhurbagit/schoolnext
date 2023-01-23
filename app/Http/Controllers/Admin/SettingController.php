@@ -72,8 +72,12 @@ class SettingController extends Controller
             $store->Phone_one = $request->Phone_one;
             $store->Phone_two = $request->Phone_two;
             $store->Phone_three = $request->Phone_three;
+            $store->phone_four = $request->phone_four;
             $store->email = $request->email;
             $store->success_message = $request->success_message;
+            $store->reply_message = $request->reply_message;
+            $store->site_key = $request->site_key;
+            $store->security_key = $request->security_key;
             if ($request->file('logo')) {
                 $file = $request->file('logo');
                 $generateNumber = random_int(100000, 999999);
@@ -174,8 +178,12 @@ class SettingController extends Controller
             $store_update->Phone_one = $request->Phone_one;
             $store_update->Phone_two = $request->Phone_two;
             $store_update->Phone_three = $request->Phone_three;
+            $store_update->phone_four = $request->phone_four;
             $store_update->email = $request->email;
             $store_update->success_message = $request->success_message;
+            $store_update->reply_message = $request->reply_message;
+            $store_update->security_key = $request->security_key;
+            $store_update->site_key = $request->site_key;
             if ($request->file('logo')) {
                 unlink("setting/" . $store_update->logo);
                 $file = $request->file('logo');

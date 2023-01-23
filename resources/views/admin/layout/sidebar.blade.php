@@ -48,7 +48,7 @@
                         <span> About</span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled" style="display: none;">
                         <li><a href="{{ route('about.view') }}"><span>create About</span></a></li>
-                        <li><a href="{{ route('Manage.mvo') }}"><span>Manage MVO</span></a></li>
+                        <li><a href="{{ route('Manage.mvo') }}"><span>Mission/Vision</span></a></li>
                     </ul>
                 </li>
                 <li class="submenu">

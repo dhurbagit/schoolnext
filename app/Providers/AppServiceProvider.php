@@ -41,20 +41,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('session_id', User::where('id', '=', session()->get('loginId'))->first() );
         });
 
-
+        // , 'publish_status' => 1
         // main menu
         $menus = Menu::query()
-            ->where(['parent_id' => null, 'publish_status' => 1])
+            ->where(['parent_id' => null])
             ->whereNotIn('header_footer', ['2','4', '5','6', '8', '9'])
-            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'title_slug')
+            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'publish_status', 'title_slug')
             ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
             ->orderBy('position', 'ASC')
             ->get();
         View::share('menus', $menus);
 
         // footer menu
-        $fmenus = Menu::where(['parent_id' => null, 'publish_status' => 1])->whereNotIn('header_footer', ['1', '4', '5', '6','7', '9'])
-            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'position', 'title_slug')
+        $fmenus = Menu::where(['parent_id' => null])->whereNotIn('header_footer', ['1', '4', '5', '6','7', '9'])
+            ->select('id', 'name', 'parent_id', 'external_link', 'category_slug', 'publish_status', 'position', 'title_slug')
             ->orderBy('position', 'ASC')
             ->get();
         View::share('fmenus', $fmenus);
@@ -62,18 +62,18 @@ class AppServiceProvider extends ServiceProvider
 
         // mega menu
         $mega_menus = Menu::query()
-        ->where(['parent_id' => null, 'publish_status' => 1])
+        ->where(['parent_id' => null])
         ->whereNotIn('header_footer', ['1','2','3','5','6','7','8', '9'])
-        ->select('id', 'name', 'parent_id','banner_image', 'page_title', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
+        ->select('id', 'name', 'parent_id','banner_image', 'page_title', 'publish_status', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
         ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
         ->orderBy('position', 'ASC')
         ->get();
         View::share('b_menus', $mega_menus);
 
         $top_ribbon = Menu::query()
-        ->where(['parent_id' => null, 'publish_status' => 1])
+        ->where(['parent_id' => null])
         ->whereNotIn('header_footer', ['1','2','3','4', '6', '7'])
-        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
+        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'publish_status', 'category_slug', 'position', 'title_slug')
         ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
         ->orderBy('position', 'ASC')
         ->get();
@@ -81,9 +81,9 @@ class AppServiceProvider extends ServiceProvider
 
 
         $feature_link = Menu::query()
-        ->where(['parent_id' => null, 'publish_status' => 1])
+        ->where(['parent_id' => null])
         ->whereNotIn('header_footer', ['1','2','3','4','5','8'])
-        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'category_slug', 'position', 'title_slug')
+        ->select('id', 'name', 'parent_id', 'content' ,'external_link', 'publish_status', 'category_slug', 'position', 'title_slug')
         ->with('children:id,name,parent_id,external_link,category_slug,title_slug')
         ->orderBy('position', 'ASC')
         ->get();

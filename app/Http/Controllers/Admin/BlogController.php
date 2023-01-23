@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -40,6 +41,39 @@ class BlogController extends Controller
             $input['image'] = $request->file('image')->store('blogs', 'uploads');
         }
         Blog::create($input);
+
+        // automatic remove image from folder by checking in database table
+        $scan = scandir(public_path('ckimages_blog'));
+        $files = DB::table('blogs')->pluck('inner_description');
+
+        $items = array();
+        foreach ($files as $haystack) {
+            if (Preg_match_all('@src="([^"]+)"@', $haystack, $matches)) {
+                array_push($items, $matches[1]);
+            }
+        }
+
+        $img_name = array();
+        foreach ($items as $rec) {
+            foreach ($rec as $dats) {
+                $link_array = explode('/', $dats);
+                $page = end($link_array);
+                array_push($img_name, $page);
+            }
+        }
+
+        $protectTheseImages = [];
+        foreach ($img_name as $file) {
+            $protectTheseImages[] = $file;
+        }
+
+        $diff = array_diff($scan, $protectTheseImages);
+        foreach ($diff as $file) {
+            if (!is_dir($file)) {
+                unlink("ckimages_blog/" . $file);
+            }
+        }
+
         return redirect()->back()->with('message', 'Record added successfully!');
     }
     public function delete($id)
@@ -70,10 +104,43 @@ class BlogController extends Controller
         $input['date'] = $request->date;
         $input['inner_description'] = $request->inner_description;
         if ($request->hasFile('image')) {
-            unlink('uploads/'. $update->image);
+            unlink('uploads/' . $update->image);
             $input['image'] = $request->file('image')->store('blogs', 'uploads');
         }
         $update->update($input);
+
+        // automatic remove image from folder by checking in database table
+        $scan = scandir(public_path('ckimages_blog'));
+        $files = DB::table('blogs')->pluck('inner_description');
+
+        $items = array();
+        foreach ($files as $haystack) {
+            if (Preg_match_all('@src="([^"]+)"@', $haystack, $matches)) {
+                array_push($items, $matches[1]);
+            }
+        }
+
+        $img_name = array();
+        foreach ($items as $rec) {
+            foreach ($rec as $dats) {
+                $link_array = explode('/', $dats);
+                $page = end($link_array);
+                array_push($img_name, $page);
+            }
+        }
+
+        $protectTheseImages = [];
+        foreach ($img_name as $file) {
+            $protectTheseImages[] = $file;
+        }
+
+        $diff = array_diff($scan, $protectTheseImages);
+        foreach ($diff as $file) {
+            if (!is_dir($file)) {
+                unlink("ckimages_blog/" . $file);
+            }
+        }
+
         return redirect()->back()->with('message', 'Record added successfully!');
 
     }

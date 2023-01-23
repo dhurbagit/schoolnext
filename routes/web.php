@@ -1,33 +1,33 @@
 <?php
 
-use App\Models\Blog;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\MvoController;
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AlbumController;
-use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\AlmuniController;
+use App\Http\Controllers\Admin\BeyondAcademicController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CkeditorController;
 use App\Http\Controllers\Admin\ClientController;
-use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\CounterController;
-use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\DownloadController;
-use App\Http\Controllers\Admin\InquieryController;
-use App\Http\Controllers\Admin\PopModalController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DownloadController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\InquieryController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\MvoController;
 use App\Http\Controllers\Admin\NewsEventController;
-use App\Http\Controllers\Admin\TeammemberController;
 use App\Http\Controllers\Admin\NoticeboardController;
+use App\Http\Controllers\Admin\PopModalController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\TeammemberController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ThemeOptionController;
-use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Admin\BeyondAcademicController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\VacancyController;
+use App\Http\Controllers\Admin\VideoController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,17 +40,24 @@ use App\Http\Controllers\Admin\BeyondAcademicController;
 |
  */
 
-
-
 Route::get('/admin', [UsersController::class, 'index'])->middleware('alreadyLoggedIn');
 Route::post('admin-login', [UsersController::class, 'LoginUser'])->name('admin-login');
 Route::get('admin-logout', [UsersController::class, 'LogoutUser'])->name('admin.logout');
 
-
-
-
 //Admin route
 Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () {
+
+    // ck editor
+    Route::post('ckditor_image', [CkeditorController::class, 'storeImage'])->name('image.upload');
+    Route::post('ckditor_imageBlog', [CkeditorController::class, 'storeImageBlog'])->name('image.uploadBlog');
+
+    //vacancy
+    Route::get('vacancy-view', [VacancyController::class, 'view'])->name('vacancy');
+    Route::post('vacancy-save', [VacancyController::class, 'store'])->name('vacancy.save');
+    Route::delete('vacancy-delete/{id}', [VacancyController::class, 'delete'])->name('vacancy.delete');
+    Route::post('vacancydetail-save', [VacancyController::class, 'save'])->name('vacancydetail.save');
+    Route::put('vacancydetail-update/{id}', [VacancyController::class, 'update'])->name('vacancydetail.update');
+
 
 
     //dashboard
@@ -61,16 +68,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::delete('inquiry_next-delete/{id}', [InquieryController::class, 'delete_inquiry_next'])->name('inquiry_next.delete');
     Route::get('contactus_next-lists', [InquieryController::class, 'contactUs_view'])->name('contactus_next.lists');
     Route::delete('contactUs-delete/{id}', [InquieryController::class, 'delete_contactUs'])->name('contactUs.delete');
-    Route::post('contactUs-reply/{id}', [InquieryController::class, 'email_reply'])->name('contactUs.reply');
-    Route::post('inquiry-reply/{id}', [InquieryController::class, 'inquiry_email_reply'])->name('inquiry.reply');
+
     Route::get('student-Info/{id}', [InquieryController::class, 'studentDetail'])->name('studentInfo');
-    Route::delete('onlineform/{id}',[InquieryController::class, 'delete_record'] )->name('onlineform.delete');
+    Route::delete('onlineform/{id}', [InquieryController::class, 'delete_record'])->name('onlineform.delete');
 
     //registration new user
     Route::get('admin-register', [UsersController::class, 'view'])->name('admin.register');
     Route::post('user-register', [UsersController::class, 'registration'])->name('user.registration');
     Route::delete('user-delete/{id}', [UsersController::class, 'delete_user'])->name('user.delete');
-  
 
     // sidebar route
     Route::get('/manage-slider', [SliderController::class, 'index'])->name('manage-slider');
@@ -94,10 +99,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('manage-academic', [BeyondAcademicController::class, 'view'])->name('manage.academic');
     Route::get('create-faq', [FaqController::class, 'index'])->name('create.faq');
     Route::get('manage-faq', [FaqController::class, 'view'])->name('manage.faq');
-    Route::get('chairman-message',[MessageController::class, 'index_chairman'])->name('chairman.message');
-    Route::get('principal-message',[MessageController::class, 'index_principal'])->name('principal.message');
+    Route::get('chairman-message', [MessageController::class, 'index_chairman'])->name('chairman.message');
+    Route::get('principal-message', [MessageController::class, 'index_principal'])->name('principal.message');
     Route::get('theme-option', [ThemeOptionController::class, 'index'])->name('theme.option');
-
 
     //pop Up Modal
     Route::get('popUp-model', [PopModalController::class, 'index'])->name('popUpModal.view');
@@ -219,11 +223,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::get('create-youtube', [VideoController::class, 'youtube_form'])->name('youtube.create');
     Route::post('save-youtube', [VideoController::class, 'save_youtube'])->name('youtube.save');
     Route::delete('youtube-delete/{id}', [VideoController::class, 'delete_youtube'])->name('youtube.delete');
-    Route::get('youtube-edit/{id}', [VideoController::class,'edit_youtubeForm'])->name('youtube.edit');
+    Route::get('youtube-edit/{id}', [VideoController::class, 'edit_youtubeForm'])->name('youtube.edit');
     Route::put('youtube-update/{id}', [VideoController::class, 'update_youtube'])->name('youtube.update');
 
     //school life
-    Route::get('school-life', [ContentController::class,'index'])->name('school.life');
+    Route::get('school-life', [ContentController::class, 'index'])->name('school.life');
 
     Route::get('schoollife-view', [ContentController::class, 'view'])->name('schoollife.create');
     Route::post('schoollife-save', [ContentController::class, 'store'])->name('schoollife.save');
@@ -243,7 +247,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
     Route::post('blog-title-save', [BlogController::class, 'save'])->name('blog.title.save');
     Route::post('blog-title-update/{id}', [BlogController::class, 'blog_title_update'])->name('blog.title.update');
 
-   //almuni
+    //almuni
 
     Route::get('Almuni-view', [AlmuniController::class, 'view'])->name('Almuni.view');
     Route::get('Almuni-create', [AlmuniController::class, 'view_form'])->name('almuni.create');
@@ -275,8 +279,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isLoggedIn']], function () 
 
     Route::post('select_data', [AlmuniController::class, 'select_data'])->name('select_data');
 });
-
-
-
-
-

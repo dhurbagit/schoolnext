@@ -1,3 +1,4 @@
+{{-- not in use  --}}
 @extends('admin.layout.master')
 @section('pageTitle', 'Pass Out student')
 @section('content')

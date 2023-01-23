@@ -189,7 +189,7 @@
                   font-weight: inherit;
                   width: 600px;
                   padding: 0;
-                  background-color: orange;
+                  background-color: {{$themeOption->primary_color ?? ''}};
                   color: #fff;
                   padding: 40px 0;
                 "
@@ -297,7 +297,7 @@
                         "
                       >
                         <p style="font-size: 16px">
-                          {{ strip_tags($email_message)}}
+                          {{ ($reply_message)}}
                         </p>
                       </td>
                     </tr>
@@ -491,11 +491,13 @@
                 "
               >
                 <center>
-                  <h3 style="font-size: 22px; color: orange; margin-bottom: 0">
+                  <h3 style="font-size: 22px; color:  {{ $themeOption->secondary_color ?? '' }}; margin-bottom: 0">
                     Get in touch
                   </h3>
-                  <p style="margin: 10px 0">{{$Phone_two}}</p>
+                  <p style="margin: 10px 0">{{$address}}</p>
                   <p style="margin: 10px 0">{{$email}}</p>
+                  <p style="margin: 10px 0">{{$phone_four}}</p>
+
                   <a href="{{$facebook}}"
                     ><img
                       src="https://www.pngkey.com/png/full/90-902640_facebook-logo-circle-black-transparent-logo-fb-vector.png"
@@ -567,7 +569,7 @@
                   font-weight: inherit;
                   width: 600px;
                   padding: 0;
-                  background-color: orange;
+                  background-color: {{$themeOption->primary_color ?? ''}};
                   color: #fff;
                   padding: 15px;
                   font-size: 12px;
@@ -588,4 +590,3 @@
 
 </html>
 
-{{-- @dd('THIS') --}}

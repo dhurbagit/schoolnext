@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset('setting/' . $setting->favIcon_image) }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -15,6 +16,21 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>Login</title>
 </head>
+
+<style>
+    #login-section .login-page .form{
+        min-width: 388px;
+    }
+    .login_eye_wrapper {
+        position: relative;
+    }
+
+    .login_eye_wrapper i {
+        position: absolute;
+        right: 13px;
+        top: 20px;
+    }
+</style>
 
 <body>
     <section id="login-section" style="background-image:url('{{ asset('setting/' . $setting->loginBg_images) }}')">
@@ -32,12 +48,16 @@
                             {{ $message }}
                         @enderror
                     </span>
-                    <input type="password" name="password" placeholder="Password" />
+                    <div class="login_eye_wrapper">
+                        <input type="password" name="password" placeholder="Password" id="test-input" />
+                        <i class="fa fa-eye" aria-hidden="true" id="check"></i>
+                    </div>
                     <span class="text-danger">
                         @error('password')
                             {{ $message }}
                         @enderror
                     </span>
+
                     <button class="btn-login" type="submit">login</button>
                 </form>
             </div>
@@ -94,6 +114,17 @@
             }
             toastr.warning("{{ session('warning') }}");
         @endif
+    </script>
+    <script type='text/javascript'>
+        $('#check').click(function() {
+            if ('password' == $('#test-input').attr('type')) {
+                $('#test-input').prop('type', 'text');
+                $('#check').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            } else {
+                $('#test-input').prop('type', 'password');
+                $('#check').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            }
+        });
     </script>
 </body>
 

@@ -32,11 +32,11 @@
                                         <!-- Modal -->
 
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal_delete">
+                                            data-target="#exampleModal_delete{{$value->id}}">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal_delete" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal_delete{{$value->id}}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

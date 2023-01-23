@@ -138,7 +138,7 @@
                         <div class="col-lg-12">
                             <div class="form-group mt-3">
                                 <label><b>Description</b></label>
-                                <textarea class="editor" name="editor1">{{ $edit_menu->content }}</textarea>
+                                <textarea class="editor5000000" name="editor1">{{ $edit_menu->content }}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">

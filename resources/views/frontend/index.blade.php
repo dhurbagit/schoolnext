@@ -43,6 +43,8 @@
 @endforeach
 
 
+
+
 <div class="modal fade custom__modal" id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -88,6 +90,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="text-center">
                     <button class="btn btn-primary">Send Message</button>
                 </div>
@@ -164,7 +167,8 @@
                             <div class="number__wrapper numbers">
                                 <div class="top__header-holder {{ $loop->iteration == 3 ? '' : 'border__right' }} "
                                     style="border-color: {{ $themeOption->primary_color ?? '' }}">
-                                    <h4 style="color: {{ $themeOption->primary_color ?? '' }}">{{ $counter->title }}
+                                    <h4 style="color: {{ $themeOption->primary_color ?? '' }}">
+                                        {{ $counter->title }}
                                     </h4>
                                 </div>
                                 <div class="bottom__number-holder">
@@ -416,4 +420,5 @@
         }
     });
 </script>
+
 @endpush

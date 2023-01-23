@@ -102,7 +102,7 @@
                                     <label for=""><b>Password</b></label>
                                     <div class="input_wrap">
                                         <input type="password" class="form-control" name="password" id="test-input">
-                                        <i class="fa fa-eye-slash" aria-hidden="true" id="check"></i>
+                                        <i class="fa fa-eye" aria-hidden="true" id="check"></i>
                                     </div>
                                     <span class="text-danger">
                                         @error('password')
@@ -114,7 +114,7 @@
                                     <label for=""><b>Confirm Password</b></label>
                                     <div class="input_wrap">
                                         <input type="password" class="form-control" name="password_confirmation" id="Ptest-input">
-                                        <i class="fa fa-eye-slash" aria-hidden="true" id="Pcheck"></i>
+                                        <i class="fa fa-eye" aria-hidden="true" id="Pcheck"></i>
                                     </div>
 
                                     <span class="text-danger">
@@ -138,10 +138,10 @@
         $('#check').click(function() {
             if ('password' == $('#test-input').attr('type')) {
                 $('#test-input').prop('type', 'text');
-                $('#check').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+                $('#check').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
             } else {
                 $('#test-input').prop('type', 'password');
-                $('#check').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+                $('#check').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
             }
         });
     </script>
@@ -149,10 +149,10 @@
         $('#Pcheck').click(function() {
             if ('password' == $('#Ptest-input').attr('type')) {
                 $('#Ptest-input').prop('type', 'text');
-                $('#Pcheck').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+                $('#Pcheck').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
             } else {
                 $('#Ptest-input').prop('type', 'password');
-                $('#Pcheck').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+                $('#Pcheck').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
             }
         });
     </script>

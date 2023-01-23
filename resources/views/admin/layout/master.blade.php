@@ -6,7 +6,7 @@
     <title>@yield('pageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     @isset($setting)
-    <link rel="shortcut icon" type="image/jpg" href="{{asset('setting/'. $setting->favIcon_image)}}">
+        <link rel="shortcut icon" type="image/jpg" href="{{ asset('setting/' . $setting->favIcon_image) }}">
     @endisset
     <!-- Favicons -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -105,7 +105,16 @@
     <script src="{{ asset('draganddropmenu/jquery-menu-editor.js') }}"></script>
     <script type="text/javascript"
         src="{{ asset('draganddropmenu/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') }}"></script>
+
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    {{-- @if (request()->routeIs('menu.create'))
+        // will match routes which name starts with companies.
+    @else
+    //false======================================
+    @endif --}}
     <script src="{{ asset('backend/ckeditor/build/ckeditor.js') }}"></script>
+
+
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -114,12 +123,7 @@
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script>
 
-    {{-- <script>
-        CKEDITOR.replace('editor1');
-        CKEDITOR.replace('editor2');
-        CKEDITOR.replace('editor3');
-        CKEDITOR.replace('editor4');
-    </script> --}}
+
     @stack('scripts')
     <script>
         @if (Session::has('message'))
@@ -155,8 +159,8 @@
         @endif
     </script>
 
+
     <script>
-        
         ClassicEditor
             .create(document.querySelector('.editor'), {
                 licenseKey: '',
@@ -189,6 +193,37 @@
                 console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
                 console.error(error);
             });
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('.editor1000000000000'), {
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: zcqz3ups1g1q-7004ol2st27j');
+                console.error(error);
+            });
+    </script>
+
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('.editor900000'), {
+                licenseKey: '',
+            })
+            .then(editor => {
+                const wordCountPlugin = editor.plugins.get('WordCount');
+                const wordCountWrapper = document.getElementById('word-count');
+
+                wordCountWrapper.appendChild(wordCountPlugin.wordCountContainer);
+            })
     </script>
     <script>
         $(document).ready(function() {
@@ -229,6 +264,22 @@
         });
     </script>
 
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script> --}}
+    {{-- image.upload --}}
+    {{-- editor5000000 --}}
+
+    <script type="text/javascript">
+        CKEDITOR.replace('editor1', {
+            filebrowserUploadUrl: "{{ route('image.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
+    <script type="text/javascript">
+        CKEDITOR.replace('inner_description', {
+            filebrowserUploadUrl: "{{ route('image.uploadBlog', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 
 
 </body>

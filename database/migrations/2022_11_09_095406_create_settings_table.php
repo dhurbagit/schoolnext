@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('Phone_one')->nullable();
             $table->string('Phone_two')->nullable();
             $table->string('Phone_three')->nullable();
+            $table->string('phone_four')->nullable();
             $table->string('email')->nullable();
             $table->string('facebook')->nullable();
             $table->string('Twitter')->nullable();
@@ -46,6 +47,9 @@ return new class extends Migration
             $table->string('tumblr')->nullable();
             $table->longText('message')->nullable();
             $table->longText('success_message')->nullable();
+            $table->longText('reply_message')->nullable();
+            $table->longText('site_key')->nullable();
+            $table->longText('security_key')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

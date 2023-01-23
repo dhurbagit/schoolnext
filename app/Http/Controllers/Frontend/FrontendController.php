@@ -127,7 +127,7 @@ class FrontendController extends Controller
             case 'Pass-Out-Student':
                 $menu_content = $menu;
                 $almuniCollection = Almuni::orderBy('id', 'DESC')->get();
-                $almuni_g = AlmuniGallery::where(['almuni_id' => $almuniCollection->first()->id, 'hide' => '1'])->orderBy('id', 'DESC')->get();
+                $almuni_g = AlmuniGallery::where(['almuni_id' => ($almuniCollection->first()->id) ?? '', 'hide' => '1'])->orderBy('id', 'DESC')->get();
                 return view('frontend.almuni.archive', compact('almuniCollection', 'almuni_g', 'menu_content'));
                 break;
             case 'Download-files':
@@ -182,7 +182,7 @@ class FrontendController extends Controller
     {
         $using_function = $this->category('Pass-Out-Student');
         $menu_content = $using_function['menu_content'];
-        $almuni_g = AlmuniGallery::where(['almuni_id'=> $id, 'hide'=>'1'])->orderBy('id', 'DESC')->get();
+        $almuni_g = AlmuniGallery::where(['almuni_id' => $id, 'hide' => '1'])->orderBy('id', 'DESC')->get();
         $almuniCollection = Almuni::orderBy('id', 'DESC')->get();
         return view('frontend.almuni.archive', compact('almuniCollection', 'almuni_g', 'menu_content'));
     }

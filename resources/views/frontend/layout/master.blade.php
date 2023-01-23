@@ -72,11 +72,15 @@
         type="text/javascript"></script>
 
 
- 
 
     <script>
+        $('form').submit(function() {
+            $(this).find('button[type=submit]').prop('disabled', true);
+        });
+    </script>
+    <script>
         var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "{{ strip_tags(shareme()->code ?? '')}}");
+        chatbox.setAttribute("page_id", "{{ strip_tags(shareme()->code ?? '') }}");
         chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
@@ -249,11 +253,6 @@
             },
         });
     </script>
-
-
-
-
-
     @stack('scripts')
 </body>
 

@@ -35,7 +35,8 @@
                         </span>
                         <div class="form-group">
                             <label><b>Designation</b></label>
-                            <input type="text" class="form-control" name="testimonial_designation" placeholder="Designation"
+                            <input type="text" class="form-control" name="testimonial_designation"
+                                placeholder="Designation"
                                 value="{{ isset($testimonial_edit) ? $testimonial_edit->designation : old('testimonial_designation') }}">
                         </div>
                         <span class="text-danger">
@@ -82,7 +83,8 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for=""><b>Message</b></label>
-                            <textarea class="editor" name="editor1">{{ isset($testimonial_edit) ? $testimonial_edit->description : old('editor1') }}</textarea>
+                            <textarea class="form-control"  maxlength="150" name="editor1" id="text_area_id">{{ isset($testimonial_edit) ? $testimonial_edit->description : old('editor1') }}</textarea>
+                            <div id="word-count"></div>
                         </div>
                         <span class="text-danger">
                             @error('editor1')
@@ -117,4 +119,5 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
+
 @endpush

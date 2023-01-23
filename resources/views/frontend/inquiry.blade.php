@@ -93,19 +93,20 @@
                                                 aria-label="">
                                                 <option selected hidden disabled>--select--</option>
 
+                                                <option value="Nursery">PG</option>
                                                 <option value="Nursery">Nursery</option>
                                                 <option value="LKG">LKG</option>
                                                 <option value="UKG">UKG</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                                <option value="4">Four</option>
+                                                <option value="5">Five</option>
+                                                <option value="6">Six</option>
+                                                <option value="7">Seven</option>
+                                                <option value="8">Eight</option>
+                                                <option value="9">Nine</option>
+
                                             </select>
                                             <span class="text-danger">
                                                 @error('s_applied_grade')
@@ -176,8 +177,11 @@
                                     <div class="col-sm-4">
                                         <div class="mb-2">
                                             <label for="date-form1" class="form-label mb-0">Date of birth(BS):</label>
-                                            <input class="form-control" name="s_date_of_birth_bs" type="text"
+                                            <div class="icon-Wrapper">
+                                                <input class="form-control" name="s_date_of_birth_bs" type="text"
                                                 id="nepali-datepicker" aria-describedby="">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -364,12 +368,29 @@
                                     </div>
 
                                 </div>
-                                <div class="text-center">
-                                    <button class="btn btn-form px-4 py-2" type="submit">Apply
-                                        Now</button>
-                                    <button class="btn btn-reset px-4 py-2" type="reset">Reset
-                                    </button>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <div class="d-flex">
+                                            <div class="g-recaptcha"
+                                                data-sitekey={{$setting->site_key ?? ''}}>
+                                            </div>
+                                            <br>
+                                            @if (Session::has('g-recaptcha-response'))
+                                                <span class="text-danger">{{ Session::get('g-recaptcha-response') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="text-end">
+                                            <button class="btn btn-form px-4 py-2" type="submit">Apply
+                                                Now</button>
+                                            <button class="btn btn-reset px-4 py-2" type="reset">Reset
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </form>
                         </div>
                     </div>

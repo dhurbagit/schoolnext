@@ -1,0 +1,2240 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Sep 04, 2022 at 04:40 AM
+-- Server version: 10.6.7-MariaDB-log
+-- PHP Version: 7.4.19
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `alfacare`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive_doctor_reports`
+--
+
+CREATE TABLE `archive_doctor_reports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_report_id` bigint(20) UNSIGNED NOT NULL,
+  `patient_case_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `advise` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modalities_used` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `medicine` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `test` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approved_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `archive_doctor_reports`
+--
+
+INSERT INTO `archive_doctor_reports` (`id`, `doctor_report_id`, `patient_case_id`, `date`, `time`, `advise`, `modalities_used`, `medicine`, `test`, `remarks`, `approved_status`, `approved_by`, `created_by`, `updated_by`, `delete_status`, `created_at`, `updated_at`) VALUES
+(10, 5, 48, '2021-03-09', '11:31:48', 'Test', NULL, 'paracetamol', NULL, NULL, '0', 11, 11, NULL, '0', '2021-03-09 05:46:48', '2021-03-09 05:46:48'),
+(11, 5, 48, '2021-03-09', '11:31:48', 'Test tte po', NULL, 'paracetamol', NULL, NULL, '0', 11, 11, NULL, '0', '2021-03-09 06:44:53', '2021-03-09 06:44:53'),
+(12, 6, 50, '2021-03-09', '13:05:58', 'sgikg', NULL, NULL, NULL, NULL, '0', 11, 11, NULL, '0', '2021-03-09 07:20:58', '2021-03-09 07:20:58'),
+(13, 7, 50, '2021-03-09', '13:08:41', 'itdohdk', 'sidit', 'tustz', 'yxgdy', NULL, '0', 11, 11, NULL, '0', '2021-03-09 07:23:41', '2021-03-09 07:23:41'),
+(14, 8, 50, '2021-03-09', '13:10:19', 'sigkgg', 'jgzzjgz', 'xdhooh', 'xhh', 'fffjccj', '0', 11, 11, NULL, '0', '2021-03-09 07:25:19', '2021-03-09 07:25:19'),
+(15, 9, 50, '2021-03-09', '13:11:29', 'sleep', 'fhhf', 'kggu', 'mcjf', 'jcfjf', '0', 11, 11, NULL, '0', '2021-03-09 07:26:29', '2021-03-09 07:26:29'),
+(16, 10, 48, '2021-03-09', '13:28:07', 'tff', 'fgh', 'fgg', 'fgh', 'fhh', '0', 11, 11, NULL, '0', '2021-03-09 07:43:07', '2021-03-09 07:43:07'),
+(17, 11, 58, '2021-03-09', '15:54:17', 'dggd', 'hsgs', 'gdgs', 'bdbs', 'hdhs', '0', 11, 11, NULL, '0', '2021-03-09 10:09:17', '2021-03-09 10:09:17'),
+(18, 12, 51, '2021-03-09', '15:55:46', 'ehheh', 'gdhd', 'gdgs', 'bshs', 'hdhs', '0', 11, 11, NULL, '0', '2021-03-09 10:10:46', '2021-03-09 10:10:46'),
+(19, 13, 59, '2021-03-10', '11:35:00', 'hdhdh', 'hdhd', 'gsgs', 'hshs', 'hdhs', '0', 11, 11, NULL, '0', '2021-03-10 05:50:00', '2021-03-10 05:50:00'),
+(20, 14, 74, '2021-03-14', '12:22:15', 'bablu pandit', 'hello', 'dabai', 'blood tesy', 'asdfg', '0', 18, 18, NULL, '0', '2021-03-14 17:22:15', '2021-03-14 17:22:15'),
+(21, 15, 78, '2021-03-14', '17:52:57', 'hahaha', 'hahahah', 'hahah', 'hahah', 'jahah', '0', 18, 18, NULL, '0', '2021-03-14 22:52:57', '2021-03-14 22:52:57'),
+(22, 16, 81, '2021-03-22', '11:12:25', 'hjkl', 'hjkl', 'hjkl', 'hjkl', 'hjkl', '0', 31, 31, NULL, '0', '2021-03-22 16:12:25', '2021-03-22 16:12:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `archive_nurse_reports`
+--
+
+CREATE TABLE `archive_nurse_reports` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nurse_report_id` bigint(20) UNSIGNED NOT NULL,
+  `patient_case_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `temperature` int(11) DEFAULT NULL,
+  `pulse` int(11) DEFAULT NULL,
+  `blood_pressure` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `respiratory_rate` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oxygen_level` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `medicine_update` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `complain` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approved_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `archive_nurse_reports`
+--
+
+INSERT INTO `archive_nurse_reports` (`id`, `nurse_report_id`, `patient_case_id`, `date`, `time`, `temperature`, `pulse`, `blood_pressure`, `respiratory_rate`, `oxygen_level`, `medicine_update`, `complain`, `remarks`, `approved_status`, `approved_by`, `created_by`, `updated_by`, `delete_status`, `created_at`, `updated_at`) VALUES
+(10, 10, 48, '2021-03-09', '11:09:57', 101, 80, '130/90', '45', '88', NULL, NULL, NULL, '0', 10, 10, NULL, '0', '2021-03-09 05:24:57', '2021-03-09 05:24:57'),
+(11, 11, 51, '2021-03-09', '16:10:50', 95, 55, '120/80', '50', '96', NULL, NULL, NULL, '0', 10, 10, NULL, '0', '2021-03-09 10:25:50', '2021-03-09 10:25:50'),
+(12, 12, 60, '2021-03-10', '12:27:36', 88, 65, '22/25', '68', '28', 'paracetamol', 'high fever', 'love u zindagi', '0', 10, 10, NULL, '0', '2021-03-10 06:42:36', '2021-03-10 06:42:36'),
+(13, 13, 74, '2021-03-14', '11:42:20', 22, 23, '55/66', '55', '65', 'paracetamol', 'excess intaking of gutka', NULL, '0', 10, 10, NULL, '0', '2021-03-14 16:42:20', '2021-03-14 16:42:20'),
+(14, 14, 76, '2021-03-14', '16:01:14', 55, 22, '55/55', '55', '85', 'dgghj', 'xghk', 'dgb', '0', 19, 19, NULL, '0', '2021-03-14 21:01:14', '2021-03-14 21:01:14'),
+(15, 15, 82, '2021-03-22', '11:45:57', 5555, 555, '555/555', '555', '55', 'fff', NULL, NULL, '0', 32, 32, NULL, '0', '2021-03-22 16:45:57', '2021-03-22 16:45:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_patients`
+--
+
+CREATE TABLE `doctor_patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_id` bigint(20) NOT NULL,
+  `patient_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctor_patients`
+--
+
+INSERT INTO `doctor_patients` (`id`, `doctor_id`, `patient_id`, `created_at`, `updated_at`) VALUES
+(1, 11, 24, NULL, NULL),
+(2, 18, 26, NULL, NULL),
+(3, 18, 28, NULL, NULL),
+(4, 31, 13, NULL, NULL),
+(5, 31, 29, NULL, NULL),
+(6, 31, 31, NULL, NULL),
+(7, 31, 32, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `firebase_payloads`
+--
+
+CREATE TABLE `firebase_payloads` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `notification` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firebase_info` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notification_to` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `firebase_payloads`
+--
+
+INSERT INTO `firebase_payloads` (`id`, `user_id`, `notification`, `firebase_info`, `notification_to`, `created_at`, `updated_at`) VALUES
+(1, 1, '{\"sound\":\"default\",\"title\":\"Test Title\",\"body\":\"Test Message\",\"type\":\"general\"}', '{\"message_id\":5584497543740009804}', 'all', '2021-03-12 19:51:17', '2021-03-12 19:51:17'),
+(2, 1, '{\"sound\":\"default\",\"title\":\"Test Title\",\"body\":\"Test Message\",\"type\":\"general\"}', '{\"message_id\":3712373801934463492}', 'all', '2021-03-12 19:51:55', '2021-03-12 19:51:55'),
+(3, 1, '{\"sound\":\"default\",\"title\":\"asdf\",\"body\":\"zxfcz\",\"type\":\"general\"}', '{\"message_id\":2751613821266150343}', 'all', '2021-03-12 23:34:08', '2021-03-12 23:34:08'),
+(4, 15, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":867852419828756095}', '11', '2021-03-12 23:53:34', '2021-03-12 23:53:34'),
+(5, 15, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":5780162688083413156}', '11', '2021-03-13 00:07:39', '2021-03-13 00:07:39'),
+(6, 1, '{\"sound\":\"default\",\"title\":\"test notification\",\"body\":null,\"type\":\"general\"}', '{\"message_id\":5227054420798991085}', 'all', '2021-03-14 16:31:22', '2021-03-14 16:31:22'),
+(7, NULL, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":4081839959143532568}', '11', '2021-03-14 16:37:07', '2021-03-14 16:37:07'),
+(8, NULL, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":3374880814937707584}', '18', '2021-03-14 16:52:51', '2021-03-14 16:52:51'),
+(9, NULL, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":1391369634905623163}', '9', '2021-03-14 17:10:19', '2021-03-14 17:10:19'),
+(10, 16, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":7009197864823666066}', '18', '2021-03-14 17:15:15', '2021-03-14 17:15:15'),
+(11, NULL, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":1877555993161712035}', '9', '2021-03-14 17:48:16', '2021-03-14 17:48:16'),
+(12, 16, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":9074284746373784628}', '0', '2021-03-19 17:10:27', '2021-03-19 17:10:27'),
+(13, 29, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":23468872130153287}', '0', '2021-03-21 18:18:36', '2021-03-21 18:18:36'),
+(14, 29, '{\"sound\":\"default\",\"title\":\"New Appointment\",\"body\":\"You have a new appointment\",\"type\":\"appointment\"}', '{\"message_id\":366022325163628380}', '0', '2021-03-21 18:43:41', '2021-03-21 18:43:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2020_07_23_090806_create_permission_tables', 1),
+(4, '2020_07_24_160324_create_user_logs_table', 1),
+(6, '2020_09_17_144904_create_sliders_table', 1),
+(7, '2020_09_17_164831_create_contents_table', 1),
+(8, '2020_09_18_162635_create_blogs_table', 1),
+(9, '2020_09_18_171516_create_testimonials_table', 1),
+(10, '2020_09_20_101639_create_information_table', 1),
+(11, '2020_09_20_113747_create_vehicles_table', 1),
+(13, '2020_09_21_094025_create_settings_table', 1),
+(14, '2020_09_24_122633_add_icon_to_tbl_contents', 2),
+(15, '2020_09_24_170010_add_disease_to_tbl_testimonials', 3),
+(16, '2020_09_24_175401_create_galleries_table', 4),
+(17, '2020_09_24_175402_create_photos_table', 4),
+(18, '2020_09_25_124039_add_founder_info_to_tbl_settings', 5),
+(19, '2020_09_25_153851_add_founder_title_to_tbl_settings', 6),
+(20, '2020_09_28_102802_create_teams_table', 7),
+(21, '2020_09_28_121708_create_appointments_table', 8),
+(22, '2020_09_28_135235_add_column_to_tbl_contents', 9),
+(24, '2020_09_28_152659_create_departments_table', 10),
+(25, '2020_09_28_160249_add_column_to_tbl_teams', 11),
+(26, '2020_09_28_172102_add_column_to_tbl_teams', 12),
+(28, '2020_09_29_1010_create_contacts_table', 13),
+(29, '2020_09_29_113404_create_subscribes_table', 13),
+(30, '2020_09_29_131705_add_column_to_tbl_settings', 14),
+(31, '2021_02_22_164229_create_profiles_table', 15),
+(32, '2021_02_24_144230_create_services_table', 16),
+(33, '2021_02_25_101225_create_news_table', 17),
+(37, '2021_02_22_103144_create_products_table', 18),
+(38, '2021_02_23_160235_create_team_categories_table', 18),
+(39, '2021_02_25_103557_add_image_to_tbl_products', 18),
+(40, '2021_02_25_170154_add_time_to_tbl_appointments', 18),
+(41, '2021_02_25_125907_add_columns_to_tbl_teams', 19),
+(43, '2021_02_26_110135_create_team_categories_team_table', 20),
+(49, '2021_03_03_152450_create_patient_cases_table', 21),
+(56, '2021_03_05_111157_create_patient_case_doctors_table', 24),
+(57, '2021_03_04_133624_create_report_by_doctors_table', 25),
+(58, '2021_03_07_133350_create_archive_doctor_reports_table', 26),
+(59, '2021_03_04_114656_create_report_by_nurses_table', 27),
+(60, '2021_03_08_101722_create_archive_nurse_reports_table', 28),
+(63, '2021_03_10_123919_create_doctor_patients_table', 29),
+(64, '2021_03_10_124335_create_nurse_patients_table', 30),
+(65, '2021_03_12_115129_create_firebase_payloads_table', 31);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\User', 1),
+(1, 'App\\User', 2),
+(1, 'App\\User', 7),
+(1, 'App\\User', 8),
+(1, 'App\\User', 10),
+(1, 'App\\User', 11),
+(1, 'App\\User', 12),
+(1, 'App\\User', 18),
+(1, 'App\\User', 19),
+(1, 'App\\User', 20),
+(1, 'App\\User', 24),
+(1, 'App\\User', 31),
+(1, 'App\\User', 32),
+(2, 'App\\User', 14),
+(2, 'App\\User', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writer` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `hide_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `body`, `image`, `link`, `writer`, `slug`, `meta_desc`, `meta_keyword`, `meta_title`, `alt_img`, `publish_status`, `delete_status`, `hide_status`, `created_at`, `updated_at`) VALUES
+(1, 'Edited', '<p>Edited</p>', 'news1614230916.jpg', NULL, 'Edited', 'edited', 'Edited', 'Edited', 'Edited', 'edited', '1', '1', '0', '2021-02-25 05:29:39', '2021-02-25 06:00:51'),
+(2, 'News', '<p>NewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNewsNews</p>', 'news1614233041.jpg', NULL, 'News', 'news', 'description', 'leyword', 'title', 'asdf', '1', '1', '0', '2021-02-25 06:01:51', '2021-03-16 15:18:01'),
+(3, 'मस्तिष्कघात हुने कारण र यसको उपचार', '<p><a href=\"https://www.capitalnepal.com/news/69647\">www.capitalnepal.com/news/69647</a></p>', 'news1625732411.jpg', NULL, 'डा. अश्विन काफ्ले', 'u', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-07-08 19:06:09', '2021-07-08 19:49:46'),
+(4, 'युनिभर्सल हेल्थ सर्भिसेसले गर्यो तारेकेश्वरमा निःशुल्क स्वास्थ्य शिविर', '<p>www.capitalnepal.com/news/69998</p>', 'news1625732796.jpg', NULL, NULL, 'l-l-l-l', NULL, NULL, NULL, 'www.capitalnepal.com/news/69998', '1', '0', '0', '2021-07-08 19:08:18', '2021-07-08 19:53:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurse_patients`
+--
+
+CREATE TABLE `nurse_patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nurse_id` bigint(20) NOT NULL,
+  `patient_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `nurse_patients`
+--
+
+INSERT INTO `nurse_patients` (`id`, `nurse_id`, `patient_id`, `created_at`, `updated_at`) VALUES
+(1, 10, 23, NULL, NULL),
+(2, 10, 26, NULL, NULL),
+(3, 19, 27, NULL, NULL),
+(4, 32, 30, NULL, NULL),
+(5, 32, 33, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patients`
+--
+
+CREATE TABLE `patients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `full_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `age` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `patient_no` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`id`, `full_name`, `age`, `gender`, `patient_no`, `address`, `mobile`, `publish_status`, `delete_status`, `approved_status`, `approved_by`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(12, 'Amrit Shrestha', '33', 'Male', '1006', 'Kathmandu', '9812345678', '1', '0', '0', NULL, 10, NULL, '2021-03-09 05:23:50', '2021-03-09 05:23:50'),
+(13, 'swoyam adhikari', '23', 'Male', '1', 'pepsicola, gothatar', '9844336402', '1', '0', '2', 20, 20, NULL, '2021-03-09 07:17:58', '2021-03-21 22:20:47'),
+(14, 'rajiv', '22', 'Male', '1', 'kalanki', '9845101758', '1', '0', '0', NULL, 11, NULL, '2021-03-09 09:18:49', '2021-03-09 09:18:49'),
+(15, 'pddhdh dhd', '58', 'Male', '1', 'sggd', '9843183059', '1', '0', '0', NULL, 11, NULL, '2021-03-09 09:21:44', '2021-03-09 09:21:44'),
+(16, 'bsbdbdb dhdh', '85', 'Male', '1', 'bxbxbdjjd', '9843183059', '1', '0', '0', NULL, 11, NULL, '2021-03-09 09:22:43', '2021-03-09 09:22:43'),
+(17, 'gandhi', '68', 'Male', '2', 'bajura', '9845101774', '1', '0', '0', NULL, 11, NULL, '2021-03-09 09:28:14', '2021-03-09 09:28:14'),
+(18, 'rahul', '22', 'Male', '4', 'banepa', '9844336598', '1', '0', '0', NULL, 11, NULL, '2021-03-09 09:39:19', '2021-03-09 09:39:19'),
+(19, 'karan', '52', 'Others', 'e', 'gangabu', '9844213645', '1', '0', '0', NULL, 11, NULL, '2021-03-10 05:49:08', '2021-03-10 05:49:08'),
+(20, 'gsstt', '5', 'Male', '5', 'dghd', '9866332212', '1', '0', '0', NULL, 11, NULL, '2021-03-10 06:25:03', '2021-03-10 06:25:03'),
+(21, 'mohini', '23', 'Female', '8', 'kakadvitta', '9866443213', '1', '0', '0', NULL, 10, NULL, '2021-03-10 06:37:12', '2021-03-10 06:37:12'),
+(22, 'hari', 'gurung', 'male', '20', 'kakani,dhulabari', '9855662314', '1', '0', '0', NULL, 1, NULL, '2021-03-10 10:04:33', '2021-03-10 10:04:33'),
+(23, 'amrit', '25', 'Male', '9843', 'ffghb', '9843155555', '1', '0', '0', NULL, 10, NULL, '2021-03-12 22:37:24', '2021-03-12 22:37:24'),
+(24, 'test patient', '55', 'Male', '5567', 'test edit address', '9845632225', '1', '0', '2', NULL, 11, 11, '2021-03-12 22:43:30', '2021-03-15 17:43:26'),
+(25, 'test', 'Reiciendis aut eiusm', '1234', 'Ut rerum ut quae id', 'Magni recusandae Ma', '1234567890', '1', '1', '0', NULL, 1, NULL, '2021-03-14 16:15:10', '2021-03-14 16:17:51'),
+(26, 'Dhunumunu', '53', 'Male', '3', 'kalanki', '9844336523', '1', '0', '0', NULL, 1, NULL, '2021-03-14 16:40:19', '2021-03-14 16:57:30'),
+(27, 'mohan', '22', 'Male', '10', 'balaju', '9855223341', '1', '0', '0', NULL, 19, NULL, '2021-03-14 20:38:42', '2021-03-14 20:38:42'),
+(28, 'lakhin', '55', 'Male', '55', 'balkhu', '9866332211', '1', '0', '0', NULL, 18, NULL, '2021-03-14 22:51:50', '2021-03-14 22:51:50'),
+(29, 'mona', '29', 'Female', '3009', 'balkhu', '9855632145', '1', '0', '2', 31, 31, 31, '2021-03-21 22:22:22', '2021-03-21 22:23:00'),
+(30, 'mina', '25', 'Female', '3000', 'balkhu', '9855326488', '1', '0', '0', 32, 32, 32, '2021-03-21 22:33:36', '2021-03-21 22:34:05'),
+(31, 'ganga', '66', 'Female', '901', 'lamahi', '9844332222', '1', '0', '2', 31, 31, 31, '2021-03-22 16:10:43', '2021-03-22 16:47:57'),
+(32, 'amrit newwww', '8', 'Male', 'rrr', 'dbbdbdh', '9843183055', '1', '0', '2', 31, 31, 31, '2021-03-22 16:15:44', '2021-03-22 16:48:57'),
+(33, 'ganga', '66', 'Female', '901', 'lamahi', '9844223653', '1', '0', '2', 32, 32, 32, '2021-03-22 16:44:38', '2021-03-22 16:46:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_cases`
+--
+
+CREATE TABLE `patient_cases` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `nurse_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `patient_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patient_cases`
+--
+
+INSERT INTO `patient_cases` (`id`, `title`, `start_date`, `end_date`, `nurse_id`, `patient_id`, `created_by`, `updated_by`, `delete_status`, `approved_status`, `approved_by`, `created_at`, `updated_at`) VALUES
+(48, 'Headache', '2021-03-09', '2021-03-09', NULL, 12, 10, 11, '0', '1', NULL, '2021-03-09 05:24:25', '2021-03-09 09:31:07'),
+(49, 'patient case teat', '2021-03-09', '2021-03-09', NULL, 12, 11, 11, '0', '1', NULL, '2021-03-09 05:43:59', '2021-03-09 07:03:23'),
+(50, 'dylasis', '2021-03-09', '2021-03-09', NULL, 13, 11, 11, '0', '1', NULL, '2021-03-09 07:19:10', '2021-03-09 09:30:26'),
+(51, 'head ache', '2021-03-09', '2021-03-10', NULL, 14, 11, 11, '0', '1', NULL, '2021-03-09 09:19:19', '2021-03-10 05:41:20'),
+(52, 'headache', '2021-03-09', '2021-03-09', NULL, 16, 11, 11, '0', '1', NULL, '2021-03-09 09:31:54', '2021-03-09 09:31:58'),
+(53, 'kidney', '2021-03-09', '2021-03-09', NULL, 18, 11, 11, '0', '1', NULL, '2021-03-09 09:39:31', '2021-03-09 09:39:40'),
+(54, 'test case', '2021-03-09', '2021-03-09', NULL, 12, 10, 10, '0', '1', NULL, '2021-03-09 09:41:01', '2021-03-09 09:43:12'),
+(55, 'jshdhd', '2021-03-09', '2021-03-09', NULL, 12, 10, 11, '0', '1', NULL, '2021-03-09 09:48:01', '2021-03-09 09:48:42'),
+(56, 'hahah', '2021-03-09', '2021-03-09', NULL, 13, 11, 11, '0', '1', NULL, '2021-03-09 09:49:02', '2021-03-09 09:57:36'),
+(57, 'tauko dukhya', '2021-03-09', '2021-03-09', NULL, 18, 11, 11, '0', '1', NULL, '2021-03-09 10:03:16', '2021-03-09 10:04:22'),
+(58, 'head', '2021-03-09', '2021-03-09', NULL, 12, 11, 11, '0', '1', NULL, '2021-03-09 10:08:52', '2021-03-09 10:09:58'),
+(59, 'fever', '2021-03-10', NULL, NULL, 19, 11, NULL, '0', '1', NULL, '2021-03-10 05:49:45', '2021-03-10 05:49:45'),
+(60, 'brain tumor', '2021-03-10', NULL, NULL, 21, 10, NULL, '0', '1', NULL, '2021-03-10 06:40:59', '2021-03-10 06:40:59'),
+(71, 'Patient Case Title Two', '2021-03-10', NULL, 10, 12, 10, NULL, '0', '1', NULL, '2021-03-10 07:51:05', '2021-03-10 07:51:05'),
+(72, 'Patient Case Title Two', '2021-03-10', NULL, 10, 12, 10, NULL, '0', '1', NULL, '2021-03-10 07:52:05', '2021-03-10 07:52:05'),
+(73, 'hello', '2021-03-12', NULL, NULL, 23, 10, NULL, '0', '1', NULL, '2021-03-12 23:08:39', '2021-03-12 23:08:39'),
+(74, 'kidney', '2021-03-14', '2021-03-14', NULL, 26, 10, 18, '0', '1', NULL, '2021-03-14 16:41:13', '2021-03-14 17:24:38'),
+(75, 'headache', '2021-03-14', NULL, NULL, 26, 18, NULL, '0', '1', NULL, '2021-03-14 20:31:04', '2021-03-14 20:31:04'),
+(76, 'gastro', '2021-03-14', NULL, NULL, 27, 19, NULL, '0', '1', NULL, '2021-03-14 20:58:38', '2021-03-14 20:58:38'),
+(77, 'yghh', '2021-03-14', NULL, NULL, 27, 19, NULL, '0', '1', NULL, '2021-03-14 21:03:26', '2021-03-14 21:03:26'),
+(78, 'endoscopy', '2021-03-14', '2021-03-14', NULL, 28, 18, 18, '0', '1', NULL, '2021-03-14 22:52:31', '2021-03-14 22:54:55'),
+(79, 'kidney', '2021-03-21', '2021-03-22', NULL, 13, 31, 31, '0', '1', NULL, '2021-03-21 22:21:13', '2021-03-22 16:09:25'),
+(80, 'levellr', '2021-03-21', '2021-03-21', NULL, 30, 32, 32, '0', '1', NULL, '2021-03-21 22:34:33', '2021-03-21 22:34:59'),
+(81, 'lever', '2021-03-22', NULL, NULL, 31, 31, NULL, '0', '1', NULL, '2021-03-22 16:12:01', '2021-03-22 16:12:01'),
+(82, 'lever', '2021-03-22', NULL, NULL, 33, 32, NULL, '0', '1', NULL, '2021-03-22 16:45:14', '2021-03-22 16:45:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patient_case_doctors`
+--
+
+CREATE TABLE `patient_case_doctors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_case_id` bigint(20) UNSIGNED NOT NULL,
+  `doctor_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patient_case_doctors`
+--
+
+INSERT INTO `patient_case_doctors` (`id`, `patient_case_id`, `doctor_id`, `created_at`, `updated_at`) VALUES
+(1, 48, 11, '2021-03-09 05:24:25', '2021-03-09 05:24:25'),
+(2, 48, 12, '2021-03-09 05:24:25', '2021-03-09 05:24:25'),
+(3, 49, 11, '2021-03-09 05:43:59', '2021-03-09 05:43:59'),
+(4, 49, 12, '2021-03-09 05:44:00', '2021-03-09 05:44:00'),
+(5, 54, 9, '2021-03-09 09:41:01', '2021-03-09 09:41:01'),
+(6, 54, 11, '2021-03-09 09:41:01', '2021-03-09 09:41:01'),
+(7, 54, 12, '2021-03-09 09:41:01', '2021-03-09 09:41:01'),
+(8, 55, 9, '2021-03-09 09:48:01', '2021-03-09 09:48:01'),
+(9, 55, 11, '2021-03-09 09:48:01', '2021-03-09 09:48:01'),
+(10, 55, 12, '2021-03-09 09:48:01', '2021-03-09 09:48:01'),
+(11, 60, 11, '2021-03-10 06:40:59', '2021-03-10 06:40:59'),
+(12, 71, 11, '2021-03-10 07:51:05', '2021-03-10 07:51:05'),
+(13, 71, 12, '2021-03-10 07:51:05', '2021-03-10 07:51:05'),
+(14, 72, 11, '2021-03-10 07:52:05', '2021-03-10 07:52:05'),
+(15, 72, 12, '2021-03-10 07:52:05', '2021-03-10 07:52:05'),
+(16, 74, 11, '2021-03-14 16:41:13', '2021-03-14 16:41:13'),
+(17, 76, 18, '2021-03-14 20:58:38', '2021-03-14 20:58:38'),
+(18, 80, 31, '2021-03-21 22:34:33', '2021-03-21 22:34:33'),
+(19, 82, 31, '2021-03-22 16:45:14', '2021-03-22 16:45:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `table_name`, `created_at`, `updated_at`) VALUES
+(1, 'browse_roles', 'web', 'tbl_roles', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(2, 'create_roles', 'web', 'tbl_roles', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(3, 'read_roles', 'web', 'tbl_roles', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(4, 'update_roles', 'web', 'tbl_roles', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(5, 'delete_roles', 'web', 'tbl_roles', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(6, 'browse_user', 'web', 'tbl_users', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(7, 'create_user', 'web', 'tbl_users', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(8, 'read_user', 'web', 'tbl_users', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(9, 'update_user', 'web', 'tbl_users', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(10, 'delete_user', 'web', 'tbl_users', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(11, 'browse_slider', 'web', 'tbl_sliders', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(12, 'create_slider', 'web', 'tbl_sliders', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(13, 'read_slider', 'web', 'tbl_sliders', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(14, 'update_slider', 'web', 'tbl_sliders', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(15, 'delete_slider', 'web', 'tbl_sliders', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(16, 'browse_content', 'web', 'tbl_contents', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(17, 'create_content', 'web', 'tbl_contents', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(18, 'read_content', 'web', 'tbl_contents', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(19, 'update_content', 'web', 'tbl_contents', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(20, 'delete_content', 'web', 'tbl_contents', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(21, 'browse_blog', 'web', 'tbl_blogs', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(22, 'create_blog', 'web', 'tbl_blogs', '2021-02-28 10:25:39', '2021-02-28 10:25:39'),
+(23, 'read_blog', 'web', 'tbl_blogs', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(24, 'update_blog', 'web', 'tbl_blogs', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(25, 'delete_blog', 'web', 'tbl_blogs', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(26, 'browse_testimonial', 'web', 'tbl_testimonials', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(27, 'create_testimonial', 'web', 'tbl_testimonials', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(28, 'read_testimonial', 'web', 'tbl_testimonials', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(29, 'update_testimonial', 'web', 'tbl_testimonials', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(30, 'delete_testimonial', 'web', 'tbl_testimonials', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(31, 'browse_setting', 'web', 'tbl_settings', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(32, 'create_setting', 'web', 'tbl_settings', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(33, 'read_setting', 'web', 'tbl_settings', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(34, 'update_setting', 'web', 'tbl_settings', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(35, 'delete_setting', 'web', 'tbl_settings', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(36, 'browse_contact', 'web', 'tbl_contacts', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(37, 'create_contact', 'web', 'tbl_contacts', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(38, 'read_contact', 'web', 'tbl_contacts', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(39, 'update_contact', 'web', 'tbl_contacts', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(40, 'delete_contact', 'web', 'tbl_contacts', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(41, 'browse_gallery', 'web', 'tbl_galleries', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(42, 'create_gallery', 'web', 'tbl_galleries', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(43, 'read_gallery', 'web', 'tbl_galleries', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(44, 'update_gallery', 'web', 'tbl_galleries', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(45, 'delete_gallery', 'web', 'tbl_galleries', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(46, 'browse_team', 'web', 'tbl_teams', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(47, 'create_team', 'web', 'tbl_teams', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(48, 'read_team', 'web', 'tbl_teams', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(49, 'update_team', 'web', 'tbl_teams', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(50, 'delete_team', 'web', 'tbl_teams', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(51, 'browse_appointment', 'web', 'tbl_appointments', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(52, 'create_appointment', 'web', 'tbl_appointments', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(53, 'read_appointment', 'web', 'tbl_appointments', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(54, 'update_appointment', 'web', 'tbl_appointments', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(55, 'delete_appointment', 'web', 'tbl_appointments', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(56, 'browse_service', 'web', 'services', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(57, 'create_service', 'web', 'services', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(58, 'read_service', 'web', 'services', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(59, 'update_service', 'web', 'services', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(60, 'delete_service', 'web', 'services', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(61, 'browse_new', 'web', 'news', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(62, 'create_new', 'web', 'news', '2021-02-28 10:25:40', '2021-02-28 10:25:40'),
+(63, 'read_new', 'web', 'news', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(64, 'update_new', 'web', 'news', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(65, 'delete_new', 'web', 'news', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(66, 'browse_department', 'web', 'tbl_departments', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(67, 'create_department', 'web', 'tbl_departments', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(68, 'read_department', 'web', 'tbl_departments', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(69, 'update_department', 'web', 'tbl_departments', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(70, 'delete_department', 'web', 'tbl_departments', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(71, 'browse_product', 'web', 'products', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(72, 'create_product', 'web', 'products', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(73, 'read_product', 'web', 'products', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(74, 'update_product', 'web', 'products', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(75, 'delete_product', 'web', 'products', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(76, 'browse_team_category', 'web', 'team_categories', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(77, 'create_team_category', 'web', 'team_categories', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(78, 'read_team_category', 'web', 'team_categories', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(79, 'update_team_category', 'web', 'team_categories', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(80, 'delete_team_category', 'web', 'team_categories', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(81, 'browse_subscribe', 'web', 'tbl_subscribes', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(82, 'create_subscribe', 'web', 'tbl_subscribes', '2021-02-28 10:25:41', '2021-02-28 10:25:41'),
+(83, 'browse_patient', 'web', 'patients', '2021-03-03 07:01:17', '2021-03-03 07:01:17'),
+(84, 'create_patient', 'web', 'patients', '2021-03-03 07:01:17', '2021-03-03 07:01:17'),
+(85, 'read_patient', 'web', 'patients', '2021-03-03 07:01:17', '2021-03-03 07:01:17'),
+(86, 'update_patient', 'web', 'patients', '2021-03-03 07:01:17', '2021-03-03 07:01:17'),
+(87, 'delete_patient', 'web', 'patients', '2021-03-03 07:01:17', '2021-03-03 07:01:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report_by_doctors`
+--
+
+CREATE TABLE `report_by_doctors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_case_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `advise` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `modalities_used` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `medicine` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `test` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approved_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `report_by_doctors`
+--
+
+INSERT INTO `report_by_doctors` (`id`, `patient_case_id`, `date`, `time`, `advise`, `modalities_used`, `medicine`, `test`, `remarks`, `approved_status`, `approved_by`, `created_by`, `updated_by`, `delete_status`, `created_at`, `updated_at`) VALUES
+(5, 48, '2021-03-09', '11:31:48', 'Test tte po', NULL, 'paracetamol', NULL, NULL, '2', 11, 11, NULL, '0', '2021-03-09 05:46:48', '2021-03-09 06:45:09'),
+(6, 50, '2021-03-09', '13:05:58', 'sgikg', NULL, NULL, NULL, NULL, '0', 11, 11, NULL, '0', '2021-03-09 07:20:58', '2021-03-09 07:20:58'),
+(7, 50, '2021-03-09', '13:08:41', 'itdohdk', 'sidit', 'tustz', 'yxgdy', NULL, '0', 11, 11, NULL, '0', '2021-03-09 07:23:41', '2021-03-09 07:23:41'),
+(8, 50, '2021-03-09', '13:10:19', 'sigkgg', 'jgzzjgz', 'xdhooh', 'xhh', 'fffjccj', '0', 11, 11, NULL, '0', '2021-03-09 07:25:19', '2021-03-09 07:25:19'),
+(9, 50, '2021-03-09', '13:11:29', 'sleep', 'fhhf', 'kggu', 'mcjf', 'jcfjf', '0', 11, 11, NULL, '0', '2021-03-09 07:26:29', '2021-03-09 07:26:29'),
+(10, 48, '2021-03-09', '13:28:07', 'tff', 'fgh', 'fgg', 'fgh', 'fhh', '2', 11, 11, NULL, '0', '2021-03-09 07:43:07', '2021-03-09 07:43:28'),
+(11, 58, '2021-03-09', '15:54:17', 'dggd', 'hsgs', 'gdgs', 'bdbs', 'hdhs', '0', 11, 11, NULL, '0', '2021-03-09 10:09:17', '2021-03-09 10:09:17'),
+(12, 51, '2021-03-09', '15:55:46', 'ehheh', 'gdhd', 'gdgs', 'bshs', 'hdhs', '2', 11, 11, NULL, '0', '2021-03-09 10:10:46', '2021-03-10 05:36:46'),
+(13, 59, '2021-03-10', '11:35:00', 'hdhdh', 'hdhd', 'gsgs', 'hshs', 'hdhs', '2', 11, 11, NULL, '0', '2021-03-10 05:50:00', '2021-03-10 05:50:18'),
+(14, 74, '2021-03-14', '12:22:15', 'bablu pandit', 'hello', 'dabai', 'blood tesy', 'asdfg', '2', 18, 18, NULL, '0', '2021-03-14 17:22:15', '2021-03-14 17:23:23'),
+(15, 78, '2021-03-14', '17:52:57', 'hahaha', 'hahahah', 'hahah', 'hahah', 'jahah', '2', 18, 18, NULL, '0', '2021-03-14 22:52:57', '2021-03-14 22:53:25'),
+(16, 81, '2021-03-22', '11:12:25', 'hjkl', 'hjkl', 'hjkl', 'hjkl', 'hjkl', '2', 31, 31, NULL, '0', '2021-03-22 16:12:25', '2021-03-22 16:12:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report_by_nurses`
+--
+
+CREATE TABLE `report_by_nurses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `patient_case_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `temperature` int(11) DEFAULT NULL,
+  `pulse` int(11) DEFAULT NULL,
+  `blood_pressure` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `respiratory_rate` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oxygen_level` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `medicine_update` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `complain` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remarks` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approved_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `approved_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `report_by_nurses`
+--
+
+INSERT INTO `report_by_nurses` (`id`, `patient_case_id`, `date`, `time`, `temperature`, `pulse`, `blood_pressure`, `respiratory_rate`, `oxygen_level`, `medicine_update`, `complain`, `remarks`, `approved_status`, `approved_by`, `created_by`, `updated_by`, `delete_status`, `created_at`, `updated_at`) VALUES
+(10, 48, '2021-03-09', '11:09:57', 101, 80, '130/90', '45', '88', NULL, NULL, NULL, '0', 10, 10, NULL, '0', '2021-03-09 05:24:57', '2021-03-10 05:34:59'),
+(11, 51, '2021-03-09', '16:10:50', 123, 55, '120/80', '50', '96', NULL, NULL, NULL, '2', 1, 10, 1, '0', '2021-03-09 10:25:50', '2021-03-14 16:18:30'),
+(12, 60, '2021-03-10', '12:27:36', 88, 65, '22/25', '68', '28', 'paracetamol', 'high fever', 'love u zindagi', '0', 10, 10, NULL, '0', '2021-03-10 06:42:36', '2021-03-10 06:42:36'),
+(13, 74, '2021-03-14', '11:42:20', 22, 23, '55/66', '55', '65', 'paracetamol', 'excess intaking of gutka', NULL, '0', 10, 10, NULL, '0', '2021-03-14 16:42:20', '2021-03-14 16:42:20'),
+(14, 76, '2021-03-14', '16:01:14', 55, 22, '55/55', '55', '85', 'dgghj', 'xghk', 'dgb', '0', 19, 19, NULL, '0', '2021-03-14 21:01:14', '2021-03-14 21:01:14'),
+(15, 82, '2021-03-22', '11:45:57', 5555, 555, '555/555', '555', '55', 'fff', NULL, NULL, '0', 32, 32, NULL, '0', '2021-03-22 16:45:57', '2021-03-22 16:45:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'web', '2020-09-17 06:30:04', '2021-03-15 21:25:21'),
+(2, 'Admin', 'web', '2021-03-10 07:14:54', '2021-03-14 15:45:27'),
+(3, 'Test', 'web', '2021-03-14 15:46:11', '2021-03-14 15:46:25'),
+(4, 'New Role', 'web', '2021-03-14 15:55:32', '2021-03-14 15:55:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(6, 2),
+(6, 3),
+(7, 1),
+(7, 2),
+(7, 3),
+(8, 1),
+(8, 2),
+(8, 3),
+(9, 1),
+(9, 2),
+(9, 3),
+(10, 1),
+(10, 2),
+(10, 3),
+(11, 1),
+(11, 2),
+(11, 3),
+(11, 4),
+(12, 1),
+(12, 2),
+(12, 3),
+(12, 4),
+(13, 1),
+(13, 2),
+(13, 3),
+(13, 4),
+(14, 1),
+(14, 2),
+(14, 3),
+(14, 4),
+(15, 1),
+(15, 2),
+(15, 3),
+(15, 4),
+(16, 1),
+(16, 2),
+(16, 4),
+(17, 1),
+(17, 2),
+(17, 4),
+(18, 1),
+(18, 2),
+(18, 4),
+(19, 1),
+(19, 2),
+(19, 4),
+(20, 1),
+(20, 2),
+(20, 4),
+(21, 1),
+(21, 2),
+(21, 3),
+(22, 1),
+(22, 2),
+(22, 3),
+(23, 1),
+(23, 2),
+(23, 3),
+(24, 1),
+(24, 2),
+(24, 3),
+(25, 1),
+(25, 2),
+(25, 3),
+(26, 1),
+(26, 2),
+(26, 3),
+(27, 1),
+(27, 2),
+(27, 3),
+(28, 1),
+(28, 2),
+(28, 3),
+(29, 1),
+(29, 2),
+(29, 3),
+(30, 1),
+(30, 2),
+(30, 3),
+(31, 1),
+(31, 2),
+(31, 3),
+(32, 1),
+(32, 2),
+(32, 3),
+(33, 1),
+(33, 2),
+(33, 3),
+(34, 1),
+(34, 2),
+(34, 3),
+(35, 1),
+(35, 2),
+(35, 3),
+(36, 1),
+(36, 3),
+(37, 1),
+(37, 3),
+(38, 1),
+(38, 3),
+(39, 1),
+(39, 3),
+(40, 1),
+(40, 3),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1),
+(87, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `hide_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `title`, `slug`, `description`, `image`, `meta_desc`, `meta_keyword`, `meta_title`, `alt_img`, `publish_status`, `delete_status`, `hide_status`, `created_at`, `updated_at`) VALUES
+(1, 'In-Home USG and Diagnostic services', 'in-home-usg-and-diagnostic-services', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Being first of its kind UHS have pioneered in In-home USG service in community where people can entertain hospital like diagnostic service of USG in home/ community as per request. </span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Screening will be done by skilled medical team and reporting, administration of patient is done by skilled medical team at the comfort of your home.&nbsp; </span></span></span></p>', 'service1615802815.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-02-24 10:37:02', '2021-03-15 20:53:32'),
+(2, 'Nursing Care at Home', 'nursing-care-at-home', '<p style=\"text-align: justify;\">Our personalized nursing care service is designed specially to help your family members to recover fast. We do provide tailor made nursing care packages as per the patient&#39;s need. Our range of nursing care starts from 6 hrs. to 24 hrs.&#39; services by qualified, skilled and ICU-trained Nurses.</p>\r\n\r\n<p style=\"text-align: justify;\">We do provide general, palliative and specialized nursing care facilities as per the need and patient disease condition. Required nursing care is planned under the proper monitoring and supervision of physician and medical team.</p>', 'service1615802549.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-08 11:54:35', '2021-03-15 20:51:09'),
+(3, 'test1', 'test1', NULL, NULL, NULL, NULL, NULL, NULL, '0', '1', '0', '2021-03-14 16:20:34', '2021-03-14 16:20:59'),
+(4, 'Examination and Consultation by Doctor at Home', 'examination-and-consultation-by-doctor-at-home', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">For general check-up and follow up, and certain procedures that can be performed at home, it is much more efficient and effective to have the check up and consultation done at home. Our medical practitioner will visit you at your home for physical examination and consultation. To book your appointment, just inform our client service department and we will revert back to you in no time. </span></span></span></p>', 'service1615802567.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-15 17:13:27', '2021-03-15 20:47:53'),
+(5, 'Nursing Care at Home', 'nursing-care-at-home', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Our personalized nursing care service is designed specially to help your family members to recover fast. We do provide tailor made nursing care packages as per the patient&#39;s need. Our range of nursing care starts from 6 hrs. to 24 hrs.&#39; services by qualified, skilled and ICU-trained Nurses. </span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We do provide general, palliative and specialized nursing care facilities as per the need and patient disease condition. Required nursing care is planned under the proper monitoring and supervision of physician and medical team.</span></span></span></p>', 'service1615790047.jpg', NULL, NULL, NULL, NULL, '1', '1', '0', '2021-03-15 17:19:13', '2021-03-15 17:25:36'),
+(6, 'Care Giver and personal care services at Home', 'care-giver-and-personal-care-services-at-home', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">An ageing member in our family needs both physical and emotional care. Time constraint restrains the family members to take proper care of those ageing parents. To cater the need and to provide proper care to the elder members we provide care giver service which is designed mostly for old aged people and those who need less of medical care and intervention. Our Care Giver and Personal care assistants will take care of feeding, medication, exercise, patient&#39;s cleanliness and other daily care.</span></span></span></p>', 'service1615802600.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-15 17:21:28', '2021-03-15 20:48:25'),
+(7, 'Laboratory services at Home', 'laboratory-services-at-home', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We do provide convenient Laboratory services at your door step. Our Lab technologist will provide specimen drawing and collection services. We have partner laboratory and diagnostic centers where we send your specimen for testing.&nbsp; Once the report is generated we will provide the same in hard copy via email and other online mediums as well as the print copies if required.</span></span></span></p>', 'service1615802627.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-15 17:22:22', '2021-03-15 20:48:51'),
+(8, 'Logistics and Medicines supplies', 'logistics-and-medicines-supplies', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Some patients&#39; medical condition requires usage of medical equipment and logistics arrangement. In such case with the consultation of treating physician, we manage the logistic setup at home before the patient is discharged from the hospital so that the patients can recover at home under the hospital-like setup. We do deliver the medicines as per the prescription from the doctor and other medical equipment that needs to be purchased.</span></span></span></p>', 'service1615802647.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-15 17:23:15', '2021-03-15 20:49:12'),
+(9, 'Physiotherapy and Rehabilitation at Home', 'physiotherapy-and-rehabilitation-at-home', '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Considering the time constraint of visiting the physiotherapists at hospital or rehabilitation centers, we do provide physical therapy services at your home. Our qualified Physiotherapist, Occupational Therapist or Speech Therapist will visit your home to assess, diagnose, recommend and develop a treatment plan for cases from simple injuries of muscle tissue, joints, ligament to neurological disorder or disease like Alzheimer&#39;s disease, Cerebral Palsy, Parkinson&#39;s disease, Spinal Cord Injury, and Stroke etc. Our treatment procedure is integrated with rehabilitation equipment and supplies as per the requirement of the case. Incase required and suggested by the physician and physiotherapist for regular use, they are also available for rent and sale.</span></span></span></p>', 'service1615802664.jpg', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-03-15 17:24:03', '2021-03-15 20:49:30'),
+(10, 'Designationdsfg', 'designationdsfg', '<p>sdfg</p>', 'service1615790706.jpg', NULL, NULL, NULL, NULL, '1', '1', '0', '2021-03-15 17:30:09', '2021-03-15 17:30:17'),
+(11, 'sfdg', 'sfdg', '<p>asdf</p>', 'service1615792190.gif', NULL, NULL, NULL, 'asdf', '1', '1', '0', '2021-03-15 18:02:26', '2021-03-15 18:06:59'),
+(12, 'sfdg', 'sfdg', '<p>asdf</p>', NULL, NULL, NULL, NULL, 'asdf', '1', '1', '0', '2021-03-15 18:02:28', '2021-03-15 18:06:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_appointments`
+--
+
+CREATE TABLE `tbl_appointments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `firstname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `doctor_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `appointment_date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `gender` enum('male','female','other') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `view_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_appointments`
+--
+
+INSERT INTO `tbl_appointments` (`id`, `firstname`, `lastname`, `email`, `phone`, `dob`, `doctor_id`, `appointment_date`, `time`, `gender`, `subject`, `description`, `publish_status`, `view_status`, `delete_status`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'First NAme', 'Last Name', 'amrit@email.com', '9843183059', '1996-03-01', 1, '2021-05-26', '10:00:00', 'male', 'Subject', 'Description', '1', '1', '1', NULL, NULL, '2021-03-10 05:55:44', '2021-03-14 15:51:35'),
+(2, 'First NAme', 'Last Name', 'amrit@email.com', '9843183059', '1996-03-01', 1, '2021-05-26', '10:00:00', 'male', 'Subject', 'Description', '1', '0', '1', 10, NULL, '2021-03-10 06:09:18', '2021-03-14 15:51:55'),
+(3, 'First NAme', 'Last Name', 'amrit@email.com', '9843183059', '1996-03-01', 1, '2021-05-26', '10:00:00', 'male', 'Subject', 'Description', '1', '1', '0', 10, NULL, '2021-03-10 06:15:57', '2021-03-10 07:11:11'),
+(4, 'swoyam adhikari', NULL, 'salonmessi@gmail.com', '9843183059', '1997-07-05', 11, '2021-03-15', '20:38:00', 'male', 'sdhfj', 'xhgsddhdjjdjdjd', '1', '0', '0', NULL, NULL, '2021-03-10 11:41:42', '2021-03-10 11:41:42'),
+(5, 'gagan kandel', NULL, 'adhikariswoyam@gmail.com', '9843183059', '2021-03-11', 9, '2021-03-17', '22:36:00', 'female', 'fghj', 'ghhjhhjk', '1', '0', '0', NULL, NULL, '2021-03-10 11:46:28', '2021-03-10 11:46:28'),
+(6, 'customer', NULL, 'customer@gmail.com', '9843183059', '2021-01-15', 11, '2021-03-13', '17:53:00', 'male', 'app', 'hshzhdb. dhdhd', '1', '0', '0', 15, NULL, '2021-03-12 23:53:34', '2021-03-12 23:53:34'),
+(7, 'customer', NULL, 'customer@gmail.com', '9843183059', '2021-01-15', 11, '2021-03-20', '05:07:00', 'male', 'vdvdh', 'bsbsbs', '1', '1', '0', 15, NULL, '2021-03-13 00:07:39', '2021-03-14 15:50:12'),
+(8, 'aamair', NULL, 'pewpew@gamil.com', '9843183059', '1997-07-05', 11, '2021-03-16', '12:12:00', 'male', 'headache', 'hello world', '1', '0', '0', NULL, NULL, '2021-03-14 16:37:07', '2021-03-14 16:37:07'),
+(9, 'Dhunumunu', NULL, 'pewpew@gamil.com', '9843183059', '1997-07-05', 18, '2021-03-15', '07:15:00', 'male', 'kidney', 'hello world', '1', '0', '0', NULL, NULL, '2021-03-14 16:52:51', '2021-03-14 16:52:51'),
+(10, 'swoyam adhikari', NULL, 'salonmessi@gmail.com', '9843183059', '1997-07-05', 9, '2021-03-16', '06:09:00', 'male', 'pressure', 'hey how r u', '1', '0', '0', NULL, NULL, '2021-03-14 17:10:18', '2021-03-14 17:10:18'),
+(11, 'Test User', NULL, 'test@gmaiil.com', '9843183059', '1995-03-01', 18, '2021-03-15', '15:20:00', 'male', 'Hello', 'test@gmaiil.com', '1', '0', '0', 16, NULL, '2021-03-14 17:15:15', '2021-03-14 17:15:15'),
+(12, 'hari', NULL, 'pewpew@gamil.com', 'customer', '1997-07-05', 9, '2021-03-23', '12:30:00', 'male', 'kudney', 'vhchjhchnn', '1', '0', '0', NULL, NULL, '2021-03-14 17:48:16', '2021-03-14 17:48:16'),
+(13, 'Test User', NULL, 'test@gmaiil.com', '9843344556', '1995-03-01', 0, '2021-03-24', '17:58:00', 'male', 'test', 'hello', '1', '0', '0', 16, NULL, '2021-03-19 17:10:27', '2021-03-19 17:10:27'),
+(14, 'lakhan', NULL, 'mynameislakhan@gmai.com', '9844332211', '2021-03-10', 0, '2021-03-22', '18:15:00', 'male', 'skin allergy', 'find me a good doctor', '1', '0', '0', 29, NULL, '2021-03-21 18:18:35', '2021-03-21 18:18:35'),
+(15, 'swoyam Adhikari', NULL, 'adhikariswoyam@gmail.com', '9844336444', '2021-04-07', 0, '2021-04-07', '06:05:00', 'male', 'lever', 'find me a doctor', '1', '1', '0', 29, NULL, '2021-03-21 18:43:41', '2021-03-21 21:45:58'),
+(16, 'madhu', NULL, 'salonmessi@gmail.com', '9844336433', '2020-05-23', 3, '2021-02-23', NULL, 'male', 'kidney damage', 'hello doctor', '1', '0', '0', NULL, NULL, '2021-03-22 21:29:19', '2021-03-22 21:29:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_blogs`
+--
+
+CREATE TABLE `tbl_blogs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writer` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blog_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `hide_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_blogs`
+--
+
+INSERT INTO `tbl_blogs` (`id`, `title`, `body`, `image`, `link`, `writer`, `blog_url`, `meta_desc`, `meta_keyword`, `meta_title`, `alt_img`, `publish_status`, `delete_status`, `hide_status`, `created_at`, `updated_at`) VALUES
+(1, 'Blog', NULL, 'blog1614324105.jpg', NULL, 'BLog Writer', 'blog', 'meta description', 'meta_keryword', 'meta title', NULL, '1', '1', '0', '2021-02-26 07:21:47', '2021-07-08 19:21:32'),
+(2, 'मस्तिष्कघात हुने कारण र यसको उपचार', '<p>मस्तिष्कको रगत बग्ने नली बन्द हुनु अथवा फुट्नुलाई नै मस्तिष्कघात भनिन्छ । नेपालमा पनि यस्ता बिरामीको संख्या दिनप्रतिदिन बढ्दो छ । मस्तिष्कघात एक चिकित्सा अवस्था हो, जहाँ मस्तिष्कमा कम रगत प्रवाह हुन्छ र सोही कारण मस्तिष्कका कोषहरु मर्न थाल्छन् । मस्तिष्कघातलाई स्ट्रोक, सीभीए पनि भन्ने गरिन्छ । मानिसको उमेर जति बढ्दै गयो, त्यति यसको जोखिम बढ्दै जान्छ । अझ ५० वर्षभन्दा माथिकालाई बढी जोखिम हुने पाइएको छ । ब्रेनस्ट्रोक प्रायः गरी दुई प्रकारको हुन्छ ।</p>\r\n\r\n<p>१. स्केमिक &nbsp;<br />\r\nस्केमिक मस्तिष्कको रगत बग्ने नली बन्द भएर अथवा कम रगत प्रवाहका&nbsp;&nbsp;&nbsp; कारण मस्तिष्कमा हुने पक्षाघात हो । स्केमिक स्ट्रोक लगभग ८० प्रतिशतमा देखिने गरेको छ ।</p>\r\n\r\n<p>२. हेमोरेजिक &nbsp;<br />\r\nहेमोरेजिक स्ट्रोक टाउकोमा नसा फुटेर हुने समस्या हो । यसले गर्दा मस्तिष्कको केही भागमा अनियन्त्रित रुपले रगतको प्रवाह हुन्छ र नसाहरुमा रगत जम्ने समस्या हुन्छ । यो अवस्था अत्यन्तै खतरनाक हुन्छ ।&nbsp; हेमोरेजिक स्ट्रोक लगभग ८० प्रतिशतमा देखिने गरेको छ ।</p>\r\n\r\n<p>मस्तिष्कघातका लक्षणहरु &nbsp;<br />\r\n- अनुहार, हात वा खुट्टा अचानक कमजोर हुनु, विशेषगरी शरीरको एकतर्फ कमजोर हुनु ।<br />\r\n- बोल्न समस्या वा बोली बुभ्mन गाह्रो हुनु ।<br />\r\n-&nbsp;&nbsp; एक वा दुवै आँखामा हेर्ने समस्या हुनु ।<br />\r\n-&nbsp;&nbsp; &nbsp; बेसरी टाउको दुख्नु ।<br />\r\n-&nbsp; &nbsp; अचानक हि&ldquo;ड्दा समस्या हुनु, चक्कर आउने तथा शारीरिक सन्तुलन गुमाउनु ।<br />\r\n-&nbsp; &nbsp; दिसा&ndash;पिसाबमा नियन्त्रण नहुनु ।</p>\r\n\r\n<p><strong>यसबाट बच्न के गर्ने ?</strong><br />\r\n-&nbsp; &nbsp; मस्तिष्कघातबाट जोगिन खानपानमा ध्यान दिनुपर्छ । रक्तचापको औषधी सेवन गर्नेले नियमित नछुटाउने, मधुमेह (डाइबिटिज),&nbsp; कोलस्ट्रोल र उच्च रक्तचापका समस्या छ भने नियन्त्रणमा राख्ने गर्नुपर्छ ।<br />\r\n-&nbsp;&nbsp; &nbsp; मस्तिष्कघातको आपतकालीन रुपमा उपचार गर्नुपर्छ र जतिसक्दो चाँडो उपचार सुरु गर्नुपर्छ नत्र बिरामीको मृत्यु नै हुन सक्छ ।<br />\r\n-&nbsp; &nbsp; यस्तो रोग निको हुन लामो समय लाग्छ । उपचारका क्रममा बिरामीको राम्रोसँग हेरविचार गर्न अत्यावश्यक हुन्छ । यस्ता बिरामीमा विभिन्न खाले अन्य जटिलता पनि देखिन सक्छन् । त्यसैले विभिन्न संक्रमण, निमोनियाजस्ता समस्याबाट बचाउन सक्नुपर्छ ।<br />\r\n-&nbsp;&nbsp; &nbsp; प्रायः जा&ldquo;डरक्सी खाने र धूमपान गर्नेमा यो रोग बढी देखिन्छ ।</p>\r\n\r\n<p><strong>मस्तिष्कघात भएपछि बिरामीमा के समस्या हुन्छ ?</strong><br />\r\nमस्तिष्कघातपछि कतिपय बिरामीको हात, खुट्टा नचल्ने र मुख बांगिने हुन्छ । कतिपय बिरामीको एक भाग मात्र चल्छ । मस्तिष्कघातपछि अर्धचेत अवस्थामा पुग्ने सम्भावना पनि उत्तिकै हुन्छ ।</p>\r\n\r\n<p>एकातिरको मात्र पक्षाघात हुने पनि समस्या हुन सक्छ । कारण के हो भने मस्तिष्कको प्रत्येक भागले भिन्नाभिन्नै शारीरिक एवं मानसिक क्रियाहरुलाई सञ्चालन गर्नुका साथै नियन्त्रण गर्ने काम गर्छ । सामान्यतया हाम्रो मस्तिष्कको बायाँ भागले शरीरको दाहिने भागलाई र दायाँ हिस्साले शरीरको देब्रे भागलाई नियन्त्रित गर्छ । ब्रेनस्ट्रोकका कारणले मस्तिष्कको जुन भाग प्रभावित भएको हुन्छ, त्यस भागसँग सम्बन्धित अंगहरुको सञ्चालनमा बाधा पुग्छ ।</p>\r\n\r\n<p>स्ट्रोक भएको मानिस ओछ्यान परिराख्ने, हलचल गर्न नसक्ने अवस्थामा हुन्छ । यसले गर्दा थप नयाँ शारीरिक समस्या आउन सक्छन् । यस्तो अवस्थामा धेरैलाई छातीको संक्रमण हुने सम्भावना हुन्छ ।<br />\r\nस्ट्रोक भइसकेपछि बिरामीलाई एन्जाइटी र डिप्रेसनजस्ता मानसिक समस्या आउने सम्भावना पनि हुन्छ ।</p>\r\n\r\n<p><strong>फिजियोथेरापीद्वारा मस्तिष्कघातको उपचार&nbsp; &nbsp;</strong><br />\r\nफिजियोथेरापी वा भौतिक चिकित्सा स्वास्थ्योपचार विधिबाट यसको उपचार गर्न सकिन्छ । व्यायाम, हाड&ndash;जोर्नीको परिचालन तथा नसाको परिचालन र अन्य विद्युुत्को प्रयोगले शरीरमा उत्पन्न भएका सम्पूर्ण हाड, नसा तथा मांसपेशीका रोगहरुको उपचार गरिन्छ ।</p>\r\n\r\n<p>साथै, शारीरिक ब्यालेन्स, हिड्ने चाल तथा अन्य सामान्य दैनिक जीवनका गतिविधिहरु सजिलै गर्न प्रशिक्षण गरिन्छ । पक्षाघात भएको व्यक्तिलाई जति चाडो फिजियोथेरापी गराइयो, त्यति नै चाडो निको हुने सम्भावना हुन्छ ।</p>\r\n\r\n<p>न्युरो प्लास्टिसिटी बिग्रेको स्नायु प्रणालीलाई छलेर नया&ldquo; स्नायु मार्ग बनाई शरीरको अशक्तता कम गर्ने तथा पूर्ण रुपले मेटाउने प्रक्रियालाई न्युरोप्लास्टिसिटी भनिन्छ । फिजियोथेरापी ट्रेनिङअन्तर्गत दिमागमा विभिन्न मुभमेन्ट प्याटर्न तथा व्यायामले दिमागको असक्त भागमा नया&ldquo; स्नायु मार्ग बनाउछ । यसलाई हामी कर्टिकल म्यापिङ र रिराइटिङ पनि भन्ने गर्छौं । &nbsp;</p>\r\n\r\n<p>थेरापिस्टले विभिन्न उपायद्वारा रोगको निदान गर्छन् । जसमध्ये बोबाथ, रुड्स, मोटर रि&ndash;लर्निङ, मिरर थेरापी र&nbsp;&nbsp; भर्चुअल रियालिटी ट्रेनिङ केही विशेष हुन् । यी सबै ट्रेनिङ न्युरोप्लास्टिसिटीअन्तर्गत गर्ने गरिन्छ । न्युरो फिजियोथेरापिस्टको मुख्य काम भनेको मानिसलाई सक्रिय बनाउनु, क्रियाशील बनाउनु तथा मस्तिष्क र नसासम्बन्धी बिरामीलाई पुरानै जीवनशैलीमा ल्याउन मद्दत गर्नु हो ।</p>', 'blog1625732138.jpg', NULL, 'अश्विन काफ्ले', 'u', NULL, NULL, NULL, NULL, '1', '0', '0', '2021-07-08 19:02:02', '2021-07-08 19:02:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contacts`
+--
+
+CREATE TABLE `tbl_contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contact_fullname` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_message` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `view_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_contacts`
+--
+
+INSERT INTO `tbl_contacts` (`id`, `contact_fullname`, `contact_email`, `contact_number`, `contact_message`, `view_status`, `delete_status`, `created_at`, `updated_at`) VALUES
+(1, 'Prashant', 'silpakaprashant@gmail.com', '', 'This is message', '1', '1', '2020-09-29 06:03:42', '2021-03-14 15:53:09'),
+(2, 'Amrit Shrestha', 'amm.reet.stha1@gmail.com', '', 'asdf', '1', '0', '2021-02-26 07:38:33', '2021-03-14 15:52:54'),
+(3, 'Dharmendra Thapa', 'test@gmail.com', '987654321', 'Test website', '0', '1', '2021-03-14 15:54:32', '2021-03-14 15:54:50'),
+(4, 'suyog', 'salonmessi@gmail.com', '9844336402', 'hello message to the doctor.', '0', '0', '2021-03-22 21:05:49', '2021-03-22 21:05:49'),
+(5, 'CXUHB1R396BK7CMH8HC3MUXC http://google.com/245', 'jayheisavetheworld@gmail.com', '', '', '0', '0', '2021-03-25 23:29:27', '2021-03-25 23:29:27'),
+(6, 'CXUCZ54DAHOX1KATR4NGSUXC http://google.com/245', 'jayheisavetheworld@gmail.com', '', '', '0', '0', '2021-03-25 23:29:29', '2021-03-25 23:29:29'),
+(7, 'CXUL67IDLBFGMB9HXWP1MUXC http://google.com/245', 'jayheisavetheworld@gmail.com', '', '', '0', '0', '2021-03-25 23:29:30', '2021-03-25 23:29:30'),
+(8, 'CXUVL7I874OR8Q9UNQDSIUXC http://google.com/245', 'jayheisavetheworld@gmail.com', '', '', '0', '0', '2021-03-25 23:29:31', '2021-03-25 23:29:31'),
+(9, 'avesuresiq', 'oxilinot@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Zuqovuyee <a href=\"http://slkjfdf.net/\">Ucaliico</a> ckh.gqbi.uhsnepal.com.kej.zr http://slkjfdf.net/', '0', '0', '2021-04-12 21:34:55', '2021-04-12 21:34:55'),
+(10, 'ewogonewebuf', 'olideroq@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Ozififa <a href=\"http://slkjfdf.net/\">Nahoquqia</a> bgi.uitd.uhsnepal.com.amc.jc http://slkjfdf.net/', '0', '0', '2021-04-12 21:49:24', '2021-04-12 21:49:24'),
+(11, 'ezcusnuijriu', 'ihuvihuca@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Ozabva <a href=\"http://slkjfdf.net/\">Esizqo</a> fhv.jjyn.uhsnepal.com.ggd.rj http://slkjfdf.net/', '0', '0', '2021-04-12 22:10:47', '2021-04-12 22:10:47'),
+(12, 'cigomubtbze', 'imejuviy@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Oyopofi <a href=\"http://slkjfdf.net/\">Isezupi</a> llg.tkaw.uhsnepal.com.ylc.yp http://slkjfdf.net/', '0', '0', '2021-04-12 22:38:52', '2021-04-12 22:38:52'),
+(13, 'ixexazcisagaq', 'yacpeg@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Xitapi <a href=\"http://slkjfdf.net/\">Iopiiazoy</a> pkc.vkph.uhsnepal.com.gor.ep http://slkjfdf.net/', '0', '0', '2021-04-13 00:18:43', '2021-04-13 00:18:43'),
+(14, 'epepasacun', 'itaqiku@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Ovelal <a href=\"http://slkjfdf.net/\">Uetigoru</a> zyj.lmhl.uhsnepal.com.gjc.wg http://slkjfdf.net/', '0', '0', '2021-04-13 01:26:27', '2021-04-13 01:26:27'),
+(15, 'uzuovotegafca', 'ibixucuwa@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Aiyiqkeso <a href=\"http://slkjfdf.net/\">Agxufafti</a> jmj.xrxg.uhsnepal.com.jwv.gh http://slkjfdf.net/', '0', '0', '2021-04-13 02:39:29', '2021-04-13 02:39:29'),
+(16, 'iyolqimianiwe', 'imlato@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Ugenbeg <a href=\"http://slkjfdf.net/\">Ojaauh</a> wox.qmjv.uhsnepal.com.vtc.qb http://slkjfdf.net/', '0', '0', '2021-04-13 03:41:18', '2021-04-13 03:41:18'),
+(17, 'ohimrife', 'upaxareu@asfuy.jonjamail.com', '', 'http://slkjfdf.net/ - Atwstoco <a href=\"http://slkjfdf.net/\">Enumatek</a> miv.resw.uhsnepal.com.mqv.jt http://slkjfdf.net/', '0', '0', '2021-04-13 04:31:24', '2021-04-13 04:31:24'),
+(18, 'Danielneups', 'amyss70@mail.com', '', 'I join. And I have faced it.\r\n  <a href=https://bisexualpornhdtube.com>bisexualpornhdtube</a>', '0', '0', '2021-04-15 16:11:37', '2021-04-15 16:11:37'),
+(19, 'avexawikimih', 'afhaxc@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Ujecun <a href=\"http://slkjfdf.net/\">Ibzipumuz</a> unp.ifzp.uhsnepal.com.krz.az http://slkjfdf.net/', '0', '0', '2021-05-03 13:49:44', '2021-05-03 13:49:44'),
+(20, 'oevuluqi', 'ulijuq@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Atikevv <a href=\"http://slkjfdf.net/\">Oqotie</a> zyp.sszk.uhsnepal.com.khy.fa http://slkjfdf.net/', '0', '0', '2021-05-03 14:03:27', '2021-05-03 14:03:27'),
+(21, 'Hi Nice site https://google.com', 'ascehine@mail.ru', '', 'Hi Nice site https://google.com', '0', '0', '2021-05-11 14:02:51', '2021-05-11 14:02:51'),
+(22, 'fgfjhkhlkllopp https://google.com dgdgd', 'aleksandrf2mak@inbox.ru', 'fgfjhkhlkllopp https://google.com dgdgdl', '', '0', '0', '2021-05-12 10:48:50', '2021-05-12 10:48:50'),
+(23, 'Janak Singh Thapa', 'tjanaksinghthapa@gmail.com', '', 'Please briefly tell me how much price for every test,,', '0', '0', '2021-05-13 00:55:36', '2021-05-13 00:55:36'),
+(24, 'Dinesh Sanjel', 'dinesh_029@yahoo.com', '', 'Need home service', '0', '0', '2021-05-14 19:40:17', '2021-05-14 19:40:17'),
+(25, 'apodaczefopa', 'ufufuliob@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Epurazeya <a href=\"http://slkjfdf.net/\">Eyacidet</a> lqn.yjqp.uhsnepal.com.amy.ng http://slkjfdf.net/', '0', '0', '2021-06-08 04:37:43', '2021-06-08 04:37:43'),
+(26, 'uiarapih', 'awsuzod@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Zujeovuju <a href=\"http://slkjfdf.net/\">Eroero</a> zgr.lahv.uhsnepal.com.tcp.ew http://slkjfdf.net/', '0', '0', '2021-06-08 04:53:30', '2021-06-08 04:53:30'),
+(27, 'edahaqa', 'oruuleqoh@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Eumukese <a href=\"http://slkjfdf.net/\">Ijapur</a> upb.gajz.uhsnepal.com.ywz.nh http://slkjfdf.net/', '0', '0', '2021-06-08 05:30:14', '2021-06-08 05:30:14'),
+(28, 'eruvasihutisi', 'iboazex@oqepo.jonjamail.com', '', 'http://slkjfdf.net/ - Rurode <a href=\"http://slkjfdf.net/\">Awseanva</a> ihu.eegt.uhsnepal.com.cbj.uw http://slkjfdf.net/', '0', '0', '2021-06-08 05:56:49', '2021-06-08 05:56:49'),
+(29, 'ieloudedekigo', 'ivovfig@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Outicji <a href=\"http://slkjfdf.net/\">Avuhujvap</a> uef.ypxg.uhsnepal.com.gnz.cs http://slkjfdf.net/', '0', '0', '2021-07-01 20:14:05', '2021-07-01 20:14:05'),
+(30, 'ebofakad', 'icapowoxe@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Exoded <a href=\"http://slkjfdf.net/\">Uyacon</a> uaj.zogp.uhsnepal.com.hfe.lz http://slkjfdf.net/', '0', '0', '2021-07-01 20:38:17', '2021-07-01 20:38:17'),
+(31, 'ofeyihuc', 'abateov@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Azoehemac <a href=\"http://slkjfdf.net/\">Efpumes</a> omz.uzdf.uhsnepal.com.nel.wz http://slkjfdf.net/', '0', '0', '2021-07-01 21:04:11', '2021-07-01 21:04:11'),
+(32, 'udencaxicawe', 'wimaesu@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ufemivui <a href=\"http://slkjfdf.net/\">Eritucau</a> slb.grlw.uhsnepal.com.aoy.ls http://slkjfdf.net/', '0', '0', '2021-07-01 21:28:16', '2021-07-01 21:28:16'),
+(33, 'osugaku', 'upogubevu@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Uhiviniyh <a href=\"http://slkjfdf.net/\">Ikifaye</a> gry.bmnk.uhsnepal.com.hll.jg http://slkjfdf.net/', '0', '0', '2021-07-01 21:49:59', '2021-07-01 21:49:59'),
+(34, 'aciwanugaf', 'esumusxek@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ijepuh <a href=\"http://slkjfdf.net/\">Umakewil</a> kcl.kgos.uhsnepal.com.jbc.te http://slkjfdf.net/', '0', '0', '2021-07-01 22:13:38', '2021-07-01 22:13:38'),
+(35, 'izdoqier', 'ubotuhee@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ozimniwu <a href=\"http://slkjfdf.net/\">Apuyujo</a> psk.hlwx.uhsnepal.com.tbb.vm http://slkjfdf.net/', '0', '0', '2021-07-01 22:36:58', '2021-07-01 22:36:58'),
+(36, 'awiqeqaw', 'ureyusef@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ohimapehu <a href=\"http://slkjfdf.net/\">Irhafb</a> fgr.gurw.uhsnepal.com.mxg.cu http://slkjfdf.net/', '0', '0', '2021-07-01 23:00:28', '2021-07-01 23:00:28'),
+(37, 'itoxegjur', 'iuqoyojix@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Orupeqaq <a href=\"http://slkjfdf.net/\">Elehefu</a> nka.pdnw.uhsnepal.com.qet.sq http://slkjfdf.net/', '0', '0', '2021-07-01 23:21:16', '2021-07-01 23:21:16'),
+(38, 'urositufa', 'oyonkey@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Peqiti <a href=\"http://slkjfdf.net/\">Ezesep</a> dwq.unsb.uhsnepal.com.lmw.ya http://slkjfdf.net/', '0', '0', '2021-07-01 23:44:58', '2021-07-01 23:44:58'),
+(39, 'exuvefuxevoa', 'alueha@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ixuqervi <a href=\"http://slkjfdf.net/\">Udihoyak</a> uda.dozi.uhsnepal.com.fug.pu http://slkjfdf.net/', '0', '0', '2021-07-02 00:05:00', '2021-07-02 00:05:00'),
+(40, 'ouepoiboot', 'esijrit@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Unekeg <a href=\"http://slkjfdf.net/\">Wutehoxu</a> tvk.uspo.uhsnepal.com.wnz.ql http://slkjfdf.net/', '0', '0', '2021-07-02 00:28:15', '2021-07-02 00:28:15'),
+(41, 'ufugiekokawi', 'uyinosiwr@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Ekolahomi <a href=\"http://slkjfdf.net/\">Itohdi</a> qhs.xxik.uhsnepal.com.ivy.jd http://slkjfdf.net/', '0', '0', '2021-07-02 00:49:02', '2021-07-02 00:49:02'),
+(42, 'euvealu', 'obocdo@ifuyi.letiasmail.com', '', 'http://slkjfdf.net/ - Obaqeyiij <a href=\"http://slkjfdf.net/\">Ajuftute</a> tyf.uwzd.uhsnepal.com.tsv.ow http://slkjfdf.net/', '0', '0', '2021-07-02 01:13:48', '2021-07-02 01:13:48'),
+(43, 'Adam Right', 'adam789bright@gmail.com', '', 'Need more Facebook likes or Instagram followers? \r\nWe are here to help you. For More info, please visit https://1000-likes.com/', '0', '0', '2021-07-10 09:02:12', '2021-07-10 09:02:12'),
+(44, 'ivaepere', 'otukiqu@ifowe.jonjamail.com', '', 'http://slkjfdf.net/ - Ugusaciqa <a href=\"http://slkjfdf.net/\">Omowol</a> yxc.nbed.uhsnepal.com.hue.mj http://slkjfdf.net/', '0', '0', '2021-07-12 02:18:49', '2021-07-12 02:18:49'),
+(45, 'ibanikamjeqe', 'asehelos@ifowe.jonjamail.com', '', '[url=http://slkjfdf.net/]Erebuuxe[/url] <a href=\"http://slkjfdf.net/\">Uqeecof</a> ceb.omqg.uhsnepal.com.djy.hg http://slkjfdf.net/', '0', '0', '2021-07-12 02:27:26', '2021-07-12 02:27:26'),
+(46, 'ikekavij', 'aqihuy@obowi.jonjamail.com', '', '<a href=http://slkjfdf.net/>Ibeyos</a> <a href=\"http://slkjfdf.net/\">Akoqibuvo</a> wwd.idsj.uhsnepal.com.sxl.yg http://slkjfdf.net/', '0', '0', '2021-07-15 10:06:07', '2021-07-15 10:06:07'),
+(47, 'uqinlac', 'ocufiq@obowi.jonjamail.com', '', '<a href=http://slkjfdf.net/>Atayudo</a> <a href=\"http://slkjfdf.net/\">Akenaf</a> eom.qcpf.uhsnepal.com.xym.sg http://slkjfdf.net/', '0', '0', '2021-07-15 10:14:33', '2021-07-15 10:14:33'),
+(48, 'oewihacixli', 'udayaucok@odadu.fodiscomail.com', '', 'http://slkjfdf.net/ - Finmurelo <a href=\"http://slkjfdf.net/\">Avoudoruk</a> gvl.nwwz.uhsnepal.com.erd.na http://slkjfdf.net/', '0', '0', '2021-08-06 17:13:51', '2021-08-06 17:13:51'),
+(49, 'arueterijuxo', 'uqoioheri@odadu.fodiscomail.com', '', 'http://slkjfdf.net/ - Tusago <a href=\"http://slkjfdf.net/\">Ilazaluk</a> dez.ifes.uhsnepal.com.cha.uc http://slkjfdf.net/', '0', '0', '2021-08-06 17:47:44', '2021-08-06 17:47:44'),
+(50, 'kodvojomi', 'aibube@odadu.fodiscomail.com', '', 'http://slkjfdf.net/ - Reqiiye <a href=\"http://slkjfdf.net/\">Ohiduhj</a> gwj.llfz.uhsnepal.com.qpa.ai http://slkjfdf.net/', '0', '0', '2021-08-06 18:26:11', '2021-08-06 18:26:11'),
+(51, 'obiwibapixux', 'oafudapiu@odadu.fodiscomail.com', '', 'http://slkjfdf.net/ - Ocupeho <a href=\"http://slkjfdf.net/\">Ixuloqoq</a> vlg.hzyd.uhsnepal.com.oij.mv http://slkjfdf.net/', '0', '0', '2021-08-06 19:04:01', '2021-08-06 19:04:01'),
+(52, 'callmebag', 'temptheatsecon1981@mail.ru', '', 'PORNO, call me Telegram: @OPTIMIST_EDITS', '0', '0', '2021-08-26 17:05:37', '2021-08-26 17:05:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_contents`
+--
+
+CREATE TABLE `tbl_contents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `content_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_type` enum('none','about','service','service-single','heritage','heritage-single','academic','academic-single','opportunity','opportunity-single','special','special-single','contact','team','testimonial') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `download_pdf` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `external_link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
+  `position` int(11) NOT NULL DEFAULT 1,
+  `featured_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature6` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `show_on_menu` enum('H','F','B','N') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'N',
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_contents`
+--
+
+INSERT INTO `tbl_contents` (`id`, `content_title`, `content_url`, `content_type`, `content_icon`, `icon`, `download_pdf`, `content_body`, `external_link`, `parent_id`, `position`, `featured_img`, `feature1`, `feature2`, `feature3`, `feature4`, `feature5`, `feature6`, `publish_status`, `delete_status`, `show_on_menu`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'Services', 'services', 'service', NULL, 'icon-1600931074.png', NULL, '<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Universal Health Service</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Universal Health Services Pvt. ltd is specialist in providing in -home health care services. We specialize in providing planned health care services at home including physical examination and consultation by Doctor, Skilled Nursing care, physiotherapy services, <span style=\"background:white\"><span style=\"color:black\">caregiving and personal care services</span></span> at home.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Our diverse range of services also includes Lab and pathology services at home, USG and ECG service at home, logistics setup for patients at home and medicines and medical equipment arrangements for Patients at home. We are committed to provide quality care to those patients: <span style=\"background:white\"><span style=\"color:black\">who have had a prior hospitalization and are recovering from acute illnesses or conditions and/or need community-based care management to address their chronic condition.</span></span></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">We are devoted to promote the best health practices through our well defined and planned services. Eventually the quality of care depends on the efficient human resources. Being well aware of the fact we are confined to recruit our staffs with due care, screening their competence as well as their aptitude.</span></span></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b><span style=\"background:white\"><span style=\"color:black\">Vision</span></span></b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b><span style=\"background:white\"><span style=\"color:black\">&quot;Making home healthcare accessible to everyone&quot;</span></span></b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">We are delivering quality service with our <b>vision</b> to make home health care services accessible to all household in affordable cost. We want to ensure that every household should be able to access the possible health care services at home in time. One of the major indicator or quality of life being proper health care services, we are in the avenue of providing quality health care services at home.</span></span></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b><span style=\"background:white\"><span style=\"color:black\">Our Service attributes</span></span></b></span></span></span></p>\r\n\r\n<ul>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">Affordable</span></span></span></span></span></li>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">Equitable</span></span></span></span></span></li>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">Accessible</span></span></span></span></span></li>\r\n	<li style=\"margin-bottom: 13px; margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><span style=\"background:white\"><span style=\"color:black\">Reliable</span></span></span></span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>How we are different?</b></span></span></span></p>\r\n\r\n<ul>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We have experienced team of service providers.</span></span></span></li>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We have tailor made services with flexibility in costs.</span></span></span></li>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We provide free assessment visit*.</span></span></span></li>\r\n	<li style=\"margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We help you plan your care management.</span></span></span></li>\r\n	<li style=\"margin-bottom: 13px; margin-left: 8px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We monitor patient condition regularly and communicate with the primary consultant.</span></span></span></li>\r\n</ul>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Our services in Detail</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Examination and Consultation by Doctor at Home</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">For general check-up and follow up, and certain procedures that can be performed at home, it is much more efficient and effective to have the check up and consultation done at home. Our medical practitioner will visit you at your home for physical examination and consultation. To book your appointment, just inform our client service department and we will revert back to you in no time. </span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Nursing Care at Home</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Our personalized nursing care service is designed specially to help your family members to recover fast. We do provide tailor made nursing care packages as per the patient&#39;s need. Our range of nursing care starts from 6 hrs. to 24 hrs.&#39; services by qualified, skilled and ICU-trained Nurses. </span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We do provide general, palliative and specialized nursing care facilities as per the need and patient disease condition. Required nursing care is planned under the proper monitoring and supervision of physician and medical team.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Care Giver and personal care services at Home</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">An ageing member in our family needs both physical and emotional care. Time constraint restrains the family members to take proper care of those ageing parents. To cater the need and to provide proper care to the elder members we provide care giver service which is designed mostly for old aged people and those who need less of medical care and intervention. Our Care Giver and Personal care assistants will take care of feeding, medication, exercise, patient&#39;s cleanliness and other daily care.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Laboratory services at Home</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">We do provide convenient Laboratory services at your door step. Our Lab technologist will provide specimen drawing and collection services. We have partner laboratory and diagnostic centers where we send your specimen for testing.&nbsp; Once the report is generated we will provide the same in hard copy via email and other online mediums as well as the print copies if required.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Logistics and Medicines supplies</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Some patients&#39; medical condition requires usage of medical equipment and logistics arrangement. In such case with the consultation of treating physician, we manage the logistic setup at home before the patient is discharged from the hospital so that the patients can recover at home under the hospital-like setup. We do deliver the medicines as per the prescription from the doctor and other medical equipment that needs to be purchased.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>Physiotherapy and Rehabilitation at Home</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Considering the time constraint of visiting the physiotherapists at hospital or rehabilitation centers, we do provide physical therapy services at your home. Our qualified Physiotherapist, Occupational Therapist or Speech Therapist will visit your home to assess, diagnose, recommend and develop a treatment plan for cases from simple injuries of muscle tissue, joints, ligament to neurological disorder or disease like Alzheimer&#39;s disease, Cerebral Palsy, Parkinson&#39;s disease, Spinal Cord Injury, and Stroke etc. Our treatment procedure is integrated with rehabilitation equipment and supplies as per the requirement of the case. Incase required and suggested by the physician and physiotherapist for regular use, they are also available for rent and sale.</span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\"><b>In-Home USG and Diagnostic services</b></span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Being first of its kind UHS have pioneered in In-home USG service in community where people can entertain hospital like diagnostic service of USG in home/ community as per request. </span></span></span></p>\r\n\r\n<p style=\"margin-bottom: 13px; text-align: justify;\"><span style=\"font-size:11pt\"><span style=\"line-height:115%\"><span style=\"font-family:Calibri,sans-serif\">Screening will be done by skilled medical team and reporting, administration of patient is done by skilled medical team at the comfort of your home.&nbsp; </span></span></span></p>\r\n\r\n<p style=\"text-align: justify;\">&nbsp;</p>', NULL, 0, 2, 'feature1600930953.png', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:03:04', '2021-03-15 16:23:43'),
+(2, 'About', 'about', 'service', NULL, 'icon-1600931130.png', NULL, '<p style=\"margin-bottom: 13px; text-align: justify;\">Located at the heart of Kathmandu valley, Alfa Health Care &amp; Diagnostic Center Pvt. Ltd (Alfa Care) is an ISO 2009-20015 certified company registered and actively providing services in Nepal. The Alfa Care comprises young, energetic &amp; dynamic board members, experienced in the field of health care, laboratory, management &amp; entrepreneurship. The center has well equipped Molecular, Hematology, Cytology and Microbiology Laboratories, with OPD services provided by reputed &amp; well-experienced clinicians.</p>', NULL, 0, 1, 'feature1662013987.png', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'H', NULL, NULL, NULL, '2020-09-24 07:05:30', '2022-09-01 06:33:27'),
+(3, 'Galleries', 'galleries', 'academic', NULL, 'icon-1600931168.png', NULL, '<p>Gallery</p>', NULL, 0, 3, 'feature1614236899.png', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:06:08', '2021-03-15 21:07:13'),
+(4, 'Blogs', 'blogs', 'opportunity', NULL, 'icon-1600931230.png', NULL, '<p>Blog</p>', NULL, 0, 4, 'feature1600931212.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:07:10', '2021-02-28 04:55:16'),
+(5, 'Team', 'team', 'team', NULL, 'icon-1600931262.jpeg', NULL, '<p>This is team,</p>', NULL, 0, 6, 'feature1600931251.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:07:42', '2020-09-24 07:07:42'),
+(6, 'Contact', 'contact', 'contact', NULL, 'icon-1600931295.jpeg', NULL, '<p>This is contact</p>', NULL, 0, 7, 'feature1600931284.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:08:15', '2020-09-24 07:08:15'),
+(7, 'Diagnose & Research', 'diagnose-research', 'service-single', 'icon flaticon-medical109', 'icon-1600931379.png', 'download-1601283103.pdf', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English.</p>\r\n\r\n<p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>', NULL, 1, 1, 'feature1600931344.jpeg', 'one is simply dummy text of the printing and typesetting industry.', 'two is simply dummy text of the printing and typesetting industry.', 'three  is simply dummy text of the printing and typesetting industry.', 'four is simply dummy text of the printing and typesetting industry.', 'five is simply dummy text of the printing and typesetting industry.', 'six is simply dummy text of the printing and typesetting industry.', '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:09:39', '2020-09-29 08:21:48'),
+(8, 'Infrastructure', 'infrastructure', 'academic-single', NULL, 'icon-1600931451.png', NULL, '<p style=\"text-align: justify;\"><span style=\"font-family:Arial,Helvetica,sans-serif;\">kmLorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></p>\r\n\r\n<p style=\"text-align: justify;\"><span style=\"font-family:Arial,Helvetica,sans-serif;\">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></p>', NULL, 3, 1, 'feature1600935376.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:10:51', '2021-03-15 18:43:06'),
+(9, 'Training', 'training', 'opportunity-single', NULL, 'icon-1600931533.png', NULL, '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>\r\n\r\n<p>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>', NULL, 4, 1, 'feature1600935337.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 07:12:13', '2020-09-24 08:15:45'),
+(10, 'Medical Supply', 'medical-supply', 'academic-single', NULL, 'icon-1600940927.jpeg', NULL, '<p>Medical Supply</p>', NULL, 3, 1, 'feature1600940921.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'B', NULL, NULL, NULL, '2020-09-24 09:48:47', '2020-09-24 09:48:47'),
+(11, 'OUR SPECIALITIES', 'our-specialities', 'special', NULL, 'icon-1600941195.jpeg', NULL, '<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry.</p>', NULL, 0, 7, 'feature1600941173.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'N', NULL, NULL, NULL, '2020-09-24 09:53:15', '2020-09-24 09:53:15'),
+(12, 'NEUROSURGERY', 'neurosurgery', 'special-single', NULL, 'icon-1600941565.jpeg', NULL, '<p>NEUROSURGERY</p>', NULL, 11, 1, 'feature1600941550.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'N', NULL, NULL, NULL, '2020-09-24 09:59:25', '2020-09-24 09:59:25'),
+(13, 'NEUROLOGY', 'neurology', 'special-single', NULL, NULL, NULL, '<p>NEUROLOGY</p>', NULL, 11, 2, 'feature1600943822.jpeg', 'feature one', 'feature two', 'feature three', 'feature four', 'feature five', 'feature six', '1', '0', 'N', NULL, NULL, NULL, '2020-09-24 10:37:13', '2020-09-28 08:19:52'),
+(14, 'What Our Patients Are Saying', 'what-our-patients-are-saying', 'testimonial', NULL, NULL, NULL, '<p>Purus sapien consequat vitae sagittis ut facilisis arcu</p>', NULL, 0, 9, 'feature1600947616.jpeg', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'N', NULL, NULL, NULL, '2020-09-24 11:40:46', '2020-09-24 11:40:46'),
+(15, 'News', 'news', 'service-single', NULL, NULL, NULL, NULL, NULL, 0, 5, 'feature1614237049.png', NULL, NULL, NULL, NULL, NULL, NULL, '1', '0', 'H', NULL, NULL, NULL, '2021-02-25 07:10:56', '2021-03-15 21:08:29'),
+(16, 'Test', 'test', 'contact', 'Rem soluta consequat', NULL, NULL, NULL, 'Sed aut sint pariatu', 1, 13, NULL, 'Voluptas quam sed te', 'Occaecat officia min', 'Sint natus praesent', 'Est eveniet quod in', 'Dolorem neque ea ex', 'Vitae nostrud obcaec', '0', '1', 'B', 'Debitis suscipit par', 'Odio ea pariatur It', 'Corrupti officiis a', '2021-03-14 15:55:59', '2021-03-14 15:56:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_departments`
+--
+
+CREATE TABLE `tbl_departments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` int(11) DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_departments`
+--
+
+INSERT INTO `tbl_departments` (`id`, `title`, `body`, `image`, `position`, `publish_status`, `delete_status`, `created_at`, `updated_at`) VALUES
+(1, 'Health Care', '<p>Health Care</p>', 'department1601288091.jpeg', 1, '1', '0', '2020-09-28 10:14:53', '2020-09-28 10:14:53'),
+(2, 'Surgeons', '<p>Surgeons</p>', 'department1601288134.jpeg', 2, '1', '0', '2020-09-28 10:15:36', '2020-09-28 10:15:36'),
+(3, 'General Staff', '<p>General Staff</p>', 'department1601288169.jpeg', 3, '0', '0', '2020-09-28 10:16:11', '2020-09-28 11:19:50'),
+(4, 'Cardiology', '<p>Cardiology</p>', 'department1601288193.jpeg', 4, '1', '0', '2020-09-28 10:16:35', '2020-09-28 10:16:35'),
+(5, 'Physicians', '<p>Physicians</p>', 'department1601288216.jpeg', 4, '1', '0', '2020-09-28 10:17:06', '2020-09-28 10:17:06'),
+(6, 'Nurses', '<p>Nurses</p>', 'department1601288245.jpeg', 6, '1', '0', '2020-09-28 10:17:28', '2021-03-10 07:41:01'),
+(7, 'endoscopy', '<p>endoscopy</p>', 'department1615362121.png', 5, '1', '1', '2021-03-10 07:42:06', '2021-03-10 07:44:20'),
+(8, 'endoscopy', '<p>this department is of endoscopy</p>', 'department1615372562.png', 1, '1', '1', '2021-03-10 10:36:05', '2021-03-10 10:36:37'),
+(9, 'gastrology', '<p>welcome here!!!</p>', 'department1615372734.jpg', 2, '1', '1', '2021-03-10 10:38:55', '2021-03-10 11:07:56'),
+(10, 'Test1', '<p>dsads</p>', NULL, NULL, '0', '1', '2021-03-14 16:05:13', '2021-03-14 16:05:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_galleries`
+--
+
+CREATE TABLE `tbl_galleries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gallery_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` int(11) DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_galleries`
+--
+
+INSERT INTO `tbl_galleries` (`id`, `name`, `gallery_url`, `position`, `image`, `publish_status`, `delete_status`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, 'Neurology', 'neurology', 1, 'gallery1615374166.png', '1', '1', NULL, NULL, NULL, '2020-09-25 06:09:47', '2021-03-10 11:03:39'),
+(2, 'Clint cheek up', 'clint-cheek-up', 2, 'gallery1662017497.jpg', '1', '0', NULL, NULL, NULL, '2020-09-25 06:33:23', '2022-09-01 07:31:41'),
+(3, 'three', 'three', 3, 'gallery1601017542.jpeg', '1', '1', NULL, NULL, NULL, '2020-09-25 07:05:56', '2021-03-15 20:38:08'),
+(4, 'four', 'four', 4, 'gallery1601017593.jpeg', '1', '1', NULL, NULL, NULL, '2020-09-25 07:06:53', '2021-03-08 12:18:58'),
+(5, 'Universal Health', 'universal-health', 4, 'gallery1662017541.jpg', '1', '0', NULL, NULL, NULL, '2021-02-20 16:29:38', '2022-09-01 07:32:44'),
+(6, 'clint', 'clint', 5, 'gallery1615799540.jpg', '1', '1', NULL, NULL, NULL, '2021-03-08 12:18:39', '2021-03-15 20:21:36'),
+(7, 'guard', 'guard', 1, 'gallery1615371873.png', '0', '1', NULL, NULL, NULL, '2021-03-10 10:24:35', '2021-03-10 11:05:34'),
+(8, 'ghumgham', 'ghumgham', 2, 'gallery1615372220.png', '1', '1', NULL, NULL, NULL, '2021-03-10 10:30:24', '2021-03-10 11:04:16'),
+(9, 'Hayden Owen', 'hayden-owen', 63, 'gallery1615699067.jpg', '0', '1', NULL, NULL, NULL, '2021-03-14 16:03:07', '2021-03-14 16:04:06'),
+(10, 'Hayden Owen', 'hayden-owen', 63, 'gallery1615699067.jpg', '0', '1', NULL, NULL, NULL, '2021-03-14 16:03:50', '2021-03-14 16:04:12'),
+(11, 'test', 'test', 1, 'gallery1615790989.gif', '0', '1', NULL, NULL, NULL, '2021-03-15 17:34:27', '2021-03-15 17:35:01'),
+(12, 'consult', 'consult', 3, 'gallery1615800888.jpg', '1', '1', NULL, NULL, NULL, '2021-03-15 18:03:37', '2021-03-15 20:21:30'),
+(13, 'Team', 'team', 1, 'gallery1615801762.jpg', '1', '1', NULL, NULL, NULL, '2021-03-15 18:13:07', '2021-03-15 20:35:29'),
+(14, 'test', 'test', NULL, 'gallery1615793240.jpg', '0', '1', NULL, NULL, NULL, '2021-03-15 18:13:11', '2021-03-15 18:16:38'),
+(15, 'test', 'test', 1, 'gallery1615793420.jpg', '1', '1', NULL, NULL, NULL, '2021-03-15 18:15:38', '2021-03-15 20:32:16'),
+(16, 'Client', 'client', 4, 'gallery1662017580.jpg', '1', '0', NULL, NULL, NULL, '2021-03-15 20:21:57', '2022-09-01 07:33:30'),
+(17, 'Consult', 'consult', 5, 'gallery1615801871.jpg', '1', '1', NULL, NULL, NULL, '2021-03-15 20:27:15', '2021-03-15 20:41:53'),
+(18, 'Team', 'team', 5, 'gallery1662017653.jpg', '1', '0', NULL, NULL, NULL, '2021-03-15 20:35:48', '2022-09-01 07:34:14'),
+(19, 'Helping Hands', 'helping-hands', 6, 'gallery1662017639.jpg', '1', '0', NULL, NULL, NULL, '2021-03-15 20:38:57', '2022-09-01 07:34:04'),
+(20, 'counseling', 'counseling', 6, 'gallery1662017663.jpg', '1', '0', NULL, NULL, NULL, '2021-03-15 20:42:25', '2022-09-01 07:34:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_informations`
+--
+
+CREATE TABLE `tbl_informations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `information_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `information_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `information_type` enum('none','basic','index','faq') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `information_icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `information_body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `external_link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `count` int(11) NOT NULL DEFAULT 0,
+  `position` int(11) NOT NULL DEFAULT 1,
+  `featured_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_photos`
+--
+
+CREATE TABLE `tbl_photos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `imageable_id` bigint(20) UNSIGNED NOT NULL,
+  `imageable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_photos`
+--
+
+INSERT INTO `tbl_photos` (`id`, `imageable_id`, `imageable_type`, `image`, `delete_status`, `created_at`, `updated_at`) VALUES
+(6, 3, 'App\\Gallery', 'gallery(0)-1601017556.jpeg', '0', '2020-09-25 07:05:56', '2020-09-25 07:05:56'),
+(7, 4, 'App\\Gallery', 'gallery(0)-1601017613.jpeg', '0', '2020-09-25 07:06:53', '2020-09-25 07:06:53'),
+(10, 1, 'App\\Gallery', 'gallery-0-1615205685.jpg', '0', '2021-03-08 12:14:45', '2021-03-08 12:14:45'),
+(11, 1, 'App\\Gallery', 'gallery-1-1615205685.jpg', '0', '2021-03-08 12:14:45', '2021-03-08 12:14:45'),
+(12, 1, 'App\\Gallery', 'gallery-2-1615205685.jpg', '0', '2021-03-08 12:14:45', '2021-03-08 12:14:45'),
+(15, 7, 'App\\Gallery', 'gallery-0-1615371875.png', '0', '2021-03-10 10:24:35', '2021-03-10 10:24:35'),
+(16, 8, 'App\\Gallery', 'gallery-0-1615372224.jpg', '0', '2021-03-10 10:30:24', '2021-03-10 10:30:24'),
+(17, 2, 'App\\Gallery', 'gallery-0-1662016303.jpg', '0', '2022-09-01 07:11:43', '2022-09-01 07:11:43'),
+(18, 2, 'App\\Gallery', 'gallery-0-1662016394.jpg', '0', '2022-09-01 07:13:14', '2022-09-01 07:13:14'),
+(19, 5, 'App\\Gallery', 'gallery-0-1662017564.jpg', '0', '2022-09-01 07:32:44', '2022-09-01 07:32:44'),
+(20, 5, 'App\\Gallery', 'gallery-1-1662017564.jpg', '0', '2022-09-01 07:32:44', '2022-09-01 07:32:44'),
+(21, 5, 'App\\Gallery', 'gallery-2-1662017564.jpg', '0', '2022-09-01 07:32:44', '2022-09-01 07:32:44'),
+(22, 5, 'App\\Gallery', 'gallery-3-1662017564.jpg', '0', '2022-09-01 07:32:44', '2022-09-01 07:32:44'),
+(23, 16, 'App\\Gallery', 'gallery-0-1662017593.jpg', '0', '2022-09-01 07:33:13', '2022-09-01 07:33:13'),
+(24, 16, 'App\\Gallery', 'gallery-1-1662017593.jpg', '0', '2022-09-01 07:33:13', '2022-09-01 07:33:13'),
+(25, 16, 'App\\Gallery', 'gallery-0-1662017610.jpg', '0', '2022-09-01 07:33:30', '2022-09-01 07:33:30'),
+(26, 16, 'App\\Gallery', 'gallery-1-1662017610.jpg', '0', '2022-09-01 07:33:30', '2022-09-01 07:33:30'),
+(27, 18, 'App\\Gallery', 'gallery-0-1662017630.jpg', '0', '2022-09-01 07:33:50', '2022-09-01 07:33:50'),
+(28, 19, 'App\\Gallery', 'gallery-0-1662017644.jpg', '0', '2022-09-01 07:34:04', '2022-09-01 07:34:04'),
+(29, 20, 'App\\Gallery', 'gallery-0-1662017669.jpg', '0', '2022-09-01 07:34:29', '2022-09-01 07:34:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_products`
+--
+
+CREATE TABLE `tbl_products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `product_Addedby` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_ordering` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `image` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`id`, `product_title`, `product_description`, `deleted_at`, `product_Addedby`, `product_ordering`, `product_image`, `created_at`, `updated_at`, `image`) VALUES
+(1, 'Hand Sanitizer', '<p>Hand sanitizer&nbsp;is an alcohol gel with a mild, non-residual ingredient for fast, efficient and safe&nbsp;sanitizing&nbsp;without the use. of water or towels.<strong>&nbsp;Hand Sanitizer</strong>&nbsp;effectively eliminates common germs and pathogens that may cause illness. The gel. quickly evaporates without leaving a sticky residue.</p>', NULL, '1', '1', NULL, '2021-02-28 04:39:25', '2021-03-08 12:02:39', '1615204959.jpg'),
+(2, 'Surgical Mask', '<p>A&nbsp;<b>surgical mask</b>&nbsp;is a loose-fitting, disposable device that creates a physical barrier between the mouth and nose of the wearer and potential contaminants in the immediate environment. These are often referred to as&nbsp;<b>face masks</b>, although not all&nbsp;<b>face masks</b>&nbsp;are regulated as&nbsp;<b>surgical masks</b>.</p>', NULL, '1', '2', NULL, '2021-02-28 07:23:53', '2021-03-08 12:03:22', '1615205002.jpg'),
+(3, 'jjh', '<p>kjk</p>', '2021-03-10 10:58:10', '1', 'jhjh', NULL, '2021-03-10 10:57:43', '2021-03-10 10:58:10', ''),
+(4, 'vicks', '<p>vicks is very useful</p>', '2021-03-10 11:01:16', '1', '3', NULL, '2021-03-10 11:01:01', '2021-03-10 11:01:16', '1615374061.jpg'),
+(5, 'test', '<p>test</p>', '2021-03-14 16:29:27', '1', '1', NULL, '2021-03-14 16:28:11', '2021-03-14 16:29:27', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_profiles`
+--
+
+CREATE TABLE `tbl_profiles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `userId` bigint(20) UNSIGNED DEFAULT NULL,
+  `gender` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_of_birth` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_profiles`
+--
+
+INSERT INTO `tbl_profiles` (`id`, `userId`, `gender`, `mobile`, `date_of_birth`, `created_at`, `updated_at`) VALUES
+(1, 3, 'Male', '9843183001', '1980-09-15', '2021-02-23 08:00:17', '2021-02-26 10:30:04'),
+(2, 4, 'Female', '9843183049', '2020-03-01', '2021-02-23 08:03:13', '2021-02-23 08:03:13'),
+(3, 5, 'Male', '9845464663', '2021-02-25', '2021-02-25 11:31:50', '2021-02-25 11:31:50'),
+(4, 6, 'Male', '9843745263', '1995-02-28', '2021-02-26 10:50:10', '2021-02-26 10:50:10'),
+(5, 9, 'Male', '9843112233', '2020-06-01', '2021-03-03 07:51:49', '2021-03-03 07:51:49'),
+(7, 15, 'Male', '9843183059', '2021-01-15', '2021-03-12 23:52:05', '2021-03-12 23:52:05'),
+(8, 16, 'Male', '9843344556', '1995-03-01', '2021-03-14 16:01:47', '2021-03-14 16:01:47'),
+(9, 21, 'Male', '9807555929', '1992-05-07', '2021-03-18 22:16:36', '2021-03-18 22:16:36'),
+(10, 22, 'Male', '9844336402', '1997-07-05', '2021-03-19 02:21:32', '2021-03-19 02:21:32'),
+(11, 23, 'Male', '9868841535', '2021-03-19', '2021-03-19 14:02:27', '2021-03-19 14:02:27'),
+(12, 30, 'Female', '9844336299', '2021-03-27', '2021-03-21 21:17:45', '2021-03-21 21:24:33'),
+(13, 33, 'Female', '9844332222', '2021-03-20', '2021-03-21 22:53:40', '2021-03-22 16:08:08'),
+(14, 34, 'Male', '9855632145', '2021-03-16', '2021-03-22 00:39:17', '2021-03-22 00:39:17'),
+(15, 35, 'Male', '9844336599', '2021-03-27', '2021-03-22 15:08:36', '2021-03-22 15:34:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_settings`
+--
+
+CREATE TABLE `tbl_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `site_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site_logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `favicon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `founder_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `founder_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `founder_message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `founder_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `breaking_count` bigint(20) DEFAULT NULL,
+  `facebook` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `viber` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `whatsapp` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `map_embed_link` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `map_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief3` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief4` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief5` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_brief6` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_detail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `index_detail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `footer_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subscribe_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subscribe_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `day1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `day2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `day3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `day4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `time4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `site_title2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_settings`
+--
+
+INSERT INTO `tbl_settings` (`id`, `site_name`, `address`, `phone`, `email`, `site_url`, `site_logo`, `favicon`, `founder_name`, `founder_image`, `founder_message`, `founder_title`, `breaking_count`, `facebook`, `twitter`, `youtube`, `linkedin`, `instagram`, `viber`, `whatsapp`, `map_embed_link`, `map_link`, `index_brief1`, `index_brief2`, `index_brief3`, `index_brief4`, `index_brief5`, `index_brief6`, `contact_detail`, `index_detail`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`, `footer_title`, `footer_description`, `subscribe_title`, `subscribe_description`, `day1`, `day2`, `day3`, `day4`, `time1`, `time2`, `time3`, `time4`, `site_title2`) VALUES
+(1, 'Alfa Care', 'Alfa Beta Complex, New Baneshwor, Kathmandu', '+977 14793876, 014793177', 'info@alfacarenepal.com', 'http://127.0.0.1:8000/', 'setting1662013145.png', 'favicon-1662013154.png', 'Dr. Ajay Narayan Sharma', 'founder-1662027112.jpg', '<p>Located at the heart of Kathmandu valley, Alfa Health Care &amp; Diagnostic Center Pvt. Ltd (Alfa Care) is an ISO 2009-20015 certified company registered and actively providing services in Nepal. The Alfa Care comprises young, energetic &amp; dynamic board members, experienced in the field of health care, laboratory, management &amp; entrepreneurship. The center has well equipped Molecular, Hematology, Cytology and Microbiology Laboratories, with OPD services provided by reputed &amp; well-experienced clinicians.</p>\r\n\r\n<p>Located at the heart of Kathmandu valley, Alfa Health Care &amp; Diagnostic Center Pvt. Ltd (Alfa Care) is an ISO 2009-20015 certified company registered and actively providing services in Nepal. The Alfa Care comprises young, energetic &amp; dynamic board members, experienced in the field of health care, laboratory, management &amp; entrepreneurship. The center has well equipped Molecular, Hematology, Cytology and Microbiology Laboratories, with OPD services provided by reputed &amp; well-experienced clinicians.</p>\r\n\r\n<div id=\"gtx-trans\" style=\"position: absolute; left: -128px; top: -5.27273px;\">\r\n<div class=\"gtx-trans-icon\">&nbsp;</div>\r\n</div>', 'Message From Chairman', NULL, 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.youtube.com/', 'https://www.linkedin.com/', 'https://www.instagram.com/', NULL, NULL, '<p><iframe allowfullscreen=\"\" aria-hidden=\"false\" frameborder=\"0\" height=\"450\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.914024399262!2d85.31070771458276!3d27.68905203290361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1918e77a958d%3A0x8adb3649babf6b7e!2sNectar%20Digit%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1600601162782!5m2!1sen!2snp\" style=\"border:0;\" tabindex=\"0\" width=\"600\"></iframe></p>', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.914048690887!2d85.31105594260727!3d27.68905128218224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1918e77a958d%3A0x8adb3649babf6b7e!2sNectar%20Digit%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1600601368973!5m2!1sen!2snp', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '<p>Shank duis pancetta kevin ullamco tempor short loin pig lorem officia ut ham hock incididunt irure drumstick sage ball tip tri-tip.</p>', 'Alfa Care', 'Alfa Care', 'Alfa Care', NULL, '2022-09-01 10:12:10', 'About', '<p>lihtsalt proovitekst, mida kasutatakse printimis- ja ladumist&ouml;&ouml;stuses.</p>', 'Subscribe to Newsletter', '<p>Get healthy news and solutions to your problems from our experts!</p>', 'Monday - Friday', 'Saturday - Sunday', 'Emergency Services', NULL, '08:00am - 10:00pm', '09:00am - 06:00pm', '24 hours Open', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sliders`
+--
+
+CREATE TABLE `tbl_sliders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `hide_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_sliders`
+--
+
+INSERT INTO `tbl_sliders` (`id`, `title`, `body`, `image`, `link`, `meta_desc`, `meta_keyword`, `meta_title`, `alt_img`, `publish_status`, `delete_status`, `hide_status`, `created_at`, `updated_at`) VALUES
+(1, 'Universal Health Services', '<p>Universal Health Services</p>', 'slider1662013730.jpg', NULL, NULL, NULL, NULL, NULL, '1', '0', '1', '2020-09-24 09:29:34', '2022-09-01 06:28:55'),
+(2, 'Slider 2', '<p>Slider 2</p>', 'slider1662013745.jpg', NULL, NULL, NULL, NULL, NULL, '1', '0', '1', '2020-09-24 09:30:01', '2022-09-01 06:29:09'),
+(3, 'slider 1', NULL, 'slider1662013760.jpg', NULL, NULL, NULL, NULL, NULL, '1', '0', '1', '2021-03-08 12:11:36', '2022-09-01 06:29:33'),
+(4, 'slifd', NULL, 'slider1662013783.jpg', NULL, NULL, NULL, NULL, NULL, '1', '0', '1', '2021-03-08 12:12:30', '2022-09-01 06:29:45'),
+(5, 'tetsdfsd', NULL, 'slider1662013796.jpg', NULL, NULL, NULL, NULL, NULL, '1', '0', '1', '2021-03-08 12:12:57', '2022-09-01 06:29:57'),
+(6, 'hfghf', NULL, 'slider1615361564.png', NULL, NULL, NULL, NULL, NULL, '1', '1', '0', '2021-03-10 07:32:53', '2021-03-10 07:34:08'),
+(7, 'Nulla quidem quibusd', NULL, NULL, 'Tempore ullamco lib', NULL, NULL, NULL, 'Consectetur nihil te', '0', '1', '1', '2021-03-14 15:57:32', '2021-03-14 15:58:21'),
+(8, 'aasdf', '<p>asdfasdf</p>', 'slider1662013807.jpg', 'sdf', NULL, NULL, NULL, NULL, '1', '0', '1', '2021-03-15 17:41:16', '2022-09-01 06:30:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_subscribes`
+--
+
+CREATE TABLE `tbl_subscribes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `subscribe_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_subscribes`
+--
+
+INSERT INTO `tbl_subscribes` (`id`, `subscribe_email`, `delete_status`, `created_at`, `updated_at`) VALUES
+(1, 'silpakaprashant@gmail.com', '0', '2020-09-29 06:23:06', '2020-09-29 07:00:54'),
+(2, 'amritsparsha1@gmail.com', '0', '2021-03-18 21:28:41', '2021-03-18 21:28:41'),
+(3, 'tjanaksinghthapa@gmail.com', '0', '2021-05-13 00:53:16', '2021-05-13 00:53:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_teams`
+--
+
+CREATE TABLE `tbl_teams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `department_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `designation` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `featured_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `team_Addedby` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_teams`
+--
+
+INSERT INTO `tbl_teams` (`id`, `category_id`, `department_id`, `title`, `designation`, `description`, `slug`, `slug_url`, `image`, `phone`, `email`, `address`, `facebook`, `twitter`, `linkedin`, `publish_status`, `delete_status`, `created_at`, `updated_at`, `featured_status`, `team_Addedby`) VALUES
+(1, NULL, 1, 'Mr. Aashish Kafle', 'Chairman', '<p>Mr. Aashish Kafle</p>', 'mr-aashish-kafle764', NULL, 'team1614237575.jpg', '9801191914', 'aashish@uhsnepal.com', 'Kathmandu', '#', '#', '#', '0', '0', '2020-09-28 05:55:29', '2021-08-08 18:52:20', '0', NULL),
+(2, NULL, 2, 'Dr. Asbin Kafle', 'Opener', '<p>Dr. Asbin Kafle</p>', 'dr-asbin-kafle813', NULL, 'team1614237495.png', '9807555929', 'asbin@uhsnepal.com', 'Kathmandu', '#', '#', '#', '0', '0', '2020-09-28 05:58:56', '2021-08-08 18:52:36', '0', NULL),
+(3, NULL, 1, 'Dr, Bishal Giri', 'all rounder', '<p>this is test</p>', 'dr-bishal-giri151', NULL, 'team1614237247.jpg', '9801191916', 'waston@gmail.com', 'address', 'facebook.com', 'twitter.com', NULL, '1', '0', '2020-09-28 10:35:49', '2021-07-08 19:12:56', '1', NULL),
+(6, NULL, 1, 'Deepak Timilsina', 'Nursing Incharge', '<p>&nbsp;Deepak Timilsina</p>', 'deepak-timilsina402', NULL, 'team1614237359.jpg', '98075555929', 'info@uhsnepal.com', 'Kathmandu', '#', '#', '#', '1', '0', '2021-02-24 06:43:36', '2021-07-08 19:14:46', '1', NULL),
+(9, NULL, 4, 'test', 'Sequi impedit magni', '<p>hghjhg</p>', 'test277', 'Quo molestiae in nat', NULL, 'test', 'bajajul@mailinator.com', 'Sapiente sed laborio', 'Aut repellendus Des', 'Ea commodo ut tempor', 'Odit aliqua Id libe', '0', '0', '2021-03-14 16:09:40', '2021-03-14 16:12:10', '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_testimonials`
+--
+
+CREATE TABLE `tbl_testimonials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disease_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `organization` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_testimonials`
+--
+
+INSERT INTO `tbl_testimonials` (`id`, `title`, `body`, `image`, `disease_name`, `address`, `organization`, `meta_desc`, `meta_keyword`, `meta_title`, `alt_img`, `publish_status`, `delete_status`, `created_at`, `updated_at`) VALUES
+(1, 'COVID -19', '<p>thank you for the service during these though period of time</p>', 'testimonial1625735005.png', 'COVID-19', 'balaju', NULL, NULL, NULL, NULL, NULL, '1', '0', '2020-09-24 11:32:14', '2021-07-08 19:48:31'),
+(2, 'ram hari', '<p>My dad was bed bounded because of a nerve issue thanks to uhs team and their rehab plan&nbsp;he is at least moving and the recovery is phenomenal.&nbsp;</p>', 'testimonial1625734411.png', 'Regarding Nerve', 'nakkhu', NULL, NULL, NULL, NULL, NULL, '1', '0', '2020-09-24 11:32:54', '2021-07-08 19:44:06'),
+(3, 'Test1', NULL, NULL, 'Wynne Wynn', 'Non vero aut hic et', NULL, NULL, NULL, NULL, 'Cumque cum at conseq', '0', '1', '2021-03-14 15:59:59', '2021-03-14 16:01:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_users`
+--
+
+CREATE TABLE `tbl_users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `full_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `publish_status` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `permission` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`id`, `username`, `type`, `image`, `email`, `facebook`, `twitter`, `full_name`, `slug`, `slug_url`, `password`, `date_created`, `updated`, `last_login`, `publish_status`, `permission`, `delete_status`, `remember_token`, `email_verified_at`, `created_at`, `updated_at`) VALUES
+(1, 'Admin@321', 'admin', 'admin-1613837865.png', 'prashant.nectardigit@gmail.com', NULL, NULL, 'Admin', NULL, NULL, '$2y$10$SokMGzfy32kmPBHMFYm8r.O9.7IaaTfMEweSPYsz6VN0vWpe0lrbC', NULL, NULL, NULL, '1', '0', '0', 'RnBFE51JLzEY4GwXJKgZQhAik9l9rjpOyq6smXNrbzr7F2XJK7VBjVZRLNHN', NULL, '2020-07-28 15:56:12', '2021-02-20 16:17:46'),
+(2, 'Prashant', 'admin', 'admin-1598788816.png', 'silpakaprashant@gmail.com', NULL, NULL, 'Prashant Silpakar', NULL, NULL, '$2y$10$9.JwrDfqD5T2KIuIO1iLiuGd13B5/2KRAkx4KtvlE4jZpV8Dz1AVS', NULL, NULL, NULL, '1', '0', '1', NULL, NULL, '2020-08-30 11:59:32', '2021-03-18 21:56:54'),
+(3, 'amrit123', 'customer', '1614759067_8668.jpg', 'amrit@gmail.com', NULL, NULL, 'amrit shrestha', NULL, NULL, '$2y$10$jYHnhwF/5Ui08rWU0IH8IuGCbYni1YAUkpevyeIiRz1LnJKgRxPSG', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-02-23 08:00:17', '2021-03-03 08:11:07'),
+(4, 'amrita', 'customer', '1614067393_7534.jpg', 'amrita@gmail.com', NULL, NULL, 'Amrita Shrestha', NULL, NULL, '$2y$10$owbS/7J7kPa9eh9Q/kzxT.wqqfxu0UAZo9KLrHhKS1DzFuGncFSJ2', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-02-23 08:03:13', '2021-02-23 08:03:13'),
+(5, 'usernametest', 'customer', NULL, 'teat@gmail.com', NULL, NULL, 'test name', NULL, NULL, '$2y$10$uPcGwWCojtMKSCF0OVBmdeGXoaXYue3qk1PULiHpKCl0p25ZDxCFy', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-02-25 11:31:50', '2021-02-25 11:31:50'),
+(6, 'kiran', 'customer', '1614337080_5681.jpeg', 'kiran@nectardigit.com', NULL, NULL, 'kiran', NULL, NULL, '$2y$10$RwTVldam8XI5Mxr1M.hGF.pJ7ypKd4WPQi563kblFQTYDr.jigKAW', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-02-26 10:50:10', '2021-02-26 10:58:00'),
+(7, 'Kiran', 'customer', 'admin-1614496589.gif', 'kiranbanmala3@gmail.com', NULL, NULL, 'Amrit Shrestha', NULL, NULL, '$2y$10$COSp5lqRvwPV2gHyMt72WuUAcpNIxd.G1f2glvISDd0AxuvffRkzS', NULL, NULL, NULL, '0', '0', '0', NULL, '2021-05-07 16:45:09', '2021-02-28 07:16:30', '2021-05-07 16:45:09'),
+(8, 'nurse', 'nurse', 'admin-1614496677.jpg', 'nurse@email.com', NULL, NULL, 'Nurse Nurese', NULL, NULL, '$2y$10$/OGIa00quI9xuL1.hNHKM.dVwlZAS7.qRcRq1qys2F60TqdbhwpZa', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, '2021-02-28 07:17:58', '2021-02-28 07:17:58'),
+(9, 'Amrit', 'doctor', NULL, 'amm.reet.stha1@gmail.com', NULL, NULL, 'test user', NULL, NULL, '$2y$10$g2uAYMGMay2skZSnfYKduu.QlMX4L.kpnNsMWUQQNUQZ6j0jC9/22', NULL, NULL, NULL, '0', '0', '0', 'yP039TQvqD9GM7Xn8G8uDAhnJnqZPknopNlcOYSjIdnT5zLFozfQ4wAgwmmP', NULL, '2021-03-03 07:51:49', '2021-03-09 08:46:47'),
+(10, 'nursetest', 'nurse', '1614762867_3708.jpg', 'nurestest@gmail.com', NULL, NULL, 'Nurse TEst', NULL, NULL, '$2y$10$AF.0lYJk1V.bBo/MDP0ywOtPU7xBDZ5bpg4H6jQxG8ZjLs5x1px2W', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, '2021-03-03 08:00:28', '2021-03-03 09:14:27'),
+(11, 'doctor', 'doctor', 'admin-1614845417.jpg', 'doctor@gmail.com', NULL, NULL, 'Doctor', NULL, NULL, '$2y$10$NxOJEluXTLPpPzE5Hi.FTuT7gwcN71dXunmh0Ir/6NaNMTfGVqXKu', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, '2021-03-04 08:10:17', '2021-03-04 08:10:17'),
+(12, 'doctortwo', 'doctor', 'admin-1614925564.jpg', 'doctortwo@gmail.com', NULL, NULL, 'doctor 2', NULL, NULL, '$2y$10$Z9fT5foA2GShnP4A4iUq4ufpmDl4jUNqwE0AtMYYkCTPrmzw/fFkK', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, '2021-03-05 06:26:04', '2021-03-05 06:26:04'),
+(14, 'Myank bro', 'admin', 'admin-1615370918.png', 'test@gmail.com', NULL, NULL, 'Mayank Mohan', NULL, NULL, '$2y$10$agCEbK7ffNTlSHbO6qUIIeywR8Ify6/8Rf2d2xcvnewzrE8WFgIqm', NULL, NULL, NULL, '1', '0', '1', NULL, NULL, '2021-03-10 07:16:22', '2021-03-18 21:56:59'),
+(15, 'customer', 'customer', NULL, 'customer@gmail.com', NULL, NULL, 'customer', NULL, NULL, '$2y$10$P6suhc8OMm2//zL5SuehVO9Jp4/4hRu4WKTuAY3xtLDoHq7qhJBXm', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-03-12 23:52:05', '2021-03-12 23:52:05'),
+(16, 'test', 'customer', '1615858787_2971.jpeg', 'test@gmaiil.com', NULL, NULL, 'Test User', NULL, NULL, '$2y$10$NDfG0XEEIkvSJW/l.OC7t.R.eYfWdIBlrntAwok.DOikyFVo1ECsG', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-03-14 16:01:47', '2021-03-16 12:24:47'),
+(17, 'test1', 'admin', NULL, 'test1@gmail.com', NULL, NULL, 'test12', NULL, NULL, '$2y$10$q3aVoAXR/nPHGh0TLqQDAu1MjAT9UF.AocyA.UuyZkX2LDlgeUbla', NULL, NULL, NULL, '1', '0', '1', NULL, NULL, '2021-03-14 16:42:10', '2021-03-18 21:56:47'),
+(20, 'uhsnepal', 'admin', 'admin-1616129861.png', 'info@uhsnepal.com', NULL, NULL, 'Uhs Nepal', NULL, NULL, '$2y$10$fKabsxKUiEyrwe8kb9uXg.DcfVuQ8W8o.n2NISU3qkFg2zjeDKVYG', NULL, NULL, NULL, '1', '0', '0', NULL, NULL, '2021-03-18 21:51:23', '2021-03-19 15:42:41'),
+(21, 'amritsparsha', 'customer', '1616067233_9345.jpeg', 'amritsparsha1@gmail.com', NULL, NULL, 'Amrit Sparsha', NULL, NULL, '$2y$10$U5BvMoWFt95p9QQNgoOQEeogvQEEoScPBw2SXz1P9BZXkY/uU6O0O', NULL, NULL, NULL, '0', '0', '0', 'MQGDwvLqScEK60ZYZYKxztsGRIAmMZ2tih9wqJ6HpO8sNOjOkY4frltNfgVZ', NULL, '2021-03-18 22:16:36', '2021-03-18 22:55:12'),
+(31, 'doctortest12', 'doctor', 'admin-1616324184.png', 'doctortest12@gmail.com', NULL, NULL, 'doctor test', NULL, NULL, '$2y$10$u.lNrbUW/R7XnKfvyor7s.UmwoEctK./8v9N6IeKr3YOKeznIap22', NULL, NULL, NULL, '1', '0', '0', NULL, '2021-02-02 23:19:01', '2021-03-21 21:41:24', '2021-03-21 21:41:24'),
+(32, 'nurserttsa', 'nurse', 'admin-1616326817.png', 'nurse12@gmail.com', NULL, NULL, 'Nurse test', NULL, NULL, '$2y$10$TTNbxjqsyAjpu08ZCyeImul.xZtWTq6LWeAKwkAf2HK2k2kx9ZdV2', NULL, NULL, NULL, '1', '0', '0', NULL, '2021-03-21 22:25:17', '2021-03-21 22:25:17', '2021-03-21 22:25:17'),
+(33, NULL, 'customer', NULL, 'adhikariswoyam@gmail.com', NULL, NULL, 'swoyam adhikari', NULL, NULL, '$2y$10$RoPgDAll2p2cJ1N3qW/JUeDxaXAcxkdQMH0x1hvr4duMTJHu.fnJe', NULL, NULL, NULL, '0', '0', '0', 'p8M8vpYFuAlUxqqKLcBNz3qkmJph7ujVN3JrokFzKIrESPpYxEDMtE3PAOmI', '2021-03-22 15:48:58', '2021-03-21 22:53:39', '2021-03-22 16:08:08'),
+(34, NULL, 'customer', NULL, 'adhikariswoyam@hotmail.com', NULL, NULL, 'swoyam adhikari', NULL, NULL, '$2y$10$7Cga0DbouvrEiNStLDk8te0c5yNGpvQJdf2dkcVnQ.rWs87PHQbJ.', NULL, NULL, NULL, '0', '0', '0', NULL, NULL, '2021-03-22 00:39:15', '2021-03-22 00:39:15'),
+(35, NULL, 'customer', NULL, 'salonmessi@gmail.com', NULL, NULL, 'swoyam adhikari', NULL, NULL, '$2y$10$vMTbW6ahZfhQ7nwqH6RmpeWB4uDyGqOC7jaHhf1NLGKPvSoQ3rZG6', NULL, NULL, NULL, '0', '0', '0', 'iv4lBVJS4IPgZxkglNUXbSMjEa8T9lQtFhEUcTAbPLOk9O5eOgLWnPzCHRnu', '2021-03-22 15:09:23', '2021-03-22 15:08:34', '2021-03-22 22:35:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_user_logs`
+--
+
+CREATE TABLE `tbl_user_logs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date` date DEFAULT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `module_id` bigint(20) DEFAULT NULL,
+  `module_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `action` enum('create','update','delete') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ip` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_user_logs`
+--
+
+INSERT INTO `tbl_user_logs` (`id`, `date`, `type`, `user_id`, `module_id`, `module_name`, `title`, `action`, `ip`, `created_at`, `updated_at`) VALUES
+(1, '2020-09-25', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '127.0.0.1', '2020-09-25 05:05:26', '2020-09-25 05:05:26'),
+(2, '2020-09-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '127.0.0.1', '2020-09-28 05:39:53', '2020-09-28 05:39:53'),
+(3, '2020-09-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '127.0.0.1', '2020-09-28 09:50:59', '2020-09-28 09:50:59'),
+(4, '2020-09-29', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '127.0.0.1', '2020-09-29 06:37:16', '2020-09-29 06:37:16'),
+(5, '2020-09-29', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '127.0.0.1', '2020-09-29 07:05:47', '2020-09-29 07:05:47'),
+(6, '2020-09-29', 'admin', 1, 1, 'Admin', 'Admin', 'update', '127.0.0.1', '2020-09-29 11:12:07', '2020-09-29 11:12:07'),
+(7, '2021-02-20', 'admin', 1, 1, 'Admin', 'Admin', 'update', '127.0.0.1', '2021-02-20 16:17:46', '2021-02-20 16:17:46'),
+(8, '2021-02-28', 'admin', 1, 7, 'Admin', 'Amrit Shrestha', 'create', '192.168.1.41', '2021-02-28 07:16:30', '2021-02-28 07:16:30'),
+(9, '2021-02-28', 'admin', 1, 8, 'Admin', 'Nurse Nurese', 'create', '192.168.1.41', '2021-02-28 07:17:58', '2021-02-28 07:17:58'),
+(10, '2021-02-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '192.168.1.41', '2021-02-28 10:20:24', '2021-02-28 10:20:24'),
+(11, '2021-02-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '192.168.1.41', '2021-02-28 10:26:17', '2021-02-28 10:26:17'),
+(12, '2021-02-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '192.168.1.41', '2021-02-28 10:41:31', '2021-02-28 10:41:31'),
+(13, '2021-02-28', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '192.168.1.41', '2021-02-28 10:42:49', '2021-02-28 10:42:49'),
+(14, '2021-03-03', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '192.168.1.41', '2021-03-03 07:11:18', '2021-03-03 07:11:18'),
+(15, '2021-03-03', 'admin', 1, 10, 'Admin', 'Nurse TEst', 'create', '192.168.1.41', '2021-03-03 08:00:28', '2021-03-03 08:00:28'),
+(16, '2021-03-04', 'admin', 1, 11, 'Admin', 'Doctor', 'create', '192.168.1.41', '2021-03-04 08:10:17', '2021-03-04 08:10:17'),
+(17, '2021-03-05', 'admin', 1, 12, 'Admin', 'doctor 2', 'create', '192.168.1.41', '2021-03-05 06:26:04', '2021-03-05 06:26:04'),
+(18, '2021-03-10', 'admin', 1, 2, 'Role', 'Admin', 'create', '192.168.1.41', '2021-03-10 07:14:56', '2021-03-10 07:14:56'),
+(19, '2021-03-10', 'admin', 1, 14, 'Admin', 'Test User', 'create', '192.168.1.41', '2021-03-10 07:16:22', '2021-03-10 07:16:22'),
+(20, '2021-03-10', 'admin', 1, 14, 'Admin', 'Mayank Mohan', 'update', '192.168.1.54', '2021-03-10 10:07:55', '2021-03-10 10:07:55'),
+(21, '2021-03-10', 'admin', 1, 14, 'Admin', 'Mayank Mohan', 'update', '192.168.1.54', '2021-03-10 10:08:38', '2021-03-10 10:08:38'),
+(22, '2021-03-14', 'admin', 1, 2, 'Role', 'Test', 'update', '110.44.127.167', '2021-03-14 15:45:15', '2021-03-14 15:45:15'),
+(23, '2021-03-14', 'admin', 1, 2, 'Role', 'Admin', 'update', '110.44.127.167', '2021-03-14 15:45:28', '2021-03-14 15:45:28'),
+(24, '2021-03-14', 'admin', 1, 3, 'Role', 'Test', 'create', '110.44.127.167', '2021-03-14 15:46:12', '2021-03-14 15:46:12'),
+(25, '2021-03-14', 'admin', 1, 3, 'Role', 'Test', 'update', '110.44.127.167', '2021-03-14 15:46:25', '2021-03-14 15:46:25'),
+(26, '2021-03-14', 'admin', 1, 3, 'Role', 'Test', 'update', '110.44.127.167', '2021-03-14 15:46:26', '2021-03-14 15:46:26'),
+(27, '2021-03-14', 'admin', 1, 4, 'Role', 'New Role', 'create', '110.44.127.167', '2021-03-14 15:55:32', '2021-03-14 15:55:32'),
+(28, '2021-03-14', 'admin', 1, 17, 'Admin', 'test1', 'create', '110.44.127.167', '2021-03-14 16:42:10', '2021-03-14 16:42:10'),
+(29, '2021-03-14', 'admin', 1, 18, 'Admin', 'Swoyam', 'create', '110.44.127.167', '2021-03-14 16:45:46', '2021-03-14 16:45:46'),
+(30, '2021-03-14', 'admin', 1, 17, 'Admin', 'test12', 'update', '110.44.127.167', '2021-03-14 16:47:08', '2021-03-14 16:47:08'),
+(31, '2021-03-14', 'admin', 1, 17, 'Admin', 'test12', 'update', '110.44.127.167', '2021-03-14 16:47:09', '2021-03-14 16:47:09'),
+(32, '2021-03-14', 'admin', 1, 19, 'Admin', 'Swoyam Two', 'create', '110.44.127.167', '2021-03-14 17:51:48', '2021-03-14 17:51:48'),
+(33, '2021-03-15', 'admin', 1, 1, 'Role', 'Super Admin', 'update', '103.10.31.8', '2021-03-15 21:25:24', '2021-03-15 21:25:24'),
+(34, '2021-03-18', 'admin', 1, 20, 'Admin', 'Uhs Nepal', 'create', '110.44.124.177', '2021-03-18 21:51:23', '2021-03-18 21:51:23'),
+(35, '2021-03-18', 'admin', 20, 20, 'Admin', 'Uhs Nepal', 'update', '110.44.124.177', '2021-03-18 21:53:25', '2021-03-18 21:53:25'),
+(36, '2021-03-18', 'admin', 1, 17, 'Admin', 'test12', 'delete', '110.44.124.177', '2021-03-18 21:56:47', '2021-03-18 21:56:47'),
+(37, '2021-03-18', 'admin', 1, 2, 'Admin', 'Prashant Silpakar', 'delete', '110.44.124.177', '2021-03-18 21:56:54', '2021-03-18 21:56:54'),
+(38, '2021-03-18', 'admin', 1, 14, 'Admin', 'Mayank Mohan', 'delete', '110.44.124.177', '2021-03-18 21:56:59', '2021-03-18 21:56:59'),
+(39, '2021-03-19', 'admin', 20, 20, 'Admin', 'Uhs Nepal', 'update', '110.44.124.177', '2021-03-19 15:41:37', '2021-03-19 15:41:37'),
+(40, '2021-03-19', 'admin', 20, 20, 'Admin', 'Uhs Nepal', 'update', '110.44.124.177', '2021-03-19 15:42:41', '2021-03-19 15:42:41'),
+(41, '2021-03-19', 'admin', 20, 24, 'Admin', 'testuser', 'create', '110.44.124.177', '2021-03-19 15:45:51', '2021-03-19 15:45:51'),
+(42, '2021-03-21', 'admin', 20, 31, 'Admin', 'doctor test', 'create', '43.245.86.47', '2021-03-21 21:41:24', '2021-03-21 21:41:24'),
+(43, '2021-03-21', 'admin', 20, 32, 'Admin', 'Nurse test', 'create', '43.245.86.47', '2021-03-21 22:25:17', '2021-03-21 22:25:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_vehicles`
+--
+
+CREATE TABLE `tbl_vehicles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alt_img` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `delete_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `hide_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_categories`
+--
+
+CREATE TABLE `team_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `publish_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `category_Addedby` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `category_ordering` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `team_categories`
+--
+
+INSERT INTO `team_categories` (`id`, `category_title`, `publish_status`, `deleted_at`, `category_Addedby`, `category_ordering`, `created_at`, `updated_at`) VALUES
+(1, 'Team Category', '1', NULL, '1', '1', '2021-03-10 10:44:02', '2021-03-10 10:48:32'),
+(2, 'test', '0', '2021-03-14 16:23:06', '1', '2', '2021-03-14 16:21:46', '2021-03-14 16:23:06'),
+(3, 'Test Category', '0', '2021-03-14 17:56:07', '1', '1', '2021-03-14 17:55:48', '2021-03-14 17:56:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_categories_team`
+--
+
+CREATE TABLE `team_categories_team` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `team_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `team_categories_team`
+--
+
+INSERT INTO `team_categories_team` (`id`, `created_at`, `updated_at`, `category_id`, `team_id`) VALUES
+(1, NULL, NULL, 1, 9);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `archive_doctor_reports`
+--
+ALTER TABLE `archive_doctor_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `archive_doctor_reports_doctor_report_id_foreign` (`doctor_report_id`),
+  ADD KEY `archive_doctor_reports_patient_case_id_foreign` (`patient_case_id`),
+  ADD KEY `archive_doctor_reports_created_by_foreign` (`created_by`),
+  ADD KEY `archive_doctor_reports_updated_by_foreign` (`updated_by`);
+
+--
+-- Indexes for table `archive_nurse_reports`
+--
+ALTER TABLE `archive_nurse_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `archive_nurse_reports_nurse_report_id_foreign` (`nurse_report_id`),
+  ADD KEY `archive_nurse_reports_patient_case_id_foreign` (`patient_case_id`),
+  ADD KEY `archive_nurse_reports_created_by_foreign` (`created_by`),
+  ADD KEY `archive_nurse_reports_updated_by_foreign` (`updated_by`);
+
+--
+-- Indexes for table `doctor_patients`
+--
+ALTER TABLE `doctor_patients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `firebase_payloads`
+--
+ALTER TABLE `firebase_payloads`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `firebase_payloads_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nurse_patients`
+--
+ALTER TABLE `nurse_patients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patient_cases`
+--
+ALTER TABLE `patient_cases`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_cases_nurse_id_foreign` (`nurse_id`),
+  ADD KEY `patient_cases_patient_id_foreign` (`patient_id`),
+  ADD KEY `patient_cases_created_by_foreign` (`created_by`),
+  ADD KEY `patient_cases_updated_by_foreign` (`updated_by`),
+  ADD KEY `patient_cases_approved_by_foreign` (`approved_by`);
+
+--
+-- Indexes for table `patient_case_doctors`
+--
+ALTER TABLE `patient_case_doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_case_doctors_patient_case_id_foreign` (`patient_case_id`),
+  ADD KEY `patient_case_doctors_doctor_id_foreign` (`doctor_id`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `report_by_doctors`
+--
+ALTER TABLE `report_by_doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `report_by_doctors_patient_case_id_foreign` (`patient_case_id`),
+  ADD KEY `report_by_doctors_created_by_foreign` (`created_by`),
+  ADD KEY `report_by_doctors_updated_by_foreign` (`updated_by`);
+
+--
+-- Indexes for table `report_by_nurses`
+--
+ALTER TABLE `report_by_nurses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `report_by_nurses_patient_case_id_foreign` (`patient_case_id`),
+  ADD KEY `report_by_nurses_created_by_foreign` (`created_by`),
+  ADD KEY `report_by_nurses_updated_by_foreign` (`updated_by`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_appointments`
+--
+ALTER TABLE `tbl_appointments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_appointments_created_by_foreign` (`created_by`),
+  ADD KEY `tbl_appointments_updated_by_foreign` (`updated_by`);
+
+--
+-- Indexes for table `tbl_blogs`
+--
+ALTER TABLE `tbl_blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_contacts`
+--
+ALTER TABLE `tbl_contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_contents`
+--
+ALTER TABLE `tbl_contents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_departments`
+--
+ALTER TABLE `tbl_departments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_galleries`
+--
+ALTER TABLE `tbl_galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_informations`
+--
+ALTER TABLE `tbl_informations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_photos`
+--
+ALTER TABLE `tbl_photos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_profiles`
+--
+ALTER TABLE `tbl_profiles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_profiles_userid_foreign` (`userId`);
+
+--
+-- Indexes for table `tbl_settings`
+--
+ALTER TABLE `tbl_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_sliders`
+--
+ALTER TABLE `tbl_sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_subscribes`
+--
+ALTER TABLE `tbl_subscribes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_teams`
+--
+ALTER TABLE `tbl_teams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tbl_teams_department_id_foreign` (`department_id`),
+  ADD KEY `tbl_teams_category_id_foreign` (`category_id`);
+
+--
+-- Indexes for table `tbl_testimonials`
+--
+ALTER TABLE `tbl_testimonials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_user_logs`
+--
+ALTER TABLE `tbl_user_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_vehicles`
+--
+ALTER TABLE `tbl_vehicles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team_categories`
+--
+ALTER TABLE `team_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team_categories_team`
+--
+ALTER TABLE `team_categories_team`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `team_categories_team_category_id_team_id_unique` (`category_id`,`team_id`),
+  ADD KEY `team_categories_team_team_id_foreign` (`team_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `archive_doctor_reports`
+--
+ALTER TABLE `archive_doctor_reports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `archive_nurse_reports`
+--
+ALTER TABLE `archive_nurse_reports`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `doctor_patients`
+--
+ALTER TABLE `doctor_patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `firebase_payloads`
+--
+ALTER TABLE `firebase_payloads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `nurse_patients`
+--
+ALTER TABLE `nurse_patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `patient_cases`
+--
+ALTER TABLE `patient_cases`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT for table `patient_case_doctors`
+--
+ALTER TABLE `patient_case_doctors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+
+--
+-- AUTO_INCREMENT for table `report_by_doctors`
+--
+ALTER TABLE `report_by_doctors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `report_by_nurses`
+--
+ALTER TABLE `report_by_nurses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_appointments`
+--
+ALTER TABLE `tbl_appointments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_blogs`
+--
+ALTER TABLE `tbl_blogs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_contacts`
+--
+ALTER TABLE `tbl_contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `tbl_contents`
+--
+ALTER TABLE `tbl_contents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_departments`
+--
+ALTER TABLE `tbl_departments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_galleries`
+--
+ALTER TABLE `tbl_galleries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `tbl_informations`
+--
+ALTER TABLE `tbl_informations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_photos`
+--
+ALTER TABLE `tbl_photos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_profiles`
+--
+ALTER TABLE `tbl_profiles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `tbl_settings`
+--
+ALTER TABLE `tbl_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_sliders`
+--
+ALTER TABLE `tbl_sliders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `tbl_subscribes`
+--
+ALTER TABLE `tbl_subscribes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_teams`
+--
+ALTER TABLE `tbl_teams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `tbl_testimonials`
+--
+ALTER TABLE `tbl_testimonials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_users`
+--
+ALTER TABLE `tbl_users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `tbl_user_logs`
+--
+ALTER TABLE `tbl_user_logs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `tbl_vehicles`
+--
+ALTER TABLE `tbl_vehicles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `team_categories`
+--
+ALTER TABLE `team_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `team_categories_team`
+--
+ALTER TABLE `team_categories_team`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -77,6 +77,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for=""><b>Image</b></label>
                                 <div class="flex_wrapper">
                                     <div class="image-frame">
                                         <img @if (@isset($edit_gallery)) src="{{ asset('uploads/' . $edit_gallery->image) }}"
@@ -87,20 +88,20 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="">Name</label>
+                                <label for=""><b>Name</b></label>
                                 <input type="text" name="name" value="{{ isset($edit_gallery) ? $edit_gallery->name : old('name') }}" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Batch</label>
+                                <label for=""><b>Batch</b></label>
                                 <input type="text" class="form-control" name="batch" value="{{ isset($edit_gallery) ? $edit_gallery->batch : old('batch') }}" id="response_batch" readonly="readonly">
 
                             </div>
                             <div class="form-group">
-                                <label for="">Percentage</label>
+                                <label for=""><b>Percentage</b></label>
                                 <input type="text" name="percentage" value="{{ isset($edit_gallery) ? $edit_gallery->percentage : old('percentage') }}" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="">Class</label>
+                                <label for=""><b>Class</b></label>
                                 <input type="text" name="class" value="{{ isset($edit_gallery) ? $edit_gallery->class : old('class') }}" class="form-control">
                             </div>
                             <div class="form-group">

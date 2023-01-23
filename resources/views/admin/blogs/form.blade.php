@@ -77,7 +77,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label><b>Description</b></label>
-                            <textarea name="inner_description" class="editor" id="" cols="30" rows="10">
+                            <textarea name="inner_description" id="" cols="30" rows="10">
                                     {{ isset($records) ? $records->inner_description : old('inner_description') }}
                                 </textarea>
                             <span class="text-danger">

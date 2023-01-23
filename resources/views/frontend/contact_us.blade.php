@@ -41,6 +41,7 @@
                                     </div>
 
                                     <div class="college-details">
+                                        @if(!empty($setting->address))
                                         <div class="item d-flex align-items-center">
                                             <div class="icon-holder">
                                                 <i class="fa-solid fa-location-dot"></i>
@@ -50,6 +51,8 @@
                                                 <p>{{ $setting->address ?? '' }}</p>
                                             </div>
                                         </div>
+                                        @endempty
+                                        @if(!empty($setting->email))
                                         <div class="item d-flex align-items-center">
                                             <div class="icon-holder">
                                                 <i class="fa-solid fa-envelope-open"></i>
@@ -59,6 +62,8 @@
                                                 <p><a href="mailto: info@saim.edu.np">{{ $setting->email ?? '' }}</a></p>
                                             </div>
                                         </div>
+                                        @endempty
+                                        @if(!empty($setting->Phone_one))
                                         <div class="item d-flex align-items-center">
                                             <div class="icon-holder">
                                                 <i class="fa-solid fa-phone"></i>
@@ -68,6 +73,18 @@
                                                 <p>{{ $setting->Phone_one ?? '' }}</p>
                                             </div>
                                         </div>
+                                        @endempty
+                                        @if(!empty($setting->phone_four))
+                                        <div class="item d-flex align-items-center">
+                                            <div class="icon-holder">
+                                                <i class="fa-solid fa-phone"></i>
+                                            </div>
+                                            <div class="text">
+                                                <strong>Phone us</strong>
+                                                <p>{{ $setting->phone_four ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        @endempty
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +158,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center mb-5">
                                             <div class="g-recaptcha"
-                                                data-sitekey="6LeeboUiAAAAABJrh7FygrsAMP7pTOOTF6ANEe5k">
+                                                data-sitekey={{$setting->site_key ?? ''}}>
                                             </div>
                                             <br>
                                             @if (Session::has('g-recaptcha-response'))

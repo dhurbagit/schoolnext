@@ -21,14 +21,14 @@
                         <div class="col-md-3">
                             <div class="alumni__category">
                                 <div class="title_holder">
-                                    <h4>Alumni Category</h4>
+                                    <h4>Pass Out Student</h4>
                                 </div>
                                 <ul>
                                     @foreach ($almuniCollection as $key => $lists)
                                         <a href="{{ route('almuni.link', $lists->id) }}"
                                             id="{{ $key === 0 ? 'list_autoClick' : '' }}">
                                             <li class="category__links active"><i class="fa-solid fa-arrow-right"></i>
-                                                {{ ucfirst($lists->title) }}
+                                                {{ ucfirst($lists->title) }} Batch
                                             </li>
                                         </a>
                                     @endforeach

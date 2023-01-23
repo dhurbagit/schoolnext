@@ -8,7 +8,7 @@
                 <span class="float-left"><img src="{{ asset('backend/assets/img/dash/aa.png') }}" alt=""
                         width="80"></span>
                 <div class="dash-widget-info text-right">
-                    <span>Online Admission Form</span>
+                    <span>Admission Form</span>
                     <h3>{{ $online }}</h3>
                 </div>
             </div>

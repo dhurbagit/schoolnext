@@ -4,6 +4,7 @@
     #main-header .mega-menu .content h5::after {
         background-color: {{ $themeOption->secondary_color ?? '' }};
     }
+
     .cs_modal_cs a,
     #main__index-section .news-and-events__section .top__header h3,
     #main__index-section .testimonial .title__holder h1 span,
@@ -24,6 +25,7 @@
         color: {{ $themeOption->secondary_color ?? '' }};
         border-color: {{ $themeOption->secondary_color ?? '' }};
     }
+
     .pagination .page-item .page-link:hover,
     .pagination .page-item.active .page-link,
     .btn-top,
@@ -31,6 +33,7 @@
         background-color: {{ $themeOption->primary_color ?? '' }} !important;
         border-color: {{ $themeOption->primary_color ?? '' }} !important;
     }
+
     .content1 a,
     .payment_header,
     #form-section .form-card form .btn-form,
@@ -48,9 +51,10 @@
     .top__header-wrappper #subheader-title h1::before,
     .top__header-wrappper #subheader-title h1,
     #main__index-section .testimonial .testi__slider .swiper-button-next:hover,
-    #main__index-section .testimonial .testi__slider .swiper-button-prev:hover{
+    #main__index-section .testimonial .testi__slider .swiper-button-prev:hover {
         background-color: {{ $themeOption->primary_color ?? '' }} !important;
     }
+
     #blog-section .top__blog-section .left__heading h1 span,
     #form-section .form-card .school__details h2,
     #aboutUS_section .informartion .vision__section .aboutus__title-holder h3,
@@ -58,10 +62,11 @@
     #Team-section .team--title h3,
     #message-section .management-team .swiper-slide .slider_name h4,
     #about__sub-section .faq__title h4,
-    #school__life-section .school__life-container .school__desc h1{
+    #school__life-section .school__life-container .school__desc h1 {
         color: {{ $themeOption->primary_color ?? '' }};
     }
-    #Team-section .team_card:hover{
+
+    #Team-section .team_card:hover {
         border-color: {{ $themeOption->primary_color ?? '' }};
     }
 </style>
@@ -72,7 +77,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <div class="left__side-header d-flex">
+                        <div class="left__side-header d-flex media_style">
                             <a href="#" class="me-4 " type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="phone__class d-flex align-items-center">
@@ -113,16 +118,18 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end media_style">
                             <div class="right__side-header">
                                 <ul class="d-flex">
                                     @foreach ($top_ribbon as $mainMenu)
-                                        <li class="drop-list">
-                                            <a @if ($mainMenu->category_slug == 'page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                                        @if ($mainMenu->publish_status == 1)
+                                            <li class="drop-list">
+                                                <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                              @else
                                               href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
-                                                class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
-                                        </li>
+                                                    class="menu-item first-item droplink"> {{ Str::ucfirst($mainMenu->name) }}</a>
+                                            </li>
+                                        @endif
                                     @endforeach
 
                                     <li class="border-0"><a href="{{ route('inquiryForm.open') }}">Online Form</a></li>
@@ -150,97 +157,101 @@
                 </div>
                 <ul class="menu-items">
                     @foreach ($b_menus as $mainMenu)
-                        <li>
-                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                        @if ($mainMenu->publish_status == 1)
+                            <li>
+                                <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                 @else
                                  href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
-                                class="menu-item first-item expand-btn"> {{ $mainMenu->name }}</a>
-                            <div class="container mega-menu sample">
-                                <div class="content py-0"
-                                    style="background-image: url('{{asset('uploads/'. $mainMenu->banner_image)}}'); background-repeat: no-repeat; background-size: contain; background-position: right;">
-                                    <div class="overlay__nav py-3"
-                                        style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-12">
-                                                <h5 class="menu-title"
-                                                    style="color:{{ $themeOption->secondary_color ?? '' }} !important">
-                                                    {{ $mainMenu->name }}</h5>
-                                                <section>
-                                                    <ul class="fa-ul">
-                                                        @if (count($mainMenu->children))
-                                                            @foreach ($mainMenu->children as $child)
-                                                                <li><span class="fa-li"><i
-                                                                            class="fa-solid fa-arrow-right-long"></i></span>
-                                                                    <a
-                                                                        @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                    class="menu-item first-item expand-btn"> {{ $mainMenu->name }}</a>
+                                <div class="container mega-menu sample">
+                                    <div class="content py-0"
+                                        style="background-image: url('{{ asset('uploads/' . $mainMenu->banner_image) }}'); background-repeat: no-repeat; background-size: contain; background-position: right;">
+                                        <div class="overlay__nav py-3"
+                                            style="background-image: url(/frontend/assets/Images/gradiant.png); background-position: right; background-repeat: no-repeat; background-size: contain;">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-12">
+                                                    <h5 class="menu-title"
+                                                        style="color:{{ $themeOption->secondary_color ?? '' }} !important">
+                                                        {{ Str::ucfirst($mainMenu->name) }}</h5>
+                                                    <section>
+                                                        <ul class="fa-ul">
+                                                            @if (count($mainMenu->children))
+                                                                @foreach ($mainMenu->children as $child)
+                                                                    <li><span class="fa-li"><i
+                                                                                class="fa-solid fa-arrow-right-long"></i></span>
+                                                                        <a
+                                                                            @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                                          @else
                                                                           href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
-                                                                            class="sub__links"></i>
-                                                                        {{ $child->name }}</a>
-                                                                </li>
-                                                            @endforeach
-                                                        @endif
+                                                                                class="sub__links"></i>
+                                                                            {{ Str::ucfirst($child->name) }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            @endif
 
 
-                                                    </ul>
-                                                </section>
+                                                        </ul>
+                                                    </section>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <section>
+                                                        <h5 class="menu-title"
+                                                            style="color:{{ $themeOption->secondary_color ?? '' }} !important;">
+                                                            {{ $mainMenu->page_title }}</h5>
+                                                        <div class="nav__text">
+                                                            <p class="mb-0">
+                                                                {!! $mainMenu->content !!}
+                                                            </p>
+                                                        </div>
+                                                        @isset($mainMenu)
+                                                            @if ($mainMenu->category_slug == 'layout-page' || $mainMenu->category_slug == 'page')
+                                                                <a href="{{ route('page', $mainMenu->title_slug) }}"
+                                                                    class="btn nav__outline">Learn More</a>
+                                                            @else
+                                                                <a href="{{ route('category', $mainMenu->category_slug) }}"
+                                                                    class="btn nav__outline">Learn More</a>
+                                                            @endif
+                                                        @endisset
+
+                                                    </section>
+                                                </div>
+                                                <div class="col-lg-4 col-md-0"></div>
                                             </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <section>
-                                                    <h5 class="menu-title"
-                                                        style="color:{{ $themeOption->secondary_color ?? '' }} !important;">
-                                                        {{$mainMenu->page_title}}</h5>
-                                                    <div class="nav__text">
-                                                        <p class="mb-0">
-                                                            {!! $mainMenu->content !!}
-                                                        </p>
-                                                    </div>
-                                                    @isset($mainMenu)
-                                                        @if ($mainMenu->category_slug == 'layout-page' || $mainMenu->category_slug == 'page')
-                                                            <a href="{{ route('page', $mainMenu->title_slug) }}"
-                                                                class="btn nav__outline">Learn More</a>
-                                                        @else
-                                                            <a href="{{ route('category', $mainMenu->category_slug) }}"
-                                                                class="btn nav__outline">Learn More</a>
-                                                        @endif
-                                                    @endisset
-
-                                                </section>
-                                            </div>
-                                            <div class="col-lg-4 col-md-0"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                        @endif
                     @endforeach
 
 
                     @foreach ($menus as $mainMenu)
-                        <li class="drop-list">
-                            <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
+                        @if ($mainMenu->publish_status == 1)
+                            <li class="drop-list">
+                                <a @if ($mainMenu->category_slug == 'page' || $mainMenu->category_slug == 'layout-page') href="{{ $mainMenu->external_link ?? route('page', $mainMenu->title_slug) }}"
                                  @else
                                   href="{{ $mainMenu->external_link ?? route('category', $mainMenu->category_slug) }}" @endif
-                                class="menu-item first-item droplink"> {{ $mainMenu->name }}</a>
+                                    class="menu-item first-item droplink"> {{ Str::ucfirst($mainMenu->name) }}</a>
 
-                            @if (count($mainMenu->children))
-                                <div class="drop__menu">
-                                    <ul>
-                                        @foreach ($mainMenu->children as $child)
-                                            <li><a
-                                                    @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
+                                @if (count($mainMenu->children))
+                                    <div class="drop__menu">
+                                        <ul>
+                                            @foreach ($mainMenu->children as $child)
+                                                <li><a
+                                                        @if ($child->category_slug == 'page' || $child->category_slug == 'layout-page') href="{{ $child->external_link ?? route('page', $child->title_slug) }}"
                                                  @else
                                                   href="{{ $child->external_link ?? route('category', $child->category_slug) }}" @endif><i
-                                                        class="fa-solid fa-arrow-right-long"></i>
-                                                    {{ $child->name }}</a>
-                                            </li>
-                                        @endforeach
+                                                            class="fa-solid fa-arrow-right-long"></i>
+                                                        {{Str::ucfirst( $child->name) }}</a>
+                                                </li>
+                                            @endforeach
 
-                                    </ul>
-                                </div>
-                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
 
-                        </li>
+                            </li>
+                        @endif
                     @endforeach
                     <li>
                         <a href=""
@@ -256,7 +267,7 @@
     </div>
 </header>
 <!-- Modal -->
-<div class="modal fade custom__modal" id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade custom__modal customizer_class" id="form" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -336,9 +347,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+
+                            <div class="d-flex">
+                                <div class="g-recaptcha" data-sitekey={{ $setting->site_key ?? '' }}>
+                                </div>
+                                <br>
+                                @if (Session::has('g-recaptcha-response'))
+                                    <span class="text-danger">{{ Session::get('g-recaptcha-response') }}</span>
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="text-end">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
                     </div>
+
                 </form>
             </div>
         </div>

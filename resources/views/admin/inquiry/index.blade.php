@@ -40,36 +40,7 @@
                                     {{Carbon\Carbon::parse($data->created_at)->format('d-M-y')}}
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal_online{{ $data->id }}">
-                                        <i class="fa fa-reply" aria-hidden="true"></i>
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal_online{{ $data->id }}" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Online form Reply</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label for=""><b>Leave Message</b></label>
-                                                    <form action="{{ route('inquiry.reply', $data->id) }}" method="POST">
-                                                        @csrf
-                                                        <textarea name="email_message" class="editor form-control" id="" cols="30" rows="10"></textarea>
-                                                        <br>
-                                                        <button class="btn btn-success" type="submit">Reply</button>
-                                                    </form>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <a href="{{route('studentInfo', $data->id)}}" class="btn btn-primary" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
                                     <!-- Button trigger modal -->

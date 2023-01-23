@@ -19,27 +19,31 @@
         <!--/Search-->
 
         <ul class="nav user-menu float-right">
+            @if (App\Models\User::find(Session::get('loginId'))->email == 'allstarsms45@gmail.com')
+                <li class="cs_hover">
+                    <a href="{{ route('theme.option') }}" class="nav-link">
+                        <img src="{{ asset('backend/assets/img/sidebar/icon-15.png') }}" alt="">
+                    </a>
+                </li>
+                <li class="cs_hover">
+                    <a href="{{ route('setting') }}" class="nav-link"><img
+                            src="{{ asset('backend/assets/img/sidebar/icon-14.png') }}" alt=""> </a>
+                </li>
+            @endif
             <li class="cs_hover">
-                <a href="{{ route('theme.option') }}" class="nav-link">
-                    <img src="{{ asset('backend/assets/img/sidebar/icon-15.png') }}" alt="">
-                </a>
+                <a href="{{ route('vacancy') }}" class="nav-link"><b>Vacancy</b> <span class="custom_badge">{{ Vacancy() }}</span> </a>
             </li>
-            <li class="cs_hover">
-                <a href="{{ route('setting') }}" class="nav-link"><img
-                        src="{{asset('backend/assets/img/sidebar/icon-14.png')}}" alt=""> </a>
-            </li>
-
             <li class="nav-item dropdown has-arrow">
                 <a href="#" class=" nav-link user-link" data-toggle="dropdown">
-                    <span class="user-img"><img class="rounded-circle"
-                            src="{{ asset('setting/' . $setting->logo) }}" width="30" alt="Admin">
+                    <span class="user-img"><img class="rounded-circle" src="{{ asset('setting/' . $setting->logo) }}"
+                            width="30" alt="Admin">
                         <span class="status online"></span></span>
                     <span>{{ ucfirst($session_id->name ?? '') }}</span>
 
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                     <a class="dropdown-item" href="{{ route('admin.register') }}">Add User</a>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
                 </div>
             </li>
         </ul>

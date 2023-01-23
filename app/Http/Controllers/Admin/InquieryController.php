@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Session;
 
 class InquieryController extends Controller
 {
+
+
+
     //frontend online form view
     public function inquiry_formShow(Request $request)
     {
@@ -24,6 +27,7 @@ class InquieryController extends Controller
     {
         // dd($request->all());
 
+
         $request->validate([
             'student_name' => 'required',
             's_applied_grade' => 'required',
@@ -32,7 +36,21 @@ class InquieryController extends Controller
             's_phone' => 'required',
             'f_name' => 'required',
             'm_name' => 'required',
-        ],[
+            'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                $secretKey = Setting::get()->first()->security_key;
+                $response = $value;
+                $userIp = $_SERVER['REMOTE_ADDR'];
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIp";
+                $response = \file_get_contents($url);
+                $response = json_decode($response);
+
+                if (!$response->success) {
+                    Session::flash('g-recaptcha-response', 'Please check recaptcha');
+                    Session::flash('alert-class', 'alert-danger');
+                    $fail($attribute, 'google reCaptcha failed');
+                }
+            },
+        ], [
             'student_name.required' => 'Student Name is required',
             's_applied_grade.required' => 'Applied grade is required',
             's_current_grade.required' => 'Current Grade is required',
@@ -40,7 +58,6 @@ class InquieryController extends Controller
             's_phone.required' => 'Student Phone is required',
             'f_name.required' => 'Father Name is required',
             'm_name.required' => 'Mother Name is required',
-
 
         ]);
         $online_form = 'online form';
@@ -78,6 +95,18 @@ class InquieryController extends Controller
         }
 
         Inquiery::create($input);
+
+        $test = request()->all();
+        $setting = Setting::first()->toArray();
+        $data1 = $test;
+        $data = array_merge($setting, $data1);
+
+        $user['to'] = $request->s_email;
+        Mail::send('admin.sendMail.contactusEmail', $data, function ($message) use ($user) {
+            $message->to($user['to']);
+            $message->subject('Subject');
+        });
+
         return view('frontend.messagetemplate');
     }
 
@@ -91,6 +120,20 @@ class InquieryController extends Controller
                 's_address' => 'required',
                 's_phone' => 'required',
                 'p_description' => 'required',
+                'g-recaptcha-response' => function ($attribute, $value, $fail) {
+                    $secretKey = Setting::get()->first()->security_key;
+                    $response = $value;
+                    $userIp = $_SERVER['REMOTE_ADDR'];
+                    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIp";
+                    $response = \file_get_contents($url);
+                    $response = json_decode($response);
+
+                    if (!$response->success) {
+                        Session::flash('g-recaptcha-response', 'Please check recaptcha');
+                        Session::flash('alert-class', 'alert-danger');
+                        $fail($attribute, 'google reCaptcha failed');
+                    }
+                },
 
             ]);
             $inquiry = 'inquiry';
@@ -102,6 +145,18 @@ class InquieryController extends Controller
             $input['p_description'] = $request->p_description;
 
             Inquiery::create($input);
+
+            $test = request()->all();
+            $setting = Setting::first()->toArray();
+            $data1 = $test;
+            $data = array_merge($setting, $data1);
+
+            $user['to'] = $request->s_email;
+            Mail::send('admin.sendMail.contactusEmail', $data, function ($message) use ($user) {
+                $message->to($user['to']);
+                $message->subject('Subject');
+            });
+
             return view('frontend.messagetemplate');
         } catch (Exception $e) {
             $message = $e->getMessage();
@@ -128,7 +183,7 @@ class InquieryController extends Controller
             's_address' => 'required',
             'p_description' => 'required',
             'g-recaptcha-response' => function ($attribute, $value, $fail) {
-                $secretKey = '6LeeboUiAAAAAC_XOMo4Ug6ghnpD4sK-BaZ45py1';
+                $secretKey = Setting::get()->first()->security_key;
                 $response = $value;
                 $userIp = $_SERVER['REMOTE_ADDR'];
                 $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$userIp";
@@ -136,7 +191,7 @@ class InquieryController extends Controller
                 $response = json_decode($response);
 
                 if (!$response->success) {
-                    Session::flash('g-recaptcha-response', 'Pls check recaptcha');
+                    Session::flash('g-recaptcha-response', 'Please check recaptcha');
                     Session::flash('alert-class', 'alert-danger');
                     $fail($attribute, 'google reCaptcha failed');
                 }
@@ -156,6 +211,18 @@ class InquieryController extends Controller
         $input['s_address'] = $request->s_address;
         $input['p_description'] = $request->p_description;
         Inquiery::create($input);
+
+        $test = request()->all();
+        $setting = Setting::first()->toArray();
+        $data1 = $test;
+        $data = array_merge($setting, $data1);
+
+        $user['to'] = $request->s_email;
+        Mail::send('admin.sendMail.contactusEmail', $data, function ($message) use ($user) {
+            $message->to($user['to']);
+            $message->subject('Subject');
+        });
+
         return view('frontend.messagetemplate');
     }
 
@@ -173,61 +240,8 @@ class InquieryController extends Controller
         return redirect()->back()->with('message', 'Successfully deleted');
     }
 
-    // email_reply
 
-    public function email_reply(Request $request, $id)
-    {
 
-        try {
-            $input['inquieries_id'] = $id;
-            $input['message'] = $request->email_message;
-            EmailMessage::create($input);
-            $setting = Setting::first()->toArray();
-            $data1 = Inquiery::find($id)->toArray();
-            $data = array_merge($setting, $data1);
-            $data['email_message'] = $request->email_message;
-            // dd($data);
-            $user['to'] = $data1['s_email'];
-            Mail::send('admin.sendMail.contactusEmail', $data, function ($message) use ($user) {
-
-                $message->from('dhurba179@gmail.com', 'John Doe');
-                $message->to($user['to']);
-                $message->subject('Subject');
-            });
-            return redirect()->back()->with('message', 'Email Send successfully!');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Enter Message before sending email.');
-        }
-
-    }
-
-    public function inquiry_email_reply(Request $request, $id)
-    {
-        try {
-            // dd($request->all());
-            $input['inquieries_id'] = $id;
-            $input['message'] = $request->email_message;
-            EmailMessage::create($input);
-
-            $setting = Setting::first()->toArray();
-            $data1 = Inquiery::find($id)->toArray();
-            $data = array_merge($setting, $data1);
-            $data['email_message'] = $request->email_message;
-
-            // dd($data);
-            $user['to'] = $data1['s_email'];
-            Mail::send('admin.sendMail.contactusEmail', $data, function ($message) use ($user) {
-
-                $message->from('dhurba179@gmail.com', 'John Doe');
-                $message->to($user['to']);
-                $message->subject('Subject');
-            });
-            return redirect()->back()->with('message', 'Email Send successfully!');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Enter Message before sending email.');
-        }
-
-    }
 
     public function studentDetail($id)
     {

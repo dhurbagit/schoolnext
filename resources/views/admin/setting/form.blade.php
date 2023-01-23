@@ -307,12 +307,14 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><b>Whatsapp Number</b><img src="{{asset('backend/whatsapp.png')}}" alt="" width="20px"></label>
+                                            <label><b>Whatsapp Number</b><img src="{{ asset('backend/whatsapp.png') }}"
+                                                    alt="" width="20px"></label>
                                             <input type="text" class="form-control" name="Phone_two"
                                                 value="{{ isset($setting_record) ? $setting_record->Phone_two : old('Phone_two') }}">
                                         </div>
                                         <div class="form-group">
-                                            <label><b>Viber Number</b><img src="{{asset('backend/viber.png')}}" alt="" width="20px"></label>
+                                            <label><b>Viber Number</b><img src="{{ asset('backend/viber.png') }}"
+                                                    alt="" width="20px"></label>
                                             <input type="text" class="form-control" name="Phone_three"
                                                 value="{{ isset($setting_record) ? $setting_record->Phone_three : old('Phone_three') }}">
                                         </div>
@@ -341,31 +343,58 @@
                                         </div>
 
                                     </div>
+                                    <div class="col-lg-12">
+                                        <label for=""><b>Phone Number 1</b></label>
+                                        <input type="text" class="form-control" name="phone_four"
+                                            value="{{ isset($setting_record) ? $setting_record->phone_four : old('phone_four') }}">
+                                    </div>
+                                    <br>
                                     <div class="col-lg-10">
                                         <div class="form-group">
                                             <label><b>View site Count</b></label>
-                                            <input type="text" id="view_counts" class="form-control" name="view_counter" readonly
+                                            <input type="text" id="view_counts" class="form-control"
+                                                name="view_counter" readonly
                                                 value="{{ isset($setting_record) ? $setting_record->view_counter : old('view_counter') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-2"><br>
-                                        <button type="button" id="reset_btn" class="btn btn-success">Reset Value</button>
+                                        <button type="button" id="reset_btn" class="btn btn-success">Reset
+                                            Value</button>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label><b>Message</b></label>
+                                            <label><b>Slogan Message</b></label>
                                             <textarea name="message" id="" class="editor form-control" cols="30" rows="10">
                                                 {{ isset($setting_record) ? $setting_record->message : old('message') }}
                                             </textarea>
 
                                         </div>
                                         <div class="form-group">
-                                            <label><b>Email Success Message</b></label>
+                                            <label><b>PopUp Success Message</b></label>
                                             <textarea name="success_message" id="" class="editor100 form-control" cols="30" rows="10">
                                                 {{ isset($setting_record) ? $setting_record->success_message : old('success_message') }}
                                             </textarea>
 
+                                        </div>
+                                        <div class="form-group">
+                                            <label><b>Email Reply Message</b></label>
+                                            <textarea name="reply_message" class="editor1000000000000">
+                                                {{ isset($setting_record) ? $setting_record->reply_message : old('reply_message') }}
+                                            </textarea>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for=""><b>Captch Site Key</b></label>
+                                            <input type="text" class="form-control" name="site_key" value="{{ isset($setting_record) ? $setting_record->site_key : old('site_key') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for=""><b>Captch Security Key</b></label>
+                                            <input type="text" class="form-control" name="security_key" value="{{ isset($setting_record) ? $setting_record->security_key : old('security_key') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -487,9 +516,14 @@
         };
     </script>
 
-<script>
-    $('#reset_btn').click(function(){
-        $('#view_counts').val("0");
-    })
-</script>
+    <script>
+        $('#reset_btn').click(function() {
+            $('#view_counts').val("0");
+        })
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('textarea').trim();
+        });
+    </script>
 @endpush
