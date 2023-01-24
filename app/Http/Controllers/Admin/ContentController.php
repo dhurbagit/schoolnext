@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Content;
-use Illuminate\Http\Request;
-use App\Models\ContentGallery;
 use App\Http\Controllers\Controller;
+use App\Models\Content;
+use App\Models\ContentGallery;
+use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
@@ -32,14 +32,14 @@ class ContentController extends Controller
         $input['title'] = $request->title;
         $input['description'] = $request->description;
         $input['description_one'] = $request->description_one;
-        if($request->hasFile('featured_image')){
+        if ($request->hasFile('featured_image')) {
             $input['featured_image'] = $request->file('featured_image')->store('school', 'uploads');
         }
         $save_schoollife = Content::create($input);
-        if(!empty($request->small_image)){
-            foreach($request->small_image as $picture){
+        if (!empty($request->small_image)) {
+            foreach ($request->small_image as $picture) {
                 $imageName = $picture->store('school', 'uploads');
-            $save_schoollife->c_images()->create(['image'=> $imageName]);
+                $save_schoollife->c_images()->create(['image' => $imageName]);
             }
         }
         return redirect()->back()->with('message', 'Record added successfully!');
@@ -67,7 +67,7 @@ class ContentController extends Controller
     public function update(Request $request, $id)
     {
 
-         $request->validate([
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
             'description_one' => 'required',
@@ -76,16 +76,17 @@ class ContentController extends Controller
         $input['title'] = $request->title;
         $input['description'] = $request->description;
         $input['description_one'] = $request->description_one;
-        if($request->hasFile('featured_image')){
-            unlink('uploads/'. $save_schoollife->featured_image);
+        if ($request->hasFile('featured_image')) {
+            if (file_exists(public_path('uploads/' . $save_schoollife->featured_image))) {
+                unlink('uploads/' . $save_schoollife->featured_image);
+            }
             $input['featured_image'] = $request->file('featured_image')->store('school', 'uploads');
         }
 
-
-        if(!empty($request->small_image)){
-            foreach($request->small_image as $picture){
+        if (!empty($request->small_image)) {
+            foreach ($request->small_image as $picture) {
                 $imageName = $picture->store('school', 'uploads');
-            $save_schoollife->c_images()->create(['image'=> $imageName]);
+                $save_schoollife->c_images()->create(['image' => $imageName]);
             }
         }
         $save_schoollife->update($input);
@@ -94,7 +95,7 @@ class ContentController extends Controller
     public function delete_contentImage($id)
     {
         $delete = ContentGallery::find($id);
-        unlink('uploads/'. $delete->image);
+        unlink('uploads/' . $delete->image);
         $delete->delete();
         return redirect()->back()->with('message', 'Record deleted successfully!');
     }

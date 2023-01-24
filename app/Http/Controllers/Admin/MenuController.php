@@ -90,7 +90,7 @@ class MenuController extends Controller
                 'publish_status' => isset($request->publish_status[0]) ? 1 : 0,
                 'mega_menu' => isset($request->active_mega[0]) ? 1 : 0,
                 'page_title' => $request['page_title'],
-                'content' => $request['editor1'],
+                'content' => $request['editor_description'],
             ]);
 
             if ($new_menu) {
@@ -188,7 +188,7 @@ class MenuController extends Controller
 
         $fimage = null;
         if ($request->hasfile('image')) {
-            if (!empty($menu->image)) {
+            if (!empty($menu->image) && file_exists(public_path('uploads/' . $menu->image))) {
                 unlink("uploads/" . $menu->image);
             }
             $image = $request->file('image');
@@ -199,7 +199,7 @@ class MenuController extends Controller
 
         $banner_image = null;
         if ($request->hasfile('banner_image')) {
-            if (!empty($menu->image)) {
+            if (!empty($menu->image) && file_exists(public_path('uploads/' . $menu->banner_image))) {
                 unlink("uploads/" . $menu->banner_image);
             }
             $image = $request->file('banner_image');
@@ -220,7 +220,7 @@ class MenuController extends Controller
             'banner_image' => $banner_image,
             'image' => $fimage,
             'page_title' => $request['page_title'],
-            'content' => $request['editor1'],
+            'content' => $request['editor_description'],
             'meta_title' => $request['meta_title'],
             'publish_status' => isset($request->publish_status[0]) ? 1 : 0,
             'mega_menu' => isset($request->active_mega[0]) ? 1 : 0,

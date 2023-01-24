@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Teammember;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class TeammemberController extends Controller
 {
@@ -12,9 +12,10 @@ class TeammemberController extends Controller
     public function view()
     {
         $t_list = Teammember::where('type', 0)->orderBy('id', 'DESC')->get();
-       return view('admin.team_member.generalIndex', compact('t_list'));
+        return view('admin.team_member.generalIndex', compact('t_list'));
     }
-    public function show(){
+    public function show()
+    {
         return view('admin.team_member.general');
     }
     public function edit_general($id)
@@ -49,11 +50,12 @@ class TeammemberController extends Controller
     public function delete($id)
     {
         $delete = Teammember::find($id);
-        unlink("uploads/". $delete->image);
+        unlink("uploads/" . $delete->image);
         $delete->delete();
         return redirect()->back()->with('message', 'Record deleted successfully !');
     }
-    public function update_general(Request $request , $id){
+    public function update_general(Request $request, $id)
+    {
 
         $request->validate([
             'title' => 'required',
@@ -69,7 +71,9 @@ class TeammemberController extends Controller
         $input['description'] = $request->description;
         $input['designation'] = $request->designation;
         if ($request->hasFile('image')) {
-            unlink('uploads/'. $save->image);
+            if (file_exists(public_path('uploads/' . $save->image))) {
+                unlink('uploads/' . $save->image);
+            }
             $input['image'] = $request->file('image')->store('Team Member', 'uploads');
         }
 
@@ -85,7 +89,7 @@ class TeammemberController extends Controller
     }
     public function management_show()
     {
-       return view('admin.team_member.management');
+        return view('admin.team_member.management');
     }
     public function management_store(Request $request)
     {
@@ -116,7 +120,7 @@ class TeammemberController extends Controller
         $edit_management = Teammember::find($id);
         return view('admin.team_member.management', compact('edit_management'));
     }
-    public function update_management(Request $request , $id)
+    public function update_management(Request $request, $id)
     {
         $request->validate([
             'title' => 'required',
@@ -132,7 +136,9 @@ class TeammemberController extends Controller
         $input['description'] = $request->description;
         $input['designation'] = $request->designation;
         if ($request->hasFile('image')) {
-            unlink('uploads/'. $save->image);
+            if (file_exists(public_path('uploads/' . $save->image))) {
+                unlink('uploads/' . $save->image);
+            }
             $input['image'] = $request->file('image')->store('Team Member', 'uploads');
         }
 

@@ -122,7 +122,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label><b>Description</b></label>
-                                <textarea class="editor5000000" name="editor1"></textarea>
+                                <textarea class="editor5000000" name="editor_description"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">

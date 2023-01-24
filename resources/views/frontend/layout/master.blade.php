@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/style.css') }}">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.min.css"
+    <link href="{{asset('backend/assets/css/nepali.datepicker.v4.0.min.css')}}"
         rel="stylesheet" type="text/css" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -68,7 +68,7 @@
     <script src="/frontend/assets/js/animation.js"></script>
     <script src="{{ asset('backend/assets/lightbox2-2.11.3/dist/js/lightbox.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.min.js"
+    <script src="{{asset('backend/assets/js/nepali.datepicker.v4.0.min.js')}}"
         type="text/javascript"></script>
 
 

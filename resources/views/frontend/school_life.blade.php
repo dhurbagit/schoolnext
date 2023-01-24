@@ -37,12 +37,12 @@
                             <div class="col-md-7">
                                 <div class="school__desc">
                                     <h1>{{ $records->title ?? '' }}</h1>
-                                    {{ strip_tags($records->description ?? '') }}
+                                    {!!  $records->description ?? ''  !!}
                                 </div>
                             </div>
                         </div>
                         <div class="bottom__text">
-                            {{ strip_tags($records->description_one ?? '') }}
+                            {!!  $records->description_one ?? ''  !!}
                         </div>
                         <div class="bottom-img">
                             <img @isset($records)

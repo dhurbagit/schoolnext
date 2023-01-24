@@ -4005,3 +4005,7 @@ header .logo {
 #blog__details-section .main__blog-details .main__blog-text {
     padding: 15px 65px;
 }
+#main-header .top_header .left__side-header .inquiry p
+{
+    font-weight: normal;
+}

@@ -135,7 +135,10 @@ class AlmuniController extends Controller
         $input['hide'] = isset($request->hide_show[0]) ? 1 : 0;
 
         if ($request->hasFile('image')) {
-            unlink("uploads/" . $update->image);
+            if (file_exists(public_path("uploads/" . $update->image))) {
+                unlink("uploads/" . $update->image);
+            }
+
             $input['image'] = $request->file('image')->store('almuni', 'uploads');
         }
         $update->update($input);

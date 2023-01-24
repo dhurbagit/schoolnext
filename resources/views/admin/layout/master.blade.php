@@ -269,7 +269,7 @@
     {{-- editor5000000 --}}
 
     <script type="text/javascript">
-        CKEDITOR.replace('editor1', {
+        CKEDITOR.replace('editor_description', {
             filebrowserUploadUrl: "{{ route('image.upload', ['_token' => csrf_token()]) }}",
             filebrowserUploadMethod: 'form'
         });

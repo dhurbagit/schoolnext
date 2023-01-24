@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view('admin.client.form');
     }
-    public function view(){
+    public function view()
+    {
         $list_view = Client::get();
         return view('admin.client.index', compact('list_view'));
     }
@@ -29,10 +31,10 @@ class ClientController extends Controller
         $store = new Client();
         $store->title = $request->title;
         $store->link = $request->link;
-        if($request->file('image')){
+        if ($request->file('image')) {
             $file = $request->file('image');
             $generateNumber = random_int(100000, 999999);
-            $file_name = $generateNumber.$file->getClientOriginalName();
+            $file_name = $generateNumber . $file->getClientOriginalName();
             $file->move(public_path('client/'), $file_name);
             $store->image = $file_name;
         }
@@ -55,20 +57,24 @@ class ClientController extends Controller
         return view('admin.client.form', compact('edit_item'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'title' => 'required',
             'link' => 'required',
         ]);
 
         $update = Client::findOrFail($id);
-        $update->title =$request->title;
+        $update->title = $request->title;
         $update->link = $request->link;
-        if($request->file('image')){
-            unlink("client/" . $update->image);
+        if ($request->file('image')) {
+            if (file_exists(public_path("client/" . $update->image))) {
+                unlink("client/" . $update->image);
+            }
+
             $file = $request->file('image');
             $generateNumber = random_int(100000, 999999);
-            $file_name = $generateNumber.$file->getClientOriginalName();
+            $file_name = $generateNumber . $file->getClientOriginalName();
             $file->move(public_path('client/'), $file_name);
             $update->image = $file_name;
         }

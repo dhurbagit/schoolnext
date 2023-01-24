@@ -63,7 +63,7 @@ class TestimonialController extends Controller
             'testimonial_title' => 'required|max:191',
             'testimonial_designation' => 'required|max:100',
             'editor1' => 'required',
-             
+
         ]);
 
 
@@ -74,7 +74,10 @@ class TestimonialController extends Controller
         $testimonial->description = $request->editor1;
 
         if($request->file('testimonial_image')){
-            unlink("testimonial/". $testimonial->images);
+            if(file_exists(public_path("testimonial/". $testimonial->images))){
+                unlink("testimonial/". $testimonial->images);
+            }
+
             $file = $request->file('testimonial_image');
             $generateNumber = random_int(100000, 999999);
             $file_name = $generateNumber.$file->getClientOriginalName();

@@ -72,7 +72,10 @@ class BeyondAcademicController extends Controller
         $album = BeyondAcademic::find($id);
 
         if ($request->hasFile('feature_image')) {
-            unlink("uploads/" . $album->feature_image);
+            if(file_exists(public_path("uploads/" . $album->feature_image))){
+                unlink("uploads/" . $album->feature_image);
+            }
+
             $input['feature_image'] = $request->file('feature_image')->store('beyound', 'uploads');
 
         }

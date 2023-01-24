@@ -69,11 +69,16 @@ class PopModalController extends Controller
         $input['hide'] = isset($request->hide[0]) ? 1 : 0;
         $input['link'] = $request->link;
         if ($request->hasFile('image')) {
-            unlink('uploads/' . $update->image);
+            if(file_exists(public_path('uploads/'. $update->image))){
+                unlink('uploads/' . $update->image);
+            }
             $input['image'] = $request->file('image')->store('popUpModal', 'uploads');
         }
         if ($request->hasFile('file')) {
-            unlink('uploads/' . $update->file);
+            if(file_exists(public_path('uploads/'. $update->file))){
+                unlink('uploads/' . $update->file);
+            }
+
             $input['file'] = $request->file('file')->store('popUpModal', 'uploads');
         }
         $update->update($input);

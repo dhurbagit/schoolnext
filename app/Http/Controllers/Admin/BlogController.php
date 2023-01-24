@@ -104,7 +104,9 @@ class BlogController extends Controller
         $input['date'] = $request->date;
         $input['inner_description'] = $request->inner_description;
         if ($request->hasFile('image')) {
-            unlink('uploads/' . $update->image);
+            if (file_exists(public_path('uploads/' . $update->image))) {
+                unlink('uploads/' . $update->image);
+            }
             $input['image'] = $request->file('image')->store('blogs', 'uploads');
         }
         $update->update($input);

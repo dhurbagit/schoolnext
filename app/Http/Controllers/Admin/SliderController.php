@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SliderController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $slider_data = Slider::orderBy('id', 'desc')->paginate(5);
         return view('admin.slider.index', compact('slider_data'));
     }
@@ -16,22 +17,21 @@ class SliderController extends Controller
     {
         return view('admin.slider.form');
     }
-   
 
     public function store(Request $request)
     {
         // dd($request->all());
         $request->validate([
-            'title'=> 'required|max:50',
-            'slider_image'=>'required',
+            'title' => 'required|max:50',
+            'slider_image' => 'required',
         ]);
 
         $slider = new Slider();
         $slider->title = $request->title;
-        if($request->file('slider_image')){
+        if ($request->file('slider_image')) {
             $file = $request->file('slider_image');
             $generateNumber = random_int(100000, 999999);
-            $file_name = $generateNumber.$file->getClientOriginalName();
+            $file_name = $generateNumber . $file->getClientOriginalName();
             $file->move(public_path('slider/'), $file_name);
             $slider->image = $file_name;
         }
@@ -44,38 +44,40 @@ class SliderController extends Controller
 
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
 
         $delete_slider = Slider::findorFail($id);
-        unlink("slider/".$delete_slider->image);
+        unlink("slider/" . $delete_slider->image);
         $for_msg = $delete_slider->delete();
-        if($for_msg){
+        if ($for_msg) {
             return redirect()->back()->with('message', 'Slider deleted successfully !');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Something went wrong!');
         }
 
     }
-    public function edit($id){
-       $slider_edit = Slider::findorFail($id);
-       return view('admin.slider.form', compact('slider_edit'));
+    public function edit($id)
+    {
+        $slider_edit = Slider::findorFail($id);
+        return view('admin.slider.form', compact('slider_edit'));
 
     }
 
-    public function update(Request $request, $id){
-
-
+    public function update(Request $request, $id)
+    {
 
         $update_slider = Slider::find($id);
 
         $update_slider->title = $request->title;
-        if($request->file('slider_image')){
-            unlink("slider/".$update_slider->image);
+        if ($request->file('slider_image')) {
+            if (file_exists(public_path('slider/' . $update_slider->image))) {
+                unlink("slider/" . $update_slider->image);
+            }
 
             $file = $request->file('slider_image');
             $generateNumber = random_int(100000, 999999);
-            $file_name = $generateNumber.$file->getClientOriginalName();
+            $file_name = $generateNumber . $file->getClientOriginalName();
             $file->move(public_path('slider/'), $file_name);
             $update_slider->image = $file_name;
         }

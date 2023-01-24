@@ -24,11 +24,10 @@ class AlbumController extends Controller
             'album_images' => 'nullable|mimes:png,jpg,svg,webp,jpeg',
         ]);
 
-
         $input['publish_status'] = isset($request->hide_show[0]) ? 1 : 0;
         $input['slug'] = Str::slug($request->album_title);
         $input['title'] = $request->album_title;
-        if($request->hasFile('album_images')) {
+        if ($request->hasFile('album_images')) {
             $input['image'] = $request->file('album_images')->store('album', 'uploads');
         }
         $album = Album::create($input);
@@ -84,7 +83,10 @@ class AlbumController extends Controller
         $album = Album::find($id);
 
         if ($request->hasFile('album_images')) {
-            unlink("uploads/" . $album->image);
+            if (file_exists(public_path("uploads/" . $album->image))) {
+                unlink("uploads/" . $album->image);
+            }
+
             $input['image'] = $request->file('album_images')->store('album', 'uploads');
 
         }
@@ -103,7 +105,7 @@ class AlbumController extends Controller
     }
     public function gallery_delete($id)
     {
-        $gallery =  Gallery::findOrFail($id);
+        $gallery = Gallery::findOrFail($id);
         unlink("uploads/" . $gallery->image);
         $gallery->delete();
         return Redirect()->back()->with('message', 'Gallery image deleted successuflly!');

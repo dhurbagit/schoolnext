@@ -55,7 +55,10 @@ class MessageController extends Controller
         $input['slug'] = Str::slug($request->message_title);
         $MessageFrom = MessageFrom::where('type', 0)->orderBy('id', 'DESC')->first();
         if ($request->hasFile('image')) {
-            unlink('uploads/' . $MessageFrom->image);
+            if (file_exists(public_path('uploads/' . $MessageFrom->image))) {
+                unlink('uploads/' . $MessageFrom->image);
+            }
+
             $input['image'] = $request->file('image')->store('chairman', 'uploads');
         }
         $MessageFrom->update($input);
@@ -107,7 +110,9 @@ class MessageController extends Controller
         $input['slug'] = Str::slug($request->message_title);
         $MessageFrom = MessageFrom::where('type', 1)->orderBy('id', 'DESC')->first();
         if ($request->hasFile('image')) {
-            unlink('uploads/' . $MessageFrom->image);
+            if (file_exists(public_path('uploads/' . $MessageFrom->image))) {
+                unlink('uploads/' . $MessageFrom->image);
+            }
             $input['image'] = $request->file('image')->store('chairman', 'uploads');
         }
         $MessageFrom->update($input);

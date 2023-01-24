@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class NewsEventController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view('admin.newsEvent.form');
     }
     public function store(Request $request)
@@ -25,10 +26,10 @@ class NewsEventController extends Controller
         $store_record->title = $request->title;
         $store_record->date = $request->date;
         $store_record->description = $request->editor2;
-        if($request->file('image')){
+        if ($request->file('image')) {
             $file = $request->file('image');
             $generateNumber = random_int(100000, 999999);
-            $file_name = $generateNumber.$file->getClientOriginalName();
+            $file_name = $generateNumber . $file->getClientOriginalName();
             $file->move(public_path('NewsEvent/'), $file_name);
             $store_record->images = $file_name;
         }
@@ -36,7 +37,8 @@ class NewsEventController extends Controller
 
         return redirect()->back()->with('message', 'record inserted successfuly !');
     }
-    public function view_list(){
+    public function view_list()
+    {
         $newsevent_list = NewsEvent::orderBy('id', 'DESC')->get();
         return view('admin.newsEvent.index', compact('newsevent_list'));
     }
@@ -49,37 +51,41 @@ class NewsEventController extends Controller
         return redirect()->back()->with('message', 'Record Deleted successfuly !');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
         $edit_mvo = NewsEvent::findOrFail($id);
         return view('admin.newsEvent.form', compact('edit_mvo'));
 
     }
 
-    public function update(Request $request , $id)
+    public function update(Request $request, $id)
     {
-            // dd($request->all());
-            $request->validate([
-                'title' => 'required',
-                'date' => 'required',
-                'editor2' => 'required',
-            ]);
+        // dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'editor2' => 'required',
+        ]);
 
-            $update_record = NewsEvent::findOrFail($id);
-            $update_record->title = $request->title;
-            $update_record->date = $request->date;
-            $update_record->description = $request->editor2;
-            if($request->file('image')){
-                unlink("NewsEvent/". $update_record->images);
-                $file = $request->file('image');
-                $generateNumber = random_int(100000, 999999);
-                $file_name = $generateNumber.$file->getClientOriginalName();
-                $file->move(public_path('NewsEvent/'), $file_name);
-                $update_record->images = $file_name;
+        $update_record = NewsEvent::findOrFail($id);
+        $update_record->title = $request->title;
+        $update_record->date = $request->date;
+        $update_record->description = $request->editor2;
+        if ($request->file('image')) {
+            if (file_exists(public_path("NewsEvent/" . $update_record->images))) {
+                unlink("NewsEvent/" . $update_record->images);
             }
-            $update_record->update();
 
-            return redirect()->back()->with('message', 'record updated successfuly !');
+            $file = $request->file('image');
+            $generateNumber = random_int(100000, 999999);
+            $file_name = $generateNumber . $file->getClientOriginalName();
+            $file->move(public_path('NewsEvent/'), $file_name);
+            $update_record->images = $file_name;
+        }
+        $update_record->update();
+
+        return redirect()->back()->with('message', 'record updated successfuly !');
 
     }
 }

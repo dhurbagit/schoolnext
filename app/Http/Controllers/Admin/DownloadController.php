@@ -177,11 +177,17 @@ class DownloadController extends Controller
         $input['date'] = $request->date;
         $input['download_id'] = $request->download_id;
         if ($request->hasFile('image')) {
-            unlink("uploads/" . $update->image);
+            if (file_exists(public_path("uploads/" . $update->image))) {
+                unlink("uploads/" . $update->image);
+            }
+
             $input['image'] = $request->file('image')->store('downloads', 'uploads');
         }
         if ($request->hasFile('file')) {
-            unlink("uploads/" . $update->file);
+            if (file_exists(public_path("uploads/" . $update->file))) {
+                unlink("uploads/" . $update->file);
+            }
+
             $input['file'] = $request->file('file')->store('downloads', 'uploads');
         }
         $update->update($input);

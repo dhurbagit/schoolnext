@@ -47,7 +47,9 @@ class VideoController extends Controller
         $banner_video = Video::findOrFail($id);
         $banner_video->title = $request->title;
         if ($request->file('video')) {
-            unlink("uploads/video/" . $banner_video->video);
+            if(file_exists(public_path('uploads/video/' . $banner_video->video))){
+                unlink("uploads/video/" . $banner_video->video);
+            }
             $file = $request->file('video');
             $generateNumber = random_int(100000, 999999);
             $file_name = $generateNumber . $file->getClientOriginalName();

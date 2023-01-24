@@ -297,7 +297,7 @@
                         "
                       >
                         <p style="font-size: 16px">
-                          {{ ($reply_message)}}
+                          {{ (strip_tags($reply_message))}}
                         </p>
                       </td>
                     </tr>
